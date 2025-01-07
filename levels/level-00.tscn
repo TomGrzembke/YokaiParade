@@ -23,4 +23,3 @@ position = Vector2(160, 482)
 position = Vector2(606, 563)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_xftf8")]
-unique_name_in_owner = true

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxgxdinu0kjs8"]
+[gd_scene load_steps=8 format=3 uid="uid://dxgxdinu0kjs8"]
 
 [ext_resource type="PackedScene" uid="uid://dyumet0q0u0ew" path="res://levels/ground-neutral.tscn" id="1_je3ns"]
+[ext_resource type="Script" path="res://levels/level.gd" id="1_l58d4"]
 [ext_resource type="PackedScene" uid="uid://dfjkroxbqv577" path="res://levels/wall-neutral.tscn" id="4_27hqb"]
 [ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/player-spawn-point.tscn" id="5_c8oug"]
 [ext_resource type="PackedScene" uid="uid://cfnhlackt0u25" path="res://levels/wall-wood.tscn" id="6_3j2ip"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bh0c2087eabtb" path="res://enemies/enemy-fire.tscn" id="7_la1fj"]
 
 [node name="Level 01" type="Node2D"]
+script = ExtResource("1_l58d4")
 
 [node name="Grounds & Walls" type="Node2D" parent="."]
 
@@ -54,5 +56,5 @@ position = Vector2(663, 355)
 [node name="Enemy Fire" parent="Enemies" instance=ExtResource("7_la1fj")]
 position = Vector2(259, 536)
 
-[node name="Player Spawn Point" parent="." instance=ExtResource("5_c8oug")]
-position = Vector2(70, 290)
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_c8oug")]
+position = Vector2(71, 536)
