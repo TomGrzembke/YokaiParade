@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnxi2gyvo83ec"]
+[gd_scene load_steps=6 format=3 uid="uid://dnxi2gyvo83ec"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 
@@ -12,10 +12,16 @@ height = 100.0
 radius = 40.0
 height = 120.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltaai"]
+size = Vector2(150, 100)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_uybn7")
+speed = 500.0
 jump_velocity = 650.0
 air_power_jump_velocity = 650.0
+fire_power_dash_velocity = 2000.0
+fire_power_dash_duration = 0.3
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 self_modulate = Color(0.58, 0.58, 0.58, 1)
@@ -29,6 +35,18 @@ shape = SubResource("CapsuleShape2D_1mi2e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CatchRadius"]
 shape = SubResource("CapsuleShape2D_82728")
+
+[node name="DashTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="DealDamageArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageArea"]
+shape = SubResource("RectangleShape2D_ltaai")
 
 [connection signal="body_entered" from="CatchRadius" to="." method="_on_catch_radius_body_entered"]
 [connection signal="body_exited" from="CatchRadius" to="." method="_on_catch_radius_body_exited"]

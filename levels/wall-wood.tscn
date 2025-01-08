@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfnhlackt0u25"]
+[gd_scene load_steps=5 format=3 uid="uid://cfnhlackt0u25"]
+
+[ext_resource type="Script" path="res://levels/wall_wood.gd" id="1_es21e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_45mgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kk5bv"]
 size = Vector2(160, 50)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5lsw"]
+size = Vector2(78, 160)
+
 [node name="Wall Wood" type="StaticBody2D"]
+script = ExtResource("1_es21e")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 self_modulate = Color(0.64, 0.498133, 0.3968, 1)
@@ -16,3 +22,13 @@ mesh = SubResource("BoxMesh_45mgv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_kk5bv")
+
+[node name="TakeDamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
+shape = SubResource("RectangleShape2D_f5lsw")
+
+[connection signal="area_entered" from="TakeDamageArea" to="." method="_on_take_damage_area_area_entered"]
+[connection signal="body_entered" from="TakeDamageArea" to="." method="_on_take_damage_area_body_entered"]
