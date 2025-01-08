@@ -41,9 +41,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = -jump_velocity
 
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
-		var direction := Input.get_axis("left", "right")
+		var direction = sign(Input.get_axis("left", "right"))
 		if direction != 0.0:
 			_dash_direction = direction
 	
