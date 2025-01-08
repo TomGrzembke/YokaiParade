@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cousa8q6m7wmj"]
+[gd_scene load_steps=8 format=3 uid="uid://cousa8q6m7wmj"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_qbrnr"]
 [ext_resource type="PackedScene" uid="uid://dyumet0q0u0ew" path="res://levels/ground-neutral.tscn" id="1_u0l32"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bfuetyq0f4wfn" path="res://enemies/enemy-water.tscn" id="3_vtwk6"]
 [ext_resource type="PackedScene" uid="uid://dfjkroxbqv577" path="res://levels/wall-neutral.tscn" id="4_0ihaq"]
 [ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/player-spawn-point.tscn" id="5_xftf8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3hvh"]
+size = Vector2(40.0241, 20)
 
 [node name="Level 00" type="Node2D"]
 script = ExtResource("1_qbrnr")
@@ -22,3 +25,14 @@ position = Vector2(160, 482)
 position = Vector2(606, 563)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_xftf8")]
+
+[node name="DespawnArea" type="Area2D" parent="."]
+position = Vector2(990, 1155)
+scale = Vector2(10.64, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DespawnArea"]
+position = Vector2(-2.06767, 0)
+scale = Vector2(4.67293, 3.76)
+shape = SubResource("RectangleShape2D_s3hvh")
+
+[connection signal="body_entered" from="DespawnArea" to="." method="_on_despawn_area_body_entered"]

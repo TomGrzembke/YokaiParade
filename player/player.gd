@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 
+signal player_despawned
+
+
 const ENEMY_SCRIPT = preload("res://enemies/enemy.gd")
 const COLOR_PLAIN = Color("#949494")
 const COLOR_AIR = Color("#dbdbdb")
@@ -82,3 +85,9 @@ func _use_power():
 
 func _use_air_power():
 	velocity.y = -air_power_jump_velocity
+
+
+func despawn():
+	print("Eeeeeh")
+	player_despawned.emit()
+	queue_free()

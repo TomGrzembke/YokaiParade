@@ -10,6 +10,5 @@ enum EnemyType {
 
 
 func caught():
-	print("got caught!")
 	queue_free()
 	return enemy_type
