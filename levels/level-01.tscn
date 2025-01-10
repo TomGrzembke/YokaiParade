@@ -21,7 +21,7 @@ position = Vector2(471, -262)
 scale = Vector2(1, 2)
 
 [node name="Wall Breakable3" parent="Grounds & Walls/Interacting" instance=ExtResource("6_3j2ip")]
-position = Vector2(502, 287)
+position = Vector2(477, 287)
 scale = Vector2(1, 2)
 
 [node name="Wall Breakable4" parent="Grounds & Walls/Interacting" instance=ExtResource("6_3j2ip")]
@@ -55,8 +55,8 @@ position = Vector2(604, 981)
 scale = Vector2(5.92, 1)
 
 [node name="Ground Neutral3" parent="Grounds & Walls/Neutral" instance=ExtResource("1_je3ns")]
-position = Vector2(194, 145)
-scale = Vector2(4.48, 1)
+position = Vector2(173, 145)
+scale = Vector2(4.12, 1)
 
 [node name="Ground Neutral6" parent="Grounds & Walls/Neutral" instance=ExtResource("1_je3ns")]
 position = Vector2(582, -93)

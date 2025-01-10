@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmxf5jucqf3tn"]
+
+[ext_resource type="PackedScene" uid="uid://dyumet0q0u0ew" path="res://levels/ground-neutral.tscn" id="1_1gvy1"]
+[ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/player-spawn-point.tscn" id="2_uayi1"]
+
+[node name="Tutorial Level" type="Node2D"]
+
+[node name="Ground & Walls" type="Node2D" parent="."]
+
+[node name="Interacting" type="Node2D" parent="Ground & Walls"]
+
+[node name="Neutral" type="Node2D" parent="Ground & Walls"]
+
+[node name="Ground Neutral" parent="Ground & Walls/Neutral" instance=ExtResource("1_1gvy1")]
+position = Vector2(418, 666)
+scale = Vector2(5.2, 1)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Player Spawn Point" parent="." instance=ExtResource("2_uayi1")]
