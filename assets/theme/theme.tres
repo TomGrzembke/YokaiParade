@@ -3,4 +3,5 @@
 [ext_resource type="FontFile" uid="uid://cr42l6nb316xs" path="res://assets/fonts/Kenney-Pixel-Square.ttf" id="1_oqyxa"]
 
 [resource]
+Label/font_sizes/font_size = 48
 Label/fonts/font = ExtResource("1_oqyxa")
