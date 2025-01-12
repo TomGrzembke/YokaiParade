@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://dxgxdinu0kjs8"]
 
-[ext_resource type="PackedScene" uid="uid://dyumet0q0u0ew" path="res://levels/ground-neutral.tscn" id="1_je3ns"]
+[ext_resource type="PackedScene" path="res://levels/ground_neutral.tscn" id="1_je3ns"]
 [ext_resource type="Script" path="res://levels/level.gd" id="1_l58d4"]
-[ext_resource type="PackedScene" uid="uid://dfjkroxbqv577" path="res://levels/wall-neutral.tscn" id="4_27hqb"]
-[ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/player-spawn-point.tscn" id="5_c8oug"]
+[ext_resource type="PackedScene" path="res://levels/wall_neutral.tscn" id="4_27hqb"]
+[ext_resource type="PackedScene" path="res://levels/player_spawn_point.tscn" id="5_c8oug"]
 [ext_resource type="PackedScene" uid="uid://cijdb50pj3jc7" path="res://levels/despawn_area.tscn" id="5_mgspn"]
-[ext_resource type="PackedScene" uid="uid://cfnhlackt0u25" path="res://levels/wall-wood.tscn" id="6_3j2ip"]
-[ext_resource type="PackedScene" uid="uid://c4sff4auhgxi8" path="res://enemies/enemy-air.tscn" id="6_ssfpt"]
-[ext_resource type="PackedScene" uid="uid://bh0c2087eabtb" path="res://enemies/enemy-fire.tscn" id="7_la1fj"]
+[ext_resource type="PackedScene" path="res://levels/wall_wood.tscn" id="6_3j2ip"]
+[ext_resource type="PackedScene" path="res://enemies/enemy_air.tscn" id="6_ssfpt"]
+[ext_resource type="PackedScene" path="res://enemies/enemy_fire.tscn" id="7_la1fj"]
 
 [node name="Level01" type="Node2D"]
 script = ExtResource("1_l58d4")

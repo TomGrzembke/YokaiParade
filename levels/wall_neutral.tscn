@@ -1,16 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bye48sqw05tq"]
+[gd_scene load_steps=3 format=3 uid="uid://dfjkroxbqv577"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_45mgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kk5bv"]
 size = Vector2(160, 50)
 
-[node name="Ground Fire" type="StaticBody2D"]
+[node name="WallNeutral" type="StaticBody2D"]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-self_modulate = Color(0.69, 0.3519, 0.3519, 1)
+self_modulate = Color(0.69, 0.69, 0.69, 1)
+rotation = -1.5708
 scale = Vector2(160, 50)
 mesh = SubResource("BoxMesh_45mgv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
 shape = SubResource("RectangleShape2D_kk5bv")

@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyumet0q0u0ew"]
+[gd_scene load_steps=3 format=3 uid="uid://bye48sqw05tq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_45mgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kk5bv"]
 size = Vector2(160, 50)
 
-[node name="Ground Neutral" type="StaticBody2D"]
+[node name="GroundFire" type="StaticBody2D"]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-self_modulate = Color(0.69, 0.69, 0.69, 1)
+self_modulate = Color(0.69, 0.3519, 0.3519, 1)
 scale = Vector2(160, 50)
 mesh = SubResource("BoxMesh_45mgv")
 

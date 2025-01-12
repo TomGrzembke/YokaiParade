@@ -17,7 +17,7 @@ var number_of_levels:
 
 func _set_current_level(new_value):
 	if _current_level != null:
-		remove_child(_current_level)
+		_current_level.queue_free()
 
 	_current_level = new_value
 

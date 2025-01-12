@@ -1,21 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfuetyq0f4wfn"]
+[gd_scene load_steps=4 format=3 uid="uid://bh0c2087eabtb"]
 
-[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_eeh7o"]
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_fsfw2"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_us2oe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j14c1"]
 radius = 30.0167
 
-[node name="Enemy Water" type="RigidBody2D"]
+[node name="EnemyFire" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 4
 gravity_scale = 0.0
-script = ExtResource("1_eeh7o")
-enemy_type = 300
+script = ExtResource("1_fsfw2")
+enemy_type = 200
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-self_modulate = Color(0.3519, 0.549125, 0.69, 1)
+self_modulate = Color(0.69, 0.3519, 0.3519, 1)
 scale = Vector2(60, 60)
 mesh = SubResource("SphereMesh_us2oe")
 
