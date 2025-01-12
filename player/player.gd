@@ -13,6 +13,8 @@ const COLOR_WATER = Color("#5a8cb0")
 
 @export_category("Movement")
 @export var speed = 300.0
+@export var acceleration = 80.0
+@export var deceleration = 50.0
 @export var jump_velocity = 600.0
 @export_range(0.0, 1.0, 0.01) var jump_coyote_time = 0.15
 @export_category("Powers")
@@ -25,7 +27,6 @@ var _coyote_timer = 0.0
 var _body_in_catch_radius = null
 var _current_power = null:
 	set = _set_current_power
-
 var _body_in_damage_radius = null
 var _is_dashing = false
 var _dash_direction = null
@@ -49,9 +50,9 @@ func _physics_process(delta):
 			_dash_direction = direction
 
 		if direction:
-			velocity.x = direction * speed
+			velocity.x = move_toward(velocity.x, direction * speed, acceleration)
 		else:
-			velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.x = move_toward(velocity.x, 0, deceleration)
 	else:
 		if _body_in_damage_radius != null \
 		and _body_in_damage_radius.has_method("take_damage"):
