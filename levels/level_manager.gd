@@ -21,7 +21,7 @@ func _set_current_level(new_value):
 
 	_current_level = new_value
 
-	add_child(_current_level)
+	add_child.call_deferred(_current_level)
 
 
 func load_level(level_index) -> bool:
