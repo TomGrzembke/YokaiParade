@@ -70,7 +70,7 @@ func _spawn_player(player_position):
 	remote_transform.remote_path = camera_node.get_path()
 	player.add_child(remote_transform)
 
-	add_child(player)
+	add_child.call_deferred(player)
 
 
 func _on_player_despawned():
