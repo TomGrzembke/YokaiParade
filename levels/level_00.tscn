@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cousa8q6m7wmj"]
+[gd_scene load_steps=12 format=3 uid="uid://cousa8q6m7wmj"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_adeen"]
 [ext_resource type="PackedScene" uid="uid://dyumet0q0u0ew" path="res://levels/ground_neutral.tscn" id="2_uen8p"]
 [ext_resource type="PackedScene" uid="uid://bye48sqw05tq" path="res://levels/ground_fire.tscn" id="3_yfdsl"]
 [ext_resource type="PackedScene" uid="uid://dfjkroxbqv577" path="res://levels/wall_neutral.tscn" id="4_he6iw"]
 [ext_resource type="PackedScene" uid="uid://bh0c2087eabtb" path="res://enemies/enemy_fire.tscn" id="5_enfn4"]
+[ext_resource type="PackedScene" uid="uid://y6yw12ekqvro" path="res://enemies/enemy_spawn_point.tscn" id="5_kqo4v"]
 [ext_resource type="PackedScene" uid="uid://cfnhlackt0u25" path="res://levels/wall_wood.tscn" id="6_xs15g"]
 [ext_resource type="PackedScene" uid="uid://bfuetyq0f4wfn" path="res://enemies/enemy_water.tscn" id="7_j8poh"]
 [ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/player_spawn_point.tscn" id="8_svnk4"]
@@ -32,8 +33,9 @@ position = Vector2(945, 710)
 [node name="WallNeutral" parent="." instance=ExtResource("4_he6iw")]
 position = Vector2(425, 655)
 
-[node name="EnemyFire" parent="." instance=ExtResource("5_enfn4")]
+[node name="EnemySpawnPoint" parent="." instance=ExtResource("5_kqo4v")]
 position = Vector2(242, 516)
+enemy_scene = ExtResource("5_enfn4")
 
 [node name="WallWood" parent="." instance=ExtResource("6_xs15g")]
 position = Vector2(425, 492)
