@@ -77,19 +77,19 @@ func handle_coyote_time(delta):
 func handle_jump(delta):
 	handle_coyote_time(delta)
 	
-	var jump_input = Input.is_action_just_pressed("jump") 
-	var should_jump = (jump_input || evaluate_jump_buffer()) && is_on_floor()
+	var should_jump = Input.is_action_just_pressed("jump") || evaluate_jump_buffer()
+	var can_jump = should_jump && is_on_floor() || evaluate_coyote_time(should_jump)
 	
-	if should_jump || evaluate_coyote_time(jump_input):
+	if can_jump:
 		velocity.y = -jump_velocity
 	
 	handle_jump_buffer_time(delta)
 
 
-func evaluate_coyote_time(jump_input):
+func evaluate_coyote_time(should_jump):
 	if jump_coyote_time == 0: return false
 	if coyote_timer == 0: return false
-	if !jump_input: return false
+	if !should_jump: return false
 	if velocity.y < 0: return false
 	return coyote_timer < jump_coyote_time 
 
