@@ -41,9 +41,8 @@ func _physics_process(delta):
 		
 		handle_run()
 		
-		handle_jump_buffer_time(delta)
-		handle_coyote_time(delta)
-		handle_jump()
+		handle_jump(delta)
+		
 		calc_dash_direction()
 		handle_gravity(delta)
 	
@@ -58,10 +57,14 @@ func handle_run():
 
 
 func handle_jump_buffer_time(delta):
+	if Input.is_action_just_pressed("jump") || jump_buffer_timer > 0:
+		jump_buffer_timer += delta
+		
+	if Input.is_action_just_pressed("jump") && jump_buffer_timer > 0:
+		jump_buffer_timer = delta
+		
 	if is_on_floor():
 		jump_buffer_timer = 0.0
-	elif Input.is_action_just_pressed("jump"):
-		jump_buffer_timer += delta
 
 
 func handle_coyote_time(delta):
@@ -71,20 +74,30 @@ func handle_coyote_time(delta):
 		coyote_timer += delta
 
 
-func handle_jump():
-	var jump_input = Input.is_action_just_pressed("jump") 
-	var should_jump = (jump_input || jump_buffer_timer > 0) && is_on_floor()
+func handle_jump(delta):
+	handle_coyote_time(delta)
 	
-	if should_jump || evaluate_coyote_time():
+	var jump_input = Input.is_action_just_pressed("jump") 
+	var should_jump = (jump_input || evaluate_jump_buffer()) && is_on_floor()
+	
+	if should_jump || evaluate_coyote_time(jump_input):
 		velocity.y = -jump_velocity
+	
+	handle_jump_buffer_time(delta)
 
 
-func evaluate_coyote_time():
+func evaluate_coyote_time(jump_input):
 	if jump_coyote_time == 0: return false
 	if coyote_timer == 0: return false
-	if !Input.is_action_just_pressed("jump"): return false
+	if !jump_input: return false
 	if velocity.y < 0: return false
 	return coyote_timer < jump_coyote_time 
+
+
+func evaluate_jump_buffer():
+	if jump_buffer_time == 0: return false
+	if jump_buffer_timer == 0: return false
+	return jump_buffer_timer < jump_buffer_time
 
 
 func apply_dash_damage():
