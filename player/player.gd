@@ -14,13 +14,16 @@ const COLOR_WATER = Color("#5a8cb0")
 @export var acceleration = 80.0
 @export var deceleration = 50.0
 @export var jump_velocity = 600.0
+@export_category("Movement extras")
 @export_range(0.0, 1.0, 0.01) var jump_coyote_time = 0.15
+@export_range(0.0, 1.0, 0.01) var jump_buffer_time = 0.15
 @export_category("Powers")
 @export var air_power_jump_velocity = 800.0
 @export var fire_power_dash_velocity = 300.0
 @export var fire_power_dash_duration = 1.0
 
 var coyote_timer = 0.15
+var jump_buffer_timer = 0.0
 var body_in_catch_radius
 var body_in_damage_radius
 var is_dashing := false
@@ -34,14 +37,20 @@ func _physics_process(delta):
 	if is_dashing:
 		apply_dash_damage()
 	else:
-		move_direction = sign(Input.get_axis("left", "right"))
+		calc_move_dir()
 		
 		handle_run()
-		handle_coyote_time(delta)
-		handle_jump()
+		
+		handle_jump(delta)
+		
 		calc_dash_direction()
+		handle_gravity(delta)
 	
 	move_and_slide()
+
+
+func calc_move_dir():
+	move_direction = sign(Input.get_axis("left", "right"))
 
 
 func handle_run():
@@ -51,18 +60,48 @@ func handle_run():
 		velocity.x = move_toward(velocity.x, 0, deceleration)
 
 
+func handle_jump_buffer_time(delta):
+	if Input.is_action_just_pressed("jump") || jump_buffer_timer > 0:
+		jump_buffer_timer += delta
+		
+	if Input.is_action_just_pressed("jump") && jump_buffer_timer > 0:
+		jump_buffer_timer = delta
+		
+	if is_on_floor():
+		jump_buffer_timer = 0.0
+
+
 func handle_coyote_time(delta):
 	if is_on_floor():
 		coyote_timer = 0.0
 	else:
 		coyote_timer += delta
-		velocity += get_gravity() * delta
 
 
-func handle_jump():
-	if Input.is_action_just_pressed("jump") \
-	and coyote_timer < jump_coyote_time:
+func handle_jump(delta):
+	handle_coyote_time(delta)
+	
+	var should_jump = Input.is_action_just_pressed("jump") || evaluate_jump_buffer()
+	var can_jump = should_jump && is_on_floor() || evaluate_coyote_time(should_jump)
+	
+	if can_jump:
 		velocity.y = -jump_velocity
+	
+	handle_jump_buffer_time(delta)
+
+
+func evaluate_coyote_time(should_jump):
+	if jump_coyote_time == 0: return false
+	if coyote_timer == 0: return false
+	if !should_jump: return false
+	if velocity.y < 0: return false
+	return coyote_timer < jump_coyote_time 
+
+
+func evaluate_jump_buffer():
+	if jump_buffer_time == 0: return false
+	if jump_buffer_timer == 0: return false
+	return jump_buffer_timer < jump_buffer_time
 
 
 func apply_dash_damage():
@@ -72,11 +111,13 @@ func apply_dash_damage():
 	body_in_damage_radius.take_damage()
 
 
-
 func calc_dash_direction():
 	if move_direction != 0.0:
 			dash_direction = move_direction
 
+
+func handle_gravity(delta):
+	velocity += get_gravity() * delta
 
 
 func _on_catch_radius_body_entered(body):
