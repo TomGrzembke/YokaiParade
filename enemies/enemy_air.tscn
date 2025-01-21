@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4sff4auhgxi8"]
+[gd_scene load_steps=5 format=3 uid="uid://c4sff4auhgxi8"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_nhvgx"]
+[ext_resource type="Resource" uid="uid://coi3cja17t1o7" path="res://abilities/air_resource.tres" id="2_8gusn"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_us2oe"]
 
@@ -12,6 +13,7 @@ collision_layer = 4
 collision_mask = 4
 gravity_scale = 0.0
 script = ExtResource("1_nhvgx")
+resource = ExtResource("2_8gusn")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 self_modulate = Color(0.86, 0.86, 0.86, 1)

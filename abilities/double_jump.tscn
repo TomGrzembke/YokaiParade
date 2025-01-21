@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc0wce22gon55"]
+
+[ext_resource type="Script" path="res://abilities/double_jump.gd" id="1_c33vj"]
+
+[node name="DoubleJump" type="Node2D"]
+script = ExtResource("1_c33vj")
+air_power_jump_velocity = null

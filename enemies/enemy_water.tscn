@@ -12,7 +12,6 @@ collision_layer = 4
 collision_mask = 4
 gravity_scale = 0.0
 script = ExtResource("1_eeh7o")
-enemy_type = 300
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 self_modulate = Color(0.3519, 0.549125, 0.69, 1)
