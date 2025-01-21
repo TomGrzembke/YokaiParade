@@ -32,7 +32,9 @@ func _physics_process(delta):
 
 		if easing_curve != null:
 			progress_ratio = easing_curve.sample(progress_ratio_raw)
-			return
+		else:
+			progress_ratio = progress_ratio_raw
+
 	else:
 		progress_ratio = progress_ratio_raw
 

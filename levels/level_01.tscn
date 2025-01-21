@@ -25,8 +25,8 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_jl5kf"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.99999, 1), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_he0j4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Level01" type="Node2D"]
@@ -229,7 +229,7 @@ curve = SubResource("Curve2D_1r45x")
 
 [node name="EnemyFlying" parent="Enemies/Path2D" instance=ExtResource("10_tuond")]
 position = Vector2(312, 312)
-easing_curve = SubResource("Curve_jl5kf")
+easing_curve = SubResource("Curve_he0j4")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_c8oug")]
 position = Vector2(-70, 346)

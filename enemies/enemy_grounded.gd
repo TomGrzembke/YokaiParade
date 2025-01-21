@@ -42,7 +42,7 @@ func handle_movement(_delta):
 
 func flip_horizontally():
 	direction *= -1.0
-	scale.x = direction
+	scale.x *= -1.0
 
 
 func is_on_cliff():
