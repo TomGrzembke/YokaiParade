@@ -8,7 +8,7 @@
 size = Vector2(160, 50)
 
 [node name="WallWood" type="StaticBody2D"]
-collision_layer = 3
+collision_layer = 11
 script = ExtResource("1_5qe3h")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]

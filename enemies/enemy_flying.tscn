@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://1nvmt4b6bjbn"]
+
+[ext_resource type="Script" path="res://enemies/enemy_flying.gd" id="1_jwi5c"]
+
+[sub_resource type="Curve" id="Curve_lxy51"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_qwmto"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6sv5j"]
+radius = 31.0161
+
+[node name="EnemyFlying" type="PathFollow2D"]
+rotates = false
+script = ExtResource("1_jwi5c")
+easing_curve = SubResource("Curve_lxy51")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+rotation = 1.5708
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="AnimatableBody2D"]
+modulate = Color(0.821308, 0.72478, 0.111647, 1)
+position = Vector2(0, 8.11218e-06)
+scale = Vector2(62.0703, 62.0703)
+mesh = SubResource("SphereMesh_qwmto")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("CircleShape2D_6sv5j")

@@ -98,6 +98,7 @@ load_previous_level={
 2d_physics/layer_1="Obstacle"
 2d_physics/layer_2="Destruction"
 2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Wall"
 
 [physics]
 

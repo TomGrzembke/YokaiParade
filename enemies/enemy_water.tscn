@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfuetyq0f4wfn"]
+[gd_scene load_steps=4 format=3 uid="uid://hrl55atg210c"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_eeh7o"]
 
@@ -9,7 +9,7 @@ radius = 30.0167
 
 [node name="EnemyWater" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_eeh7o")
 

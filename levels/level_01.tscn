@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxgxdinu0kjs8"]
+[gd_scene load_steps=16 format=3 uid="uid://dxgxdinu0kjs8"]
 
 [ext_resource type="PackedScene" uid="uid://dyumet0q0u0ew" path="res://levels/ground_neutral.tscn" id="1_je3ns"]
 [ext_resource type="Script" path="res://levels/level.gd" id="1_l58d4"]
@@ -10,6 +10,24 @@
 [ext_resource type="PackedScene" uid="uid://n6im0hivv1d5" path="res://enemies/enemy_spawn_point.tscn" id="7_4ikt4"]
 [ext_resource type="PackedScene" uid="uid://bh0c2087eabtb" path="res://enemies/enemy_fire.tscn" id="7_la1fj"]
 [ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/goal.tscn" id="9_k2mnv"]
+[ext_resource type="PackedScene" uid="uid://bomxlv8ndomnc" path="res://enemies/enemy_grounded.tscn" id="9_nox78"]
+[ext_resource type="PackedScene" uid="uid://1nvmt4b6bjbn" path="res://enemies/enemy_flying.tscn" id="10_tuond"]
+
+[sub_resource type="Curve2D" id="Curve2D_bx6t0"]
+_data = {
+"points": PackedVector2Array(107.943, 32.2772, -107.943, -32.2772, 112, -72, -30.6898, -53.9716, 30.6898, 53.9716, -80, 104, -40.2142, 13.7575, 40.2142, -13.7575, 160, 176, 2.11653, 23.2819, -2.11653, -23.2819, 304, 24, 70.9039, -4.23307, -70.9039, 4.23307, 112, -72)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_1r45x"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 312, 312, 0, 0, 0, 0, 312, 592)
+}
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_he0j4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Level01" type="Node2D"]
 script = ExtResource("1_l58d4")
@@ -196,6 +214,22 @@ position = Vector2(2112, -352)
 
 [node name="Enemy Fire2" parent="Enemies" instance=ExtResource("7_la1fj")]
 position = Vector2(391, 89)
+
+[node name="EnemyGrounded" parent="Enemies" instance=ExtResource("9_nox78")]
+position = Vector2(408, 920)
+
+[node name="Path2D2" type="Path2D" parent="Enemies"]
+curve = SubResource("Curve2D_bx6t0")
+
+[node name="EnemyFlying" parent="Enemies/Path2D2" instance=ExtResource("10_tuond")]
+position = Vector2(112, -72)
+
+[node name="Path2D" type="Path2D" parent="Enemies"]
+curve = SubResource("Curve2D_1r45x")
+
+[node name="EnemyFlying" parent="Enemies/Path2D" instance=ExtResource("10_tuond")]
+position = Vector2(312, 312)
+easing_curve = SubResource("Curve_he0j4")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_c8oug")]
 position = Vector2(-70, 346)

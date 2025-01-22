@@ -6,6 +6,7 @@
 size = Vector2(160, 50)
 
 [node name="GroundWood" type="StaticBody2D"]
+collision_layer = 9
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 self_modulate = Color(0.64, 0.498133, 0.3968, 1)

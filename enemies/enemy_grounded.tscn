@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bomxlv8ndomnc"]
+
+[ext_resource type="Script" path="res://enemies/enemy_grounded.gd" id="1_ckp3m"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_8iadr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i3f1p"]
+radius = 34.0147
+
+[node name="EnemyGrounded" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_ckp3m")
+speed = 200.0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0.226683, 0.485519, 0.375443, 1)
+position = Vector2(0, 6.4373e-06)
+scale = Vector2(68.0771, 68.0771)
+mesh = SubResource("SphereMesh_8iadr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i3f1p")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(34, 0)

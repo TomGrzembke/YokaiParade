@@ -10,7 +10,7 @@ radius = 30.0167
 
 [node name="EnemyAir" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_nhvgx")
 resource = ExtResource("2_8gusn")
