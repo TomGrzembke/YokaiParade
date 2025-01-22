@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://player/player_manager.gd" id="1_rsfs1"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/ability_manager.gd" id="2_es05j"]
-[ext_resource type="PackedScene" uid="uid://cqo5hhva3su4r" path="res://abilities/dash.tscn" id="3_tw2ks"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_idevo"]
 
@@ -25,15 +24,13 @@ height = 74.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_uybn7")
 speed = 350.0
-jump_velocity = 770.0
-fall_speed_clamp = 1300.0
-jump_coyote_time = 0.25
-jump_buffer_time = 1.0
+jump_velocity = 750.0
+fall_speed_clamp = 1200.0
+jump_coyote_time = 0.2
+jump_buffer_time = 0.2
 
 [node name="AbilityManager" type="Node2D" parent="."]
 script = ExtResource("2_es05j")
-
-[node name="Dash" parent="AbilityManager" instance=ExtResource("3_tw2ks")]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 self_modulate = Color(0.58, 0.58, 0.58, 1)

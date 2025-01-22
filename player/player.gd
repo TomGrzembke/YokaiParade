@@ -7,6 +7,7 @@ const COLOR_PLAIN = Color("#949494")
 const COLOR_AIR = Color("#dbdbdb")
 const COLOR_FIRE = Color("#b05a5a")
 const COLOR_WATER = Color("#5a8cb0")
+const INFINITY = 1e20
 
 @export_category("Movement")
 @export var speed = 300.0
@@ -38,8 +39,7 @@ func _physics_process(delta):
 	handle_jump(delta)
 	handle_gravity(delta)
 	
-	velocity = player_input_vel
-	#velocity = velocity_outer_sources
+	velocity = player_input_vel + velocity_outer_sources
 	
 	move_and_slide()
 
@@ -127,12 +127,12 @@ func handle_gravity(delta):
 
 func clamp_fall_speed():
 	if fall_speed_clamp == 0: return;
-	player_input_vel.y = clampf(player_input_vel.y, -1e20, fall_speed_clamp) 
+	player_input_vel.y = clampf(player_input_vel.y, -INFINITY, fall_speed_clamp) 
 
 
 func add_velocity_modifier(velocity_mod):
 	velocity_mod_instigator.append(velocity_mod)
-	calc_vel_mod(velocity_mod, false)
+	calc_vel_mods(velocity_mod, false)
 	create_vel_duration_timer(velocity_mod)
 
 
@@ -147,16 +147,19 @@ func create_vel_duration_timer(velocity_mod):
 
 
 func on_vel_mod_ended(velocity_mod):
-	calc_vel_mod(velocity_mod, true)
+	calc_vel_mods(velocity_mod, true)
 
 
-func calc_vel_mod(velocity_mod, clear_mod):
+func calc_vel_mods(velocity_mod, clear_mod):
 	var highest_prioty = 5
 	for i in range(velocity_mod_instigator.size() -1, -1, -1):
 		highest_prioty = reapply_velocity_mods(velocity_mod, highest_prioty)
 		
 		if clear_mod && velocity_mod == velocity_mod_instigator[i]:
 			velocity_mod_instigator.remove_at(i)
+			
+	if velocity_mod_instigator.size() == 0:
+		velocity_outer_sources = Vector2(0,0)
 
 
 func delete_timer(given_timer):
