@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/player_manager.gd" id="1_rsfs1"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
-[ext_resource type="Script" path="res://abilities/abilities.gd" id="2_es05j"]
+[ext_resource type="Script" path="res://abilities/ability_manager.gd" id="2_es05j"]
 [ext_resource type="PackedScene" uid="uid://cqo5hhva3su4r" path="res://abilities/dash.tscn" id="3_tw2ks"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_idevo"]
