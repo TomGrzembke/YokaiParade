@@ -10,10 +10,10 @@ func _process(delta: float) -> void:
 
 func use_ability(player_manager):
 	if current_ability == null: return
-	
+
 	if current_ability.has_method("use"):
 		current_ability.use(player_manager)
-		
+
 	current_ability = null
 
 
