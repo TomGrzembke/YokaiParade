@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxgxdinu0kjs8"]
+[gd_scene load_steps=16 format=3 uid="uid://dxgxdinu0kjs8"]
 
 [ext_resource type="PackedScene" uid="uid://dyumet0q0u0ew" path="res://levels/ground_neutral.tscn" id="1_je3ns"]
 [ext_resource type="Script" path="res://levels/level.gd" id="1_l58d4"]
@@ -11,7 +11,15 @@
 [ext_resource type="PackedScene" uid="uid://bh0c2087eabtb" path="res://enemies/enemy_fire.tscn" id="7_la1fj"]
 [ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/goal.tscn" id="9_k2mnv"]
 [ext_resource type="PackedScene" uid="uid://bomxlv8ndomnc" path="res://enemies/enemy_grounded.tscn" id="9_nox78"]
-[ext_resource type="Resource" uid="uid://tvyt8dx4csl5" path="res://enemies/enemy_element_type_air.tres" id="10_534bc"]
+[ext_resource type="Resource" uid="uid://tvyt8dx4csl5" path="res://enemies/types/enemy_element_type_air.tres" id="10_534bc"]
+[ext_resource type="Resource" uid="uid://be56k4m11w44j" path="res://enemies/types/enemy_element_type_fire.tres" id="10_cq81o"]
+[ext_resource type="PackedScene" uid="uid://1nvmt4b6bjbn" path="res://enemies/enemy_flying.tscn" id="11_cjp3s"]
+
+[sub_resource type="Curve2D" id="Curve2D_3vbdp"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 968, 888, 0, 0, 0, 0, 968, 512)
+}
+point_count = 2
 
 [node name="Level01" type="Node2D"]
 script = ExtResource("1_l58d4")
@@ -159,9 +167,6 @@ scale = Vector2(2.28, 1)
 [node name="Enemy Air" parent="Enemies" instance=ExtResource("6_ssfpt")]
 position = Vector2(663, 392)
 
-[node name="Enemy Air3" parent="Enemies" instance=ExtResource("6_ssfpt")]
-position = Vector2(963, 924)
-
 [node name="Enemy Air4" parent="Enemies" instance=ExtResource("6_ssfpt")]
 position = Vector2(1451, 661)
 
@@ -201,6 +206,13 @@ position = Vector2(391, 89)
 
 [node name="EnemyGrounded" parent="Enemies" instance=ExtResource("9_nox78")]
 position = Vector2(288, 920)
+element_type = ExtResource("10_cq81o")
+
+[node name="Path2D" type="Path2D" parent="Enemies"]
+curve = SubResource("Curve2D_3vbdp")
+
+[node name="EnemyFlying" parent="Enemies/Path2D" instance=ExtResource("11_cjp3s")]
+position = Vector2(968, 888)
 element_type = ExtResource("10_534bc")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_c8oug")]
