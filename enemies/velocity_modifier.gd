@@ -4,7 +4,7 @@ class_name VelocityModifier
 var amount
 var duration
 var priority #1 = abilities, 2 = enemy attacks
-var disable_player_movement
+var disable_player_movement = false
 
 func _init(_amount, _duration, _priority, _disable_player_movement):
 	amount = _amount

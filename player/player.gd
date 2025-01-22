@@ -13,6 +13,7 @@ const COLOR_WATER = Color("#5a8cb0")
 @export var acceleration = 80.0
 @export var deceleration = 50.0
 @export var jump_velocity = 600.0
+@export var fall_speed_clamp = 600.0
 @export_category("Movement extras")
 @export_range(0.0, 1.0, 0.01) var jump_coyote_time = 0.15
 @export_range(0.0, 1.0, 0.01) var jump_buffer_time = 0.15
@@ -20,28 +21,28 @@ const COLOR_WATER = Color("#5a8cb0")
 var coyote_timer = 0.15
 var jump_buffer_timer = 0.0
 var body_in_catch_radius
-var body_in_damage_radius
-var is_dashing := false
 var dash_direction
 var move_direction
 
-var velocity_outer_sources 
+var velocity_outer_sources := Vector2(0,0)
+var player_input_vel := Vector2(0,0)
 
 @onready var ability_manager: Node2D = $AbilityManager
 
 var velocity_mod_instigator = []
-var player_control
+var player_control := true
 
 
 func _physics_process(delta):
-	if is_dashing:
-		apply_dash_damage()
-	else:
-		calc_move_dir()
-		handle_run()
-		handle_jump(delta)
-		calc_dash_direction()
-		handle_gravity(delta)
+	calc_move_dir()
+	handle_run()
+	reset_y_vel_on_ground()
+	handle_jump(delta)
+	calc_dash_direction()
+	handle_gravity(delta)
+	
+	velocity = player_input_vel
+	#velocity = velocity_outer_sources
 	
 	move_and_slide()
 
@@ -52,9 +53,15 @@ func calc_move_dir():
 
 func handle_run():
 	if move_direction:
-		velocity.x = move_toward(velocity.x, move_direction * speed, acceleration)
+		player_input_vel.x = move_toward(player_input_vel.x, move_direction * speed, acceleration)
 	else:
-		velocity.x = move_toward(velocity.x, 0, deceleration)
+		player_input_vel.x = move_toward(player_input_vel.x, 0, deceleration)
+
+
+func reset_y_vel_on_ground():
+	if !is_on_floor(): return
+	
+	player_input_vel.y = 0
 
 
 func handle_jump_buffer_time(delta):
@@ -84,7 +91,7 @@ func handle_jump(delta):
 	var can_jump = should_jump && is_on_floor() || can_use_coyote_time(should_jump)
 	
 	if can_jump:
-		velocity.y = -jump_velocity
+		player_input_vel.y = -jump_velocity
 	
 	handle_jump_buffer_time(delta)
 
@@ -93,7 +100,7 @@ func can_use_coyote_time(should_jump):
 	if jump_coyote_time == 0: return false
 	if coyote_timer == 0: return false
 	if !should_jump: return false
-	if velocity.y < 0: return false
+	if player_input_vel.y < 0: return false
 	return coyote_timer < jump_coyote_time 
 
 
@@ -103,29 +110,26 @@ func can_use_jump_buffer():
 	return jump_buffer_timer < jump_buffer_time
 
 
-func apply_dash_damage():
-	if body_in_damage_radius == null: return
-	if !body_in_damage_radius.has_method("take_damage"): return
-	
-	body_in_damage_radius.take_damage()
-
-
 func calc_dash_direction():
 	if move_direction != 0.0:
 			dash_direction = move_direction
 
 
 func handle_gravity(delta):
-	velocity += get_gravity() * delta
+	clamp_fall_speed()
+	player_input_vel.y += get_gravity().y * delta
+
+
+func clamp_fall_speed():
+	if fall_speed_clamp == 0: return;
+	player_input_vel.y = clampf(player_input_vel.y, -1e20, fall_speed_clamp) 
 
 
 func add_velocity_modifier(velocity_mod):
 	#if velocity_mod.get_property_list().find("amount"):
 		#print("exists")
 	velocity_mod_instigator.append(velocity_mod)
-	
-	#velocity_outer_sources = velocity_mod.amount
-	
+	calc_vel_mod(velocity_mod, false)
 	create_vel_duration_timer(velocity_mod)
 
 
@@ -140,12 +144,17 @@ func create_vel_duration_timer(velocity_mod):
 
 
 func on_vel_mod_ended(velocity_mod):
+	calc_vel_mod(velocity_mod, true)
+
+
+func calc_vel_mod(velocity_mod, clear_mod):
 	var highest_prioty = 5
 	for i in range(velocity_mod_instigator.size() -1, -1, -1):
 		highest_prioty = reapply_velocity_mods(velocity_mod, highest_prioty)
 		
-		if velocity_mod == velocity_mod_instigator[i]:
+		if clear_mod && velocity_mod == velocity_mod_instigator[i]:
 			velocity_mod_instigator.remove_at(i)
+
 
 
 func delete_timer(given_timer):
@@ -153,10 +162,10 @@ func delete_timer(given_timer):
 
 
 func reapply_velocity_mods(velocity_mod, current_priority):
-	if velocity_mod.priority <= current_priority: return current_priority
+	if velocity_mod.priority > current_priority: return current_priority
 	
 	velocity_outer_sources = velocity_mod.amount
-	player_control = !velocity_mod_instigator.disable_player_movement
+	player_control = !velocity_mod.disable_player_movement
 	return velocity_mod.priority
 
 
@@ -196,11 +205,3 @@ func on_despawn():
 
 func on_goal_reached():
 	player_reached_goal.emit()
-
-
-func _on_deal_damage_area_body_entered(body):
-	body_in_damage_radius = body
-
-
-func _on_deal_dash_damage_area_body_exited(_body):
-	body_in_damage_radius = null

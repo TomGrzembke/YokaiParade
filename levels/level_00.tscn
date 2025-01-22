@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bh0c2087eabtb" path="res://enemies/enemy_fire.tscn" id="5_enfn4"]
 [ext_resource type="PackedScene" uid="uid://n6im0hivv1d5" path="res://enemies/enemy_spawn_point.tscn" id="5_kqo4v"]
 [ext_resource type="PackedScene" uid="uid://cfnhlackt0u25" path="res://levels/wall_wood.tscn" id="6_xs15g"]
-[ext_resource type="PackedScene" uid="uid://hrl55atg210c" path="res://enemies/enemy_water.tscn" id="7_j8poh"]
+[ext_resource type="PackedScene" uid="uid://bfuetyq0f4wfn" path="res://enemies/enemy_water.tscn" id="7_j8poh"]
 [ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/player_spawn_point.tscn" id="8_svnk4"]
 [ext_resource type="PackedScene" uid="uid://cijdb50pj3jc7" path="res://levels/despawn_area.tscn" id="9_advpf"]
 [ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/goal.tscn" id="9_rrtqt"]
