@@ -8,12 +8,15 @@ enum Direction {
 
 @export var speed = 100.0
 @export var initial_direction = Direction.RIGHT
+@export var element_type: EnemyElementType
 
 var direction
 
 
 func _ready():
 	direction = initial_direction
+	if element_type != null:
+		$MeshInstance2D.modulate = element_type.get_color()
 
 
 func _physics_process(delta):

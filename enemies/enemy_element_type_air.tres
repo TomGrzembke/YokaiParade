@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyElementType" load_steps=3 format=3 uid="uid://tvyt8dx4csl5"]
+
+[ext_resource type="Script" path="res://enemies/enemy_element_type.gd" id="1_bvr23"]
+[ext_resource type="PackedScene" uid="uid://cc0wce22gon55" path="res://abilities/double_jump.tscn" id="2_yn1g2"]
+
+[resource]
+script = ExtResource("1_bvr23")
+element_type = 100
+spawning_ability = ExtResource("2_yn1g2")

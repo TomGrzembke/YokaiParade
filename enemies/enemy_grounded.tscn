@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bomxlv8ndomnc"]
+[gd_scene load_steps=5 format=3 uid="uid://bomxlv8ndomnc"]
 
 [ext_resource type="Script" path="res://enemies/enemy_grounded.gd" id="1_ckp3m"]
 
@@ -6,6 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3f1p"]
 radius = 34.0147
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lm0ol"]
+radius = 34.1321
 
 [node name="EnemyGrounded" type="CharacterBody2D"]
 collision_layer = 4
@@ -25,3 +28,8 @@ shape = SubResource("CircleShape2D_i3f1p")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(34, 0)
+
+[node name="DealDamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageArea"]
+shape = SubResource("CircleShape2D_lm0ol")

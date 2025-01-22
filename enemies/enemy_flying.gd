@@ -3,6 +3,7 @@ extends PathFollow2D
 
 @export var easing_curve: Curve
 @export var max_speed = 200.0
+@export var element_type = EnemyElementType
 
 var speed = 0.0
 var is_path_closed = false
