@@ -1,0 +1,381 @@
+[gd_scene load_steps=10 format=3 uid="uid://c725ohihulje0"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_rdt8q"]
+[ext_resource type="PackedScene" uid="uid://dyumet0q0u0ew" path="res://levels/ground_neutral.tscn" id="1_v52v0"]
+[ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/player_spawn_point.tscn" id="2_1yl8v"]
+[ext_resource type="PackedScene" uid="uid://cfnhlackt0u25" path="res://levels/wall_wood.tscn" id="3_l87w7"]
+[ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/goal.tscn" id="4_a3ims"]
+[ext_resource type="PackedScene" uid="uid://c4sff4auhgxi8" path="res://enemies/enemy_air.tscn" id="5_ewaar"]
+[ext_resource type="PackedScene" uid="uid://bh0c2087eabtb" path="res://enemies/enemy_fire.tscn" id="5_ouydf"]
+[ext_resource type="PackedScene" uid="uid://cijdb50pj3jc7" path="res://levels/despawn_area.tscn" id="6_bvw2s"]
+[ext_resource type="PackedScene" uid="uid://dfjkroxbqv577" path="res://levels/wall_neutral.tscn" id="6_hw8va"]
+
+[node name="Level-01-01" type="Node2D"]
+script = ExtResource("1_rdt8q")
+
+[node name="Grounds&Walls" type="Node2D" parent="."]
+
+[node name="Wooden Walls" type="Node2D" parent="Grounds&Walls"]
+
+[node name="WallWood" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
+position = Vector2(5180, 496)
+scale = Vector2(1, 2.32)
+
+[node name="WallWood6" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
+position = Vector2(3324, 174)
+scale = Vector2(1, 1.72)
+
+[node name="WallWood4" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
+position = Vector2(6389, -464)
+scale = Vector2(1, 1.72)
+
+[node name="WallWood2" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
+position = Vector2(7845, 542)
+scale = Vector2(1, 2.64)
+
+[node name="WallWood3" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
+position = Vector2(8764, 39)
+scale = Vector2(1, 1.72)
+
+[node name="WallWood7" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
+position = Vector2(11497, -439)
+scale = Vector2(1, 1.72)
+
+[node name="WallWood8" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
+position = Vector2(11803, -118)
+scale = Vector2(1, 1.72)
+
+[node name="WallWood11" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
+position = Vector2(10447, 571)
+scale = Vector2(1, 1.72)
+
+[node name="WallWood9" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
+position = Vector2(13666, -135)
+scale = Vector2(1, 1.72)
+
+[node name="WallWood10" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
+position = Vector2(13776, 451)
+scale = Vector2(1, 1.84)
+
+[node name="WallWood5" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
+position = Vector2(8662, -281)
+scale = Vector2(1, 1.72)
+
+[node name="Neutral" type="Node2D" parent="Grounds&Walls"]
+
+[node name="GroundNeutralSmall" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(116, 524)
+scale = Vector2(3.36, 1)
+
+[node name="GroundNeutralSmall2" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(760, 459)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall3" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(1311, 596)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall4" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(2015, 598)
+scale = Vector2(3.28, 1)
+
+[node name="GroundNeutralSmall5" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(4506, 190)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall12" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(5062, 58)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall13" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(4533, -227)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall14" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(5075, -349)
+scale = Vector2(2.31015, 1)
+
+[node name="GroundNeutralSmall15" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(5644, -454)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall6" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(6287, 851)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall7" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(7191, 851)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall8" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(8791, 599)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall10" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(9801, 190)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall11" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(10374, 54)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall26" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(10211, 414)
+scale = Vector2(3.28004, 1)
+
+[node name="GroundNeutralSmall27" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(10014, 1067)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall28" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(10659, 1135)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall29" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(11450, 963)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall30" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(12071, 1140)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall31" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(12624, 1308)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall32" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(13305, 1115)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall33" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(12721, 861)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall34" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(13286, 726)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall16" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(10956, -210)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall21" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(11639, -281)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall22" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(11971, 29)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall23" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(12968, 42)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall9" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(8056, 321)
+scale = Vector2(3.43999, 1)
+
+[node name="GroundNeutralSmall17" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(7273, -555)
+scale = Vector2(1.36131, 1)
+
+[node name="GroundNeutralSmall20" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(6799, -748)
+scale = Vector2(2.36001, 1)
+
+[node name="GroundNeutralSmall19" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(6263, -627)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralSmall18" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(7589, -342)
+scale = Vector2(2.48, 1)
+
+[node name="GroundNeutralBig" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(2570, 330)
+scale = Vector2(4.28, 1)
+
+[node name="GroundNeutralBig2" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(3638, 330)
+scale = Vector2(6.16, 1)
+
+[node name="GroundNeutralBig5" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(8122, 748)
+scale = Vector2(4.28, 1)
+
+[node name="GroundNeutralBig6" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(9036, 191)
+scale = Vector2(4.28, 1)
+
+[node name="GroundNeutralBig10" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(11783, 354)
+scale = Vector2(4.28, 1)
+
+[node name="GroundNeutralBig12" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(10723, 734)
+scale = Vector2(3.80001, 1)
+
+[node name="GroundNeutralBig11" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(14072, 601)
+scale = Vector2(5.4, 1)
+
+[node name="GroundNeutralBig13" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(14069, 28)
+scale = Vector2(5.4, 1)
+
+[node name="GroundNeutralBig14" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(15117, 331)
+scale = Vector2(5.4, 1)
+
+[node name="GroundNeutralBig9" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(8502, -122)
+scale = Vector2(4.28, 1)
+
+[node name="GroundNeutralBig3" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(4540, 541)
+scale = Vector2(4.28, 1)
+
+[node name="GroundNeutralBig4" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(5498, 689)
+scale = Vector2(5.28, 1)
+
+[node name="GroundNeutralBig7" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(6402, -303)
+scale = Vector2(5.28, 1)
+
+[node name="GroundNeutralBig8" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
+position = Vector2(7545, -120)
+scale = Vector2(4.76, 1)
+
+[node name="WallNeutral" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
+position = Vector2(5235, -152)
+scale = Vector2(1, 2.44)
+
+[node name="WallNeutral6" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
+position = Vector2(2253, 455)
+scale = Vector2(1, 1.64)
+
+[node name="JointMarker" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
+position = Vector2(3787, 412)
+scale = Vector2(1, 0.84)
+
+[node name="JointMarker2" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
+position = Vector2(9799, 277)
+scale = Vector2(1, 0.84)
+
+[node name="JointMarker3" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
+position = Vector2(15117, 420)
+scale = Vector2(1, 0.84)
+
+[node name="WallNeutral2" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
+position = Vector2(7189, -337)
+scale = Vector2(1, 2.46519)
+
+[node name="WallNeutral7" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
+position = Vector2(11466, 38)
+scale = Vector2(1, 4.18519)
+
+[node name="WallNeutral9" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
+position = Vector2(11002, 553)
+scale = Vector2(1, 2.06519)
+
+[node name="WallNeutral10" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
+position = Vector2(9974, 319)
+scale = Vector2(1, 1.34519)
+
+[node name="WallNeutral8" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
+position = Vector2(12145, -303)
+scale = Vector2(1, 3.82519)
+
+[node name="WallNeutral4" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
+position = Vector2(6797, -523)
+scale = Vector2(1, 2.50519)
+
+[node name="WallNeutral5" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
+position = Vector2(6089, -799)
+scale = Vector2(1, 2.46519)
+
+[node name="WallNeutral3" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
+position = Vector2(7763, -585)
+scale = Vector2(1, 2.76)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemyAir6" parent="Enemies" instance=ExtResource("5_ewaar")]
+position = Vector2(2054, 544)
+
+[node name="EnemyAir2" parent="Enemies" instance=ExtResource("5_ewaar")]
+position = Vector2(6389, 792)
+
+[node name="EnemyAir4" parent="Enemies" instance=ExtResource("5_ewaar")]
+position = Vector2(5136, 1)
+
+[node name="EnemyAir5" parent="Enemies" instance=ExtResource("5_ewaar")]
+position = Vector2(6710, -368)
+
+[node name="EnemyAir3" parent="Enemies" instance=ExtResource("5_ewaar")]
+position = Vector2(8501, 386)
+
+[node name="EnemyAir7" parent="Enemies" instance=ExtResource("5_ewaar")]
+position = Vector2(10479, -2)
+
+[node name="EnemyAir10" parent="Enemies" instance=ExtResource("5_ewaar")]
+position = Vector2(10778, 1074)
+
+[node name="EnemyAir11" parent="Enemies" instance=ExtResource("5_ewaar")]
+position = Vector2(12747, 1250)
+
+[node name="EnemyAir12" parent="Enemies" instance=ExtResource("5_ewaar")]
+position = Vector2(13359, 1058)
+
+[node name="EnemyAir13" parent="Enemies" instance=ExtResource("5_ewaar")]
+position = Vector2(14409, 545)
+
+[node name="EnemyAir8" parent="Enemies" instance=ExtResource("5_ewaar")]
+position = Vector2(12564, 31)
+
+[node name="EnemyAir9" parent="Enemies" instance=ExtResource("5_ewaar")]
+position = Vector2(12024, 302)
+
+[node name="EnemyFire" parent="Enemies" instance=ExtResource("5_ouydf")]
+position = Vector2(4675, 478)
+
+[node name="EnemyFire6" parent="Enemies" instance=ExtResource("5_ouydf")]
+position = Vector2(2731, 276)
+
+[node name="EnemyFire4" parent="Enemies" instance=ExtResource("5_ouydf")]
+position = Vector2(5710, -515)
+
+[node name="EnemyFire2" parent="Enemies" instance=ExtResource("5_ouydf")]
+position = Vector2(7079, 794)
+
+[node name="EnemyFire3" parent="Enemies" instance=ExtResource("5_ouydf")]
+position = Vector2(8112, 256)
+
+[node name="EnemyFire5" parent="Enemies" instance=ExtResource("5_ouydf")]
+position = Vector2(8268, -180)
+
+[node name="EnemyFire7" parent="Enemies" instance=ExtResource("5_ouydf")]
+position = Vector2(11223, -427)
+
+[node name="EnemyFire8" parent="Enemies" instance=ExtResource("5_ouydf")]
+position = Vector2(10764, 676)
+
+[node name="EnemyFire10" parent="Enemies" instance=ExtResource("5_ouydf")]
+position = Vector2(11967, -31)
+
+[node name="EnemyFire9" parent="Enemies" instance=ExtResource("5_ouydf")]
+position = Vector2(13359, -112)
+
+[node name="EnemyFire11" parent="Enemies" instance=ExtResource("5_ouydf")]
+position = Vector2(13372, 669)
+
+[node name="DespawnArea" parent="." instance=ExtResource("6_bvw2s")]
+position = Vector2(9542, 1850)
+scale = Vector2(104.72, 1)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_1yl8v")]
+position = Vector2(70, 374)
+
+[node name="Goal" parent="." instance=ExtResource("4_a3ims")]
+position = Vector2(15117, 301)
