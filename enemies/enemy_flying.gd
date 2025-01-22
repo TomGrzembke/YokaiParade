@@ -1,5 +1,6 @@
 extends PathFollow2D
 
+signal enemy_caught
 
 @export var easing_curve: Curve
 @export var max_speed = 200.0
@@ -53,3 +54,9 @@ func check_is_path_closed():
 		is_path_closed = true
 	else:
 		is_path_closed = false
+
+
+func got_caught():
+	enemy_caught.emit()
+	# TODO: Stun enemy, start timer for recovery
+	return element_type.spawning_ability

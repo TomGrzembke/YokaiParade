@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnxi2gyvo83ec"]
+[gd_scene load_steps=11 format=3 uid="uid://dnxi2gyvo83ec"]
 
 [ext_resource type="Script" path="res://player/player_manager.gd" id="1_rsfs1"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/ability_manager.gd" id="2_es05j"]
+[ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/deal_damage_area.tscn" id="4_cn11c"]
+[ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/take_damage_area.tscn" id="4_y0ly5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_idevo"]
 
@@ -14,12 +16,12 @@ height = 100.0
 radius = 40.0
 height = 120.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltaai"]
-size = Vector2(150, 100)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4pm2j"]
 radius = 18.0
 height = 74.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltaai"]
+size = Vector2(150, 100)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_uybn7")
@@ -32,6 +34,9 @@ jump_buffer_time = 0.2
 [node name="AbilityManager" type="Node2D" parent="."]
 script = ExtResource("2_es05j")
 
+[node name="PlayerManager" type="Node2D" parent="."]
+script = ExtResource("1_rsfs1")
+
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 self_modulate = Color(0.58, 0.58, 0.58, 1)
 scale = Vector2(50, 50)
@@ -40,17 +45,23 @@ mesh = SubResource("CapsuleMesh_idevo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1mi2e")
 
-[node name="CatchRadius" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CatchRadius"]
-shape = SubResource("CapsuleShape2D_82728")
-debug_color = Color(0.595658, 0.545411, 0, 0.42)
-
 [node name="DashTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="DealDamageArea" parent="." instance=ExtResource("4_cn11c")]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageArea"]
+shape = SubResource("CapsuleShape2D_82728")
+debug_color = Color(0.595658, 0.545411, 0, 0.42)
+
+[node name="TakeDamageArea" parent="." instance=ExtResource("4_y0ly5")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
+shape = SubResource("CapsuleShape2D_4pm2j")
+debug_color = Color(0.976648, 0, 0.410241, 0.42)
 
 [node name="DealDashDamageArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -58,17 +69,10 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DealDashDamageArea"]
 shape = SubResource("RectangleShape2D_ltaai")
+debug_color = Color(0.82116, 0.40192, 3.85046e-07, 0.42)
 
-[node name="PlayerManager" type="Node2D" parent="."]
-script = ExtResource("1_rsfs1")
-
-[node name="TakeDamageArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
-shape = SubResource("CapsuleShape2D_4pm2j")
-debug_color = Color(0.976648, 0, 0.410241, 0.42)
-
-[connection signal="body_entered" from="CatchRadius" to="." method="_on_catch_radius_body_entered"]
-[connection signal="body_exited" from="CatchRadius" to="." method="_on_catch_radius_body_exited"]
+[connection signal="area_entered" from="DealDamageArea" to="." method="on_deal_damage_area_entered"]
+[connection signal="body_entered" from="DealDamageArea" to="." method="on_deal_damage_area_exited"]
+[connection signal="took_damage" from="TakeDamageArea" to="." method="on_took_damage"]
 [connection signal="body_entered" from="DealDashDamageArea" to="." method="_on_deal_damage_area_body_entered"]
 [connection signal="body_exited" from="DealDashDamageArea" to="." method="_on_deal_dash_damage_area_body_exited"]

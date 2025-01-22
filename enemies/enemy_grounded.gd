@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal enemy_caught
 
 enum Direction {
 	LEFT = -1,
@@ -54,3 +55,9 @@ func is_on_cliff():
 
 func on_despawn():
 	queue_free()
+
+
+func got_caught():
+	enemy_caught.emit()
+	# TODO: Stun enemy, start timer for recovery
+	return element_type.spawning_ability

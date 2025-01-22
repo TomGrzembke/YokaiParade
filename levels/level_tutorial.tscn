@@ -1,12 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmxf5jucqf3tn"]
+[gd_scene load_steps=13 format=3 uid="uid://dmxf5jucqf3tn"]
 
 [ext_resource type="PackedScene" uid="uid://dyumet0q0u0ew" path="res://levels/ground_neutral.tscn" id="1_1gvy1"]
 [ext_resource type="PackedScene" uid="uid://cfnhlackt0u25" path="res://levels/wall_wood.tscn" id="1_6vgqt"]
 [ext_resource type="Script" path="res://levels/level.gd" id="1_t51mk"]
 [ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/player_spawn_point.tscn" id="2_uayi1"]
 [ext_resource type="PackedScene" uid="uid://dfjkroxbqv577" path="res://levels/wall_neutral.tscn" id="3_qn0ki"]
-[ext_resource type="PackedScene" uid="uid://c4sff4auhgxi8" path="res://enemies/enemy_air.tscn" id="4_1wujq"]
-[ext_resource type="PackedScene" uid="uid://bh0c2087eabtb" path="res://enemies/enemy_fire.tscn" id="5_ygh8d"]
 [ext_resource type="PackedScene" uid="uid://cijdb50pj3jc7" path="res://levels/despawn_area.tscn" id="6_o1lke"]
 [ext_resource type="Texture2D" uid="uid://cnr0u46o8642r" path="res://assets/images/Screenshot 2025-01-10 152952.png" id="9_7hu8u"]
 [ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/goal.tscn" id="9_d43iy"]
@@ -125,42 +123,6 @@ position = Vector2(984, 169)
 scale = Vector2(1.11189, 4.28)
 
 [node name="Enemies" type="Node2D" parent="."]
-
-[node name="Enemy Air" parent="Enemies" instance=ExtResource("4_1wujq")]
-position = Vector2(1700, 761)
-
-[node name="Enemy Air2" parent="Enemies" instance=ExtResource("4_1wujq")]
-position = Vector2(4562, 464)
-
-[node name="Enemy Air4" parent="Enemies" instance=ExtResource("4_1wujq")]
-position = Vector2(4562, 866)
-
-[node name="Enemy Air5" parent="Enemies" instance=ExtResource("4_1wujq")]
-position = Vector2(4917, 588)
-
-[node name="Enemy Air3" parent="Enemies" instance=ExtResource("4_1wujq")]
-position = Vector2(4850, 145)
-
-[node name="Enemy Air6" parent="Enemies" instance=ExtResource("4_1wujq")]
-position = Vector2(5663, 148)
-
-[node name="Enemy Fire" parent="Enemies" instance=ExtResource("5_ygh8d")]
-position = Vector2(562, 762)
-
-[node name="Enemy Fire2" parent="Enemies" instance=ExtResource("5_ygh8d")]
-position = Vector2(3360, 504)
-
-[node name="Enemy Fire3" parent="Enemies" instance=ExtResource("5_ygh8d")]
-position = Vector2(4416, -127)
-
-[node name="Enemy Fire4" parent="Enemies" instance=ExtResource("5_ygh8d")]
-position = Vector2(5213, 481)
-
-[node name="Enemy Fire5" parent="Enemies" instance=ExtResource("5_ygh8d")]
-position = Vector2(6325, 396)
-
-[node name="Enemy Fire6" parent="Enemies" instance=ExtResource("5_ygh8d")]
-position = Vector2(6193, 150)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_uayi1")]
 position = Vector2(170, 730)

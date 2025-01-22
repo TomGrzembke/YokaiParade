@@ -4,9 +4,6 @@ signal player_despawned
 signal player_reached_goal
 
 const COLOR_PLAIN = Color("#949494")
-const COLOR_AIR = Color("#dbdbdb")
-const COLOR_FIRE = Color("#b05a5a")
-const COLOR_WATER = Color("#5a8cb0")
 const INFINITY = 1e20
 
 @export_category("Movement")
@@ -21,7 +18,7 @@ const INFINITY = 1e20
 
 var coyote_timer = 0.15
 var jump_buffer_timer = 0.0
-var body_in_catch_radius
+var area_taking_damage_in_radius
 var look_direction
 var move_direction
 
@@ -38,16 +35,16 @@ func _physics_process(delta):
 	handle_run()
 	handle_jump(delta)
 	handle_gravity(delta)
-	
+
 	velocity = player_input_vel + velocity_outer_sources
-	
+
 	move_and_slide()
 
 
 func handle_run():
 	calc_move_dir()
 	calc_look_direction()
-	
+
 	if move_direction:
 		player_input_vel.x = move_toward(player_input_vel.x, move_direction * speed, acceleration)
 	else:
@@ -65,7 +62,7 @@ func calc_look_direction():
 
 func handle_jump(delta):
 	reset_y_vel_on_ground()
-	
+
 	handle_coyote_time(delta)
 	jump_logic()
 	handle_jump_buffer_time(delta)
@@ -73,7 +70,7 @@ func handle_jump(delta):
 
 func reset_y_vel_on_ground():
 	if !is_on_floor(): return
-	
+
 	player_input_vel.y = 0
 
 
@@ -88,20 +85,20 @@ func jump_logic():
 	var should_jump = Input.is_action_just_pressed("jump") || can_use_jump_buffer()
 	var can_jump = should_jump && is_on_floor() || can_use_coyote_time(should_jump)
 	if !can_jump: return
-	
+
 	player_input_vel.y = -jump_velocity
 
 
 func handle_jump_buffer_time(delta):
 	var jump_input = Input.is_action_just_pressed("jump")
-	
+
 	if jump_input && jump_buffer_timer > 0:
 		jump_buffer_timer = delta
-		
+
 	elif jump_input || jump_buffer_timer > 0:
 		jump_buffer_timer += delta
-		
-		
+
+
 	if is_on_floor():
 		jump_buffer_timer = 0.0
 
@@ -111,7 +108,7 @@ func can_use_coyote_time(should_jump):
 	if coyote_timer == 0: return false
 	if !should_jump: return false
 	if player_input_vel.y < 0: return false
-	return coyote_timer < jump_coyote_time 
+	return coyote_timer < jump_coyote_time
 
 
 func can_use_jump_buffer():
@@ -127,7 +124,7 @@ func handle_gravity(delta):
 
 func clamp_fall_speed():
 	if fall_speed_clamp == 0: return;
-	player_input_vel.y = clampf(player_input_vel.y, -INFINITY, fall_speed_clamp) 
+	player_input_vel.y = clampf(player_input_vel.y, -INFINITY, fall_speed_clamp)
 
 
 func add_velocity_modifier(velocity_mod):
@@ -154,10 +151,10 @@ func calc_vel_mods(velocity_mod, clear_mod):
 	var highest_prioty = 5
 	for i in range(velocity_mod_instigator.size() -1, -1, -1):
 		highest_prioty = reapply_velocity_mods(velocity_mod, highest_prioty)
-		
+
 		if clear_mod && velocity_mod == velocity_mod_instigator[i]:
 			velocity_mod_instigator.remove_at(i)
-			
+
 	if velocity_mod_instigator.size() == 0:
 		velocity_outer_sources = Vector2(0,0)
 
@@ -168,35 +165,35 @@ func delete_timer(given_timer):
 
 func reapply_velocity_mods(velocity_mod, current_priority):
 	if velocity_mod.priority > current_priority: return current_priority
-	
+
 	velocity_outer_sources = velocity_mod.amount
 	player_control = !velocity_mod.disable_player_movement
 	return velocity_mod.priority
 
 
-func set_current_ability(ability_resource):
-	ability_manager.set_current_ability(ability_resource)
-	
-	if ability_resource != null:
-		$MeshInstance2D.self_modulate = ability_resource.color
+func set_current_ability(ability_scene):
+	if ability_scene == null:
+		return
+
+	ability_manager.set_current_ability(ability_scene)
+	var ability = ability_manager.get_current_ability()
+
+	if ability != null \
+	and ability.has_method("get_color"):
+		$MeshInstance2D.self_modulate = ability.get_color()
 	else:
 		$MeshInstance2D.self_modulate = COLOR_PLAIN
 
 
-func _on_catch_radius_body_entered(body):
-	body_in_catch_radius = body
-
-
-func _on_catch_radius_body_exited(body):
-	if body == body_in_catch_radius:
-		body_in_catch_radius = null
-
-
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("catch_power") \
-	and body_in_catch_radius != null \
-	and body_in_catch_radius.has_method("caught"):
-		set_current_ability(body_in_catch_radius.caught())
+	and area_taking_damage_in_radius != null:
+		if area_taking_damage_in_radius.has_method("get_parent"):
+			var parent = area_taking_damage_in_radius.get_parent()
+			if parent != null \
+			and parent.has_method("got_caught"):
+				var ability = parent.got_caught()
+				set_current_ability(ability)
 
 	if Input.is_action_just_pressed("use_ability") \
 	and ability_manager != null:
@@ -210,3 +207,19 @@ func on_despawn():
 
 func on_goal_reached():
 	player_reached_goal.emit()
+
+
+func on_deal_damage_area_entered(other):
+	if other.has_method("take_damage"):
+		area_taking_damage_in_radius = other
+
+
+func on_deal_damage_area_exited(other):
+	if other == area_taking_damage_in_radius:
+		area_taking_damage_in_radius = null
+
+
+func on_took_damage(source):
+	if source != null \
+	and source.position != null:
+		print("Player hit!") # TODO: Stumble back and make invincible for a while, see GDD

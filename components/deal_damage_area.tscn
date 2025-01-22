@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp6b4v14u8stv"]
+
+[ext_resource type="Script" path="res://components/deal_damage_area.gd" id="1_ejai5"]
+
+[node name="DealDamageArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ejai5")
+
+[connection signal="area_entered" from="." to="." method="on_deal_damage_area_entered"]
+[connection signal="body_entered" from="." to="." method="on_deal_damage_area_entered"]

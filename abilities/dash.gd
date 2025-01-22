@@ -27,7 +27,7 @@ func apply_dash_damage():
 
 
 func get_color():
-	ELEMENTS.get_color(ELEMENT_TYPE)
+	return ELEMENTS.get_color(ELEMENT_TYPE)
 
 
 #func _on_deal_damage_area_body_entered(body):

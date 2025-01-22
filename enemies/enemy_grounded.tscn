@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bomxlv8ndomnc"]
+[gd_scene load_steps=8 format=3 uid="uid://bomxlv8ndomnc"]
 
 [ext_resource type="Script" path="res://enemies/enemy_grounded.gd" id="1_ckp3m"]
+[ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/deal_damage_area.tscn" id="2_jj2bd"]
+[ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/take_damage_area.tscn" id="3_rf8mi"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_8iadr"]
 
@@ -9,6 +11,9 @@ radius = 34.0147
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lm0ol"]
 radius = 34.1321
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1g50l"]
+radius = 14.0
 
 [node name="EnemyGrounded" type="CharacterBody2D"]
 collision_layer = 4
@@ -30,7 +35,15 @@ shape = SubResource("CircleShape2D_i3f1p")
 unique_name_in_owner = true
 position = Vector2(34, 0)
 
-[node name="DealDamageArea" type="Area2D" parent="."]
+[node name="DealDamageArea" parent="." instance=ExtResource("2_jj2bd")]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageArea"]
 shape = SubResource("CircleShape2D_lm0ol")
+
+[node name="TakeDamageArea" parent="." instance=ExtResource("3_rf8mi")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
+shape = SubResource("CircleShape2D_1g50l")
+debug_color = Color(0.959102, 9.62615e-08, 0.523485, 0.42)

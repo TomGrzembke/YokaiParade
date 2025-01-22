@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://1nvmt4b6bjbn"]
+[gd_scene load_steps=9 format=3 uid="uid://1nvmt4b6bjbn"]
 
 [ext_resource type="Script" path="res://enemies/enemy_flying.gd" id="1_jwi5c"]
+[ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/deal_damage_area.tscn" id="2_fyu50"]
+[ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/take_damage_area.tscn" id="3_sxlxr"]
 
 [sub_resource type="Curve" id="Curve_lxy51"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -10,6 +12,12 @@ point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6sv5j"]
 radius = 31.0161
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xcnqe"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jrlqx"]
+radius = 32.0
 
 [node name="EnemyFlying" type="PathFollow2D"]
 rotates = false
@@ -30,3 +38,16 @@ mesh = SubResource("SphereMesh_qwmto")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 shape = SubResource("CircleShape2D_6sv5j")
+
+[node name="DealDamageArea" parent="." instance=ExtResource("2_fyu50")]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageArea"]
+shape = SubResource("CircleShape2D_xcnqe")
+debug_color = Color(0.976471, 0, 0.411765, 0.419608)
+
+[node name="TakeDamageArea" parent="." instance=ExtResource("3_sxlxr")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
+shape = SubResource("CircleShape2D_jrlqx")
