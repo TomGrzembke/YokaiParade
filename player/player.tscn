@@ -34,7 +34,7 @@ script = ExtResource("2_es05j")
 [node name="PlayerManager" type="Node2D" parent="."]
 script = ExtResource("1_rsfs1")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+[node name="Visual" type="MeshInstance2D" parent="."]
 self_modulate = Color(0.58, 0.58, 0.58, 1)
 scale = Vector2(50, 50)
 mesh = SubResource("CapsuleMesh_idevo")
@@ -57,5 +57,7 @@ shape = SubResource("CapsuleShape2D_4pm2j")
 debug_color = Color(0.976648, 0, 0.410241, 0.42)
 
 [connection signal="area_entered" from="DealDamageArea" to="." method="on_deal_damage_area_entered"]
+[connection signal="area_entered" from="DealDamageArea" to="AbilityManager" method="_on_deal_damage_area_entered"]
+[connection signal="area_exited" from="DealDamageArea" to="AbilityManager" method="_on_deal_damage_area_exited"]
 [connection signal="body_entered" from="DealDamageArea" to="." method="on_deal_damage_area_exited"]
 [connection signal="took_damage" from="TakeDamageArea" to="." method="on_took_damage"]

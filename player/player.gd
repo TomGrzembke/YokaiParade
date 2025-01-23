@@ -18,7 +18,6 @@ const INFINITY = 1e20
 
 var coyote_timer = 0.15
 var jump_buffer_timer = 0.0
-var area_taking_damage_in_radius
 var look_direction
 var move_direction
 
@@ -36,7 +35,10 @@ func _physics_process(delta):
 		handle_run()
 		handle_jump(delta)
 		handle_gravity(delta)
-	
+
+	if no_movement_mods_active():
+		velocity_outer_sources.x = move_toward(velocity_outer_sources.x, 0, deceleration)
+		velocity_outer_sources.y = move_toward(velocity_outer_sources.y, 0, deceleration)
 	velocity = player_input_vel + velocity_outer_sources
 
 	move_and_slide()
@@ -152,18 +154,21 @@ func calc_vel_mods(velocity_mod, clear_mod):
 	var highest_prioty = 5
 	for i in range(velocity_mod_instigator.size() -1, -1, -1):
 		highest_prioty = reapply_velocity_mods(velocity_mod, highest_prioty)
-	
+
 		if clear_mod && velocity_mod == velocity_mod_instigator[i]:
 			velocity_mod_instigator.remove_at(i)
-	
-	if velocity_mod_instigator.size() == 0:
-		reset_velocity_mod_effects()
+
+	if no_movement_mods_active():
+		reset_velocity_mod_effects(velocity_mod)
 
 
-func reset_velocity_mod_effects():
-	velocity_outer_sources = Vector2(0,0)
+func reset_velocity_mod_effects(velocity_mod):
 	player_control = true
-	reset_color()
+	velocity_mod.ability.queue_free()
+
+
+func no_movement_mods_active():
+	return velocity_mod_instigator.size() == 0
 
 
 func delete_timer(given_timer):
@@ -172,39 +177,12 @@ func delete_timer(given_timer):
 
 func reapply_velocity_mods(velocity_mod, current_priority):
 	if velocity_mod.priority > current_priority: return current_priority
-	
+
 	velocity_outer_sources = velocity_mod.amount
+	player_input_vel = Vector2(0,0)
 	player_control = !velocity_mod.disable_player_movement
 	return velocity_mod.priority
 
-
-func set_current_ability(ability_scene):
-	if ability_scene == null:
-		return
-
-	ability_manager.set_current_ability(ability_scene)
-	var ability = ability_manager.get_current_ability()
-
-	if ability != null \
-	and ability.has_method("get_color"):
-		$MeshInstance2D.self_modulate = ability.get_color()
-	else:
-		reset_color()
-
-
-func reset_color():
-	$MeshInstance2D.self_modulate = COLOR_PLAIN
-
-
-func _unhandled_input(_event):
-	if Input.is_action_just_pressed("catch_power") \
-	and area_taking_damage_in_radius != null:
-		if area_taking_damage_in_radius.has_method("get_parent"):
-			var parent = area_taking_damage_in_radius.get_parent()
-			if parent != null \
-			and parent.has_method("got_caught"):
-				var ability = parent.got_caught()
-				set_current_ability(ability)
 
 func on_despawn():
 	player_despawned.emit()
@@ -213,16 +191,6 @@ func on_despawn():
 
 func on_goal_reached():
 	player_reached_goal.emit()
-
-
-func on_deal_damage_area_entered(other):
-	if other.has_method("take_damage"):
-		area_taking_damage_in_radius = other
-
-
-func on_deal_damage_area_exited(other):
-	if other == area_taking_damage_in_radius:
-		area_taking_damage_in_radius = null
 
 
 func on_took_damage(source):

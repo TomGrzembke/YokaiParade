@@ -6,20 +6,21 @@ const ELEMENT_TYPE = ELEMENTS.ElementType.FIRE
 @export var dash_velocity = 300.0
 @export var dash_duration = 1.0
 @export var dash_curve : Curve
+@export var disable_player_movement := true
 
-var isDashing := false
+var is_dashing := false
 var body_in_damage_radius
 
 
 func _physics_process(delta):
-	if isDashing:
+	if is_dashing:
 		apply_dash_damage()
 
 
 func use(player_manager):
-	var vel_modifier = VelocityModifier.new(Vector2(dash_velocity, 0), dash_duration, 1, true)
+	var vel_modifier = VelocityModifier.new(Vector2(dash_velocity, 0), dash_duration, 1, disable_player_movement, $".")
 	player_manager.add_velocity_modifier(vel_modifier)
-	isDashing = true
+	is_dashing = true
 
 
 func exit_ability():

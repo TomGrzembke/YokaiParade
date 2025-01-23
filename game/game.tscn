@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dxgxdinu0kjs8" path="res://levels/level_01.tscn" id="1_i7bh5"]
 [ext_resource type="Script" path="res://levels/level_manager.gd" id="3_6riac"]
 [ext_resource type="PackedScene" uid="uid://dmxf5jucqf3tn" path="res://levels/level_tutorial.tscn" id="3_ux7s5"]
-[ext_resource type="PackedScene" uid="uid://c725ohihulje0" path="res://levels/level-01-01.tscn" id="4_5v7ek"]
+[ext_resource type="PackedScene" path="res://levels/level-01-01.tscn" id="4_5v7ek"]
 [ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="4_k85dl"]
 
 [node name="Game" type="Node2D"]
