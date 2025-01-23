@@ -7,11 +7,10 @@ signal enemy_caught
 @export var element_type: EnemyElementType
 
 var speed = 0.0
+var path_length = 0.0
 var is_path_closed = false
 var progression_direction = 1.0
 var progress_ratio_raw = 0.0
-
-var path_length = 0.0
 
 
 func _ready():
