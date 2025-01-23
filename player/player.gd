@@ -25,7 +25,6 @@ var velocity_outer_sources := Vector2(0,0)
 var player_input_vel := Vector2(0,0)
 
 @onready var ability_manager: Node2D = $AbilityManager
-@onready var ability_vel_delay_timer: Timer = $AbilityVelDelay
 
 var velocity_mod_instigator = []
 var player_control := true
@@ -130,7 +129,9 @@ func clamp_fall_speed():
 func handle_ability_smoothing():
 	if no_movement_mods_active():
 		velocity_outer_sources.x = move_toward(velocity_outer_sources.x, 0, deceleration)
-		velocity_outer_sources.y = move_toward(velocity_outer_sources.y, 0, deceleration / 3)
+
+		if is_on_floor():
+			velocity_outer_sources.y = 0
 
 func add_velocity_modifier(velocity_mod):
 	velocity_mod_instigator.append(velocity_mod)
