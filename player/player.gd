@@ -186,6 +186,9 @@ func reapply_velocity_mods(velocity_mod, current_priority):
 	if velocity_mod.amount.y != 0:
 		player_input_vel.y = 0
 
+	if velocity_mod.amount.x != 0:
+		player_input_vel.x = 0
+
 	player_control = !velocity_mod.disable_player_movement
 
 	if look_direction < 0:
