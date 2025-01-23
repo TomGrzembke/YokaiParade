@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://1nvmt4b6bjbn"]
+[gd_scene load_steps=9 format=3 uid="uid://b5s4b6xdudwso"]
 
 [ext_resource type="Script" path="res://enemies/enemy_flying.gd" id="1_jwi5c"]
 [ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/deal_damage_area.tscn" id="2_fyu50"]

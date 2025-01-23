@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bomxlv8ndomnc" path="res://enemies/enemy_grounded.tscn" id="9_nox78"]
 [ext_resource type="Resource" uid="uid://tvyt8dx4csl5" path="res://enemies/types/enemy_element_type_air.tres" id="9_s8x4f"]
 [ext_resource type="Resource" uid="uid://be56k4m11w44j" path="res://enemies/types/enemy_element_type_fire.tres" id="10_cq81o"]
-[ext_resource type="PackedScene" uid="uid://1nvmt4b6bjbn" path="res://enemies/enemy_flying.tscn" id="11_cjp3s"]
+[ext_resource type="PackedScene" uid="uid://b5s4b6xdudwso" path="res://enemies/enemy_flying.tscn" id="11_cjp3s"]
 
 [sub_resource type="Curve2D" id="Curve2D_kfeqc"]
 _data = {
