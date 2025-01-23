@@ -44,11 +44,11 @@ script = ExtResource("1_rdt8q")
 [node name="Wooden Walls" type="Node2D" parent="Grounds&Walls"]
 
 [node name="WallWood" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
-position = Vector2(5180, 496)
-scale = Vector2(1, 2.32)
+position = Vector2(5180, 368)
+scale = Vector2(1, 3.76)
 
 [node name="WallWood6" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
-position = Vector2(3324, 174)
+position = Vector2(3273, 174)
 scale = Vector2(1, 1.72)
 
 [node name="WallWood4" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
@@ -56,7 +56,7 @@ position = Vector2(6389, -464)
 scale = Vector2(1, 1.72)
 
 [node name="WallWood2" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
-position = Vector2(7845, 542)
+position = Vector2(7816, 542)
 scale = Vector2(1, 2.64)
 
 [node name="WallWood3" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
@@ -76,15 +76,15 @@ position = Vector2(10447, 571)
 scale = Vector2(1, 1.72)
 
 [node name="WallWood9" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
-position = Vector2(13666, -135)
+position = Vector2(13666, -56)
 scale = Vector2(1, 1.72)
 
 [node name="WallWood10" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
-position = Vector2(13776, 451)
-scale = Vector2(1, 1.84)
+position = Vector2(13708, 357)
+scale = Vector2(1, 2.84)
 
 [node name="WallWood12" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
-position = Vector2(18218, -353)
+position = Vector2(18118, -353)
 scale = Vector2(1, 1.84)
 
 [node name="WallWood14" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
@@ -92,8 +92,8 @@ position = Vector2(17274, 570)
 scale = Vector2(1, 1.84)
 
 [node name="WallWood13" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
-position = Vector2(20395, -613)
-scale = Vector2(1, 1.84)
+position = Vector2(20395, -696)
+scale = Vector2(1, 2.96)
 
 [node name="WallWood15" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
 position = Vector2(20905, -225)
@@ -112,8 +112,8 @@ position = Vector2(24795, -918)
 scale = Vector2(1, 1.84)
 
 [node name="WallWood19" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
-position = Vector2(25912, -762)
-scale = Vector2(1, 1.84)
+position = Vector2(25946, -826)
+scale = Vector2(1, 2.8)
 
 [node name="WallWood22" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
 position = Vector2(28226, -1075)
@@ -124,16 +124,16 @@ position = Vector2(28135, 145)
 scale = Vector2(1, 1.84)
 
 [node name="WallWood26" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
-position = Vector2(30219, 440)
-scale = Vector2(1, 2.72)
+position = Vector2(30204, 347)
+scale = Vector2(1, 3.96)
 
 [node name="WallWood24" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
 position = Vector2(29644, -1152)
 scale = Vector2(1, 1.84)
 
 [node name="WallWood23" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
-position = Vector2(31473, -656)
-scale = Vector2(1, 1.84)
+position = Vector2(31515, -732)
+scale = Vector2(1, 2.84)
 
 [node name="WallWood28" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
 position = Vector2(35623, -680)
@@ -148,7 +148,7 @@ position = Vector2(25980, -442)
 scale = Vector2(1, 1.84)
 
 [node name="WallWood18" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
-position = Vector2(23740, -1048)
+position = Vector2(23740, -948)
 scale = Vector2(1, 1.84)
 
 [node name="WallWood5" parent="Grounds&Walls/Wooden Walls" instance=ExtResource("3_l87w7")]
@@ -198,8 +198,8 @@ position = Vector2(6287, 851)
 scale = Vector2(2.48, 1)
 
 [node name="GroundNeutralSmall7" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
-position = Vector2(7191, 851)
-scale = Vector2(2.48, 1)
+position = Vector2(7231, 855)
+scale = Vector2(2.96, 1)
 
 [node name="GroundNeutralSmall8" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
 position = Vector2(8791, 599)
@@ -270,15 +270,15 @@ position = Vector2(19659, 1184)
 scale = Vector2(3.76001, 1)
 
 [node name="GroundNeutralSmall45" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
-position = Vector2(20132, 708)
+position = Vector2(20132, 731)
 scale = Vector2(2.48, 1)
 
 [node name="GroundNeutralSmall47" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
-position = Vector2(20542, 474)
+position = Vector2(20542, 451)
 scale = Vector2(2.48, 1)
 
 [node name="GroundNeutralSmall49" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
-position = Vector2(20068, 553)
+position = Vector2(20068, 585)
 scale = Vector2(1.28, 1)
 
 [node name="GroundNeutralSmall51" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
@@ -298,8 +298,8 @@ position = Vector2(17427, -180)
 scale = Vector2(2.48, 1)
 
 [node name="GroundNeutralSmall40" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
-position = Vector2(19619, -641)
-scale = Vector2(2.48, 1)
+position = Vector2(19614, -556)
+scale = Vector2(3.04, 1)
 
 [node name="GroundNeutralSmall46" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
 position = Vector2(20704, -53)
@@ -358,7 +358,7 @@ position = Vector2(28254, 315)
 scale = Vector2(3.04002, 1)
 
 [node name="GroundNeutralSmall78" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
-position = Vector2(29098, 313)
+position = Vector2(29098, 168)
 scale = Vector2(2.44, 1)
 
 [node name="GroundNeutralSmall79" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
@@ -414,12 +414,12 @@ position = Vector2(26731, -251)
 scale = Vector2(2.44, 1)
 
 [node name="GroundNeutralSmall54" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
-position = Vector2(24122, -863)
-scale = Vector2(2.84, 1)
+position = Vector2(24078, -816)
+scale = Vector2(3.96, 1)
 
 [node name="GroundNeutralSmall55" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
-position = Vector2(24983, -745)
-scale = Vector2(2.84, 1)
+position = Vector2(25007, -745)
+scale = Vector2(3.24, 1)
 
 [node name="GroundNeutralSmall56" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
 position = Vector2(26112, -587)
@@ -530,7 +530,7 @@ position = Vector2(14072, 601)
 scale = Vector2(5.4, 1)
 
 [node name="GroundNeutralBig13" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
-position = Vector2(14069, 28)
+position = Vector2(14069, 107)
 scale = Vector2(5.4, 1)
 
 [node name="GroundNeutralBig14" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
@@ -546,7 +546,7 @@ position = Vector2(17644, 1069)
 scale = Vector2(4.96, 1)
 
 [node name="GroundNeutralBig16" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
-position = Vector2(20764, -450)
+position = Vector2(20764, -444)
 scale = Vector2(4.96, 1)
 
 [node name="GroundNeutralBig20" parent="Grounds&Walls/Neutral" instance=ExtResource("1_v52v0")]
@@ -654,8 +654,8 @@ position = Vector2(20738, 505)
 scale = Vector2(1, 6.86519)
 
 [node name="WallNeutral16" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
-position = Vector2(23740, -601)
-scale = Vector2(1, 3.78519)
+position = Vector2(23740, -552)
+scale = Vector2(1, 3.62519)
 
 [node name="WallNeutral18" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
 position = Vector2(25944, 227)
@@ -675,7 +675,7 @@ scale = Vector2(1, 3.02519)
 
 [node name="WallNeutral15" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
 position = Vector2(19958, 404)
-scale = Vector2(1, 3.50519)
+scale = Vector2(1, 3.94519)
 
 [node name="WallNeutral17" parent="Grounds&Walls/Neutral" instance=ExtResource("6_hw8va")]
 position = Vector2(22937, -920)
@@ -717,8 +717,24 @@ curve = SubResource("Curve2D_knhc2")
 position = Vector2(15788, 39)
 element_type = ExtResource("6_eqx3m")
 
+[node name="Air_Flying_Vertical6" type="Path2D" parent="Enemies/Flying"]
+position = Vector2(-7316, 305)
+curve = SubResource("Curve2D_knhc2")
+
+[node name="EnemyFlying" parent="Enemies/Flying/Air_Flying_Vertical6" instance=ExtResource("5_2buvx")]
+position = Vector2(15788, 39)
+element_type = ExtResource("6_eqx3m")
+
+[node name="Air_Flying_Vertical7" type="Path2D" parent="Enemies/Flying"]
+position = Vector2(-3230, -51)
+curve = SubResource("Curve2D_knhc2")
+
+[node name="EnemyFlying" parent="Enemies/Flying/Air_Flying_Vertical7" instance=ExtResource("5_2buvx")]
+position = Vector2(15788, 39)
+element_type = ExtResource("6_eqx3m")
+
 [node name="Air_Flying_Vertical3" type="Path2D" parent="Enemies/Flying"]
-position = Vector2(3460, -577)
+position = Vector2(3394, -672)
 curve = SubResource("Curve2D_knhc2")
 
 [node name="EnemyFlying" parent="Enemies/Flying/Air_Flying_Vertical3" instance=ExtResource("5_2buvx")]
@@ -726,7 +742,7 @@ position = Vector2(15788, 39)
 element_type = ExtResource("6_eqx3m")
 
 [node name="Air_Flying_Vertical4" type="Path2D" parent="Enemies/Flying"]
-position = Vector2(7553, -911)
+position = Vector2(7553, -848)
 curve = SubResource("Curve2D_knhc2")
 
 [node name="EnemyFlying" parent="Enemies/Flying/Air_Flying_Vertical4" instance=ExtResource("5_2buvx")]
@@ -741,6 +757,14 @@ curve = SubResource("Curve2D_knhc2")
 position = Vector2(15788, 39)
 element_type = ExtResource("6_eqx3m")
 
+[node name="Air_Flying_Vertical8" type="Path2D" parent="Enemies/Flying"]
+position = Vector2(20852, -804)
+curve = SubResource("Curve2D_knhc2")
+
+[node name="EnemyFlying" parent="Enemies/Flying/Air_Flying_Vertical8" instance=ExtResource("5_2buvx")]
+position = Vector2(15788, 39)
+element_type = ExtResource("6_eqx3m")
+
 [node name="Air_Flying_Vertical2" type="Path2D" parent="Enemies/Flying"]
 position = Vector2(734, -458)
 curve = SubResource("Curve2D_knhc2")
@@ -750,7 +774,7 @@ position = Vector2(15788, 39)
 element_type = ExtResource("6_eqx3m")
 
 [node name="Fire_Flying_Horizontal" type="Path2D" parent="Enemies/Flying"]
-position = Vector2(9, 1)
+position = Vector2(17, -136)
 curve = SubResource("Curve2D_ty88p")
 
 [node name="EnemyFlying" parent="Enemies/Flying/Fire_Flying_Horizontal" instance=ExtResource("5_2buvx")]
@@ -758,18 +782,10 @@ position = Vector2(17767, -305)
 element_type = ExtResource("7_qq2i5")
 
 [node name="Fire_Flying_Horizontal2" type="Path2D" parent="Enemies/Flying"]
-position = Vector2(2306, -315)
+position = Vector2(2268, -438)
 curve = SubResource("Curve2D_ty88p")
 
 [node name="EnemyFlying" parent="Enemies/Flying/Fire_Flying_Horizontal2" instance=ExtResource("5_2buvx")]
-position = Vector2(17767, -305)
-element_type = ExtResource("7_qq2i5")
-
-[node name="Fire_Flying_Horizontal3" type="Path2D" parent="Enemies/Flying"]
-position = Vector2(5723, -735)
-curve = SubResource("Curve2D_ty88p")
-
-[node name="EnemyFlying" parent="Enemies/Flying/Fire_Flying_Horizontal3" instance=ExtResource("5_2buvx")]
 position = Vector2(17767, -305)
 element_type = ExtResource("7_qq2i5")
 
@@ -782,15 +798,39 @@ position = Vector2(17767, -305)
 element_type = ExtResource("7_qq2i5")
 
 [node name="Fire_Flying_Vertical" type="Path2D" parent="Enemies/Flying"]
-position = Vector2(-38, -53)
+position = Vector2(-62, -86)
 curve = SubResource("Curve2D_r1jy8")
 
 [node name="EnemyFlying" parent="Enemies/Flying/Fire_Flying_Vertical" instance=ExtResource("5_2buvx")]
 position = Vector2(22804, -414)
 element_type = ExtResource("7_qq2i5")
 
+[node name="Fire_Flying_Vertical7" type="Path2D" parent="Enemies/Flying"]
+position = Vector2(736, -619)
+curve = SubResource("Curve2D_r1jy8")
+
+[node name="EnemyFlying" parent="Enemies/Flying/Fire_Flying_Vertical7" instance=ExtResource("5_2buvx")]
+position = Vector2(22804, -414)
+element_type = ExtResource("7_qq2i5")
+
+[node name="Fire_Flying_Vertical5" type="Path2D" parent="Enemies/Flying"]
+position = Vector2(-11500, -97)
+curve = SubResource("Curve2D_r1jy8")
+
+[node name="EnemyFlying" parent="Enemies/Flying/Fire_Flying_Vertical5" instance=ExtResource("5_2buvx")]
+position = Vector2(22804, -414)
+element_type = ExtResource("7_qq2i5")
+
+[node name="Fire_Flying_Vertical6" type="Path2D" parent="Enemies/Flying"]
+position = Vector2(-9420, 182)
+curve = SubResource("Curve2D_r1jy8")
+
+[node name="EnemyFlying" parent="Enemies/Flying/Fire_Flying_Vertical6" instance=ExtResource("5_2buvx")]
+position = Vector2(22804, -414)
+element_type = ExtResource("7_qq2i5")
+
 [node name="Fire_Flying_Vertical2" type="Path2D" parent="Enemies/Flying"]
-position = Vector2(2858, -529)
+position = Vector2(2932, -545)
 curve = SubResource("Curve2D_r1jy8")
 
 [node name="EnemyFlying" parent="Enemies/Flying/Fire_Flying_Vertical2" instance=ExtResource("5_2buvx")]
@@ -806,7 +846,7 @@ position = Vector2(22804, -414)
 element_type = ExtResource("7_qq2i5")
 
 [node name="Fire_Flying_Vertical4" type="Path2D" parent="Enemies/Flying"]
-position = Vector2(8488, -361)
+position = Vector2(8536, -485)
 curve = SubResource("Curve2D_r1jy8")
 
 [node name="EnemyFlying" parent="Enemies/Flying/Fire_Flying_Vertical4" instance=ExtResource("5_2buvx")]
@@ -821,18 +861,50 @@ curve = SubResource("Curve2D_cdije")
 position = Vector2(26566, -666)
 element_type = ExtResource("6_eqx3m")
 
-[node name="Air_Flying_Horizontal2" type="Path2D" parent="Enemies/Flying"]
-position = Vector2(10036, 14)
-curve = SubResource("Curve2D_cdije")
-
-[node name="EnemyFlying" parent="Enemies/Flying/Air_Flying_Horizontal2" instance=ExtResource("5_2buvx")]
-position = Vector2(26566, -666)
-element_type = ExtResource("6_eqx3m")
-
 [node name="Grounded" type="Node2D" parent="Enemies"]
 
 [node name="Air_Grounded" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
 position = Vector2(16109, -20)
+element_type = ExtResource("6_eqx3m")
+
+[node name="Air_Grounded3" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(1975, 537)
+element_type = ExtResource("6_eqx3m")
+
+[node name="Air_Grounded23" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(5012, -5)
+element_type = ExtResource("6_eqx3m")
+
+[node name="Air_Grounded24" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(6640, -358)
+element_type = ExtResource("6_eqx3m")
+
+[node name="Air_Grounded25" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(6220, 792)
+element_type = ExtResource("6_eqx3m")
+
+[node name="Air_Grounded26" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(10233, -10)
+element_type = ExtResource("6_eqx3m")
+
+[node name="Air_Grounded28" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(10758, 1070)
+element_type = ExtResource("6_eqx3m")
+
+[node name="Air_Grounded29" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(12756, 1245)
+element_type = ExtResource("6_eqx3m")
+
+[node name="Air_Grounded30" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(13143, 1057)
+element_type = ExtResource("6_eqx3m")
+
+[node name="Air_Grounded31" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(14403, 543)
+element_type = ExtResource("6_eqx3m")
+
+[node name="Air_Grounded27" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(11982, 293)
 element_type = ExtResource("6_eqx3m")
 
 [node name="Air_Grounded4" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
@@ -844,7 +916,7 @@ position = Vector2(20567, 1010)
 element_type = ExtResource("6_eqx3m")
 
 [node name="Air_Grounded6" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
-position = Vector2(20514, 411)
+position = Vector2(20514, 390)
 element_type = ExtResource("6_eqx3m")
 
 [node name="Air_Grounded7" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
@@ -943,6 +1015,42 @@ element_type = ExtResource("7_qq2i5")
 position = Vector2(35135, -485)
 element_type = ExtResource("7_qq2i5")
 
+[node name="FireGrounded10" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(2393, 267)
+element_type = ExtResource("7_qq2i5")
+
+[node name="FireGrounded11" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(5531, -517)
+element_type = ExtResource("7_qq2i5")
+
+[node name="FireGrounded15" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(4313, 475)
+element_type = ExtResource("7_qq2i5")
+
+[node name="FireGrounded12" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(8222, -184)
+element_type = ExtResource("7_qq2i5")
+
+[node name="FireGrounded13" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(8024, 263)
+element_type = ExtResource("7_qq2i5")
+
+[node name="FireGrounded17" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(11909, -36)
+element_type = ExtResource("7_qq2i5")
+
+[node name="FireGrounded18" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(13238, 667)
+element_type = ExtResource("7_qq2i5")
+
+[node name="FireGrounded16" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(10633, 673)
+element_type = ExtResource("7_qq2i5")
+
+[node name="FireGrounded14" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
+position = Vector2(7089, 788)
+element_type = ExtResource("7_qq2i5")
+
 [node name="FireGrounded7" parent="Enemies/Grounded" instance=ExtResource("7_shv8i")]
 position = Vector2(29708, 425)
 element_type = ExtResource("7_qq2i5")
@@ -956,7 +1064,7 @@ position = Vector2(18697, 2121)
 scale = Vector2(227.24, 1)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_1yl8v")]
-position = Vector2(32968, -340)
+position = Vector2(111, 383)
 
 [node name="Goal" parent="." instance=ExtResource("4_a3ims")]
 position = Vector2(37814, -503)

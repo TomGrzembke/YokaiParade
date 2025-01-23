@@ -23,8 +23,10 @@ height = 74.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_uybn7")
 speed = 350.0
+acceleration = 100.0
+deceleration = 70.0
 jump_velocity = 750.0
-fall_speed_clamp = 900.0
+fall_speed_clamp = 975.0
 jump_coyote_time = 0.2
 jump_buffer_time = 0.2
 
