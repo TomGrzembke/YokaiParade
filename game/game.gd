@@ -1,14 +1,22 @@
 extends Node
 
+enum GameState {
+	LOADING_LEVEL = 500,
+	PLAYING_LEVEL = 600,
+}
 
 var current_level_index = 0
 var is_play_timer_running = false
 var play_time = 0.0
+var player_spawn_position = null
+var state = GameState.LOADING_LEVEL
 
 
 func _ready() -> void:
 	load_level(0)
+	spawn_player()
 	start_timer()
+	state = GameState.PLAYING_LEVEL
 
 
 func _process(delta):
@@ -17,34 +25,54 @@ func _process(delta):
 
 
 func _unhandled_input(_event):
+	if state == GameState.LOADING_LEVEL:
+		return
+
 	if Input.is_action_just_pressed("reset_level"):
+		state = GameState.LOADING_LEVEL
+		player_spawn_position = null
 		load_level(current_level_index)
+		spawn_player()
 		start_timer()
+		state = GameState.PLAYING_LEVEL
+
 
 	if Input.is_action_just_pressed("reset_checkpoint"):
+		state = GameState.LOADING_LEVEL
 		load_level(current_level_index)
+		spawn_player()
+		state = GameState.PLAYING_LEVEL
 
 	if Input.is_action_just_pressed("load_next_level"):
+		state = GameState.LOADING_LEVEL
 		var desired_level_index = current_level_index + 1
 		if desired_level_index >= %LevelManager.get_number_of_levels():
 			print("Already at last level.")
-		else:
-			load_level(desired_level_index)
-			start_timer()
+			return
+		player_spawn_position = null
+		load_level(desired_level_index)
+		spawn_player()
+		start_timer()
+		state = GameState.PLAYING_LEVEL
 
 	if Input.is_action_just_pressed("load_previous_level"):
+		state = GameState.LOADING_LEVEL
 		var desired_level_index = current_level_index - 1
 		if desired_level_index < 0:
 			print("Already at first level.")
-		else:
-			load_level(desired_level_index)
-			start_timer()
+			return
+		player_spawn_position = null
+		load_level(desired_level_index)
+		spawn_player()
+		start_timer()
+		state = GameState.PLAYING_LEVEL
 
 
 func load_level(desired_level_index):
 	var loaded_successfully = %LevelManager.load_level(desired_level_index)
-	if loaded_successfully:
-		current_level_index = desired_level_index
+	if not loaded_successfully:
+		print("Error: Level could not be loaded!")
+	current_level_index = desired_level_index
 
 
 func set_play_time(new_time):
@@ -61,31 +89,43 @@ func stop_timer():
 	is_play_timer_running = false
 
 
-func spawn_player(player_position):
+
+func spawn_player():
+	var player = null
 	if get_node_or_null("Player") != null:
-		var old_player = $Player
-		remove_child(old_player)
-		old_player.queue_free()
+		player = $Player
+	else:
+		var player_scene = preload("res://player/player.tscn")
+		player = player_scene.instantiate()
+		player.player_despawned.connect(on_player_despawned)
+		player.player_reached_goal.connect(on_player_reached_goal)
+		player.player_reached_checkpoint.connect(on_player_reached_checkpoint)
 
-	var player_scene = preload("res://player/player.tscn")
+		var camera_node = get_tree().root.get_node_or_null("Game/Camera2D")
 
-	var player = player_scene.instantiate()
+		var remote_transform = RemoteTransform2D.new()
+		remote_transform.remote_path = camera_node.get_path()
+		player.add_child(remote_transform)
+
+		add_child.call_deferred(player)
+
+	var player_position = get_player_spawn_position()
 	player.position = player_position
-	player.player_despawned.connect(on_player_despawned)
-	player.player_reached_goal.connect(on_player_reached_goal)
-	player.player_reached_checkpoint.connect(on_player_reached_checkpoint)
 
-	var camera_node = get_tree().root.get_node_or_null("Game/Camera2D")
 
-	var remote_transform = RemoteTransform2D.new()
-	remote_transform.remote_path = camera_node.get_path()
-	player.add_child(remote_transform)
+func get_player_spawn_position():
+	if player_spawn_position == null:
+		player_spawn_position = %LevelManager.get_player_spawn_position_of_level()
 
-	add_child.call_deferred(player)
+	return player_spawn_position
 
 
 func on_player_despawned():
+	if get_node_or_null("Player") != null:
+		await $Player.tree_exited
+
 	load_level(current_level_index)
+	spawn_player()
 
 
 func on_player_reached_goal():
@@ -93,8 +133,4 @@ func on_player_reached_goal():
 
 
 func on_player_reached_checkpoint(position):
-	%LevelManager.set_player_spawn_position(position)
-
-
-func on_level_manager_level_loaded(player_spawn_position):
-	spawn_player(player_spawn_position)
+	player_spawn_position = position

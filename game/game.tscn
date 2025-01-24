@@ -33,5 +33,3 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "00:00"
-
-[connection signal="level_loaded" from="LevelManager" to="." method="on_level_manager_level_loaded"]
