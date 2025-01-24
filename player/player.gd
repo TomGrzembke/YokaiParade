@@ -207,6 +207,7 @@ func refresh_needed_local_vel(velocity_mod):
 
 	if velocity_mod.amount.x != 0:
 		local_velocity.x = 0
+		local_velocity.y = 0
 
 
 func flip_outer_velocity_logic():

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cijdb50pj3jc7" path="res://levels/despawn_area.tscn" id="5_mgspn"]
 [ext_resource type="PackedScene" uid="uid://cfnhlackt0u25" path="res://levels/wall_wood.tscn" id="6_3j2ip"]
 [ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/goal.tscn" id="9_k2mnv"]
-[ext_resource type="PackedScene" path="res://enemies/enemy_grounded.tscn" id="9_nox78"]
+[ext_resource type="PackedScene" uid="uid://bomxlv8ndomnc" path="res://enemies/enemy_grounded.tscn" id="9_nox78"]
 [ext_resource type="Resource" uid="uid://tvyt8dx4csl5" path="res://enemies/types/enemy_element_type_air.tres" id="9_s8x4f"]
 [ext_resource type="Resource" uid="uid://be56k4m11w44j" path="res://enemies/types/enemy_element_type_fire.tres" id="10_cq81o"]
 [ext_resource type="PackedScene" uid="uid://b5s4b6xdudwso" path="res://enemies/enemy_flying.tscn" id="11_cjp3s"]
