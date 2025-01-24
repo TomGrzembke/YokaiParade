@@ -227,9 +227,9 @@ func on_goal_reached():
 	player_reached_goal.emit()
 
 
-func on_reached_checkpoint(position):
-	if position != null:
-		player_reached_checkpoint.emit(position)
+func on_reached_checkpoint(checkpoint_position):
+	if checkpoint_position != null:
+		player_reached_checkpoint.emit(checkpoint_position)
 
 
 func on_took_damage(source):
