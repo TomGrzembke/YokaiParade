@@ -7,7 +7,6 @@ var player_spawn_position:
 
 
 func set_player_spawn_position(new_position):
-	print("Setting spawn point to: %s" % new_position)
 	if $PlayerSpawnPoint != null:
 		$PlayerSpawnPoint.global_position = new_position
 	else:
