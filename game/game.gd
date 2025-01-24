@@ -94,6 +94,7 @@ func spawn_player():
 	var player = null
 	if get_node_or_null("Player") != null:
 		player = $Player
+		player.clear_abilities()
 	else:
 		var player_scene = preload("res://player/player.tscn")
 		player = player_scene.instantiate()
