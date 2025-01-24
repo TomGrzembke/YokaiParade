@@ -15,6 +15,8 @@ const INFINITY = 1e20
 @export_category("Movement extras")
 @export_range(0.0, 1.0, 0.01) var jump_coyote_time = 0.15
 @export_range(0.0, 1.0, 0.01) var jump_buffer_time = 0.15
+@export_category("Enemey Push")
+@export var push_back = 500.0
 
 var current_delta
 var coyote_timer = 0.15
@@ -233,6 +235,6 @@ func on_reached_checkpoint(position):
 func on_took_damage(source):
 	if source != null \
 	and source != $DealDamageArea:
-		add_velocity_modifier(VelocityModifier.new((source.position - position).normalized() * 1000, .2, 3, true))
+		add_velocity_modifier(VelocityModifier.new((source.position - position).normalized() * push_back, .2, 3, true))
 		print(position - source.position) # TODO: Stumble back and make invincible for a while, see GDD
 		#note: temporary implementation, just moves you in the flipped look_dir rn
