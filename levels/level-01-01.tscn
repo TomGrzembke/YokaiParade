@@ -866,7 +866,7 @@ starting_state = 100
 element_type = ExtResource("6_eqx3m")
 
 [node name="Fire_Flying_Idle" type="Path2D" parent="Enemies/Flying"]
-position = Vector2(-66, 31)
+position = Vector2(-66, 58)
 curve = SubResource("Curve2D_bwt2s")
 
 [node name="EnemyFlying" parent="Enemies/Flying/Fire_Flying_Idle" instance=ExtResource("5_2buvx")]
@@ -875,7 +875,7 @@ starting_state = 100
 element_type = ExtResource("7_qq2i5")
 
 [node name="Fire_Flying_Idle2" type="Path2D" parent="Enemies/Flying"]
-position = Vector2(2056, 359)
+position = Vector2(2056, 392)
 curve = SubResource("Curve2D_bwt2s")
 
 [node name="EnemyFlying" parent="Enemies/Flying/Fire_Flying_Idle2" instance=ExtResource("5_2buvx")]
