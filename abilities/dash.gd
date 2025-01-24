@@ -18,7 +18,8 @@ func _physics_process(delta):
 
 
 func use(player_manager):
-	var vel_modifier = VelocityModifier.new(Vector2(dash_velocity, 0), dash_duration, 1, disable_player_movement, $".")
+	var vel_modifier = VelocityModifier.new(Vector2(dash_velocity, 0), dash_duration, 1, disable_player_movement)
+	vel_modifier.set_ability( $".")
 	player_manager.add_velocity_modifier(vel_modifier)
 	is_dashing = true
 

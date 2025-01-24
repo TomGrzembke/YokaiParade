@@ -172,6 +172,7 @@ curve = SubResource("Curve2D_kfeqc")
 [node name="EnemyFlying" parent="Enemies/Path2D" instance=ExtResource("11_cjp3s")]
 position = Vector2(0, -224)
 starting_state = 100
+max_speed = 200.0
 element_type = ExtResource("9_s8x4f")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_c8oug")]

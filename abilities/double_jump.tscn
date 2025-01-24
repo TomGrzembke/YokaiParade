@@ -6,3 +6,4 @@
 script = ExtResource("1_c33vj")
 double_jump_vel = 700.0
 double_jump_duration = 0.1
+disable_player_movement = true
