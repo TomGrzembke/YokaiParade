@@ -12,7 +12,7 @@ var is_dashing := false
 var body_in_damage_radius
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_dashing:
 		apply_dash_damage()
 
@@ -41,7 +41,7 @@ func get_color():
 	return ELEMENTS.get_color(ELEMENT_TYPE)
 
 
-func _on_deal_dash_damage_area_body_exited(body):
+func _on_deal_dash_damage_area_body_exited(_body):
 	body_in_damage_radius = null
 
 

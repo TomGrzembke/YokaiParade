@@ -53,7 +53,7 @@ func _physics_process(delta):
 			process_moving(delta)
 
 
-func process_idling(delta):
+func process_idling(_delta):
 	pass
 
 
