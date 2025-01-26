@@ -15,4 +15,4 @@ script = ExtResource("1_3fumd")
 scale = Vector2(4.67293, 3.76)
 shape = SubResource("RectangleShape2D_s3hvh")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="on_body_entered"]

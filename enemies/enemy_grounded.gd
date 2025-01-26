@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
+signal enemy_caught
+
 enum EnemyState {
 	IDLING = 100,
 	MOVING = 200,
 	RECOVERING = 300,
 }
-
-signal enemy_caught
 
 enum Direction {
 	LEFT = -1,
@@ -46,7 +46,7 @@ func handle_gravity(delta):
 
 
 func handle_turn():
-	if direction:
+	if direction != null:
 		if is_on_wall() \
 		or is_on_cliff():
 			flip_horizontally()
@@ -66,6 +66,7 @@ func flip_horizontally():
 
 func is_on_cliff():
 	return not %RayCast2D.is_colliding()
+
 
 func enter_state(new_state):
 	match new_state:

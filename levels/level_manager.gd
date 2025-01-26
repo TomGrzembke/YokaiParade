@@ -33,10 +33,10 @@ func load_level(level_index):
 
 func get_player_spawn_position_of_level():
 	if current_level == null:
-		print("Error: Current level not set!")
+		printerr("Error: Current level not set!")
 		return null
 
-	if current_level.player_spawn_position == null:
-		print("Error: Level is missing PlayerSpawnPoint!")
+	if current_level.get_player_spawn_position() == null:
+		printerr("Error: Level is missing PlayerSpawnPoint!")
 
-	return current_level.player_spawn_position
+	return current_level.get_player_spawn_position()

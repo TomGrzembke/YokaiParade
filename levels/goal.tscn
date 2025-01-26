@@ -26,4 +26,4 @@ mesh = SubResource("SphereMesh_wwu48")
 position = Vector2(0, -66)
 shape = SubResource("RectangleShape2D_qkh4u")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="on_body_entered"]

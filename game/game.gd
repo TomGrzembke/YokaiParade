@@ -34,8 +34,8 @@ func _unhandled_input(_event):
 		load_level(current_level_index)
 		spawn_player()
 		start_timer()
+		await get_tree().create_timer(1.0).timeout
 		state = GameState.PLAYING_LEVEL
-
 
 	if Input.is_action_just_pressed("reset_checkpoint"):
 		state = GameState.LOADING_LEVEL
@@ -71,7 +71,7 @@ func _unhandled_input(_event):
 func load_level(desired_level_index):
 	var loaded_successfully = %LevelManager.load_level(desired_level_index)
 	if not loaded_successfully:
-		print("Error: Level could not be loaded!")
+		printerr("Error: Level could not be loaded!")
 	current_level_index = desired_level_index
 
 
@@ -89,11 +89,18 @@ func stop_timer():
 	is_play_timer_running = false
 
 
+func get_player_spawn_position():
+	if player_spawn_position == null:
+		player_spawn_position = %LevelManager.get_player_spawn_position_of_level()
+
+	return player_spawn_position
+
 
 func spawn_player():
 	var player = null
 	if get_node_or_null("Player") != null:
 		player = $Player
+		player.clear_abilities()
 	else:
 		var player_scene = preload("res://player/player.tscn")
 		player = player_scene.instantiate()
@@ -109,15 +116,7 @@ func spawn_player():
 
 		add_child.call_deferred(player)
 
-	var player_position = get_player_spawn_position()
-	player.position = player_position
-
-
-func get_player_spawn_position():
-	if player_spawn_position == null:
-		player_spawn_position = %LevelManager.get_player_spawn_position_of_level()
-
-	return player_spawn_position
+	player.position = get_player_spawn_position()
 
 
 func on_player_despawned():
