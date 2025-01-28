@@ -1,7 +1,16 @@
-[gd_scene load_steps=5 format=4 uid="uid://b8jaiwhrfvkdh"]
+[gd_scene load_steps=8 format=4 uid="uid://b8jaiwhrfvkdh"]
 
+[ext_resource type="Shader" path="res://shader/pattern_overlay.gdshader" id="1_dtmnv"]
 [ext_resource type="Texture2D" uid="uid://b7ullv6cg02nl" path="res://levels/level_01/Platform.png" id="1_xuj5n"]
+[ext_resource type="Texture2D" uid="uid://fe8ir1ixjshh" path="res://shader/black-halftone-dots-overlay.png" id="2_1igdv"]
 [ext_resource type="PackedScene" uid="uid://dnxi2gyvo83ec" path="res://player/player.tscn" id="2_1kchm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yyunr"]
+shader = ExtResource("1_dtmnv")
+shader_parameter/overlay_alpha = 1.0
+shader_parameter/pattern_scale = Vector2(1, 1)
+shader_parameter/tilemap_offset = Vector2(0, 0)
+shader_parameter/pattern_texture = ExtResource("2_1igdv")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycq4b"]
 texture = ExtResource("1_xuj5n")
@@ -53,6 +62,7 @@ sources/0 = SubResource("TileSetAtlasSource_ycq4b")
 [node name="TilemapTest" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_yyunr")
 tile_map_data = PackedByteArray("AAAEAAcAAAAAAAAAAAAFAAcAAAACAAAAAAAGAAcAAAAGAAAAAAAHAAcAAAAGAAAAAAAIAAcAAAAGAAAAAAAJAAcAAAAGAAAAAAAKAAcAAAAGAAAAAAALAAcAAAACAAAAAAAMAAcAAAAHAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAACAAAAAAAQAAMAAAACAAAAAAARAAMAAAAGAAAAAAASAAMAAAAGAAAAAAATAAMAAAAHAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAGAAAAAAAPAAsAAAACAAAAAAAQAAsAAAAGAAAAAAARAAsAAAACAAAAAAASAAsAAAAGAAAAAAATAAsAAAAHAAAAAAAOABIAAAAAAAAAAAAPABIAAAAGAAAAAAAQABIAAAAGAAAAAAARABIAAAACAAAAAAASABIAAAACAAAAAAATABIAAAAGAAAAAAAUABIAAAAGAAAAAAAVABIAAAACAAAAAAAWABIAAAACAAAAAAAXABIAAAACAAAAAAAYABIAAAAHAAAAAAAVAAgAAAAAAAAAAAAWAAgAAAAGAAAAAAAXAAgAAAAGAAAAAAAYAAgAAAACAAAAAAAZAAgAAAACAAAAAAAaAAgAAAAGAAAAAAAbAAgAAAAHAAAAAAADAA8AAAAAAAAAAAAEAA8AAAAGAAAAAAAFAA8AAAACAAAAAAAGAA8AAAAGAAAAAAAHAA8AAAAGAAAAAAAIAA8AAAAGAAAAAAAJAA8AAAACAAAAAAAKAA8AAAAGAAAAAAALAA8AAAAHAAAAAAA=")
 tile_set = SubResource("TileSet_arku3")
 
