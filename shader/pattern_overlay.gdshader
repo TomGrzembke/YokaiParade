@@ -11,7 +11,7 @@ void vertex() {
 }
 
 void fragment() {
-	vec2 scaled_position = world_position * SCREEN_PIXEL_SIZE * pattern_scale - tilemap_offset;
+	vec2 scaled_position = world_position * vec2(1.0 / 1920.0, 1.0 / 1080.0) * pattern_scale - tilemap_offset;
 	
 	vec2 pattern_uv = fract(scaled_position);
 
@@ -27,9 +27,10 @@ void fragment() {
 	vec4 applied_texture = mix(texture_color, pattern, -pattern_color.a);
 	
 	vec4 limit = step(0.5, pattern);
-	vec4 final_color = mix(2.0 * texture_color * pattern + texture_color * texture_color * (1.0 - 2.0 * pattern), 
+	vec4 soft_light_result = mix(2.0 * texture_color * pattern + texture_color * texture_color * (1.0 - 2.0 * pattern), 
 	sqrt(texture_color) * (2.0 * pattern - 1.0) + (2.0 * texture_color) * (1.0 - pattern), -limit.a);
 	
+	vec4 final_color = mix(texture_color, soft_light_result, overlay_alpha * pattern_color.a);
 	//final_color = mix(texture_color, pattern, -pattern_color.a);
 	
 	COLOR = final_color;

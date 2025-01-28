@@ -8,8 +8,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yyunr"]
 shader = ExtResource("1_dtmnv")
 shader_parameter/overlay_alpha = 1.0
-shader_parameter/pattern_scale = Vector2(1, 0.165)
-shader_parameter/tilemap_offset = Vector2(1.72, 4.27)
+shader_parameter/pattern_scale = Vector2(1, 1)
+shader_parameter/tilemap_offset = Vector2(1.87, 2.44)
 shader_parameter/pattern_texture = ExtResource("2_7tmam")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycq4b"]
