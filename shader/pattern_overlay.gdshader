@@ -22,11 +22,17 @@ void fragment() {
 
 	vec4 filtered_alpha = mix(texture_color, pattern_color, pattern_color.x);
 	
-	vec4 final_color = mix(texture_color, pattern_color, overlay_alpha * filtered_alpha.a);
+	vec4 pattern = mix(texture_color, pattern_color, overlay_alpha * filtered_alpha.a);
 	
-	vec4 applied_texture = mix(texture_color, final_color, pattern_color.a);
+	vec4 applied_texture = mix(texture_color, pattern, -pattern_color.a);
 	
-	COLOR = applied_texture;
+	vec4 limit = step(0.5, pattern);
+	vec4 final_color = mix(2.0 * texture_color * pattern + texture_color * texture_color * (1.0 - 2.0 * pattern), 
+	sqrt(texture_color) * (2.0 * pattern - 1.0) + (2.0 * texture_color) * (1.0 - pattern), -limit.a);
+	
+	//final_color = mix(texture_color, pattern, -pattern_color.a);
+	
+	COLOR = final_color;
 }
 
 
