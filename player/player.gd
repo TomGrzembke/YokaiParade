@@ -21,7 +21,6 @@ const INFINITY = 1e20
 @onready var ability_manager: Node2D = $AbilityManager
 
 
-var current_delta
 var coyote_timer = 0.15
 var jump_buffer_timer = 0.0
 
@@ -36,14 +35,12 @@ var player_control := true
 
 
 func _physics_process(delta):
-	current_delta = delta
-
 	if player_control:
-		handle_run()
-		handle_gravity()
-		handle_jump()
+		run()
+		update_gravity(delta)
+		jump(delta)
 
-	handle_ability_dissolve()
+	ability_smoothing()
 
 	velocity = local_velocity + outer_velocity_sources
 
@@ -51,7 +48,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func handle_run():
+func run():
 	calc_move_dir()
 	calc_look_direction()
 
@@ -61,26 +58,40 @@ func handle_run():
 		local_velocity.x = move_toward(local_velocity.x, 0, deceleration)
 
 
+func update_gravity(delta):
+	local_velocity.y += get_gravity().y * delta
+	reset_vertical_velocity()
+
+
+func ability_smoothing():
+	if check_movement_mods_empty():
+		outer_velocity_sources.x = move_toward(outer_velocity_sources.x, 0, deceleration)
+
+		if is_on_floor():
+			outer_velocity_sources.y = 0
+
+
+func jump(delta):
+	handle_coyote_time(delta)
+	jump_logic()
+	handle_jump_buffer_time(delta)
+
+
 func calc_move_dir():
 	move_direction = sign(Input.get_axis("left", "right"))
 
 
 func calc_look_direction():
-	if move_direction != 0.0:
-			look_direction = move_direction
+	if move_direction == 0.0: return
+
+	look_direction = move_direction
 
 
-func handle_jump():
-	handle_coyote_time()
-	jump_logic()
-	handle_jump_buffer_time()
-
-
-func handle_coyote_time():
+func handle_coyote_time(delta):
 	if is_on_floor():
 		coyote_timer = 0.0
 	else:
-		coyote_timer += current_delta
+		coyote_timer += delta
 
 
 func jump_logic():
@@ -91,14 +102,14 @@ func jump_logic():
 	local_velocity.y = -jump_velocity
 
 
-func handle_jump_buffer_time():
+func handle_jump_buffer_time(delta):
 	var jump_input = Input.is_action_just_pressed("jump")
 
 	if jump_input:
-		jump_buffer_timer = current_delta
+		jump_buffer_timer = delta
 
 	elif jump_buffer_timer > 0:
-		jump_buffer_timer += current_delta
+		jump_buffer_timer += delta
 
 	if is_on_floor():
 		jump_buffer_timer = 0.0
@@ -120,12 +131,7 @@ func can_use_jump_buffer():
 	return jump_buffer_timer < jump_buffer_time
 
 
-func handle_gravity():
-	local_velocity.y += get_gravity().y * current_delta
-	reset_y_vel_on_ground()
-
-
-func reset_y_vel_on_ground():
+func reset_vertical_velocity():
 	if !is_on_floor(): return
 
 	local_velocity.y = 0
@@ -134,14 +140,6 @@ func reset_y_vel_on_ground():
 func clamp_fall_speed():
 	if fall_speed_clamp == 0: return;
 	velocity.y = clampf(velocity.y, -INFINITY, fall_speed_clamp)
-
-
-func handle_ability_dissolve():
-	if check_movement_mods_empty():
-		outer_velocity_sources.x = move_toward(outer_velocity_sources.x, 0, deceleration)
-
-		if is_on_floor():
-			outer_velocity_sources.y = 0
 
 
 func add_velocity_modifier(velocity_mod):

@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnxi2gyvo83ec"]
+[gd_scene load_steps=9 format=3 uid="uid://dnxi2gyvo83ec"]
 
-[ext_resource type="Script" path="res://player/player_manager.gd" id="1_rsfs1"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/ability_manager.gd" id="2_es05j"]
 [ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/deal_damage_area.tscn" id="4_cn11c"]
@@ -32,9 +31,6 @@ jump_buffer_time = 0.2
 
 [node name="AbilityManager" type="Node2D" parent="."]
 script = ExtResource("2_es05j")
-
-[node name="PlayerManager" type="Node2D" parent="."]
-script = ExtResource("1_rsfs1")
 
 [node name="Visual" type="MeshInstance2D" parent="."]
 self_modulate = Color(0.58, 0.58, 0.58, 1)
