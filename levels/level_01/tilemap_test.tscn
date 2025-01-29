@@ -1,16 +1,25 @@
-[gd_scene load_steps=7 format=4 uid="uid://b8jaiwhrfvkdh"]
+[gd_scene load_steps=11 format=4 uid="uid://b8jaiwhrfvkdh"]
 
-[ext_resource type="Shader" path="res://shader/outline.gdshader" id="1_fevto"]
+[ext_resource type="Shader" path="res://shader/pattern_overlay.gdshader" id="1_dtmnv"]
+[ext_resource type="Shader" path="res://shader/pattern_outline.gdshader" id="1_o4c2e"]
 [ext_resource type="Texture2D" uid="uid://b7ullv6cg02nl" path="res://levels/level_01/Platform.png" id="1_xuj5n"]
 [ext_resource type="PackedScene" uid="uid://dnxi2gyvo83ec" path="res://player/player.tscn" id="2_1kchm"]
+[ext_resource type="Texture2D" uid="uid://drifus1fu4pom" path="res://shader/testing_assets/colored-halftone-dots-overlay.png" id="2_7tmam"]
+[ext_resource type="Texture2D" uid="uid://bj6xd1fu7tx7y" path="res://icon.svg" id="5_oah54"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yyunr"]
-shader = ExtResource("1_fevto")
-shader_parameter/color = Color(0.740731, 0.575574, 0.127614, 1)
-shader_parameter/width = 3.284
-shader_parameter/pattern = 0
-shader_parameter/inside = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aigxo"]
+shader = ExtResource("1_o4c2e")
+shader_parameter/overlay_alpha = 1.0
+shader_parameter/tint_amount = 0.0
+shader_parameter/pattern_scale = Vector2(5, 5)
+shader_parameter/tilemap_offset = Vector2(-1.145, 2.065)
+shader_parameter/color = Color(0.505219, 0.53891, 0.941239, 1)
+shader_parameter/width = 1.621
+shader_parameter/margin_width = 1.0
+shader_parameter/outline_shape = 2
+shader_parameter/inside = false
 shader_parameter/add_margins = false
+shader_parameter/pattern_texture = ExtResource("2_7tmam")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycq4b"]
 texture = ExtResource("1_xuj5n")
@@ -59,12 +68,25 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_ycq4b")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sste5"]
+shader = ExtResource("1_dtmnv")
+shader_parameter/overlay_alpha = 1.0
+shader_parameter/tint_amount = 1.0
+shader_parameter/pattern_scale = Vector2(5, 5)
+shader_parameter/tilemap_offset = Vector2(0.985, 0.055)
+shader_parameter/pattern_texture = ExtResource("2_7tmam")
+
 [node name="TilemapTest" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-material = SubResource("ShaderMaterial_yyunr")
+material = SubResource("ShaderMaterial_aigxo")
 tile_map_data = PackedByteArray("AAAEAAcAAAAAAAAAAAAFAAcAAAACAAAAAAAGAAcAAAAGAAAAAAAHAAcAAAAGAAAAAAAIAAcAAAAGAAAAAAAJAAcAAAAGAAAAAAAKAAcAAAAGAAAAAAALAAcAAAACAAAAAAAMAAcAAAAHAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAACAAAAAAAQAAMAAAACAAAAAAARAAMAAAAGAAAAAAASAAMAAAAGAAAAAAATAAMAAAAHAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAGAAAAAAAPAAsAAAACAAAAAAAQAAsAAAAGAAAAAAARAAsAAAACAAAAAAASAAsAAAAGAAAAAAATAAsAAAAHAAAAAAAOABIAAAAAAAAAAAAPABIAAAAGAAAAAAAQABIAAAAGAAAAAAARABIAAAACAAAAAAASABIAAAACAAAAAAATABIAAAAGAAAAAAAUABIAAAAGAAAAAAAVABIAAAACAAAAAAAWABIAAAACAAAAAAAXABIAAAACAAAAAAAYABIAAAAHAAAAAAAVAAgAAAAAAAAAAAAWAAgAAAAGAAAAAAAXAAgAAAAGAAAAAAAYAAgAAAACAAAAAAAZAAgAAAACAAAAAAAaAAgAAAAGAAAAAAAbAAgAAAAHAAAAAAADAA8AAAAAAAAAAAAEAA8AAAAGAAAAAAAFAA8AAAACAAAAAAAGAA8AAAAGAAAAAAAHAA8AAAAGAAAAAAAIAA8AAAAGAAAAAAAJAA8AAAACAAAAAAAKAA8AAAAGAAAAAAALAA8AAAAHAAAAAAA=")
 tile_set = SubResource("TileSet_arku3")
 
 [node name="Player" parent="." instance=ExtResource("2_1kchm")]
 position = Vector2(506, 386)
+
+[node name="Black-halftone-dots-overlay" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_sste5")
+position = Vector2(700, 293)
+texture = ExtResource("5_oah54")
