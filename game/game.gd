@@ -70,7 +70,6 @@ func _unhandled_input(_event):
 
 
 func enter_state(new_state):
-	var previous_state = state
 	match new_state:
 		GameState.PLAYING_LEVEL:
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
