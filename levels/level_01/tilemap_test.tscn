@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=4 uid="uid://b8jaiwhrfvkdh"]
+[gd_scene load_steps=10 format=4 uid="uid://b8jaiwhrfvkdh"]
 
-[ext_resource type="Shader" path="res://shader/pattern_overlay.gdshader" id="1_dtmnv"]
 [ext_resource type="Shader" path="res://shader/pattern_outline.gdshader" id="1_o4c2e"]
 [ext_resource type="Texture2D" uid="uid://b7ullv6cg02nl" path="res://levels/level_01/Platform.png" id="1_xuj5n"]
 [ext_resource type="PackedScene" uid="uid://dnxi2gyvo83ec" path="res://player/player.tscn" id="2_1kchm"]
@@ -10,15 +9,14 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aigxo"]
 shader = ExtResource("1_o4c2e")
 shader_parameter/overlay_alpha = 1.0
-shader_parameter/tint_amount = 0.0
+shader_parameter/tint_amount = 1.0
 shader_parameter/pattern_scale = Vector2(5, 5)
-shader_parameter/tilemap_offset = Vector2(-1.145, 2.065)
-shader_parameter/color = Color(0.505219, 0.53891, 0.941239, 1)
-shader_parameter/width = 1.621
-shader_parameter/margin_width = 1.0
+shader_parameter/tilemap_offset = Vector2(-0.43, 1)
+shader_parameter/color = Color(0.656621, 0.092058, 0.78775, 1)
+shader_parameter/width = 3.803
 shader_parameter/outline_shape = 2
 shader_parameter/inside = false
-shader_parameter/add_margins = false
+shader_parameter/add_margins = true
 shader_parameter/pattern_texture = ExtResource("2_7tmam")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycq4b"]
@@ -69,11 +67,16 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_ycq4b")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sste5"]
-shader = ExtResource("1_dtmnv")
+shader = ExtResource("1_o4c2e")
 shader_parameter/overlay_alpha = 1.0
 shader_parameter/tint_amount = 1.0
 shader_parameter/pattern_scale = Vector2(5, 5)
-shader_parameter/tilemap_offset = Vector2(0.985, 0.055)
+shader_parameter/tilemap_offset = Vector2(8.12, -12.11)
+shader_parameter/color = Color(0.331456, 2.82768e-06, 0.22291, 1)
+shader_parameter/width = 10.0
+shader_parameter/outline_shape = 2
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 shader_parameter/pattern_texture = ExtResource("2_7tmam")
 
 [node name="TilemapTest" type="Node2D"]

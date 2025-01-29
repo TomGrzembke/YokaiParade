@@ -10,11 +10,10 @@ varying vec2 world_position;
 //Outline
 uniform vec4 color : source_color = vec4(1.0);
 uniform float width : hint_range(0, 10) = 1.0;
-uniform float margin_width : hint_range(0, 10) = 1.0;
 uniform int outline_shape : hint_range(0, 2) = 0; // diamond, circle, square
 uniform bool inside = false;
 uniform bool add_margins = true; // only useful when inside is false
-varying vec2 outline_uv;
+varying vec2 original_uv;
 
 vec4 soft_light_blend(vec4 base, vec4 blend, float alpha){
 	return mix(2.0 * base * blend + base * base * (1.0 - 2.0 * blend), 
@@ -28,7 +27,7 @@ vec4 overlay(vec4 base, vec4 blend){
 }
 
 vec4 overwrite(vec4 destination, vec4 addable){
-	return (addable.a > 0.0)? addable : destination;
+	return (addable.a > 0.0) ? addable : destination;
 }
 
 bool hasContraryNeighbour(vec2 uv, vec2 texture_pixel_size, sampler2D texture) {
@@ -59,9 +58,15 @@ bool hasContraryNeighbour(vec2 uv, vec2 texture_pixel_size, sampler2D texture) {
 
 void vertex() {
 	world_position = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
+	original_uv = UV;
 	
 		if (add_margins) {
-		VERTEX += (UV * 2.0 - 1.0) * margin_width;
+		VERTEX += (UV * 2.0 - 1.0) * width;
+		
+		vec2 centered_uv = UV - 0.5;
+		vec2 scaled_uv = centered_uv * 1.155; 
+		scaled_uv += 0.5;
+		original_uv = scaled_uv;
 	}
 }
 
@@ -71,9 +76,8 @@ void fragment() {
 	vec2 pattern_uv = fract(scaled_position);
 
 	vec4 pattern_color = texture(pattern_texture, pattern_uv);
-
-	vec4 texture_color = texture(TEXTURE, UV);
-
+	
+	vec4 texture_color = texture(TEXTURE, original_uv); //original_uv causes a clipping problem rn
 
 	float filtered_alpha = mix(texture_color, pattern_color, pattern_color.x).a;
 	
@@ -108,5 +112,7 @@ void fragment() {
 		outline_result.a += (1.0 - outline_result.a) * color.a;
 	}
 	
-	COLOR = overwrite(outline_result, pattern_result);
+	vec4 wanted_pattern = mix(outline_result, pattern_color, outline_result.a); //Should use pattern_result instead of pattern_color when bug is fixed
+	COLOR = mix(outline_result, wanted_pattern, wanted_pattern.a);
+	//COLOR = texture_color;
 }
