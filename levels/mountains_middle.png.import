@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv6m0n3pbbgej"
-path="res://.godot/imported/background_00.png-e107cea208c08960a0923c10cc62fbbc.ctex"
+uid="uid://bmo1tv4fy75om"
+path="res://.godot/imported/mountains_middle.png-e09fc5685873fb7a0eadb7f97754a4a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/background_00.png"
-dest_files=["res://.godot/imported/background_00.png-e107cea208c08960a0923c10cc62fbbc.ctex"]
+source_file="res://levels/mountains_middle.png"
+dest_files=["res://.godot/imported/mountains_middle.png-e09fc5685873fb7a0eadb7f97754a4a3.ctex"]
 
 [params]
 

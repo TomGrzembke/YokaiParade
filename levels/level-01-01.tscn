@@ -1,21 +1,35 @@
-[gd_scene load_steps=23 format=3 uid="uid://c725ohihulje0"]
+[gd_scene load_steps=28 format=3 uid="uid://c725ohihulje0"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_rdt8q"]
 [ext_resource type="PackedScene" uid="uid://dyumet0q0u0ew" path="res://levels/ground_neutral.tscn" id="1_v52v0"]
 [ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/player_spawn_point.tscn" id="2_1yl8v"]
-[ext_resource type="Texture2D" uid="uid://cv6m0n3pbbgej" path="res://levels/background_00.png" id="2_yjhf1"]
-[ext_resource type="Texture2D" uid="uid://cb3j8csu35a18" path="res://levels/background_01.png" id="3_faeto"]
+[ext_resource type="Texture2D" uid="uid://b66gcqiak8txp" path="res://levels/mountains_far.png" id="2_pn08s"]
+[ext_resource type="Texture2D" uid="uid://bmo1tv4fy75om" path="res://levels/mountains_middle.png" id="3_0ehpw"]
 [ext_resource type="PackedScene" uid="uid://cfnhlackt0u25" path="res://levels/wall_wood.tscn" id="3_l87w7"]
-[ext_resource type="Texture2D" uid="uid://gxi2kaj7h5fr" path="res://levels/background_02.png" id="4_351t6"]
+[ext_resource type="Texture2D" uid="uid://gxi2kaj7h5fr" path="res://levels/clouds_white.png" id="4_351t6"]
 [ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/goal.tscn" id="4_a3ims"]
+[ext_resource type="Texture2D" uid="uid://bckrmvjg8p3jq" path="res://levels/mountains_close.png" id="4_ytpdh"]
 [ext_resource type="PackedScene" uid="uid://b5s4b6xdudwso" path="res://enemies/enemy_flying.tscn" id="5_2buvx"]
+[ext_resource type="Texture2D" uid="uid://dd4dbqeurgyvx" path="res://levels/clouds_red.png" id="5_st3cu"]
 [ext_resource type="PackedScene" uid="uid://cijdb50pj3jc7" path="res://levels/despawn_area.tscn" id="6_bvw2s"]
 [ext_resource type="Resource" uid="uid://tvyt8dx4csl5" path="res://enemies/types/enemy_element_type_air.tres" id="6_eqx3m"]
+[ext_resource type="Texture2D" uid="uid://i5u70jl4fc3v" path="res://levels/clouds_blue1.png" id="6_h3em2"]
 [ext_resource type="PackedScene" uid="uid://dfjkroxbqv577" path="res://levels/wall_neutral.tscn" id="6_hw8va"]
 [ext_resource type="Resource" uid="uid://be56k4m11w44j" path="res://enemies/types/enemy_element_type_fire.tres" id="7_qq2i5"]
 [ext_resource type="PackedScene" uid="uid://bomxlv8ndomnc" path="res://enemies/enemy_grounded.tscn" id="7_shv8i"]
 [ext_resource type="PackedScene" uid="uid://dotrddyc18eeh" path="res://levels/checkpoint.tscn" id="12_t17iw"]
 [ext_resource type="Texture2D" uid="uid://m1tnyobaeawn" path="res://levels/foreground.png" id="16_cdrmb"]
+
+[sub_resource type="Gradient" id="Gradient_ee1f0"]
+interpolation_color_space = 1
+colors = PackedColorArray(0.658824, 0.835294, 0.847059, 1, 0.752941, 0.85098, 0.921569, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0as6y"]
+gradient = SubResource("Gradient_ee1f0")
+width = 1920
+height = 1080
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
 
 [sub_resource type="Curve2D" id="Curve2D_knhc2"]
 _data = {
@@ -59,31 +73,66 @@ script = ExtResource("1_rdt8q")
 [node name="Backgrounds" type="Node2D" parent="."]
 z_index = -10
 
-[node name="Parallax2D" type="Parallax2D" parent="Backgrounds"]
-scroll_scale = Vector2(0.2, 0)
-repeat_size = Vector2(2539, 1491)
-autoscroll = Vector2(-50, 0)
+[node name="GradientParallax" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(1920, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/GradientParallax"]
+position = Vector2(0, 540)
+texture = SubResource("GradientTexture2D_0as6y")
+
+[node name="MountainsFarParallax" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(1000, 0)
+repeat_times = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/MountainsFarParallax"]
+position = Vector2(0, 800)
+texture = ExtResource("2_pn08s")
+
+[node name="MountainsMiddleParallax" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(1500, 0)
 repeat_times = 6
 
-[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Parallax2D"]
-texture = ExtResource("2_yjhf1")
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/MountainsMiddleParallax"]
+position = Vector2(0, 800)
+texture = ExtResource("3_0ehpw")
 
-[node name="Parallax2D2" type="Parallax2D" parent="Backgrounds"]
-scroll_scale = Vector2(0.4, 0)
+[node name="MountainsCloseParallax" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0.5, 0.5)
 repeat_size = Vector2(2500, 0)
 repeat_times = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Parallax2D2"]
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/MountainsCloseParallax"]
 position = Vector2(0, 800)
-texture = ExtResource("3_faeto")
+texture = ExtResource("4_ytpdh")
 
-[node name="Parallax2D3" type="Parallax2D" parent="Backgrounds"]
+[node name="CloudsRedPrallax" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0.6, 0.6)
+repeat_size = Vector2(2800, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/CloudsRedPrallax"]
+position = Vector2(0, 1000)
+texture = ExtResource("5_st3cu")
+
+[node name="CloudsBlueParallax" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0.6, 0.6)
+repeat_size = Vector2(3000, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/CloudsBlueParallax"]
+position = Vector2(0, 600)
+texture = ExtResource("6_h3em2")
+
+[node name="CloudsWhiteParallax" type="Parallax2D" parent="Backgrounds"]
 scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(2200, 0)
 repeat_times = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Parallax2D3"]
-position = Vector2(0, 1128)
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/CloudsWhiteParallax"]
+position = Vector2(0, 1000)
 texture = ExtResource("4_351t6")
 
 [node name="Grounds&Walls" type="Node2D" parent="."]

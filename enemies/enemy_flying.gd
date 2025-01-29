@@ -123,5 +123,6 @@ func got_caught():
 	enter_state(EnemyState.RECOVERING)
 	return element_type.spawning_ability
 
+
 func refresh_hitbox():
 	deal_damage_area.monitoring = state != EnemyState.RECOVERING

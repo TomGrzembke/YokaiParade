@@ -230,6 +230,8 @@ func flip_outer_velocity_logic(velocity_mod):
 
 
 func on_despawn():
+	if Input.get_connected_joypads().size() > 0:
+		Input.start_joy_vibration(0, 1.0, 0.0, 2.0)
 	player_despawned.emit()
 	queue_free()
 
@@ -249,3 +251,5 @@ func on_took_damage(source):
 		add_velocity_modifier(VelocityModifier.new(-(source.global_position - position).normalized() * push_back, .2, 3, true))
 		# TODO: Stumble back and make invincible for a while, see GDD
 		#note: temporary implementation, just moves you in the flipped look_dir rn
+		if Input.get_connected_joypads().size() > 0:
+			Input.start_joy_vibration(0, 0.5, 0.0, 0.5)
