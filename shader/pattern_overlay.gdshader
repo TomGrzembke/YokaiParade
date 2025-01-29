@@ -2,9 +2,9 @@ shader_type canvas_item;
 
 uniform sampler2D pattern_texture;
 uniform float overlay_alpha : hint_range(0.0, 1.0); 
+uniform float tint_amount : hint_range(0.0, 1.0); 
 uniform vec2 pattern_scale = vec2(1.0, 1.0); 
 uniform vec2 tilemap_offset = vec2(0.0, 0.0); 
-uniform bool tint;
 varying vec2 world_position;
 
 vec4 soft_light_blend(vec4 base, vec4 blend, float alpha){
@@ -26,6 +26,7 @@ void fragment() {
 
 	vec4 texture_color = texture(TEXTURE, UV);
 
+
 	float filtered_alpha = mix(texture_color, pattern_color, pattern_color.x).a;
 	
 	vec4 pattern = mix(texture_color, pattern_color, filtered_alpha);
@@ -34,9 +35,5 @@ void fragment() {
 	
 	vec4 final_color = mix(texture_color, soft_light_blend, overlay_alpha * pattern_color.a);
 	
-	if (tint)
-	COLOR = soft_light_blend;
-	
-	else
-	COLOR = final_color;
+	COLOR = mix(final_color, soft_light_blend, tint_amount);
 }

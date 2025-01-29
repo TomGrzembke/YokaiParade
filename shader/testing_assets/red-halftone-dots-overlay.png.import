@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvylw1e3nmtah"
-path="res://.godot/imported/red-halftone-dots-overlay.png-db81fece32f3b022b619b24beccce5a3.ctex"
+path="res://.godot/imported/red-halftone-dots-overlay.png-0f8b6b12d956221042b3b1fc6035b4ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shader/red-halftone-dots-overlay.png"
-dest_files=["res://.godot/imported/red-halftone-dots-overlay.png-db81fece32f3b022b619b24beccce5a3.ctex"]
+source_file="res://shader/testing_assets/red-halftone-dots-overlay.png"
+dest_files=["res://.godot/imported/red-halftone-dots-overlay.png-0f8b6b12d956221042b3b1fc6035b4ef.ctex"]
 
 [params]
 

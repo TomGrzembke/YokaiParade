@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fe8ir1ixjshh"
-path="res://.godot/imported/black-halftone-dots-overlay.png-93fe6d4c05a9887637a98860063f17e3.ctex"
+uid="uid://dn8lduh1olm8j"
+path="res://.godot/imported/white-halftone-dots-overlay.png-b9064d4a01ea841cb3c064d762659638.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shader/black-halftone-dots-overlay.png"
-dest_files=["res://.godot/imported/black-halftone-dots-overlay.png-93fe6d4c05a9887637a98860063f17e3.ctex"]
+source_file="res://shader/testing_assets/white-halftone-dots-overlay.png"
+dest_files=["res://.godot/imported/white-halftone-dots-overlay.png-b9064d4a01ea841cb3c064d762659638.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
