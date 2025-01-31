@@ -94,16 +94,20 @@ func calc_look_direction():
 func fall_on_ceiling(delta):
 	if velocity.y: return
 
-	if local_velocity.y or outer_velocity_sources.y:
+	if local_velocity.y or receives_outer_vertical_velocity():
 		local_velocity.y = get_gravity().y * delta
 		outer_velocity_sources.y = 0
 
 
 func handle_coyote_time(delta):
-	if is_on_floor():
+	if is_on_floor() || receives_outer_vertical_velocity():
 		coyote_timer = 0.0
 	else:
 		coyote_timer += delta
+
+
+func receives_outer_vertical_velocity():
+	return outer_velocity_sources.y
 
 
 func jump_logic():
