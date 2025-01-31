@@ -13,7 +13,7 @@ script = ExtResource("1_g4chm")
 [node name="LevelManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_6riac")
-levels = Array[PackedScene]([ExtResource("3_6avmr"), ExtResource("4_5v7ek"), ExtResource("1_i7bh5")])
+levels = Array[PackedScene]([ExtResource("4_5v7ek"), ExtResource("1_i7bh5"), ExtResource("3_6avmr")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
