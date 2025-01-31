@@ -18,6 +18,8 @@ func _physics_process(_delta):
 
 
 func use(player_manager):
+	if Input.get_connected_joypads().size() > 0:
+		Input.start_joy_vibration(0, 1.0, 0.0, dash_duration)
 	var vel_modifier = VelocityModifier.new(Vector2(dash_velocity, 0), dash_duration, 1, \
 	disable_player_movement, true)
 

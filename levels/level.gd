@@ -2,6 +2,8 @@ extends Node2D
 
 
 func get_player_spawn_position():
+	if get_node_or_null("PlayerSpawnPoint") == null:
+		printerr("Error: No PlayerSpawnPoint in this level!")
 	return $PlayerSpawnPoint.global_position
 
 

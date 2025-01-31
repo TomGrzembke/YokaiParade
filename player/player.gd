@@ -17,11 +17,11 @@ const INFINITY = 1e20
 @export_range(0.0, 1.0, 0.01) var jump_buffer_time = 0.15
 @export_category("Enemey Push")
 @export var push_back = 500.0
+@export_range(0.0, 1.5, 0.1) var push_heigth_percentage = .75
 
 @onready var ability_manager: Node2D = $AbilityManager
 
 
-var current_delta
 var coyote_timer = 0.15
 var jump_buffer_timer = 0.0
 
@@ -36,14 +36,12 @@ var player_control := true
 
 
 func _physics_process(delta):
-	current_delta = delta
-
 	if player_control:
-		handle_run()
-		handle_gravity()
-		handle_jump()
+		run()
+		update_gravity(delta)
+		jump(delta)
 
-	handle_ability_dissolve()
+	ability_smoothing()
 
 	velocity = local_velocity + outer_velocity_sources
 
@@ -51,7 +49,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func handle_run():
+func run():
 	calc_move_dir()
 	calc_look_direction()
 
@@ -61,26 +59,51 @@ func handle_run():
 		local_velocity.x = move_toward(local_velocity.x, 0, deceleration)
 
 
+func update_gravity(delta):
+	local_velocity.y += get_gravity().y * delta
+
+	fall_on_ceiling(delta)
+
+	reset_vertical_velocity()
+
+
+func ability_smoothing():
+	if check_movement_mods_empty():
+		outer_velocity_sources.x = move_toward(outer_velocity_sources.x, 0, deceleration)
+
+		if is_on_floor():
+			outer_velocity_sources.y = 0
+
+
+func jump(delta):
+	handle_coyote_time(delta)
+	jump_logic()
+	handle_jump_buffer_time(delta)
+
+
 func calc_move_dir():
 	move_direction = sign(Input.get_axis("left", "right"))
 
 
 func calc_look_direction():
-	if move_direction != 0.0:
-			look_direction = move_direction
+	if move_direction == 0.0: return
+
+	look_direction = move_direction
 
 
-func handle_jump():
-	handle_coyote_time()
-	jump_logic()
-	handle_jump_buffer_time()
+func fall_on_ceiling(delta):
+	if velocity.y: return
+
+	if local_velocity.y or outer_velocity_sources.y:
+		local_velocity.y = get_gravity().y * delta
+		outer_velocity_sources.y = 0
 
 
-func handle_coyote_time():
+func handle_coyote_time(delta):
 	if is_on_floor():
 		coyote_timer = 0.0
 	else:
-		coyote_timer += current_delta
+		coyote_timer += delta
 
 
 func jump_logic():
@@ -91,14 +114,14 @@ func jump_logic():
 	local_velocity.y = -jump_velocity
 
 
-func handle_jump_buffer_time():
+func handle_jump_buffer_time(delta):
 	var jump_input = Input.is_action_just_pressed("jump")
 
 	if jump_input:
-		jump_buffer_timer = current_delta
+		jump_buffer_timer = delta
 
 	elif jump_buffer_timer > 0:
-		jump_buffer_timer += current_delta
+		jump_buffer_timer += delta
 
 	if is_on_floor():
 		jump_buffer_timer = 0.0
@@ -120,12 +143,7 @@ func can_use_jump_buffer():
 	return jump_buffer_timer < jump_buffer_time
 
 
-func handle_gravity():
-	local_velocity.y += get_gravity().y * current_delta
-	reset_y_vel_on_ground()
-
-
-func reset_y_vel_on_ground():
+func reset_vertical_velocity():
 	if !is_on_floor(): return
 
 	local_velocity.y = 0
@@ -134,14 +152,6 @@ func reset_y_vel_on_ground():
 func clamp_fall_speed():
 	if fall_speed_clamp == 0: return;
 	velocity.y = clampf(velocity.y, -INFINITY, fall_speed_clamp)
-
-
-func handle_ability_dissolve():
-	if check_movement_mods_empty():
-		outer_velocity_sources.x = move_toward(outer_velocity_sources.x, 0, deceleration)
-
-		if is_on_floor():
-			outer_velocity_sources.y = 0
 
 
 func add_velocity_modifier(velocity_mod):
@@ -230,6 +240,8 @@ func flip_outer_velocity_logic(velocity_mod):
 
 
 func on_despawn():
+	if Input.get_connected_joypads().size() > 0:
+		Input.start_joy_vibration(0, 1.0, 0.0, 2.0)
 	player_despawned.emit()
 	queue_free()
 
@@ -246,6 +258,10 @@ func on_reached_checkpoint(checkpoint_position):
 func on_took_damage(source):
 	if source != null \
 	and source != $DealDamageArea:
-		add_velocity_modifier(VelocityModifier.new(-(source.global_position - position).normalized() * push_back, .2, 3, true))
+		var push_vel = -(source.global_position - position).normalized() * push_back
+		push_vel.y *= push_heigth_percentage
+		add_velocity_modifier(VelocityModifier.new(push_vel, .2, 3, true))
 		# TODO: Stumble back and make invincible for a while, see GDD
-		#note: temporary implementation, just moves you in the flipped look_dir rn
+		#note: temporary implementation
+		if Input.get_connected_joypads().size() > 0:
+			Input.start_joy_vibration(0, 0.5, 0.0, 0.5)
