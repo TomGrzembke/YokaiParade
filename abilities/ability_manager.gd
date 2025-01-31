@@ -1,21 +1,24 @@
 extends Node2D
 
+
+const COLOR_PLAIN = Color("#949494")
+
 var current_ability
 var target_area
 
 @onready var player: CharacterBody2D = $".."
 @onready var visual: MeshInstance2D = $"../Visual"
 
-const COLOR_PLAIN = Color("#949494")
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("use_ability"):
-		use_ability(player)
+		use_ability()
 
 	if Input.is_action_just_pressed("catch_power"):
 		catch_power()
 
-func use_ability(player):
+
+func use_ability():
 	if current_ability == null: return
 
 	if current_ability.has_method("use"):
