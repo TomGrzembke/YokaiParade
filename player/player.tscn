@@ -29,8 +29,8 @@ jump_velocity = 750.0
 fall_speed_clamp = 975.0
 jump_coyote_time = 0.2
 jump_buffer_time = 0.2
-initial_jump_heigth_smooth = 0.1
-jump_heigth_smooth = 0.1
+initial_jump_heigth_smooth = 0.9
+jump_heigth_smooth = 0.24
 push_back = 800.0
 push_heigth_percentage = 0.4
 
