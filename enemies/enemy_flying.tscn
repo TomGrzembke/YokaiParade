@@ -20,6 +20,7 @@ radius = 16.0
 radius = 32.0
 
 [node name="EnemyFlying" type="PathFollow2D"]
+scale = Vector2(0.75, 0.75)
 rotates = false
 script = ExtResource("1_jwi5c")
 easing_curve = SubResource("Curve_lxy51")

@@ -329,7 +329,7 @@ texture_region_size = Vector2i(40, 40)
 
 [resource]
 tile_size = Vector2i(40, 40)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 11
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Swirly"
 terrain_set_0/terrain_0/color = Color(0.471687, 0.303699, 0.554854, 1)

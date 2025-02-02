@@ -14,11 +14,12 @@ scale = Vector2(0.467229, 0.467229)
 script = ExtResource("1_np4pl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(17.1222, -102.733)
+position = Vector2(17.1222, -34.2444)
 shape = SubResource("RectangleShape2D_775ek")
 
 [node name="Visual" type="Node2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, 59.9278)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Visual"]
 position = Vector2(0, -66)

@@ -20,8 +20,9 @@ radius = 18.0
 height = 74.0
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_uybn7")
-speed = 350.0
+speed = 325.0
 acceleration = 100.0
 deceleration = 70.0
 jump_velocity = 750.0
