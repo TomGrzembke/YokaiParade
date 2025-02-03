@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnxi2gyvo83ec"]
+[gd_scene load_steps=10 format=3 uid="uid://dnxi2gyvo83ec"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/ability_manager.gd" id="2_es05j"]
 [ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/deal_damage_area.tscn" id="4_cn11c"]
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/take_damage_area.tscn" id="4_y0ly5"]
+[ext_resource type="Texture2D" uid="uid://dylr0e5cupavl" path="res://player/player.png" id="5_eow6v"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_idevo"]
 
@@ -12,15 +13,14 @@ radius = 25.0
 height = 100.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82728"]
-radius = 116.0
-height = 236.0
+radius = 73.3333
+height = 168.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4pm2j"]
 radius = 18.0
 height = 74.0
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.75, 0.75)
 script = ExtResource("1_uybn7")
 speed = 325.0
 acceleration = 100.0
@@ -29,6 +29,8 @@ jump_velocity = 750.0
 fall_speed_clamp = 975.0
 jump_coyote_time = 0.2
 jump_buffer_time = 0.2
+initial_jump_heigth_smooth = 0.9
+jump_heigth_smooth = 0.69
 push_back = 800.0
 push_heigth_percentage = 0.4
 
@@ -36,6 +38,7 @@ push_heigth_percentage = 0.4
 script = ExtResource("2_es05j")
 
 [node name="Visual" type="MeshInstance2D" parent="."]
+visible = false
 self_modulate = Color(0.58, 0.58, 0.58, 1)
 scale = Vector2(50, 50)
 mesh = SubResource("CapsuleMesh_idevo")
@@ -47,6 +50,7 @@ shape = SubResource("CapsuleShape2D_1mi2e")
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageArea"]
+position = Vector2(46.6667, 0)
 shape = SubResource("CapsuleShape2D_82728")
 debug_color = Color(0.595658, 0.545411, 0, 0.42)
 
@@ -56,6 +60,12 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
 shape = SubResource("CapsuleShape2D_4pm2j")
 debug_color = Color(0.976648, 0, 0.410241, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, -10)
+texture = ExtResource("5_eow6v")
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 120)
 
 [connection signal="area_entered" from="DealDamageArea" to="." method="on_deal_damage_area_entered"]
 [connection signal="area_entered" from="DealDamageArea" to="AbilityManager" method="_on_deal_damage_area_entered"]

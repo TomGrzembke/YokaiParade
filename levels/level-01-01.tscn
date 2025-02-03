@@ -1189,7 +1189,7 @@ position = Vector2(18697, 2121)
 scale = Vector2(227.24, 1)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("2_1yl8v")]
-position = Vector2(111, 383)
+position = Vector2(1471, 527)
 
 [node name="Goal" parent="." instance=ExtResource("4_a3ims")]
 position = Vector2(37814, -503)
