@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://34h8idl4ujx6"
-path="res://.godot/imported/platform_bamboo.png-9bf91487f4f497f991cf32e9b060541f.ctex"
+uid="uid://btuhde0syvbty"
+path="res://.godot/imported/platform_swirly.png-a36ce684afcb8dafe7deb3fb551fbcc6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/modules/platform_bamboo.png"
-dest_files=["res://.godot/imported/platform_bamboo.png-9bf91487f4f497f991cf32e9b060541f.ctex"]
+source_file="res://levels/area_01/platform_swirly.png"
+dest_files=["res://.godot/imported/platform_swirly.png-a36ce684afcb8dafe7deb3fb551fbcc6.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxdfcsh6knkl8"
-path="res://.godot/imported/obstacles_spritesheet.png-9f4ad65debd3344948ec7027962a1651.ctex"
+uid="uid://b70k3xcdk700l"
+path="res://.godot/imported/wall_bamboo.png-9d84191f5e1b1f901be89a90ab3d7756.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/modules/obstacles_spritesheet.png"
-dest_files=["res://.godot/imported/obstacles_spritesheet.png-9f4ad65debd3344948ec7027962a1651.ctex"]
+source_file="res://levels/area_01/wall_bamboo.png"
+dest_files=["res://.godot/imported/wall_bamboo.png-9d84191f5e1b1f901be89a90ab3d7756.ctex"]
 
 [params]
 
