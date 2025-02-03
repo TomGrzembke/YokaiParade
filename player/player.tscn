@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnxi2gyvo83ec"]
+[gd_scene load_steps=10 format=3 uid="uid://dnxi2gyvo83ec"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/ability_manager.gd" id="2_es05j"]
 [ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/deal_damage_area.tscn" id="4_cn11c"]
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/take_damage_area.tscn" id="4_y0ly5"]
+[ext_resource type="Texture2D" uid="uid://dylr0e5cupavl" path="res://player/player.png" id="5_eow6v"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_idevo"]
 
@@ -20,7 +21,6 @@ radius = 18.0
 height = 74.0
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.75, 0.75)
 script = ExtResource("1_uybn7")
 speed = 325.0
 acceleration = 100.0
@@ -38,6 +38,7 @@ push_heigth_percentage = 0.4
 script = ExtResource("2_es05j")
 
 [node name="Visual" type="MeshInstance2D" parent="."]
+visible = false
 self_modulate = Color(0.58, 0.58, 0.58, 1)
 scale = Vector2(50, 50)
 mesh = SubResource("CapsuleMesh_idevo")
@@ -59,6 +60,12 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
 shape = SubResource("CapsuleShape2D_4pm2j")
 debug_color = Color(0.976648, 0, 0.410241, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, -10)
+texture = ExtResource("5_eow6v")
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 120)
 
 [connection signal="area_entered" from="DealDamageArea" to="." method="on_deal_damage_area_entered"]
 [connection signal="area_entered" from="DealDamageArea" to="AbilityManager" method="_on_deal_damage_area_entered"]
