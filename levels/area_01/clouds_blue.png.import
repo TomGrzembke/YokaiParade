@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bckrmvjg8p3jq"
-path="res://.godot/imported/mountains_close.png-bf00136826ccd0c1ad629c394ce96dc2.ctex"
+uid="uid://i5u70jl4fc3v"
+path="res://.godot/imported/clouds_blue.png-07665d6af662caeb2ecdb090e1cdcf6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/mountains_close.png"
-dest_files=["res://.godot/imported/mountains_close.png-bf00136826ccd0c1ad629c394ce96dc2.ctex"]
+source_file="res://levels/area_01/clouds_blue.png"
+dest_files=["res://.godot/imported/clouds_blue.png-07665d6af662caeb2ecdb090e1cdcf6b.ctex"]
 
 [params]
 

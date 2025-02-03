@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnq2l128u47ma"]
 
-[ext_resource type="Script" path="res://levels/goal.gd" id="1_jmwwo"]
+[ext_resource type="Script" path="res://levels/modules/goal.gd" id="1_jmwwo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1oiji"]
 

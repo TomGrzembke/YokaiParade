@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7ullv6cg02nl"
-path="res://.godot/imported/Platform.png-e0fbcb4972c415cbc6da4c6599d7bec2.ctex"
+uid="uid://btuhde0syvbty"
+path="res://.godot/imported/platform_swirly.png-a36ce684afcb8dafe7deb3fb551fbcc6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/level_01/Platform.png"
-dest_files=["res://.godot/imported/Platform.png-e0fbcb4972c415cbc6da4c6599d7bec2.ctex"]
+source_file="res://levels/area_01/platform_swirly.png"
+dest_files=["res://.godot/imported/platform_swirly.png-a36ce684afcb8dafe7deb3fb551fbcc6.ctex"]
 
 [params]
 

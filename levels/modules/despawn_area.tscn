@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cijdb50pj3jc7"]
 
-[ext_resource type="Script" path="res://levels/despawn_area.gd" id="1_3fumd"]
+[ext_resource type="Script" path="res://levels/modules/despawn_area.gd" id="1_3fumd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3hvh"]
 size = Vector2(40.0241, 20)

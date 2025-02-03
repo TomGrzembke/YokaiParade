@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmo1tv4fy75om"
-path="res://.godot/imported/mountains_middle.png-e09fc5685873fb7a0eadb7f97754a4a3.ctex"
+uid="uid://b70k3xcdk700l"
+path="res://.godot/imported/wall_bamboo.png-9d84191f5e1b1f901be89a90ab3d7756.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/mountains_middle.png"
-dest_files=["res://.godot/imported/mountains_middle.png-e09fc5685873fb7a0eadb7f97754a4a3.ctex"]
+source_file="res://levels/area_01/wall_bamboo.png"
+dest_files=["res://.godot/imported/wall_bamboo.png-9d84191f5e1b1f901be89a90ab3d7756.ctex"]
 
 [params]
 

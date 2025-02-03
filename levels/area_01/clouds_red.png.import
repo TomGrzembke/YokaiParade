@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4deqkh0uer5x"
-path="res://.godot/imported/Platform.png-9b61fd8007a30b51aa491813ae4ee5a8.ctex"
+uid="uid://dd4dbqeurgyvx"
+path="res://.godot/imported/clouds_red.png-559f444ca09d60a21963b2771af11aa1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/area_01/Platform.png"
-dest_files=["res://.godot/imported/Platform.png-9b61fd8007a30b51aa491813ae4ee5a8.ctex"]
+source_file="res://levels/area_01/clouds_red.png"
+dest_files=["res://.godot/imported/clouds_red.png-559f444ca09d60a21963b2771af11aa1.ctex"]
 
 [params]
 

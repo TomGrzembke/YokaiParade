@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b66gcqiak8txp"
-path="res://.godot/imported/mountains_far.png-4328d7242f233a806b21e4c411421b34.ctex"
+uid="uid://bckrmvjg8p3jq"
+path="res://.godot/imported/mountains_close.png-cf87133e9ac3a26895822a8c06b3a316.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/mountains_far.png"
-dest_files=["res://.godot/imported/mountains_far.png-4328d7242f233a806b21e4c411421b34.ctex"]
+source_file="res://levels/area_01/mountains_close.png"
+dest_files=["res://.godot/imported/mountains_close.png-cf87133e9ac3a26895822a8c06b3a316.ctex"]
 
 [params]
 

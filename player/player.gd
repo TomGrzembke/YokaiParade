@@ -100,7 +100,7 @@ func calc_look_direction():
 func flip():
 	if look_direction == 0: return
 
-	set_rotation_degrees(0 if look_direction == 1 else -180.0)
+	set_rotation_degrees(0.0 if look_direction == 1.0 else -180.0)
 	scale.y = look_direction
 
 
