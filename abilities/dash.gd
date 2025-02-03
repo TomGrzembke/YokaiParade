@@ -45,7 +45,6 @@ func get_color():
 
 func on_deal_damage_area_entered(target):
 	body_in_damage_radius = target
-	print("body entered: %s" % target)
 
 
 func on_deal_damage_area_exited(_target):
