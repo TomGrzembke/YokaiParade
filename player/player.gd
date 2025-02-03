@@ -61,6 +61,9 @@ func run():
 	else:
 		local_velocity.x = move_toward(local_velocity.x, 0, deceleration)
 
+	if look_direction != 0.0:
+		scale.x = look_direction
+
 
 func update_gravity(delta):
 	local_velocity.y += get_gravity().y * delta
@@ -214,7 +217,6 @@ func delete_vel_mod(velocity_mod):
 
 
 func reset_velocity_mod_effects(velocity_mod):
-
 	player_control = true
 	if velocity_mod.ability != null:
 		velocity_mod.ability.queue_free()
