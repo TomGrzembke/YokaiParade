@@ -1,8 +1,13 @@
 extends Area2D
 
 
-signal took_damage(source)
+signal take_damage_area_entered(source)
+signal take_damage_area_exited(source)
 
 
-func take_damage(source):
-	took_damage.emit(source)
+func deal_damage_area_entered_take_damage_area(source):
+	take_damage_area_entered.emit(source)
+
+
+func deal_damage_area_exited_take_damage_area(source):
+	take_damage_area_exited.emit(source)

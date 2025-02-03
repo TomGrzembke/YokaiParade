@@ -286,8 +286,7 @@ func on_reached_checkpoint(checkpoint_position):
 
 
 func on_took_damage(source):
-	if source != null \
-	and source != $DealDamageArea:
+	if source != null:
 		var push_vel = -(source.global_position - position).normalized() * push_back
 		push_vel.y *= push_heigth_percentage
 		add_velocity_modifier(VelocityModifier.new(push_vel, .2, 3, true))

@@ -36,16 +36,17 @@ func apply_dash_damage():
 	if body_in_damage_radius == null: return
 	if !body_in_damage_radius.has_method("take_damage"): return
 
-	body_in_damage_radius.take_damage()
+	body_in_damage_radius.take_damage(body_in_damage_radius)
 
 
 func get_color():
 	return ELEMENTS.get_color(ELEMENT_TYPE)
 
 
-func _on_deal_dash_damage_area_body_exited(_body):
+func on_deal_damage_area_entered(target):
+	body_in_damage_radius = target
+	print("body entered: %s" % target)
+
+
+func on_deal_damage_area_exited(_target):
 	body_in_damage_radius = null
-
-
-func _on_deal_dash_damage_area_body_entered(body):
-	body_in_damage_radius = body

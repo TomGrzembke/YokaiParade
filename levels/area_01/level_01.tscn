@@ -591,114 +591,142 @@ element_type = ExtResource("12_6nc4e")
 [node name="WallWood" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(2590, 302)
 scale = Vector2(0.719995, 1.6)
+collision_layer = 11
 
 [node name="WallWood2" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(4839, 865)
 scale = Vector2(0.719995, 1.6)
+collision_layer = 11
 
 [node name="WallWood3" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(6686, 865)
 scale = Vector2(0.719995, 1.6)
+collision_layer = 11
 
 [node name="WallWood4" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(7093, 426)
 scale = Vector2(0.719995, 1.56)
+collision_layer = 11
 
 [node name="WallWood7" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(8381, 792)
 scale = Vector2(0.719995, 0.960002)
+collision_layer = 11
 
 [node name="WallWood8" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(10765, 331)
 scale = Vector2(0.719995, 1.76)
+collision_layer = 11
 
 [node name="WallWood12" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(13823, -585)
 scale = Vector2(0.719995, 1.76)
+collision_layer = 11
 
 [node name="WallWood14" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(13222, 268)
 scale = Vector2(0.719995, 1.76)
+collision_layer = 11
 
 [node name="WallWood13" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(15416, -863)
 scale = Vector2(0.719995, 1.76)
+collision_layer = 11
 
 [node name="WallWood15" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(15583, -573)
 scale = Vector2(0.719995, 1.56)
+collision_layer = 11
 
 [node name="WallWood16" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(18682, -275)
 scale = Vector2(0.719995, 1.8)
+collision_layer = 11
 
 [node name="WallWood17" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(19109, -1275)
 scale = Vector2(0.719995, 1.8)
+collision_layer = 11
 
 [node name="WallWood21" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(21726, -653)
 scale = Vector2(0.719995, 2.04)
+collision_layer = 11
 
 [node name="WallWood25" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(21248, -2089)
 scale = Vector2(0.719995, 2.04)
+collision_layer = 11
 
 [node name="WallWood26" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(22458, -2271)
 scale = Vector2(0.719995, 1.32)
+collision_layer = 11
 
 [node name="WallWood22" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(24331, -652)
 scale = Vector2(0.719995, 1.52)
+collision_layer = 11
 
 [node name="WallWood24" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(23594, -387)
 scale = Vector2(0.719995, 2.72)
+collision_layer = 11
 
 [node name="WallWood23" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(24331, -932)
 scale = Vector2(0.719995, 1.52)
+collision_layer = 11
 
 [node name="WallWood28" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(27484, -1500)
 scale = Vector2(0.719995, 2.12)
+collision_layer = 11
 
 [node name="WallWood27" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(24021, -1836)
 scale = Vector2(0.719995, 2.87111)
+collision_layer = 11
 
 [node name="WallWood18" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(17542, -1632)
 scale = Vector2(0.719995, 2.36)
+collision_layer = 11
 
 [node name="WallWood20" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(17020, -949)
 scale = Vector2(0.719995, 1.28)
+collision_layer = 11
 
 [node name="WallWood19" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(18985, -1714)
 scale = Vector2(0.719995, 2.36)
+collision_layer = 11
 
 [node name="WallWood10" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(9670, -131)
 scale = Vector2(0.719995, 1.08)
+collision_layer = 11
 
 [node name="WallWood11" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(9461, -348)
 scale = Vector2(0.719995, 1.28)
+collision_layer = 11
 
 [node name="WallWood9" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(10980, -266)
 scale = Vector2(0.719995, 2.76)
+collision_layer = 11
 
 [node name="WallWood6" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(5621, 37)
 scale = Vector2(0.719995, 1.48)
+collision_layer = 11
 
 [node name="WallWood5" parent="Wooden Walls" instance=ExtResource("14_k8wsk")]
 position = Vector2(7174, 148)
 scale = Vector2(0.719995, 1.6)
+collision_layer = 11
 
 [node name="Deathzones" type="Node2D" parent="."]
 

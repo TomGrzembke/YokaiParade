@@ -21,6 +21,7 @@ radius = 18.0
 height = 74.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 16
 script = ExtResource("1_uybn7")
 speed = 325.0
 acceleration = 100.0
@@ -67,14 +68,6 @@ texture = ExtResource("5_eow6v")
 region_enabled = true
 region_rect = Rect2(0, 0, 160, 120)
 
-[connection signal="area_entered" from="DealDamageArea" to="." method="on_deal_damage_area_entered"]
-[connection signal="area_entered" from="DealDamageArea" to="AbilityManager" method="_on_deal_damage_area_entered"]
-[connection signal="area_exited" from="DealDamageArea" to="AbilityManager" method="_on_deal_damage_area_exited"]
-[connection signal="area_exited" from="DealDamageArea" to="DealDamageArea" method="on_deal_damage_area_exited"]
-[connection signal="body_entered" from="DealDamageArea" to="." method="on_deal_damage_area_exited"]
-[connection signal="body_exited" from="DealDamageArea" to="DealDamageArea" method="on_deal_damage_area_exited"]
-[connection signal="area_entered" from="TakeDamageArea" to="TakeDamageArea" method="on_take_damage_area_entered"]
-[connection signal="area_exited" from="TakeDamageArea" to="TakeDamageArea" method="on_take_damage_area_exited"]
-[connection signal="body_entered" from="TakeDamageArea" to="TakeDamageArea" method="on_take_damage_area_entered"]
-[connection signal="body_exited" from="TakeDamageArea" to="TakeDamageArea" method="on_take_damage_area_exited"]
-[connection signal="took_damage" from="TakeDamageArea" to="." method="on_took_damage"]
+[connection signal="deal_damage_area_entered" from="DealDamageArea" to="AbilityManager" method="on_deal_damage_area_entered"]
+[connection signal="deal_damage_area_exited" from="DealDamageArea" to="AbilityManager" method="on_deal_damage_area_exited"]
+[connection signal="take_damage_area_entered" from="TakeDamageArea" to="." method="on_took_damage"]

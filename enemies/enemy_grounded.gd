@@ -8,15 +8,11 @@ enum EnemyState {
 	RECOVERING = 300,
 }
 
-enum Direction {
-	LEFT = -1,
-	RIGHT = 1,
-}
 
 @export var starting_state: EnemyState = EnemyState.MOVING
 @export var recovery_time = 3.0
 @export var speed = 100.0
-@export var initial_direction = Direction.RIGHT
+@export var initial_direction = 1.0
 @export var element_type: EnemyElementType
 
 @onready var deal_damage_area: Area2D = $DealDamageArea
@@ -104,14 +100,17 @@ func set_alpha(alpha):
 	%MeshInstance2D.modulate = color
 
 
-func got_caught():
+func got_caught(_source):
 	if state == EnemyState.RECOVERING:
 		return null
 
 	enemy_caught.emit()
 	enter_state(EnemyState.RECOVERING)
+
+	if element_type == null:
+		return null
 	return element_type.spawning_ability
 
 
 func refresh_hitbox():
-	deal_damage_area.monitoring = state != EnemyState.RECOVERING
+	deal_damage_area.set_deferred("monitoring", state != EnemyState.RECOVERING)

@@ -47,10 +47,3 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
 shape = SubResource("CircleShape2D_1g50l")
 debug_color = Color(0.959102, 9.62615e-08, 0.523485, 0.42)
-
-[connection signal="area_exited" from="DealDamageArea" to="DealDamageArea" method="on_deal_damage_area_exited"]
-[connection signal="body_exited" from="DealDamageArea" to="DealDamageArea" method="on_deal_damage_area_exited"]
-[connection signal="area_entered" from="TakeDamageArea" to="TakeDamageArea" method="on_take_damage_area_entered"]
-[connection signal="area_exited" from="TakeDamageArea" to="TakeDamageArea" method="on_take_damage_area_exited"]
-[connection signal="body_entered" from="TakeDamageArea" to="TakeDamageArea" method="on_take_damage_area_entered"]
-[connection signal="body_exited" from="TakeDamageArea" to="TakeDamageArea" method="on_take_damage_area_exited"]

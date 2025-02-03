@@ -2,11 +2,13 @@ extends PathFollow2D
 
 signal enemy_caught
 
+
 enum EnemyState {
 	IDLING = 100,
 	MOVING = 200,
 	RECOVERING = 300,
 }
+
 
 @export var starting_state: EnemyState = EnemyState.MOVING
 @export var recovery_time = 3.0
@@ -115,14 +117,17 @@ func set_alpha(alpha):
 	%MeshInstance2D.modulate = color
 
 
-func got_caught():
+func got_caught(_source):
 	if state == EnemyState.RECOVERING:
 		return null
 
 	enemy_caught.emit()
 	enter_state(EnemyState.RECOVERING)
+
+	if element_type == null:
+		return null
 	return element_type.spawning_ability
 
 
 func refresh_hitbox():
-	deal_damage_area.monitoring = state != EnemyState.RECOVERING
+	deal_damage_area.set_deferred("monitoring", state != EnemyState.RECOVERING)

@@ -34,7 +34,7 @@ func catch_power():
 	var target_parent = target_area.get_parent()
 	if !target_parent.has_method("got_caught"): return
 
-	var ability = target_parent.got_caught()
+	var ability = target_parent.got_caught(self)
 	set_current_ability(ability)
 
 
@@ -63,11 +63,10 @@ func get_current_ability():
 	return current_ability
 
 
-func _on_deal_damage_area_entered(other):
-	if other.has_method("take_damage"):
-		target_area = other
+func on_deal_damage_area_entered(other):
+	target_area = other
 
 
-func _on_deal_damage_area_exited(other):
+func on_deal_damage_area_exited(other):
 	if other == target_area:
 		target_area = null
