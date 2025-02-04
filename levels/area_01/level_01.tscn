@@ -509,7 +509,6 @@ curve = SubResource("Curve2D_l3jod")
 
 [node name="EnemyFlying" parent="Enemies/Flying/FireFlyingMoving" instance=ExtResource("11_7oifl")]
 position = Vector2(13570, -493)
-scale = Vector2(0.75, 0.75)
 element_type = ExtResource("13_318k0")
 
 [node name="FireFlyingMoving2" type="Path2D" parent="Enemies/Flying"]
@@ -518,7 +517,6 @@ curve = SubResource("Curve2D_l3jod")
 
 [node name="EnemyFlying" parent="Enemies/Flying/FireFlyingMoving2" instance=ExtResource("11_7oifl")]
 position = Vector2(13570, -493)
-scale = Vector2(0.75, 0.75)
 element_type = ExtResource("13_318k0")
 
 [node name="AirFlyingMoving" type="Path2D" parent="Enemies/Flying"]
@@ -527,7 +525,6 @@ curve = SubResource("Curve2D_8w3ql")
 
 [node name="EnemyFlying" parent="Enemies/Flying/AirFlyingMoving" instance=ExtResource("11_7oifl")]
 position = Vector2(17355, -1425)
-scale = Vector2(0.75, 0.75)
 element_type = ExtResource("12_6nc4e")
 
 [node name="AirFlyingMoving2" type="Path2D" parent="Enemies/Flying"]
@@ -536,7 +533,6 @@ curve = SubResource("Curve2D_8w3ql")
 
 [node name="EnemyFlying" parent="Enemies/Flying/AirFlyingMoving2" instance=ExtResource("11_7oifl")]
 position = Vector2(17355, -1425)
-scale = Vector2(0.75, 0.75)
 element_type = ExtResource("12_6nc4e")
 
 [node name="Wooden Walls" type="Node2D" parent="."]
