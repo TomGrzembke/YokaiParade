@@ -1,7 +1,9 @@
 extends Node2D
 
+
 const ELEMENTS = preload("res://elements/elements.gd")
 const ELEMENT_TYPE = ELEMENTS.ElementType.FIRE
+
 
 @export var dash_velocity = 300.0
 @export var dash_duration = 1.0
@@ -9,7 +11,7 @@ const ELEMENT_TYPE = ELEMENTS.ElementType.FIRE
 @export var disable_player_movement := true
 
 var is_dashing := false
-var body_in_damage_radius
+var target_in_damage_radius
 
 
 func _physics_process(_delta):
@@ -33,19 +35,22 @@ func exit_ability():
 
 
 func apply_dash_damage():
-	if body_in_damage_radius == null: return
-	if !body_in_damage_radius.has_method("take_damage"): return
+	if target_in_damage_radius == null: return
+	var target_parent = target_in_damage_radius.get_parent()
 
-	body_in_damage_radius.take_damage()
+	if target_parent == null: return
+	if not target_parent.has_method("took_fire_damage"): return
+
+	target_parent.took_fire_damage(self)
 
 
 func get_color():
 	return ELEMENTS.get_color(ELEMENT_TYPE)
 
 
-func _on_deal_dash_damage_area_body_exited(_body):
-	body_in_damage_radius = null
+func on_deal_damage_area_entered(target):
+	target_in_damage_radius = target
 
 
-func _on_deal_dash_damage_area_body_entered(body):
-	body_in_damage_radius = body
+func on_deal_damage_area_exited(_target):
+	target_in_damage_radius = null

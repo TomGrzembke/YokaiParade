@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://4v2t32qfx3hb"]
 
-[ext_resource type="Texture2D" uid="uid://btuhde0syvbty" path="res://levels/level_01/benchmark_platform.png" id="1_amuvg"]
-[ext_resource type="Texture2D" uid="uid://dxdfcsh6knkl8" path="res://levels/level_01/bamboo_parts.png" id="2_pr8rr"]
+[ext_resource type="Texture2D" uid="uid://btuhde0syvbty" path="res://levels/area_01/platform_swirly.png" id="1_amuvg"]
+[ext_resource type="Texture2D" uid="uid://dxdfcsh6knkl8" path="res://levels/area_01/obstacles_spritesheet.png" id="2_pr8rr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pme8a"]
 texture = ExtResource("1_amuvg")

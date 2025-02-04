@@ -3,8 +3,9 @@ extends Node2D
 
 const COLOR_PLAIN = Color("#949494")
 
+
 var current_ability
-var target_area
+var target_in_damage_radius
 
 @onready var player: CharacterBody2D = $".."
 @onready var visual: MeshInstance2D = %AbilityVisual
@@ -29,12 +30,13 @@ func use_ability():
 
 
 func catch_power():
-	if target_area == null: return
+	if target_in_damage_radius == null: return
 
-	var target_parent = target_area.get_parent()
-	if !target_parent.has_method("got_caught"): return
+	var target_parent = target_in_damage_radius.get_parent()
+	if target_parent == null: return
+	if not target_parent.has_method("got_caught"): return
 
-	var ability = target_parent.got_caught()
+	var ability = target_parent.got_caught(self)
 	set_current_ability(ability)
 
 
@@ -63,11 +65,10 @@ func get_current_ability():
 	return current_ability
 
 
-func _on_deal_damage_area_entered(other):
-	if other.has_method("take_damage"):
-		target_area = other
+func on_deal_damage_area_entered(other):
+	target_in_damage_radius = other
 
 
-func _on_deal_damage_area_exited(other):
-	if other == target_area:
-		target_area = null
+func on_deal_damage_area_exited(other):
+	if other == target_in_damage_radius:
+		target_in_damage_radius = null

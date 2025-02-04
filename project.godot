@@ -118,10 +118,10 @@ reset_checkpoint={
 
 [layer_names]
 
-2d_physics/layer_1="Obstacle"
-2d_physics/layer_2="Destruction"
-2d_physics/layer_3="Enemies"
-2d_physics/layer_4="Wall"
+2d_physics/layer_1="Obstacles"
+2d_physics/layer_2="Characters"
+2d_physics/layer_3="Normal Damage"
+2d_physics/layer_4="Fire Damage"
 
 [physics]
 
