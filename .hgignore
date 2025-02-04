@@ -1,6 +1,13 @@
 syntax: glob
 *.orig
 *.tmp
-build/
+
+syntax: rootglob
+build/yokaiparade-html/**
+build/yokaiparade-linux/**
+build/yokaiparade-win/**
+build/yokaiparade-mac/**
+build/*.zip
+
 syntax: regexp
 \.godot\/(?!uid_cache.bin).*
