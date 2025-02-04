@@ -12,6 +12,7 @@ size = Vector2(160, 50)
 size = Vector2(50, 160)
 
 [node name="WallWood" type="StaticBody2D"]
+collision_mask = 0
 script = ExtResource("1_p5vco")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
@@ -25,9 +26,7 @@ rotation = -1.5708
 shape = SubResource("RectangleShape2D_kk5bv")
 
 [node name="TakeDamageArea" parent="." instance=ExtResource("2_4ya7c")]
-collision_layer = 2
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
 shape = SubResource("RectangleShape2D_viq44")
-
-[connection signal="take_damage_area_entered" from="TakeDamageArea" to="." method="on_took_damage"]

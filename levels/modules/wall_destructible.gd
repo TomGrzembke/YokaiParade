@@ -1,5 +1,5 @@
 extends StaticBody2D
 
 
-func on_took_damage(_source):
+func took_fire_damage(_source):
 	queue_free()

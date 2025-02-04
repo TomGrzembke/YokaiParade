@@ -260,7 +260,6 @@ element_type = ExtResource("12_6nc4e")
 [node name="EnemyGrounded2" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(2458, 401)
 scale = Vector2(0.75, 0.75)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded4" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
