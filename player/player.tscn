@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnxi2gyvo83ec"]
+[gd_scene load_steps=13 format=3 uid="uid://dnxi2gyvo83ec"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/ability_manager.gd" id="2_es05j"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/take_damage_area.tscn" id="4_y0ly5"]
 [ext_resource type="Texture2D" uid="uid://dylr0e5cupavl" path="res://player/player.png" id="5_eow6v"]
 [ext_resource type="Script" path="res://player/attack.gd" id="6_dwlkh"]
+[ext_resource type="Script" path="res://player/debug.gd" id="7_3jai0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1mi2e"]
 radius = 25.0
@@ -89,6 +90,9 @@ position = Vector2(29, 16)
 
 [node name="AttackLine" type="Line2D" parent="Visuals"]
 width_curve = SubResource("Curve_xeqma")
+
+[node name="Debug" type="Node2D" parent="."]
+script = ExtResource("7_3jai0")
 
 [connection signal="deal_damage_area_entered" from="DealDamageArea" to="AbilityManager" method="on_deal_damage_area_entered"]
 [connection signal="deal_damage_area_exited" from="DealDamageArea" to="AbilityManager" method="on_deal_damage_area_exited"]

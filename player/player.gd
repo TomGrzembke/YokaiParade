@@ -37,9 +37,15 @@ var outer_velocity_sources := Vector2(0,0)
 var velocity_mod_instigator = []
 var player_control := true
 var is_cancelling_jump := false
+var debug_mode = false
 
 
 func _physics_process(delta):
+
+	if debug_mode:
+		debug_logic()
+		return
+
 	if player_control:
 		run()
 		update_gravity(delta)
@@ -61,7 +67,6 @@ func run():
 		local_velocity.x = move_toward(local_velocity.x, move_direction * speed, acceleration)
 	else:
 		local_velocity.x = move_toward(local_velocity.x, 0, deceleration)
-
 	flip()
 
 
@@ -296,3 +301,19 @@ func on_took_damage(source):
 		#note: temporary implementation
 		if Input.get_connected_joypads().size() > 0:
 			Input.start_joy_vibration(0, 0.5, 0.0, 0.5)
+
+
+func toggle_debug():
+	debug_mode = !debug_mode
+	return debug_mode
+
+
+func debug_logic():
+	debug_movement()
+
+
+func debug_movement():
+	velocity = Vector2(Input.get_vector("left", "right", "up", "down")).normalized()
+	velocity *= speed * 2.5
+	run()
+	move_and_slide()
