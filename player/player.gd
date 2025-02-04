@@ -16,8 +16,8 @@ const INFINITY = 1e20
 @export_category("Movement extras")
 @export_range(.0, 1.0, .01) var jump_coyote_time = .15
 @export_range(.0, 1.0, .01) var jump_buffer_time = .15
-@export_range(.0, 1, .01) var initial_jump_heigth_smooth = .7
-@export_range(.0, .9, .01) var jump_heigth_smooth = .6
+@export_range(.0, 1, .01) var variable_jump_heigth_min_percentage = .7
+@export_range(.0, .99, .01) var jump_heigth_continuous_cut_percentage = .6
 @export_category("Enemey Push")
 @export var push_back = 500.0
 @export_range(.0, 1.5, .1) var push_heigth_percentage = .75
@@ -37,9 +37,16 @@ var outer_velocity_sources := Vector2(0,0)
 var velocity_mod_instigator = []
 var player_control := true
 var is_cancelling_jump := false
+var debug_mode = false
+var debug_speed_modifier = 3
 
 
 func _physics_process(delta):
+
+	if debug_mode:
+		debug_logic()
+		return
+
 	if player_control:
 		run()
 		update_gravity(delta)
@@ -61,7 +68,6 @@ func run():
 		local_velocity.x = move_toward(local_velocity.x, move_direction * speed, acceleration)
 	else:
 		local_velocity.x = move_toward(local_velocity.x, 0, deceleration)
-
 	flip()
 
 
@@ -136,15 +142,15 @@ func variable_jump_heigth():
 	var is_falling = local_velocity.y < 0
 	if Input.is_action_just_released("jump") && player_control && is_falling:
 		is_cancelling_jump = true
-		if initial_jump_heigth_smooth != 0:
-			local_velocity.y *= initial_jump_heigth_smooth
+		if variable_jump_heigth_min_percentage != 0:
+			local_velocity.y *= variable_jump_heigth_min_percentage
 
 	if is_on_floor():
 		is_cancelling_jump = false
 
 	if is_cancelling_jump && is_falling:
-		if jump_heigth_smooth != 0:
-			local_velocity.y *= jump_heigth_smooth
+		if jump_heigth_continuous_cut_percentage != 0:
+			local_velocity.y *= jump_heigth_continuous_cut_percentage
 
 
 func handle_jump_buffer_time(delta):
@@ -296,3 +302,23 @@ func on_took_damage(source):
 		#note: temporary implementation
 		if Input.get_connected_joypads().size() > 0:
 			Input.start_joy_vibration(0, 0.5, 0.0, 0.5)
+
+
+func toggle_debug():
+	debug_mode = !debug_mode
+	return debug_mode
+
+
+func set_debug_speed_modifier(modifier):
+	debug_speed_modifier = modifier
+
+
+func debug_logic():
+	debug_movement()
+
+
+func debug_movement():
+	velocity = Vector2(Input.get_vector("left", "right", "up", "down")).normalized()
+	velocity *= speed * debug_speed_modifier
+	run()
+	move_and_slide()

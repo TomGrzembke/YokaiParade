@@ -8,7 +8,7 @@ enum ElementType {
 
 
 const COLOR_MAP = {
-	ElementType.AIR: Color("#dbdbdb"),
+	ElementType.AIR: Color("#6d8cff"),
 	ElementType.FIRE: Color("#b05a5a"),
 }
 
