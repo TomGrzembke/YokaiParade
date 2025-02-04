@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bomxlv8ndomnc"]
+[gd_scene load_steps=9 format=3 uid="uid://bomxlv8ndomnc"]
 
 [ext_resource type="Script" path="res://enemies/enemy_grounded.gd" id="1_ckp3m"]
 [ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/deal_damage_area.tscn" id="2_jj2bd"]
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/take_damage_area.tscn" id="3_rf8mi"]
+[ext_resource type="Texture2D" uid="uid://dxc7mktamxtdo" path="res://enemies/enemy_grounded.png" id="4_m5rev"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_8iadr"]
 
@@ -46,3 +47,6 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
 shape = SubResource("CircleShape2D_1g50l")
 debug_color = Color(0.959102, 9.62615e-08, 0.523485, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_m5rev")
