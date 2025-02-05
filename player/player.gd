@@ -16,11 +16,11 @@ const INFINITY = 1e20
 @export_category("Movement extras")
 @export_range(.0, 1.0, .01) var jump_coyote_time = .15
 @export_range(.0, 1.0, .01) var jump_buffer_time = .15
-@export_range(.0, 1, .01) var variable_jump_heigth_min_percentage = .7
-@export_range(.0, .99, .01) var jump_heigth_continuous_cut_percentage = .6
+@export_range(.0, 1, .01) var variable_jump_height_min_percentage = .7
+@export_range(.0, .99, .01) var jump_height_continuous_cut_percentage = .6
 @export_category("Enemey Push")
 @export var push_back = 500.0
-@export_range(.0, 1.5, .1) var push_heigth_percentage = .75
+@export_range(.0, 1.5, .1) var push_height_percentage = .75
 
 @onready var ability_manager: Node2D = $AbilityManager
 
@@ -142,15 +142,15 @@ func variable_jump_heigth():
 	var is_falling = local_velocity.y < 0
 	if Input.is_action_just_released("jump") && player_control && is_falling:
 		is_cancelling_jump = true
-		if variable_jump_heigth_min_percentage != 0:
-			local_velocity.y *= variable_jump_heigth_min_percentage
+		if variable_jump_height_min_percentage != 0:
+			local_velocity.y *= variable_jump_height_min_percentage
 
 	if is_on_floor():
 		is_cancelling_jump = false
 
 	if is_cancelling_jump && is_falling:
-		if jump_heigth_continuous_cut_percentage != 0:
-			local_velocity.y *= jump_heigth_continuous_cut_percentage
+		if jump_height_continuous_cut_percentage != 0:
+			local_velocity.y *= jump_height_continuous_cut_percentage
 
 
 func handle_jump_buffer_time(delta):
@@ -296,7 +296,7 @@ func on_reached_checkpoint(checkpoint_position):
 func on_took_damage(source):
 	if source != null:
 		var push_vel = -(source.global_position - position).normalized() * push_back
-		push_vel.y *= push_heigth_percentage
+		push_vel.y *= push_height_percentage
 		add_velocity_modifier(VelocityModifier.new(push_vel, .2, 3, true))
 		# TODO: Stumble back and make invincible for a while, see GDD
 		#note: temporary implementation

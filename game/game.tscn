@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://daq0ts878ltif"]
+[gd_scene load_steps=8 format=3 uid="uid://daq0ts878ltif"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_g4chm"]
 [ext_resource type="PackedScene" uid="uid://c1vmd4h5v5fxl" path="res://levels/area_01/level_01.tscn" id="3_6avmr"]
+[ext_resource type="PackedScene" path="res://levels/area_01/level_01-short.tscn" id="3_6nqfb"]
 [ext_resource type="Script" path="res://levels/level_manager.gd" id="3_6riac"]
+[ext_resource type="PackedScene" path="res://levels/area_01/level_03.tscn" id="4_fvx2a"]
 [ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="4_k85dl"]
+[ext_resource type="PackedScene" path="res://levels/area_01/level_02.tscn" id="4_tfkiu"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_g4chm")
@@ -11,7 +14,7 @@ script = ExtResource("1_g4chm")
 [node name="LevelManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_6riac")
-levels = Array[PackedScene]([ExtResource("3_6avmr")])
+levels = Array[PackedScene]([ExtResource("3_6nqfb"), ExtResource("4_tfkiu"), ExtResource("4_fvx2a"), ExtResource("3_6avmr")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true

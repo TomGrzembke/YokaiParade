@@ -1,12 +1,15 @@
 extends Node2D
 
+
 @onready var player: CharacterBody2D = $".."
 @onready var collision_shape: CollisionShape2D = $"../CollisionShape2D"
 @export var debug_speed_steps = 1
+
 var debug_speed
 var debug_mode
 
-func _unhandled_input(event: InputEvent) -> void:
+
+func _unhandled_input(_event):
 	if !visible: return
 
 	if Input.is_action_just_pressed("DebugMode"):
