@@ -23,7 +23,7 @@ radius = 14.0
 [node name="EnemyGrounded" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 collision_layer = 2
 script = ExtResource("1_ckp3m")
-initial_state = NodePath("StateMachine/Moving")
+initial_state = NodePath("StateMachine/Idling")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 unique_name_in_owner = true
