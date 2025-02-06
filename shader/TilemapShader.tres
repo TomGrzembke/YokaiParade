@@ -8,6 +8,6 @@ shader = ExtResource("1_uvh4n")
 shader_parameter/overlay_alpha = 1.0
 shader_parameter/tint_amount = 0.0
 shader_parameter/pattern_scale = Vector2(3, 3)
-shader_parameter/tilemap_offset = Vector2(1.035, 0)
+shader_parameter/tilemap_offset = Vector2(1, 0)
 shader_parameter/flip_alpha = true
 shader_parameter/pattern_texture = ExtResource("2_b65hr")

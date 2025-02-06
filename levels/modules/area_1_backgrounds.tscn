@@ -34,8 +34,8 @@ fill_to = Vector2(0, 0)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ovdoh"]
 shader = ExtResource("5_w3sdd")
 shader_parameter/overlay_alpha = 1.0
-shader_parameter/color_multiplier = 5.485
-shader_parameter/pattern_scale = Vector2(1, 1)
+shader_parameter/color_multiplier = 1.0
+shader_parameter/pattern_scale = Vector2(2, 2)
 shader_parameter/tilemap_offset = Vector2(0, 0)
 shader_parameter/flip_alpha = false
 shader_parameter/pattern_texture = ExtResource("2_y3agf")
@@ -61,6 +61,17 @@ repeat_times = 7
 position = Vector2(0, 800)
 texture = ExtResource("3_6pkbi")
 
+[node name="BGPatternParallax" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.04, 0.04)
+repeat_size = Vector2(1000, 0)
+repeat_times = 4
+
+[node name="BGPattern" type="Sprite2D" parent="BGPatternParallax"]
+material = SubResource("ShaderMaterial_ovdoh")
+position = Vector2(963.5, 1086)
+scale = Vector2(1000, 562.5)
+texture = ExtResource("6_53e8n")
+
 [node name="MountainsMiddleParallax" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.05, 0.05)
 repeat_size = Vector2(1500, 0)
@@ -74,12 +85,6 @@ texture = ExtResource("4_hhbm4")
 scroll_scale = Vector2(0.1, 0.1)
 repeat_size = Vector2(1920, 0)
 repeat_times = 4
-
-[node name="BGPattern" type="Sprite2D" parent="MountainsCloseParallax"]
-material = SubResource("ShaderMaterial_ovdoh")
-position = Vector2(963.5, 1086)
-scale = Vector2(1920, 1080)
-texture = ExtResource("6_53e8n")
 
 [node name="Sprite2D" type="Sprite2D" parent="MountainsCloseParallax"]
 position = Vector2(0, 800)
