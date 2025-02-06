@@ -1,7 +1,7 @@
 extends Node
 
 
-var current_state: State
+var current_state
 
 
 func init(parent, initial_state):
@@ -13,6 +13,10 @@ func init(parent, initial_state):
 
 
 func change_state(new_state):
+	if new_state == null:
+		printerr("Error: State to change to must not be null!")
+		return
+
 	var previous_state = current_state
 
 	if current_state != null:

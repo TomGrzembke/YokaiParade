@@ -8,8 +8,8 @@ var progression_direction = 1.0
 var progress_ratio_raw = 0.0
 
 
-func init(parent_node):
-	super(parent_node)
+func init(p_parent):
+	super(p_parent)
 	speed = parent.max_speed
 	path_length = parent.get_path_length()
 	is_path_closed = parent.get_is_path_closed()

@@ -5,9 +5,9 @@ signal enemy_caught(enemy)
 
 
 @export var initial_state: State
+@export var max_speed = 150.0
 @export var recovery_time = 3.0
 @export var easing_curve: Curve
-@export var max_speed = 150.0
 @export var element_type: EnemyElementType
 
 var is_getting_caught = false

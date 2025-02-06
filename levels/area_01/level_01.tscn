@@ -10,7 +10,7 @@
 [ext_resource type="TileSet" uid="uid://4v2t32qfx3hb" path="res://levels/area_01/tileset_area_01.tres" id="8_ghwgw"]
 [ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/modules/player_spawn_point.tscn" id="9_2l27r"]
 [ext_resource type="PackedScene" uid="uid://dotrddyc18eeh" path="res://levels/modules/checkpoint.tscn" id="10_hluk6"]
-[ext_resource type="PackedScene" uid="uid://b5s4b6xdudwso" path="res://enemies/enemy_flying.tscn" id="11_7oifl"]
+[ext_resource type="PackedScene" uid="uid://b5s4b6xdudwso" path="res://enemies/enemy_airborne.tscn" id="11_7oifl"]
 [ext_resource type="PackedScene" uid="uid://bomxlv8ndomnc" path="res://enemies/enemy_grounded.tscn" id="11_m112t"]
 [ext_resource type="Resource" uid="uid://tvyt8dx4csl5" path="res://enemies/types/enemy_element_type_air.tres" id="12_6nc4e"]
 [ext_resource type="Resource" uid="uid://be56k4m11w44j" path="res://enemies/types/enemy_element_type_fire.tres" id="13_318k0"]
@@ -144,187 +144,150 @@ texture = ExtResource("6_e8rcs")
 
 [node name="EnemyGrounded" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(1351, 959)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded5" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(5589, 1004)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded13" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(8633, 1121)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded14" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(10070, 1121)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded15" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(10458, 843)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded18" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(9850, 170)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded20" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(8922, 126)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded21" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(8420, 406)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded17" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(11131, 443)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded23" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(12328, -31)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded26" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(14255, 721)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded27" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(15514, 604)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded28" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(15529, 128)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded31" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(18632, -480)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded36" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(21656, -1953)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded37" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(23171, -1874)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded35" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(24629, -837)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded32" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(18369, -1590)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded24" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(14174, -472)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded9" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(4956, 488)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded10" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(5962, 129)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded3" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(3433, 1036)
-starting_state = 100
 element_type = ExtResource("12_6nc4e")
 
 [node name="EnemyGrounded2" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(2458, 401)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded4" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(4466, 879)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded8" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(5341, 9)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded6" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(6409, 1005)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded7" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(6602, 602)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded11" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(7080, 250)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded12" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(8639, 842)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded16" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(10467, 441)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded25" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(12743, 406)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded29" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(15009, -357)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded30" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(18429, -77)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded33" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(23214, -358)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded34" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(24791, -436)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded22" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(9255, -152)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="EnemyGrounded19" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
 position = Vector2(9817, -70)
-starting_state = 100
 element_type = ExtResource("13_318k0")
 
 [node name="AirGroundedMoving" parent="Enemies/Grounded" instance=ExtResource("11_m112t")]
@@ -383,6 +346,8 @@ curve = SubResource("Curve2D_u3p0n")
 
 [node name="EnemyFlying" parent="Enemies/Flying/AirFlying" instance=ExtResource("11_7oifl")]
 position = Vector2(-25.333, -112)
+max_speed = 150.0
+recovery_time = 3.0
 
 [node name="AirFlying2" type="Path2D" parent="Enemies/Flying"]
 position = Vector2(10329, 79)
@@ -390,6 +355,8 @@ curve = SubResource("Curve2D_u3p0n")
 
 [node name="EnemyFlying" parent="Enemies/Flying/AirFlying2" instance=ExtResource("11_7oifl")]
 position = Vector2(-77.333, -261.333)
+max_speed = 150.0
+recovery_time = 3.0
 
 [node name="AirFlying3" type="Path2D" parent="Enemies/Flying"]
 position = Vector2(10329, 79)
@@ -397,6 +364,8 @@ curve = SubResource("Curve2D_u3p0n")
 
 [node name="EnemyFlying" parent="Enemies/Flying/AirFlying3" instance=ExtResource("11_7oifl")]
 position = Vector2(1666, -25)
+max_speed = 150.0
+recovery_time = 3.0
 
 [node name="AirFlying4" type="Path2D" parent="Enemies/Flying"]
 position = Vector2(10329, 79)
@@ -404,6 +373,8 @@ curve = SubResource("Curve2D_u3p0n")
 
 [node name="EnemyFlying" parent="Enemies/Flying/AirFlying4" instance=ExtResource("11_7oifl")]
 position = Vector2(2283, -468)
+max_speed = 150.0
+recovery_time = 3.0
 
 [node name="AirFlying5" type="Path2D" parent="Enemies/Flying"]
 position = Vector2(10329, 79)
@@ -411,6 +382,8 @@ curve = SubResource("Curve2D_u3p0n")
 
 [node name="EnemyFlying" parent="Enemies/Flying/AirFlying5" instance=ExtResource("11_7oifl")]
 position = Vector2(4122, -838)
+max_speed = 150.0
+recovery_time = 3.0
 
 [node name="AirFlying6" type="Path2D" parent="Enemies/Flying"]
 position = Vector2(10329, 79)
@@ -418,6 +391,8 @@ curve = SubResource("Curve2D_u3p0n")
 
 [node name="EnemyFlying" parent="Enemies/Flying/AirFlying6" instance=ExtResource("11_7oifl")]
 position = Vector2(6127, -703)
+max_speed = 150.0
+recovery_time = 3.0
 
 [node name="AirFlying8" type="Path2D" parent="Enemies/Flying"]
 position = Vector2(10329, 79)
@@ -425,6 +400,8 @@ curve = SubResource("Curve2D_u3p0n")
 
 [node name="EnemyFlying" parent="Enemies/Flying/AirFlying8" instance=ExtResource("11_7oifl")]
 position = Vector2(11918, -659)
+max_speed = 150.0
+recovery_time = 3.0
 
 [node name="AirFlying7" type="Path2D" parent="Enemies/Flying"]
 position = Vector2(10329, 79)
@@ -432,6 +409,8 @@ curve = SubResource("Curve2D_u3p0n")
 
 [node name="EnemyFlying" parent="Enemies/Flying/AirFlying7" instance=ExtResource("11_7oifl")]
 position = Vector2(17800, -1482)
+max_speed = 150.0
+recovery_time = 3.0
 
 [node name="AirFlying9" type="Path2D" parent="Enemies/Flying"]
 position = Vector2(10329, 79)
@@ -439,6 +418,8 @@ curve = SubResource("Curve2D_u3p0n")
 
 [node name="EnemyFlying" parent="Enemies/Flying/AirFlying9" instance=ExtResource("11_7oifl")]
 position = Vector2(12486, -2009)
+max_speed = 150.0
+recovery_time = 3.0
 
 [node name="FireFlying" type="Path2D" parent="Enemies/Flying"]
 position = Vector2(539, -61)
@@ -446,6 +427,8 @@ curve = SubResource("Curve2D_c6ivu")
 
 [node name="EnemyFlying" parent="Enemies/Flying/FireFlying" instance=ExtResource("11_7oifl")]
 position = Vector2(10304, -281)
+max_speed = 150.0
+recovery_time = 3.0
 element_type = ExtResource("13_318k0")
 
 [node name="FireFlying2" type="Path2D" parent="Enemies/Flying"]
@@ -454,6 +437,8 @@ curve = SubResource("Curve2D_c6ivu")
 
 [node name="EnemyFlying" parent="Enemies/Flying/FireFlying2" instance=ExtResource("11_7oifl")]
 position = Vector2(16900, -1540)
+max_speed = 150.0
+recovery_time = 3.0
 element_type = ExtResource("13_318k0")
 
 [node name="FireFlying4" type="Path2D" parent="Enemies/Flying"]
@@ -462,6 +447,8 @@ curve = SubResource("Curve2D_c6ivu")
 
 [node name="EnemyFlying" parent="Enemies/Flying/FireFlying4" instance=ExtResource("11_7oifl")]
 position = Vector2(16363, -873)
+max_speed = 150.0
+recovery_time = 3.0
 element_type = ExtResource("13_318k0")
 
 [node name="FireFlying3" type="Path2D" parent="Enemies/Flying"]
@@ -470,6 +457,8 @@ curve = SubResource("Curve2D_c6ivu")
 
 [node name="EnemyFlying" parent="Enemies/Flying/FireFlying3" instance=ExtResource("11_7oifl")]
 position = Vector2(18308, -1634)
+max_speed = 150.0
+recovery_time = 3.0
 element_type = ExtResource("13_318k0")
 
 [node name="FireFlying5" type="Path2D" parent="Enemies/Flying"]
@@ -478,6 +467,8 @@ curve = SubResource("Curve2D_c6ivu")
 
 [node name="EnemyFlying" parent="Enemies/Flying/FireFlying5" instance=ExtResource("11_7oifl")]
 position = Vector2(20543, -1935)
+max_speed = 150.0
+recovery_time = 3.0
 element_type = ExtResource("13_318k0")
 
 [node name="FireFlying6" type="Path2D" parent="Enemies/Flying"]
@@ -486,6 +477,8 @@ curve = SubResource("Curve2D_c6ivu")
 
 [node name="EnemyFlying" parent="Enemies/Flying/FireFlying6" instance=ExtResource("11_7oifl")]
 position = Vector2(23330, -1779)
+max_speed = 150.0
+recovery_time = 3.0
 element_type = ExtResource("13_318k0")
 
 [node name="FireFlyingMoving" type="Path2D" parent="Enemies/Flying"]
@@ -494,6 +487,8 @@ curve = SubResource("Curve2D_l3jod")
 
 [node name="EnemyFlying" parent="Enemies/Flying/FireFlyingMoving" instance=ExtResource("11_7oifl")]
 position = Vector2(13570, -493)
+max_speed = 150.0
+recovery_time = 3.0
 element_type = ExtResource("13_318k0")
 
 [node name="FireFlyingMoving2" type="Path2D" parent="Enemies/Flying"]
@@ -502,6 +497,8 @@ curve = SubResource("Curve2D_l3jod")
 
 [node name="EnemyFlying" parent="Enemies/Flying/FireFlyingMoving2" instance=ExtResource("11_7oifl")]
 position = Vector2(13570, -493)
+max_speed = 150.0
+recovery_time = 3.0
 element_type = ExtResource("13_318k0")
 
 [node name="AirFlyingMoving" type="Path2D" parent="Enemies/Flying"]
@@ -510,6 +507,8 @@ curve = SubResource("Curve2D_8w3ql")
 
 [node name="EnemyFlying" parent="Enemies/Flying/AirFlyingMoving" instance=ExtResource("11_7oifl")]
 position = Vector2(17355, -1425)
+max_speed = 150.0
+recovery_time = 3.0
 
 [node name="AirFlyingMoving2" type="Path2D" parent="Enemies/Flying"]
 position = Vector2(4646, -949)
@@ -517,6 +516,8 @@ curve = SubResource("Curve2D_8w3ql")
 
 [node name="EnemyFlying" parent="Enemies/Flying/AirFlyingMoving2" instance=ExtResource("11_7oifl")]
 position = Vector2(17355, -1425)
+max_speed = 150.0
+recovery_time = 3.0
 
 [node name="Wooden Walls" type="Node2D" parent="."]
 
@@ -745,3 +746,5 @@ curve = SubResource("Curve2D_861li")
 
 [node name="EnemyFlying" parent="Path2D" instance=ExtResource("11_7oifl")]
 position = Vector2(264, 1000)
+max_speed = 150.0
+recovery_time = 3.0

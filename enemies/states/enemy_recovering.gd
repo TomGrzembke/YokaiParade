@@ -6,12 +6,13 @@ var recovery_timer
 var recovering = true
 
 
-func enter(previous_state):
+func enter(p_previous_state):
+	self.previous_state = p_previous_state
+
 	if previous_state == null:
 		printerr("Error: Recovering state should have a previous state!")
 		return
 
-	self.previous_state = previous_state
 	parent.set_is_getting_caught(false)
 
 	parent.set_deal_damage_active(false)

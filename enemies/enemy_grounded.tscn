@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bomxlv8ndomnc"]
+[gd_scene load_steps=13 format=3 uid="uid://bomxlv8ndomnc"]
 
 [ext_resource type="Script" path="res://enemies/enemy_grounded.gd" id="1_ckp3m"]
 [ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/damage/deal_damage_area.tscn" id="2_jj2bd"]
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="3_rf8mi"]
 [ext_resource type="Texture2D" uid="uid://dxc7mktamxtdo" path="res://enemies/enemy_grounded.png" id="4_m5rev"]
+[ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="5_2m4gu"]
+[ext_resource type="Script" path="res://enemies/states/enemy_grounded_moving.gd" id="6_n8hg2"]
+[ext_resource type="Script" path="res://enemies/states/enemy_idling.gd" id="7_4rj2s"]
+[ext_resource type="Script" path="res://enemies/states/enemy_recovering.gd" id="8_kxmfv"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_8iadr"]
 
@@ -16,10 +20,10 @@ radius = 34.1321
 [sub_resource type="CircleShape2D" id="CircleShape2D_1g50l"]
 radius = 14.0
 
-[node name="EnemyGrounded" type="CharacterBody2D"]
+[node name="EnemyGrounded" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 collision_layer = 2
 script = ExtResource("1_ckp3m")
-speed = 150.0
+initial_state = NodePath("StateMachine/Moving")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 unique_name_in_owner = true
@@ -36,6 +40,7 @@ unique_name_in_owner = true
 position = Vector2(34, 0)
 
 [node name="DealDamageArea" parent="." instance=ExtResource("2_jj2bd")]
+unique_name_in_owner = true
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageArea"]
@@ -51,3 +56,17 @@ debug_color = Color(0.959102, 9.62615e-08, 0.523485, 0.42)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -15)
 texture = ExtResource("4_m5rev")
+
+[node name="StateMachine" parent="." instance=ExtResource("5_2m4gu")]
+unique_name_in_owner = true
+
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("recovering_state")]
+script = ExtResource("6_n8hg2")
+recovering_state = NodePath("../Recovering")
+
+[node name="Idling" type="Node" parent="StateMachine" node_paths=PackedStringArray("recovering_state")]
+script = ExtResource("7_4rj2s")
+recovering_state = NodePath("../Recovering")
+
+[node name="Recovering" type="Node" parent="StateMachine"]
+script = ExtResource("8_kxmfv")
