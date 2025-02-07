@@ -36,12 +36,13 @@ func exit_ability():
 
 func apply_dash_damage():
 	if target_in_damage_radius == null: return
-	var target_parent = target_in_damage_radius.get_parent()
 
-	if target_parent == null: return
-	if not target_parent.has_method("took_fire_damage"): return
+	var damage_subject = target_in_damage_radius.get_damage_subject()
 
-	target_parent.took_fire_damage(self)
+	if damage_subject == null: return
+	if not damage_subject.has_method("took_fire_damage"): return
+
+	damage_subject.took_fire_damage(self)
 
 
 func get_color():

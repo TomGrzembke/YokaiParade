@@ -1,4 +1,4 @@
-extends Area2D
+extends "res://components/damage/damage_area.gd"
 
 
 signal take_damage_area_entered(source)

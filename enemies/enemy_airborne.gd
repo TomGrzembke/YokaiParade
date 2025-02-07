@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends PathFollow2D
 
 
 signal enemy_caught(enemy)
@@ -14,8 +14,8 @@ const STATES = preload("res://enemies/states/enemy_states.gd")
 @export var element_type: EnemyElementType
 
 @export_category("Movement")
-@export_enum("Right:1", "Left:-1") var initial_direction = 1
-@export var speed = 150.0
+@export var max_speed = 150.0
+@export var easing_curve: Curve
 
 @export_category("State Machine")
 @export var idling_state: State
@@ -23,11 +23,9 @@ const STATES = preload("res://enemies/states/enemy_states.gd")
 @export var recovering_state: State
 
 var is_getting_caught = false
-var direction
 
 
 func _ready():
-	direction = initial_direction
 	if element_type != null:
 		%MeshInstance2D.modulate = element_type.get_color()
 
@@ -39,6 +37,7 @@ func _ready():
 			init_state = recovering_state
 		_:
 			init_state = idling_state
+
 	%StateMachine.init(self, init_state)
 
 
@@ -70,26 +69,26 @@ func get_recovery_time():
 	return recovery_time
 
 
-func handle_turn():
-	if direction != null:
-		if is_on_wall() \
-		or is_on_cliff():
-			flip_horizontally()
+func get_is_path_closed():
+	var path = get_parent()
+	if path == null \
+	and path:
+		return
+
+	if path.curve.get_point_position(0) == path.curve.get_point_position(path.curve.point_count - 1):
+		return true
+
+	return false
 
 
-func flip_horizontally():
-	direction *= -1.0
-	scale.x *= -1.0
-
-
-func is_on_cliff():
-	return not %RayCast2D.is_colliding()
+func get_path_length():
+	return get_parent().curve.get_baked_length()
 
 
 func set_alpha(alpha):
-	var color = %MeshInstance2D.modulate
+	var color = %Sprite2D.modulate
 	color.a = alpha
-	%MeshInstance2D.modulate = color
+	%Sprite2D.modulate = color
 
 
 func got_caught(_source):

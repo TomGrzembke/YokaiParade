@@ -32,11 +32,11 @@ func use_ability():
 func catch_power():
 	if target_in_damage_radius == null: return
 
-	var target_parent = target_in_damage_radius.get_parent()
-	if target_parent == null: return
-	if not target_parent.has_method("got_caught"): return
+	var damage_subject = target_in_damage_radius.get_damage_subject()
+	if damage_subject == null: return
+	if not damage_subject.has_method("got_caught"): return
 
-	var ability = target_parent.got_caught(self)
+	var ability = damage_subject.got_caught(self)
 	set_current_ability(ability)
 
 

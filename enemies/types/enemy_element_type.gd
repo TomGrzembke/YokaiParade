@@ -4,7 +4,6 @@ class_name EnemyElementType
 
 const ELEMENTS = preload("res://elements/elements.gd")
 
-
 @export var element_type = ELEMENTS.ElementType.AIR
 @export var spawning_ability: PackedScene
 

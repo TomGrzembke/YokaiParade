@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cfnhlackt0u25"]
 
 [ext_resource type="Script" path="res://levels/modules/wall_destructible.gd" id="1_p5vco"]
-[ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/take_damage_area.tscn" id="2_4ya7c"]
+[ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="2_4ya7c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_45mgv"]
 

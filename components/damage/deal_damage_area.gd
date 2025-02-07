@@ -1,4 +1,4 @@
-extends Area2D
+extends "res://components/damage/damage_area.gd"
 
 
 signal deal_damage_area_entered(target)
@@ -6,12 +6,15 @@ signal deal_damage_area_exited(target)
 
 
 func on_deal_damage_area_entered(source):
-	var parent = get_parent()
-	var source_parent = source.get_parent()
+	if not source.has_method("get_damage_subject"):
+		return
 
-	if parent == null \
-	or parent == source \
-	or parent == source_parent:
+	var subject = get_damage_subject()
+	var source_subject = source.get_damage_subject()
+
+	if subject == null \
+	or subject == source \
+	or subject == source_subject:
 		return
 
 	if source != null \
@@ -21,12 +24,12 @@ func on_deal_damage_area_entered(source):
 
 
 func on_deal_damage_area_exited(source):
-	var parent = get_parent()
-	var source_parent = source.get_parent()
+	var subject = get_damage_subject()
+	var source_subject = source.get_damage_subject()
 
-	if parent == null \
-	or parent == source \
-	or parent == source_parent:
+	if subject == null \
+	or subject == source \
+	or subject == source_subject:
 		return
 
 	if source != null \
