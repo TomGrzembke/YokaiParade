@@ -24,7 +24,7 @@ func use(player_manager):
 	var vel_modifier = VelocityModifier.new(Vector2(dash_velocity, 0), dash_duration, 1, \
 	disable_player_movement, true)
 
-	vel_modifier.set_ability( $".")
+	vel_modifier.set_ability($".")
 	player_manager.add_velocity_modifier(vel_modifier)
 	is_dashing = true
 
@@ -54,6 +54,7 @@ func on_deal_damage_area_entered(target):
 
 func on_deal_damage_area_exited(_target):
 	target_in_damage_radius = null
+
 
 func joystick_vibrate():
 	if Input.get_connected_joypads().size() > 0:
