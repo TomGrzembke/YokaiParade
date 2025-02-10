@@ -32,6 +32,7 @@ func use_ability():
 	reset_color()
 	current_ability = null
 
+
 func catch_power():
 	catch_grace_time()
 
@@ -46,14 +47,12 @@ func catch_power():
 
 func catch_grace_time():
 	if damage_subject != null: return
-	hit_grace_active = true
 
 	if hit_timer_active():
 		hit_grace_timer.set_time_left(hit_grace_time)
 		return
 
 	hit_grace_timer = create_timer(hit_grace_time)
-	hit_grace_timer.timeout.connect(func(): hit_grace_active = false)
 
 
 func hit_timer_active():
