@@ -15,12 +15,16 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p7ves"]
 shader = ExtResource("9_3dgjy")
 shader_parameter/darkness_modifier = 1.0
+shader_parameter/white_feather_range = 0.0
+shader_parameter/black_feather_range = 0.0
 shader_parameter/color_a = Color(0.32549, 0.301961, 0.854902, 1)
 shader_parameter/color_b = Color(0.141176, 0.541176, 0.866667, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gkq5m"]
 shader = ExtResource("9_3dgjy")
 shader_parameter/darkness_modifier = 1.0
+shader_parameter/white_feather_range = 0.0
+shader_parameter/black_feather_range = 0.0
 shader_parameter/color_a = Color(0.32549, 0.301961, 0.854902, 1)
 shader_parameter/color_b = Color(0.141176, 0.541176, 0.866667, 1)
 
@@ -33,6 +37,7 @@ script = ExtResource("3_6riac")
 levels = Array[PackedScene]([ExtResource("3_6nqfb"), ExtResource("4_tfkiu"), ExtResource("4_fvx2a"), ExtResource("3_6avmr")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
 position_smoothing_enabled = true
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
