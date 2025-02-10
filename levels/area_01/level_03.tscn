@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b5s4b6xdudwso" path="res://enemies/enemy_airborne.tscn" id="5_bw4o2"]
 [ext_resource type="PackedScene" uid="uid://bomxlv8ndomnc" path="res://enemies/enemy_grounded.tscn" id="8_d6tq4"]
 [ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/modules/goal.tscn" id="8_rydxv"]
-[ext_resource type="PackedScene" uid="uid://c8mxwfqxutdoi" path="res://levels/modules/area_1_backgrounds.tscn" id="9_8t6st"]
+[ext_resource type="PackedScene" uid="uid://c8mxwfqxutdoi" path="res://levels/area_01/area_1_backgrounds.tscn" id="9_8t6st"]
 [ext_resource type="Resource" uid="uid://tvyt8dx4csl5" path="res://enemies/types/enemy_element_type_air.tres" id="9_mevgi"]
 [ext_resource type="Resource" uid="uid://be56k4m11w44j" path="res://enemies/types/enemy_element_type_fire.tres" id="10_o7ka8"]
 [ext_resource type="Material" uid="uid://wyxyitttdya3" path="res://shader/TilemapShader.tres" id="11_8v1uk"]
