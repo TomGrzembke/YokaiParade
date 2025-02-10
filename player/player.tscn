@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/damage/deal_damage_area.tscn" id="4_cn11c"]
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="4_y0ly5"]
 [ext_resource type="Texture2D" uid="uid://dylr0e5cupavl" path="res://player/player.png" id="5_eow6v"]
-[ext_resource type="Script" path="res://player/attack.gd" id="6_dwlkh"]
+[ext_resource type="Script" path="res://player/player_visuals.gd" id="6_guley"]
 [ext_resource type="Script" path="res://player/debug.gd" id="7_3jai0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1mi2e"]
@@ -43,6 +43,7 @@ push_height_percentage = 0.4
 
 [node name="Abilities" type="Node2D" parent="."]
 script = ExtResource("2_es05j")
+hit_cooldown_time = 0.3
 hit_grace_time = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -72,9 +73,9 @@ region_rect = Rect2(0, 0, 160, 120)
 
 [node name="Visuals" type="Node2D" parent="."]
 
-[node name="AttackVisualizer" type="Node2D" parent="Visuals"]
+[node name="Visualizer" type="Node2D" parent="Visuals"]
 position = Vector2(51, -76)
-script = ExtResource("6_dwlkh")
+script = ExtResource("6_guley")
 trail_points_max = 20
 
 [node name="AttackTarget" type="Node2D" parent="Visuals"]

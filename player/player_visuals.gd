@@ -40,15 +40,15 @@ func flip():
 
 
 func attack(delta):
-	var is_in_reset_range = check_is_in_reset_range(attack_target, self)
-	if Input.is_action_just_pressed("catch_power") && !is_in_reset_range:
-		position = initial_pos
-		hit_progress = .0
+	if check_is_in_reset_range(attack_target, self): return
 
-	else:
-		hit_progress += delta
-		position = position.slerp(attack_target.position, hit_progress)
+	hit_progress += delta
+	position = position.slerp(attack_target.position, hit_progress)
 
+
+func attack_command():
+	position = initial_pos
+	hit_progress = .0
 
 func ability(delta):
 	var is_in_reset_range = check_is_in_reset_range(ability_target, ability_visual)
