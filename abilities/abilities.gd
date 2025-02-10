@@ -44,6 +44,10 @@ func catch_power():
 	if hit_cooldown(): return
 	visualizer.attack_command()
 
+	absorb_ability()
+
+
+func absorb_ability():
 	if damage_subject == null: return
 	var subject_parent = damage_subject.get_damage_subject()
 	if subject_parent == null: return
@@ -111,7 +115,7 @@ func on_deal_damage_area_entered(other):
 	damage_subject = other
 
 	if hit_timer_active():
-		catch_power()
+		absorb_ability()
 
 
 func on_deal_damage_area_exited(other):
