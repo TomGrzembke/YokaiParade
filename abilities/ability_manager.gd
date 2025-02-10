@@ -32,10 +32,6 @@ func use_ability():
 	reset_color()
 	current_ability = null
 
-func _physics_process(_delta):
-	print(hit_grace_active)
-	pass
-
 func catch_power():
 	catch_grace()
 
