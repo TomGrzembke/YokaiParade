@@ -40,8 +40,8 @@ func use_ability():
 
 
 func catch_power():
-	catch_grace_time()
 	if hit_cooldown(): return
+	catch_grace_time()
 	visualizer.attack_command()
 
 	absorb_ability()
