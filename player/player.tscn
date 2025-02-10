@@ -41,7 +41,7 @@ jump_height_continuous_cut_percentage = 0.99
 push_back = 800.0
 push_height_percentage = 0.4
 
-[node name="AbilityManager" type="Node2D" parent="."]
+[node name="Abilities" type="Node2D" parent="."]
 script = ExtResource("2_es05j")
 hit_grace_time = 0.3
 
@@ -96,6 +96,6 @@ width_curve = SubResource("Curve_xeqma")
 [node name="Debug" type="Node2D" parent="."]
 script = ExtResource("7_3jai0")
 
-[connection signal="deal_damage_area_entered" from="DealDamageArea" to="AbilityManager" method="on_deal_damage_area_entered"]
-[connection signal="deal_damage_area_exited" from="DealDamageArea" to="AbilityManager" method="on_deal_damage_area_exited"]
+[connection signal="deal_damage_area_entered" from="DealDamageArea" to="Abilities" method="on_deal_damage_area_entered"]
+[connection signal="deal_damage_area_exited" from="DealDamageArea" to="Abilities" method="on_deal_damage_area_exited"]
 [connection signal="take_damage_area_entered" from="TakeDamageArea" to="." method="on_took_damage"]
