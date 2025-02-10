@@ -52,7 +52,7 @@ func catch_grace_time():
 		hit_grace_timer.set_time_left(hit_grace_time)
 		return
 
-	hit_grace_timer = get_tree().create_timer(hit_grace_time)
+	hit_grace_timer = create_timer(hit_grace_time)
 	hit_grace_timer.timeout.connect(func(): hit_grace_active = false)
 
 
