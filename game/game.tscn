@@ -1,13 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://daq0ts878ltif"]
+[gd_scene load_steps=10 format=3 uid="uid://daq0ts878ltif"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_g4chm"]
-[ext_resource type="PackedScene" uid="uid://c1vmd4h5v5fxl" path="res://levels/area_01/level_01.tscn" id="3_6avmr"]
-[ext_resource type="PackedScene" uid="uid://c0wwjpu8qrub0" path="res://levels/area_01/level_01-short.tscn" id="3_6nqfb"]
-[ext_resource type="Script" path="res://levels/level_manager.gd" id="3_6riac"]
-[ext_resource type="PackedScene" path="res://levels/area_01/level_tutorial.tscn" id="3_ecliv"]
-[ext_resource type="PackedScene" uid="uid://n0cyvaeyik24" path="res://levels/area_01/level_03.tscn" id="4_fvx2a"]
+[ext_resource type="PackedScene" uid="uid://j3prn5a82nr2" path="res://levels/levels.tscn" id="2_7q3um"]
 [ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="4_k85dl"]
-[ext_resource type="PackedScene" uid="uid://c78nest6v67gw" path="res://levels/area_01/level_02.tscn" id="4_tfkiu"]
 [ext_resource type="Texture2D" uid="uid://d1oi3wstsdacb" path="res://ui/ui_placeholder_topright_back.png" id="8_ltg2l"]
 [ext_resource type="Shader" path="res://shader/exchange_gradient.gdshader" id="9_3dgjy"]
 [ext_resource type="Texture2D" uid="uid://cty3pypmnw01w" path="res://ui/ui_placeholder_topright_front.png" id="9_suwya"]
@@ -32,10 +27,8 @@ shader_parameter/color_b = Color(0.141176, 0.541176, 0.866667, 1)
 [node name="Game" type="Node2D"]
 script = ExtResource("1_g4chm")
 
-[node name="Levels" type="Node" parent="."]
+[node name="Levels" parent="." instance=ExtResource("2_7q3um")]
 unique_name_in_owner = true
-script = ExtResource("3_6riac")
-levels = Array[PackedScene]([ExtResource("3_ecliv"), ExtResource("3_6nqfb"), ExtResource("4_tfkiu"), ExtResource("4_fvx2a"), ExtResource("3_6avmr")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
