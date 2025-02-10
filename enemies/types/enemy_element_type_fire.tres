@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="EnemyElementType" load_steps=3 format=3 uid="uid://be56k4m11w44j"]
+[gd_resource type="Resource" script_class="EnemyElementType" load_steps=5 format=3 uid="uid://be56k4m11w44j"]
 
+[ext_resource type="PackedScene" uid="uid://b2uqocodjy3a8" path="res://enemies/animations/enemy_airborne_fire_animations.tscn" id="1_kubnf"]
 [ext_resource type="Script" path="res://enemies/types/enemy_element_type.gd" id="1_qrc77"]
 [ext_resource type="PackedScene" uid="uid://cqo5hhva3su4r" path="res://abilities/dash.tscn" id="2_cg1uj"]
+[ext_resource type="PackedScene" uid="uid://ddyyhxxuwsxtk" path="res://enemies/animations/enemy_grounded_fire_animations.tscn" id="2_f27v1"]
 
 [resource]
 script = ExtResource("1_qrc77")
 element_type = 200
+animations_grounded = ExtResource("2_f27v1")
+animations_airborne = ExtResource("1_kubnf")
 spawning_ability = ExtResource("2_cg1uj")

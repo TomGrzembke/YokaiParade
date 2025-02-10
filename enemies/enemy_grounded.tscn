@@ -1,15 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://bomxlv8ndomnc"]
+[gd_scene load_steps=12 format=3 uid="uid://bomxlv8ndomnc"]
 
 [ext_resource type="Script" path="res://enemies/enemy_grounded.gd" id="1_ckp3m"]
 [ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/damage/deal_damage_area.tscn" id="2_jj2bd"]
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="3_rf8mi"]
-[ext_resource type="Texture2D" uid="uid://dxc7mktamxtdo" path="res://enemies/enemy_grounded.png" id="4_m5rev"]
+[ext_resource type="Texture2D" uid="uid://cxsfo7protit" path="res://enemies/animations/enemy_grounded_air_spritesheet.png" id="4_vdafv"]
 [ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="5_2m4gu"]
 [ext_resource type="Script" path="res://enemies/states/enemy_grounded_moving.gd" id="6_n8hg2"]
-[ext_resource type="Script" path="res://enemies/states/enemy_idling.gd" id="7_4rj2s"]
-[ext_resource type="Script" path="res://enemies/states/enemy_recovering.gd" id="8_kxmfv"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_8iadr"]
+[ext_resource type="Script" path="res://enemies/states/enemy_grounded_idling.gd" id="7_4rj2s"]
+[ext_resource type="Script" path="res://enemies/states/enemy_grounded_recovering.gd" id="8_kxmfv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3f1p"]
 radius = 34.0147
@@ -27,19 +25,16 @@ idling_state = NodePath("StateMachine/Idling")
 moving_state = NodePath("StateMachine/Moving")
 recovering_state = NodePath("StateMachine/Recovering")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-unique_name_in_owner = true
-modulate = Color(0.226683, 0.485519, 0.375443, 1)
-position = Vector2(0, 6.4373e-06)
-scale = Vector2(68.0771, 68.0771)
-mesh = SubResource("SphereMesh_8iadr")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_i3f1p")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast2DRight" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(34, 0)
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-34, 0)
 
 [node name="DealDamageArea" parent="." instance=ExtResource("2_jj2bd")]
 unique_name_in_owner = true
@@ -56,8 +51,11 @@ shape = SubResource("CircleShape2D_1g50l")
 debug_color = Color(0.959102, 9.62615e-08, 0.523485, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -15)
-texture = ExtResource("4_m5rev")
+unique_name_in_owner = true
+position = Vector2(0, -26)
+texture = ExtResource("4_vdafv")
+hframes = 4
+frame = 1
 
 [node name="StateMachine" parent="." instance=ExtResource("5_2m4gu")]
 unique_name_in_owner = true

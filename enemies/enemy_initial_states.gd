@@ -1,8 +1,7 @@
 extends Object
 
 
-enum EnemyState {
+enum EnemyInitialState {
 	IDLING = 100,
 	MOVING = 200,
-	RECOVERING = 500,
 }

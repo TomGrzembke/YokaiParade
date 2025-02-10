@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8o7y5lr5dm26"
-path="res://.godot/imported/enemy_airborne.png-43a70a1010cd2648e5fdedb2f98ebe35.ctex"
+uid="uid://3v2vcb2mhrso"
+path="res://.godot/imported/enemy_grounded_fire_spritesheet.png-0ed1b982fde721e45d36a34f6716030f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/enemy_airborne.png"
-dest_files=["res://.godot/imported/enemy_airborne.png-43a70a1010cd2648e5fdedb2f98ebe35.ctex"]
+source_file="res://enemies/animations/enemy_grounded_fire_spritesheet.png"
+dest_files=["res://.godot/imported/enemy_grounded_fire_spritesheet.png-0ed1b982fde721e45d36a34f6716030f.ctex"]
 
 [params]
 

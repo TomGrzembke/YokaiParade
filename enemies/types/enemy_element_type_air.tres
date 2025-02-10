@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="EnemyElementType" load_steps=3 format=3 uid="uid://tvyt8dx4csl5"]
+[gd_resource type="Resource" script_class="EnemyElementType" load_steps=5 format=3 uid="uid://tvyt8dx4csl5"]
 
 [ext_resource type="Script" path="res://enemies/types/enemy_element_type.gd" id="1_bvr23"]
+[ext_resource type="PackedScene" uid="uid://0wrfx826uek5" path="res://enemies/animations/enemy_airborne_air_animations.tscn" id="1_ewnfo"]
+[ext_resource type="PackedScene" uid="uid://b5x05pl1dh0ey" path="res://enemies/animations/enemy_grounded_air_animations.tscn" id="2_16fv4"]
 [ext_resource type="PackedScene" uid="uid://cc0wce22gon55" path="res://abilities/double_jump.tscn" id="2_yn1g2"]
 
 [resource]
 script = ExtResource("1_bvr23")
 element_type = 100
+animations_grounded = ExtResource("2_16fv4")
+animations_airborne = ExtResource("1_ewnfo")
 spawning_ability = ExtResource("2_yn1g2")

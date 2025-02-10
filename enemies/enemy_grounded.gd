@@ -4,17 +4,17 @@ extends CharacterBody2D
 signal enemy_caught(enemy)
 
 
-const STATES = preload("res://enemies/states/enemy_states.gd")
+const STATES = preload("res://enemies/enemy_initial_states.gd")
 
 @export_category("States")
-@export var initial_state: STATES.EnemyState = STATES.EnemyState.IDLING
+@export var initial_state: STATES.EnemyInitialState = STATES.EnemyInitialState.IDLING
 @export var recovery_time = 3.0
 
 @export_category("Power")
 @export var element_type: EnemyElementType
 
 @export_category("Movement")
-@export_enum("Right:1", "Left:-1") var initial_direction = 1
+@export_enum("Right:1", "Left:-1") var initial_direction = -1
 @export var speed = 150.0
 
 @export_category("State Machine")
@@ -23,22 +23,27 @@ const STATES = preload("res://enemies/states/enemy_states.gd")
 @export var recovering_state: State
 
 var is_getting_caught = false
+var enemy_animations
 var direction
 
 
 func _ready():
-	direction = initial_direction
-	if element_type != null:
-		%MeshInstance2D.modulate = element_type.get_color()
+	if element_type.animations_grounded != null:
+		enemy_animations = element_type.animations_grounded.instantiate()
+		add_child(enemy_animations)
+
+		enemy_animations.position = %Sprite2D.position
+		%Sprite2D.visible = false
+
+		set_direction(initial_direction)
 
 	var init_state
 	match initial_state:
-		STATES.EnemyState.MOVING:
+		STATES.EnemyInitialState.MOVING:
 			init_state = moving_state
-		STATES.EnemyState.RECOVERING:
-			init_state = recovering_state
 		_:
 			init_state = idling_state
+
 	%StateMachine.init(self, init_state)
 
 
@@ -54,6 +59,23 @@ func _process(delta):
 	%StateMachine.process(delta)
 
 
+func set_direction(value):
+	direction = value
+	enemy_animations.update_direction(direction)
+
+
+func get_direction():
+	return direction
+
+
+func get_speed():
+	return speed
+
+
+func get_recovery_time():
+	return recovery_time
+
+
 func set_deal_damage_active(active):
 	%DealDamageArea.set_deferred("monitoring", active)
 
@@ -66,30 +88,30 @@ func get_is_getting_caught():
 	return is_getting_caught
 
 
-func get_recovery_time():
-	return recovery_time
+func enter_animation_state_moving():
+	enemy_animations.enter_state_moving()
 
 
-func handle_turn():
-	if direction != null:
-		if is_on_wall() \
-		or is_on_cliff():
-			flip_horizontally()
+func enter_animation_state_idling():
+	enemy_animations.enter_state_idling()
 
 
-func flip_horizontally():
-	direction *= -1.0
-	scale.x *= -1.0
+func enter_animation_state_recovering():
+	enemy_animations.enter_state_recovering()
+
+
+func handle_gravity(delta):
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 
 
 func is_on_cliff():
-	return not %RayCast2D.is_colliding()
-
-
-func set_alpha(alpha):
-	var color = %MeshInstance2D.modulate
-	color.a = alpha
-	%MeshInstance2D.modulate = color
+	return \
+	( \
+		not %RayCast2DRight.is_colliding() \
+		or not %RayCast2DLeft.is_colliding() \
+	) \
+	and is_on_floor()
 
 
 func got_caught(_source):
