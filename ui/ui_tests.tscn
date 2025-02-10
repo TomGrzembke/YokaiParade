@@ -10,6 +10,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p7ves"]
 shader = ExtResource("1_hp3pp")
 shader_parameter/darkness_modifier = 1.0
+shader_parameter/white_feather_range = 0.0
+shader_parameter/black_feather_range = 0.0
 shader_parameter/color_a = Color(0.32549, 0.301961, 0.854902, 1)
 shader_parameter/color_b = Color(0.141176, 0.541176, 0.866667, 1)
 
@@ -18,18 +20,24 @@ shader_parameter/color_b = Color(0.141176, 0.541176, 0.866667, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gkq5m"]
 shader = ExtResource("1_hp3pp")
 shader_parameter/darkness_modifier = 1.0
+shader_parameter/white_feather_range = 0.0
+shader_parameter/black_feather_range = 0.0
 shader_parameter/color_a = Color(0.32549, 0.301961, 0.854902, 1)
 shader_parameter/color_b = Color(0.141176, 0.541176, 0.866667, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xefc5"]
 shader = ExtResource("1_hp3pp")
 shader_parameter/darkness_modifier = 1.0
+shader_parameter/white_feather_range = 0.0
+shader_parameter/black_feather_range = 0.0
 shader_parameter/color_a = Color(0.121274, 0.0958682, 0.39348, 1)
 shader_parameter/color_b = Color(0.141176, 0.541176, 0.866667, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qhcq5"]
 shader = ExtResource("1_hp3pp")
 shader_parameter/darkness_modifier = 1.0
+shader_parameter/white_feather_range = 0.0
+shader_parameter/black_feather_range = 0.0
 shader_parameter/color_a = Color(0.676411, 0.203553, 0.357624, 1)
 shader_parameter/color_b = Color(0.141176, 0.541176, 0.866667, 1)
 
