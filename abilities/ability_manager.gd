@@ -64,7 +64,7 @@ func set_current_ability(ability_scene):
 	if ability_scene == null: return
 
 	var ability = ability_scene.instantiate()
-	add_child(ability)
+	add_child.call_deferred(ability)
 	current_ability = ability
 
 	if ability.has_method("get_color"):
