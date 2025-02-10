@@ -13,6 +13,7 @@ config_version=5
 config/name="YokaiParade"
 run/main_scene="res://game/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]

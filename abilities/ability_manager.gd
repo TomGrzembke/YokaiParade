@@ -9,14 +9,18 @@ var target_in_damage_radius
 
 @onready var player: CharacterBody2D = $".."
 @onready var visual: MeshInstance2D = %AbilityVisual
+@export var hit_cooldown : float = .6
+@export var hit_grace_time : float = .2
+var hit_grace_active
+var hit_grace_timer
 
 
 func _unhandled_input(_event):
-	if Input.is_action_just_pressed("use_ability"):
-		use_ability()
-
 	if Input.is_action_just_pressed("catch_power"):
 		catch_power()
+
+	if Input.is_action_just_pressed("use_ability"):
+		use_ability()
 
 
 func use_ability():
@@ -28,16 +32,32 @@ func use_ability():
 	reset_color()
 	current_ability = null
 
-
 func catch_power():
+	catch_grace()
+
 	if target_in_damage_radius == null: return
+	var target_parent = target_in_damage_radius.get_damage_subject()
+	if target_parent == null: return
+	if not target_parent.has_method("got_caught"): return
 
-	var damage_subject = target_in_damage_radius.get_damage_subject()
-	if damage_subject == null: return
-	if not damage_subject.has_method("got_caught"): return
-
-	var ability = damage_subject.got_caught(self)
+	var ability = target_parent.got_caught(self)
 	set_current_ability(ability)
+
+
+func catch_grace():
+	if target_in_damage_radius != null: return
+	hit_grace_active = true
+
+	if hit_timer_active():
+		hit_grace_timer.set_time_left(hit_grace_time)
+		return
+
+	hit_grace_timer = get_tree().create_timer(hit_grace_time)
+	hit_grace_timer.timeout.connect(func(): hit_grace_active = false)
+
+
+func hit_timer_active():
+	return hit_grace_timer != null && hit_grace_timer.time_left > 0
 
 
 func set_current_ability(ability_scene):
@@ -57,6 +77,10 @@ func clear_abilities():
 	reset_color()
 
 
+func create_timer(time):
+	return get_tree().create_timer(time)
+
+
 func reset_color():
 	visual.self_modulate = COLOR_PLAIN
 
@@ -67,6 +91,9 @@ func get_current_ability():
 
 func on_deal_damage_area_entered(other):
 	target_in_damage_radius = other
+
+	if hit_grace_active:
+		catch_power()
 
 
 func on_deal_damage_area_exited(other):

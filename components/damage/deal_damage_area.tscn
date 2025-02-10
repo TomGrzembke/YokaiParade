@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp6b4v14u8stv"]
+[gd_scene load_steps=2 format=3 uid="uid://dbvyxduyy60pr"]
 
 [ext_resource type="Script" path="res://components/damage/deal_damage_area.gd" id="1_ejai5"]
 

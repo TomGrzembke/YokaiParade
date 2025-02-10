@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxc7mktamxtdo"
-path="res://.godot/imported/enemy_grounded.png-62d63385d236c73e3cdbd6140899cb0d.ctex"
+uid="uid://cgnkxtqnxqyp1"
+path="res://.godot/imported/ui_placeholder_topright_frontII.png-ebbe7690ec90432646f9b285057e3546.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/enemy_grounded.png"
-dest_files=["res://.godot/imported/enemy_grounded.png-62d63385d236c73e3cdbd6140899cb0d.ctex"]
+source_file="res://ui/ui_placeholder_topright_frontII.png"
+dest_files=["res://.godot/imported/ui_placeholder_topright_frontII.png-ebbe7690ec90432646f9b285057e3546.ctex"]
 
 [params]
 

@@ -1,6 +1,7 @@
 extends "res://enemies/states/catchable_state.gd"
 
 
+var last_position
 var speed = 0.0
 var path_length = 0.0
 var is_path_closed = false
@@ -10,9 +11,13 @@ var progress_ratio_raw = 0.0
 
 func init(p_parent):
 	super(p_parent)
-	speed = parent.max_speed
+	speed = parent.get_max_speed()
 	path_length = parent.get_path_length()
 	is_path_closed = parent.get_is_path_closed()
+
+
+func enter(_previous_state):
+	parent.enter_animation_state_moving()
 
 
 func physics_process(delta):
@@ -36,4 +41,16 @@ func physics_process(delta):
 	else:
 		parent.progress_ratio = progress_ratio_raw
 
+	update_direction()
+
 	return check_caught()
+
+
+func update_direction():
+	var position = parent.global_position
+	if last_position == null:
+		last_position = position
+		return
+
+	parent.set_direction((position - last_position).normalized())
+	last_position = position

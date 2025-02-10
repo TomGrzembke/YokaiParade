@@ -13,10 +13,10 @@ func enter(p_previous_state):
 		printerr("Error: Recovering state should have a previous state!")
 		return
 
+	parent.velocity = Vector2.ZERO
 	parent.set_is_getting_caught(false)
-
 	parent.set_deal_damage_active(false)
-	parent.set_alpha(0.1)
+	parent.enter_animation_state_recovering()
 
 	recovery_timer = get_tree().create_timer(parent.get_recovery_time())
 	recovery_timer.timeout.connect(func(): recovering = false)
@@ -24,10 +24,16 @@ func enter(p_previous_state):
 
 func exit():
 	parent.set_deal_damage_active(true)
-	parent.set_alpha(1.0)
-	recovering = true
+	reset_recovering_state()
 
 
-func physics_process(_delta):
+func physics_process(delta):
+	parent.handle_gravity(delta)
+	parent.move_and_slide()
+
 	if not recovering:
 		return previous_state
+
+
+func reset_recovering_state():
+	recovering = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/ability_manager.gd" id="2_es05j"]
-[ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/damage/deal_damage_area.tscn" id="4_cn11c"]
+[ext_resource type="PackedScene" uid="uid://dbvyxduyy60pr" path="res://components/damage/deal_damage_area.tscn" id="4_cn11c"]
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="4_y0ly5"]
 [ext_resource type="Texture2D" uid="uid://dylr0e5cupavl" path="res://player/player.png" id="5_eow6v"]
 [ext_resource type="Script" path="res://player/attack.gd" id="6_dwlkh"]
@@ -13,7 +13,7 @@ radius = 25.0
 height = 96.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82728"]
-radius = 73.3333
+radius = 77.3333
 height = 168.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4pm2j"]
@@ -43,6 +43,7 @@ push_height_percentage = 0.4
 
 [node name="AbilityManager" type="Node2D" parent="."]
 script = ExtResource("2_es05j")
+hit_grace_time = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
