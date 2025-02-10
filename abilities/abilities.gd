@@ -5,13 +5,12 @@ const COLOR_PLAIN = Color("#949494")
 
 
 var current_ability
-var target_in_damage_radius
+var damage_subject
 
 @onready var player: CharacterBody2D = $".."
 @onready var visual: MeshInstance2D = %AbilityVisual
 @export var hit_cooldown : float = .6
 @export var hit_grace_time : float = .2
-var hit_grace_active
 var hit_grace_timer
 
 
@@ -32,11 +31,12 @@ func use_ability():
 	reset_color()
 	current_ability = null
 
-func catch_power():
-	catch_grace()
 
-	if target_in_damage_radius == null: return
-	var target_parent = target_in_damage_radius.get_damage_subject()
+func catch_power():
+	catch_grace_time()
+
+	if damage_subject == null: return
+	var target_parent = damage_subject.get_damage_subject()
 	if target_parent == null: return
 	if not target_parent.has_method("got_caught"): return
 
@@ -44,16 +44,14 @@ func catch_power():
 	set_current_ability(ability)
 
 
-func catch_grace():
-	if target_in_damage_radius != null: return
-	hit_grace_active = true
+func catch_grace_time():
+	if damage_subject != null: return
 
 	if hit_timer_active():
 		hit_grace_timer.set_time_left(hit_grace_time)
 		return
 
-	hit_grace_timer = get_tree().create_timer(hit_grace_time)
-	hit_grace_timer.timeout.connect(func(): hit_grace_active = false)
+	hit_grace_timer = create_timer(hit_grace_time)
 
 
 func hit_timer_active():
@@ -90,12 +88,12 @@ func get_current_ability():
 
 
 func on_deal_damage_area_entered(other):
-	target_in_damage_radius = other
+	damage_subject = other
 
-	if hit_grace_active:
+	if hit_timer_active():
 		catch_power()
 
 
 func on_deal_damage_area_exited(other):
-	if other == target_in_damage_radius:
-		target_in_damage_radius = null
+	if other == damage_subject:
+		damage_subject = null

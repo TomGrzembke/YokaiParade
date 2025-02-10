@@ -22,7 +22,7 @@ const INFINITY = 1e20
 @export var push_back = 500.0
 @export_range(.0, 1.5, .1) var push_height_percentage = .75
 
-@onready var ability_manager: Node2D = $AbilityManager
+@onready var abilities: Node2D = $Abilities
 
 
 var coyote_timer = 0.15
@@ -237,7 +237,7 @@ func reset_velocity_mod_effects(velocity_mod):
 
 
 func clear_abilities():
-	ability_manager.clear_abilities()
+	abilities.clear_abilities()
 
 
 func check_movement_mods_empty():
