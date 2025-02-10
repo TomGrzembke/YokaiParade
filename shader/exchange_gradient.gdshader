@@ -1,6 +1,8 @@
 shader_type canvas_item;
 
 uniform float darkness_modifier : hint_range(-5, 10.0) = 1.; 
+uniform float white_feather_range : hint_range(0., .4) = .0; 
+uniform float black_feather_range : hint_range(0., .4) = .0; 
 uniform vec4 color_a : source_color;
 uniform vec4 color_b : source_color;
 
@@ -25,4 +27,11 @@ void fragment() {
 	
 	final_mix.a = texture_color.a;
 	COLOR = final_mix;
+	
+	
+	if (distance(texture_color.rgb, vec3(1.0)) < white_feather_range)
+    	COLOR = texture_color;
+		
+	if (distance(texture_color.rgb, vec3(0.0)) < black_feather_range)
+    	COLOR = texture_color;
 }
