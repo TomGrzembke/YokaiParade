@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://b5s4b6xdudwso"]
 
 [ext_resource type="Script" path="res://enemies/enemy_flying.gd" id="1_jwi5c"]
-[ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/deal_damage_area.tscn" id="2_fyu50"]
-[ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/take_damage_area.tscn" id="3_sxlxr"]
+[ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/damage/deal_damage_area.tscn" id="2_fyu50"]
+[ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="3_sxlxr"]
 [ext_resource type="Texture2D" uid="uid://b8o7y5lr5dm26" path="res://enemies/enemy_flying.png" id="4_fi01y"]
 
 [sub_resource type="Curve" id="Curve_lxy51"]

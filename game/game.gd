@@ -49,6 +49,8 @@ func _unhandled_input(_event):
 		var desired_level_index = current_level_index + 1
 		if desired_level_index >= %LevelManager.get_number_of_levels():
 			print("Already at last level.")
+			desired_level_index = current_level_index
+			enter_state(GameState.PLAYING_LEVEL)
 			return
 		player_spawn_position = null
 		load_level(desired_level_index)
@@ -61,6 +63,8 @@ func _unhandled_input(_event):
 		var desired_level_index = current_level_index - 1
 		if desired_level_index < 0:
 			print("Already at first level.")
+			desired_level_index = current_level_index
+			enter_state(GameState.PLAYING_LEVEL)
 			return
 		player_spawn_position = null
 		load_level(desired_level_index)
