@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=4 uid="uid://n0cyvaeyik24"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_1hebm"]
-[ext_resource type="PackedScene" path="res://enemies/enemy_flying.tscn" id="5_bw4o2"]
+[ext_resource type="PackedScene" uid="uid://b5s4b6xdudwso" path="res://enemies/enemy_airborne.tscn" id="5_bw4o2"]
 [ext_resource type="PackedScene" uid="uid://bomxlv8ndomnc" path="res://enemies/enemy_grounded.tscn" id="8_d6tq4"]
 [ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/modules/goal.tscn" id="8_rydxv"]
 [ext_resource type="PackedScene" uid="uid://c8mxwfqxutdoi" path="res://levels/modules/area_1_backgrounds.tscn" id="9_8t6st"]
@@ -51,12 +51,10 @@ position = Vector2(-78, 1082)
 
 [node name="FireGroundedIdling3" parent="Start-1stCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(-754, 1075)
-starting_state = 100
 element_type = ExtResource("10_o7ka8")
 
 [node name="AirGroundedIdling9" parent="Start-1stCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(-2980, 1396)
-starting_state = 100
 element_type = ExtResource("9_mevgi")
 
 [node name="AirFlyingIdling2" type="Path2D" parent="Start-1stCheckpoint/Enemies"]
@@ -65,8 +63,6 @@ curve = SubResource("Curve2D_tn7h5")
 
 [node name="EnemyFlying" parent="Start-1stCheckpoint/Enemies/AirFlyingIdling2" instance=ExtResource("5_bw4o2")]
 position = Vector2(8841, -556)
-starting_state = 100
-element_type = ExtResource("9_mevgi")
 
 [node name="WoodenWalls" type="Node2D" parent="Start-1stCheckpoint"]
 
@@ -80,70 +76,69 @@ position = Vector2(6183, 841)
 
 [node name="AirGroundedIdling" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(1018, 1155)
-starting_state = 100
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedIdling2" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(2286, 677)
-starting_state = 100
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedIdling4" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(2367, 2357)
-starting_state = 100
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedIdling5" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(5761, 1953)
-starting_state = 100
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedIdling6" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(5235, 1115)
-starting_state = 100
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedIdling3" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(2159, 638)
-starting_state = 100
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedMoving" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(1741, 913)
+initial_state = 200
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedMoving3" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(3719, 2390)
+initial_state = 200
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedMoving4" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(4032, 1631)
+initial_state = 200
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedMoving2" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(3935, 716)
+initial_state = 200
 element_type = ExtResource("9_mevgi")
 
 [node name="FireGroundedMoving" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(2742, 312)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="FireGroundedMoving2" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(4957, 234)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="FireGroundedMoving3" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(5393, 2511)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="FireGroundedIdling" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(2440, 1632)
-starting_state = 100
 element_type = ExtResource("10_o7ka8")
 
 [node name="FireGroundedIdling2" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(3710, 2194)
-starting_state = 100
 element_type = ExtResource("10_o7ka8")
 
 [node name="FireFlyingIdling2" type="Path2D" parent="1st-2ndCheckpoint/Enemies"]
@@ -152,7 +147,6 @@ curve = SubResource("Curve2D_5q0cv")
 
 [node name="EnemyFlying" parent="1st-2ndCheckpoint/Enemies/FireFlyingIdling2" instance=ExtResource("5_bw4o2")]
 position = Vector2(14163, 1125)
-starting_state = 100
 element_type = ExtResource("10_o7ka8")
 
 [node name="AirFlyingIdling9" type="Path2D" parent="1st-2ndCheckpoint/Enemies"]
@@ -161,8 +155,6 @@ curve = SubResource("Curve2D_5q0cv")
 
 [node name="EnemyFlying" parent="1st-2ndCheckpoint/Enemies/AirFlyingIdling9" instance=ExtResource("5_bw4o2")]
 position = Vector2(14163, 1125)
-starting_state = 100
-element_type = ExtResource("9_mevgi")
 
 [node name="WoodenWalls" type="Node2D" parent="1st-2ndCheckpoint"]
 
@@ -195,50 +187,62 @@ position = Vector2(15734, 643)
 
 [node name="FireGroundedMoving3" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(11500, 752)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="FireGroundedMoving5" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(11563, -400)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="FireGroundedMoving6" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(12522, -47)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="FireGroundedMoving7" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(14621, 512)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="FireGroundedMoving8" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(14412, -168)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="FireGroundedMoving4" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(13065, 1789)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="FireGroundedMoving9" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(13207, 1035)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="AirGroundedMoving6" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(10313, 590)
+initial_state = 200
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedMoving8" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(10746, 7)
+initial_state = 200
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedMoving9" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(13763, -167)
+initial_state = 200
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedMoving10" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(15210, 913)
+initial_state = 200
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedMoving7" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(14153, 1632)
+initial_state = 200
 element_type = ExtResource("9_mevgi")
 
 [node name="AirFlyingMoving" type="Path2D" parent="2nd-3rdCheckpoint/Enemies"]
@@ -247,7 +251,7 @@ curve = SubResource("Curve2D_o16ep")
 
 [node name="EnemyFlying" parent="2nd-3rdCheckpoint/Enemies/AirFlyingMoving" instance=ExtResource("5_bw4o2")]
 position = Vector2(12245, 496)
-element_type = ExtResource("9_mevgi")
+initial_state = 200
 
 [node name="AirFlyingIdling" type="Path2D" parent="2nd-3rdCheckpoint/Enemies"]
 position = Vector2(8, 29)
@@ -255,8 +259,6 @@ curve = SubResource("Curve2D_5q0cv")
 
 [node name="EnemyFlying" parent="2nd-3rdCheckpoint/Enemies/AirFlyingIdling" instance=ExtResource("5_bw4o2")]
 position = Vector2(14163, 1125)
-starting_state = 100
-element_type = ExtResource("9_mevgi")
 
 [node name="AirFlyingIdling2" type="Path2D" parent="2nd-3rdCheckpoint/Enemies"]
 position = Vector2(223, -186)
@@ -264,8 +266,6 @@ curve = SubResource("Curve2D_5q0cv")
 
 [node name="EnemyFlying" parent="2nd-3rdCheckpoint/Enemies/AirFlyingIdling2" instance=ExtResource("5_bw4o2")]
 position = Vector2(14163, 1125)
-starting_state = 100
-element_type = ExtResource("9_mevgi")
 
 [node name="AirFlyingIdling3" type="Path2D" parent="2nd-3rdCheckpoint/Enemies"]
 position = Vector2(-1927, -148)
@@ -273,8 +273,6 @@ curve = SubResource("Curve2D_5q0cv")
 
 [node name="EnemyFlying" parent="2nd-3rdCheckpoint/Enemies/AirFlyingIdling3" instance=ExtResource("5_bw4o2")]
 position = Vector2(14163, 1125)
-starting_state = 100
-element_type = ExtResource("9_mevgi")
 
 [node name="AirFlyingIdling4" type="Path2D" parent="2nd-3rdCheckpoint/Enemies"]
 position = Vector2(-2159, -388)
@@ -282,8 +280,6 @@ curve = SubResource("Curve2D_5q0cv")
 
 [node name="EnemyFlying" parent="2nd-3rdCheckpoint/Enemies/AirFlyingIdling4" instance=ExtResource("5_bw4o2")]
 position = Vector2(14163, 1125)
-starting_state = 100
-element_type = ExtResource("9_mevgi")
 
 [node name="AirFlyingIdling7" type="Path2D" parent="2nd-3rdCheckpoint/Enemies"]
 position = Vector2(-1960, -1592)
@@ -291,8 +287,6 @@ curve = SubResource("Curve2D_5q0cv")
 
 [node name="EnemyFlying" parent="2nd-3rdCheckpoint/Enemies/AirFlyingIdling7" instance=ExtResource("5_bw4o2")]
 position = Vector2(14163, 1125)
-starting_state = 100
-element_type = ExtResource("9_mevgi")
 
 [node name="AirFlyingIdling6" type="Path2D" parent="2nd-3rdCheckpoint/Enemies"]
 position = Vector2(-2965, -1027)
@@ -300,8 +294,6 @@ curve = SubResource("Curve2D_5q0cv")
 
 [node name="EnemyFlying" parent="2nd-3rdCheckpoint/Enemies/AirFlyingIdling6" instance=ExtResource("5_bw4o2")]
 position = Vector2(14163, 1125)
-starting_state = 100
-element_type = ExtResource("9_mevgi")
 
 [node name="AirFlyingIdling8" type="Path2D" parent="2nd-3rdCheckpoint/Enemies"]
 position = Vector2(-4086, 129)
@@ -309,8 +301,6 @@ curve = SubResource("Curve2D_5q0cv")
 
 [node name="EnemyFlying" parent="2nd-3rdCheckpoint/Enemies/AirFlyingIdling8" instance=ExtResource("5_bw4o2")]
 position = Vector2(14163, 1125)
-starting_state = 100
-element_type = ExtResource("9_mevgi")
 
 [node name="AirFlyingIdling5" type="Path2D" parent="2nd-3rdCheckpoint/Enemies"]
 position = Vector2(-4643, -496)
@@ -318,8 +308,6 @@ curve = SubResource("Curve2D_5q0cv")
 
 [node name="EnemyFlying" parent="2nd-3rdCheckpoint/Enemies/AirFlyingIdling5" instance=ExtResource("5_bw4o2")]
 position = Vector2(14163, 1125)
-starting_state = 100
-element_type = ExtResource("9_mevgi")
 
 [node name="FireFlyingMoving" type="Path2D" parent="2nd-3rdCheckpoint/Enemies"]
 position = Vector2(135, 58)
@@ -327,6 +315,7 @@ curve = SubResource("Curve2D_6l5aw")
 
 [node name="EnemyFlying" parent="2nd-3rdCheckpoint/Enemies/FireFlyingMoving" instance=ExtResource("5_bw4o2")]
 position = Vector2(14484, 712)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="FireFlyingMoving2" type="Path2D" parent="2nd-3rdCheckpoint/Enemies"]
@@ -335,11 +324,11 @@ curve = SubResource("Curve2D_6l5aw")
 
 [node name="EnemyFlying" parent="2nd-3rdCheckpoint/Enemies/FireFlyingMoving2" instance=ExtResource("5_bw4o2")]
 position = Vector2(14484, 712)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="AirGroundedIdling7" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(10532, 994)
-starting_state = 100
 element_type = ExtResource("9_mevgi")
 
 [node name="WoodenWalls" type="Node2D" parent="2nd-3rdCheckpoint"]
@@ -381,18 +370,22 @@ position = Vector2(20506, -250)
 
 [node name="AirGroundedMoving11" parent="3rd-Finish/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(18219, 511)
+initial_state = 200
 element_type = ExtResource("9_mevgi")
 
 [node name="AirGroundedMoving12" parent="3rd-Finish/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(17574, 235)
+initial_state = 200
 element_type = ExtResource("9_mevgi")
 
 [node name="FireGroundedMoving9" parent="3rd-Finish/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(18368, 32)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="FireGroundedMoving10" parent="3rd-Finish/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(16911, 474)
+initial_state = 200
 element_type = ExtResource("10_o7ka8")
 
 [node name="AirFlyingMoving2" type="Path2D" parent="3rd-Finish/Enemies"]
@@ -401,7 +394,7 @@ curve = SubResource("Curve2D_o16ep")
 
 [node name="EnemyFlying" parent="3rd-Finish/Enemies/AirFlyingMoving2" instance=ExtResource("5_bw4o2")]
 position = Vector2(12245, 496)
-element_type = ExtResource("9_mevgi")
+initial_state = 200
 
 [node name="AirFlyingMoving3" type="Path2D" parent="3rd-Finish/Enemies"]
 position = Vector2(4145, -41)
@@ -409,7 +402,7 @@ curve = SubResource("Curve2D_o16ep")
 
 [node name="EnemyFlying" parent="3rd-Finish/Enemies/AirFlyingMoving3" instance=ExtResource("5_bw4o2")]
 position = Vector2(12245, 496)
-element_type = ExtResource("9_mevgi")
+initial_state = 200
 
 [node name="FireFlyingIdling" type="Path2D" parent="3rd-Finish/Enemies"]
 position = Vector2(4826, -1554)
@@ -417,7 +410,6 @@ curve = SubResource("Curve2D_5q0cv")
 
 [node name="EnemyFlying" parent="3rd-Finish/Enemies/FireFlyingIdling" instance=ExtResource("5_bw4o2")]
 position = Vector2(14163, 1125)
-starting_state = 100
 element_type = ExtResource("10_o7ka8")
 
 [node name="WoodenWalls" type="Node2D" parent="3rd-Finish"]

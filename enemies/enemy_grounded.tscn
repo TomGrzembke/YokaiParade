@@ -20,10 +20,12 @@ radius = 34.1321
 [sub_resource type="CircleShape2D" id="CircleShape2D_1g50l"]
 radius = 14.0
 
-[node name="EnemyGrounded" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
+[node name="EnemyGrounded" type="CharacterBody2D" node_paths=PackedStringArray("idling_state", "moving_state", "recovering_state")]
 collision_layer = 2
 script = ExtResource("1_ckp3m")
-initial_state = NodePath("StateMachine/Moving")
+idling_state = NodePath("StateMachine/Idling")
+moving_state = NodePath("StateMachine/Moving")
+recovering_state = NodePath("StateMachine/Recovering")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 unique_name_in_owner = true

@@ -25,12 +25,14 @@ radius = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_jrlqx"]
 radius = 32.0
 
-[node name="EnemyFlying" type="PathFollow2D" node_paths=PackedStringArray("initial_state")]
+[node name="EnemyAirborne" type="PathFollow2D" node_paths=PackedStringArray("idling_state", "moving_state", "recovering_state")]
 rotates = false
 script = ExtResource("1_vy1qu")
-initial_state = NodePath("StateMachine/Moving")
-easing_curve = SubResource("Curve_lxy51")
 element_type = ExtResource("2_rnsqm")
+easing_curve = SubResource("Curve_lxy51")
+idling_state = NodePath("StateMachine/Idling")
+moving_state = NodePath("StateMachine/Moving")
+recovering_state = NodePath("StateMachine/Recovering")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 rotation = 1.5708
