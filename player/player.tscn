@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/abilities.gd" id="2_es05j"]
-[ext_resource type="PackedScene" uid="uid://cp6b4v14u8stv" path="res://components/damage/deal_damage_area.tscn" id="4_cn11c"]
+[ext_resource type="PackedScene" uid="uid://dbvyxduyy60pr" path="res://components/damage/deal_damage_area.tscn" id="4_cn11c"]
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="4_y0ly5"]
 [ext_resource type="Texture2D" uid="uid://dylr0e5cupavl" path="res://player/player.png" id="5_eow6v"]
 [ext_resource type="Script" path="res://player/player_visuals.gd" id="6_guley"]
@@ -77,6 +77,7 @@ region_rect = Rect2(0, 0, 160, 120)
 position = Vector2(51, -76)
 script = ExtResource("6_guley")
 trail_points_max = 20
+hit_speed = 3.0
 
 [node name="AttackTarget" type="Node2D" parent="Visuals"]
 position = Vector2(86, 21)
