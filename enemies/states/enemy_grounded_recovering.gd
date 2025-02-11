@@ -3,7 +3,6 @@ extends State
 
 var previous_state
 var recovery_timer
-var recovering = true
 
 
 func enter(p_previous_state):
@@ -14,26 +13,20 @@ func enter(p_previous_state):
 		return
 
 	parent.velocity = Vector2.ZERO
-	parent.set_is_getting_caught(false)
 	parent.set_deal_damage_active(false)
 	parent.enter_animation_state_recovering()
 
 	recovery_timer = get_tree().create_timer(parent.get_recovery_time())
-	recovery_timer.timeout.connect(func(): recovering = false)
+	recovery_timer.timeout.connect(func(): parent.set_is_recovering(false))
 
 
 func exit():
 	parent.set_deal_damage_active(true)
-	reset_recovering_state()
 
 
 func physics_process(delta):
 	parent.handle_gravity(delta)
 	parent.move_and_slide()
 
-	if not recovering:
+	if not parent.get_is_recovering():
 		return previous_state
-
-
-func reset_recovering_state():
-	recovering = true
