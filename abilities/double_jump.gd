@@ -6,7 +6,7 @@ const ELEMENT_TYPE = ELEMENTS.ElementType.AIR
 @export var double_jump_vel = 800.0
 @export var double_jump_duration = 0.0
 @export var disable_player_movement := false
-
+@export var velocity_curve : Curve
 
 
 func use(player_manager):
@@ -16,6 +16,7 @@ func use(player_manager):
 	double_jump_duration, 1, disable_player_movement, true)
 
 	vel_modifier.set_ability( $".")
+	vel_modifier.set_curve(velocity_curve)
 	player_manager.add_velocity_modifier(vel_modifier)
 
 

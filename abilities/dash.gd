@@ -8,7 +8,7 @@ const ELEMENT_TYPE = ELEMENTS.ElementType.FIRE
 @export var dash_velocity = 300.0
 @export var dash_duration = 1.0
 @export var damage_linger_duration : float = .4
-@export var dash_curve : Curve
+@export var velocity_curve : Curve
 @export var disable_player_movement := true
 
 var is_dashing := false
@@ -26,7 +26,7 @@ func use(player_manager):
 	disable_player_movement, true)
 
 	vel_modifier.set_ability($".")
-	vel_modifier.set_curve(dash_curve)
+	vel_modifier.set_curve(velocity_curve)
 	player_manager.add_velocity_modifier(vel_modifier)
 	is_dashing = true
 
