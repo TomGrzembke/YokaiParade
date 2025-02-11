@@ -5,8 +5,9 @@ uniform float overlay_alpha : hint_range(0.0, 1.0);
 uniform float tint_amount : hint_range(0.0, 1.0); 
 uniform vec2 pattern_scale = vec2(1.0, 1.0); 
 uniform vec2 tilemap_offset = vec2(0.0, 0.0); 
-varying vec2 world_position;
 uniform bool flip_alpha = true;
+varying vec2 world_position;
+varying vec2 local_position;
 
 vec4 soft_light_blend(vec4 base, vec4 blend, float alpha){
 	return mix(2.0 * base * blend + base * base * (1.0 - 2.0 * blend), 
@@ -25,10 +26,11 @@ vec4 color_dodge(vec4 base, vec4 blend){
 
 void vertex() {
 	world_position = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
+	local_position = (inverse(MODEL_MATRIX) * vec4(world_position, 0.0, 1.0)).xy;
 }
 
 void fragment() {
-	vec2 scaled_position = world_position * vec2(1.0 / 1920.0, 1.0 / 1080.0) * pattern_scale - tilemap_offset;
+	vec2 scaled_position = local_position * vec2(1.0 / 1920.0, 1.0 / 1080.0) * pattern_scale - tilemap_offset;
 	
 	vec2 pattern_uv = fract(scaled_position);
 
