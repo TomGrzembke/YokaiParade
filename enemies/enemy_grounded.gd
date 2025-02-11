@@ -1,43 +1,103 @@
 extends CharacterBody2D
 
-signal enemy_caught
 
-enum EnemyState {
-	IDLING = 100,
-	MOVING = 200,
-	RECOVERING = 300,
-}
+signal enemy_caught(enemy)
 
-enum Direction {
-	LEFT = -1,
-	RIGHT = 1,
-}
 
-@export var starting_state: EnemyState = EnemyState.MOVING
+const STATES = preload("res://enemies/enemy_initial_states.gd")
+
+@export_category("States")
+@export var initial_state: STATES.EnemyInitialState = STATES.EnemyInitialState.IDLING
 @export var recovery_time = 3.0
-@export var speed = 100.0
-@export var initial_direction = Direction.RIGHT
+
+@export_category("Power")
 @export var element_type: EnemyElementType
 
-@onready var deal_damage_area: Area2D = $DealDamageArea
+@export_category("Movement")
+@export_enum("Right:1", "Left:-1") var initial_direction = -1
+@export var speed = 150.0
 
-var state
+@export_category("State Machine")
+@export var idling_state: State
+@export var moving_state: State
+@export var recovering_state: State
+
+var is_recovering = false
+var enemy_animations
 var direction
 
 
 func _ready():
-	state = starting_state
-	direction = initial_direction
-	if element_type != null:
-		%MeshInstance2D.modulate = element_type.get_color()
+	if element_type.animations_grounded != null:
+		enemy_animations = element_type.animations_grounded.instantiate()
+		add_child(enemy_animations)
+
+		enemy_animations.position = %Sprite2D.position
+		%Sprite2D.visible = false
+
+		set_direction(initial_direction)
+
+	var init_state
+	match initial_state:
+		STATES.EnemyInitialState.MOVING:
+			init_state = moving_state
+		_:
+			init_state = idling_state
+
+	%StateMachine.init(self, init_state)
+
+
+func _unhandled_input(event):
+	%StateMachine.unhandled_input(event)
 
 
 func _physics_process(delta):
-	handle_gravity(delta)
-	handle_turn()
-	handle_movement(delta)
+	%StateMachine.physics_process(delta)
 
-	move_and_slide()
+
+func _process(delta):
+	%StateMachine.process(delta)
+
+
+func set_direction(value):
+	direction = value
+	enemy_animations.update_direction(direction)
+
+
+func get_direction():
+	return direction
+
+
+func get_speed():
+	return speed
+
+
+func get_recovery_time():
+	return recovery_time
+
+
+func set_deal_damage_active(active):
+	%DealDamageArea.set_deferred("monitoring", active)
+
+
+func set_is_recovering(status):
+	is_recovering = status
+
+
+func get_is_recovering():
+	return is_recovering
+
+
+func enter_animation_state_moving():
+	enemy_animations.enter_state_moving()
+
+
+func enter_animation_state_idling():
+	enemy_animations.enter_state_idling()
+
+
+func enter_animation_state_recovering():
+	enemy_animations.enter_state_recovering()
 
 
 func handle_gravity(delta):
@@ -45,73 +105,22 @@ func handle_gravity(delta):
 		velocity += get_gravity() * delta
 
 
-func handle_turn():
-	if direction != null:
-		if is_on_wall() \
-		or is_on_cliff():
-			flip_horizontally()
-
-
-func handle_movement(_delta):
-	match state:
-		EnemyState.MOVING:
-			velocity.x = direction * speed
-		_: velocity.x = 0.0
-
-
-func flip_horizontally():
-	direction *= -1.0
-	scale.x *= -1.0
-
-
 func is_on_cliff():
-	return not %RayCast2D.is_colliding()
+	return \
+	( \
+		not %RayCast2DRight.is_colliding() \
+		or not %RayCast2DLeft.is_colliding() \
+	) \
+	and is_on_floor()
 
 
-func enter_state(new_state):
-	match new_state:
-		EnemyState.IDLING:
-			enter_state_idling()
-		EnemyState.MOVING:
-			enter_state_moving()
-		EnemyState.RECOVERING:
-			enter_state_recovering()
-
-	refresh_hitbox()
-
-
-func enter_state_idling():
-	set_alpha(1.0)
-	state = EnemyState.IDLING
-
-
-func enter_state_moving():
-	set_alpha(1.0)
-	state = EnemyState.MOVING
-
-
-func enter_state_recovering():
-	var last_state = state
-	set_alpha(0.1)
-	state = EnemyState.RECOVERING
-	var recovery_timer = get_tree().create_timer(recovery_time)
-	recovery_timer.timeout.connect(enter_state.bind(last_state))
-
-
-func set_alpha(alpha):
-	var color = %MeshInstance2D.modulate
-	color.a = alpha
-	%MeshInstance2D.modulate = color
-
-
-func got_caught():
-	if state == EnemyState.RECOVERING:
+func got_caught(_source):
+	if is_recovering:
 		return null
 
-	enemy_caught.emit()
-	enter_state(EnemyState.RECOVERING)
+	enemy_caught.emit(self)
+	is_recovering = true
+
+	if element_type == null:
+		return null
 	return element_type.spawning_ability
-
-
-func refresh_hitbox():
-	deal_damage_area.monitoring = state != EnemyState.RECOVERING

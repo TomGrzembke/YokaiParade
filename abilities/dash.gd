@@ -1,15 +1,18 @@
 extends Node2D
 
+
 const ELEMENTS = preload("res://elements/elements.gd")
 const ELEMENT_TYPE = ELEMENTS.ElementType.FIRE
 
+
 @export var dash_velocity = 300.0
 @export var dash_duration = 1.0
+@export var damage_linger_duration : float = .4
 @export var dash_curve : Curve
 @export var disable_player_movement := true
 
 var is_dashing := false
-var body_in_damage_radius
+var target_in_damage_radius
 
 
 func _physics_process(_delta):
@@ -18,34 +21,49 @@ func _physics_process(_delta):
 
 
 func use(player_manager):
-	if Input.get_connected_joypads().size() > 0:
-		Input.start_joy_vibration(0, 1.0, 0.0, dash_duration)
+	joystick_vibrate()
 	var vel_modifier = VelocityModifier.new(Vector2(dash_velocity, 0), dash_duration, 1, \
 	disable_player_movement, true)
 
-	vel_modifier.set_ability( $".")
+	vel_modifier.set_ability($".")
 	player_manager.add_velocity_modifier(vel_modifier)
 	is_dashing = true
 
 
-func exit_ability():
-	pass
+func exit():
+	if damage_linger_duration == 0.0:
+		queue_free()
+
+	create_timer(damage_linger_duration).timeout.connect(func(): queue_free())
 
 
 func apply_dash_damage():
-	if body_in_damage_radius == null: return
-	if !body_in_damage_radius.has_method("take_damage"): return
+	if target_in_damage_radius == null: return
 
-	body_in_damage_radius.take_damage()
+	var damage_subject = target_in_damage_radius.get_damage_subject()
+
+	if damage_subject == null: return
+	if not damage_subject.has_method("took_fire_damage"): return
+
+	damage_subject.took_fire_damage(self)
 
 
 func get_color():
 	return ELEMENTS.get_color(ELEMENT_TYPE)
 
 
-func _on_deal_dash_damage_area_body_exited(_body):
-	body_in_damage_radius = null
+func on_deal_damage_area_entered(target):
+	target_in_damage_radius = target
 
 
-func _on_deal_dash_damage_area_body_entered(body):
-	body_in_damage_radius = body
+func on_deal_damage_area_exited(_target):
+	target_in_damage_radius = null
+
+
+func create_timer(time):
+	return get_tree().create_timer(time)
+
+
+func joystick_vibrate():
+	if Input.get_connected_joypads().size() > 0:
+		Input.start_joy_vibration(0, 1.0, 0.0, dash_duration)

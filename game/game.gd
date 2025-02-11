@@ -47,8 +47,10 @@ func _unhandled_input(_event):
 	if Input.is_action_just_pressed("load_next_level"):
 		enter_state(GameState.LOADING_LEVEL)
 		var desired_level_index = current_level_index + 1
-		if desired_level_index >= %LevelManager.get_number_of_levels():
+		if desired_level_index >= %Levels.get_number_of_levels():
 			print("Already at last level.")
+			desired_level_index = current_level_index
+			enter_state(GameState.PLAYING_LEVEL)
 			return
 		player_spawn_position = null
 		load_level(desired_level_index)
@@ -61,6 +63,8 @@ func _unhandled_input(_event):
 		var desired_level_index = current_level_index - 1
 		if desired_level_index < 0:
 			print("Already at first level.")
+			desired_level_index = current_level_index
+			enter_state(GameState.PLAYING_LEVEL)
 			return
 		player_spawn_position = null
 		load_level(desired_level_index)
@@ -79,7 +83,7 @@ func enter_state(new_state):
 
 
 func load_level(desired_level_index):
-	var loaded_successfully = %LevelManager.load_level(desired_level_index)
+	var loaded_successfully = %Levels.load_level(desired_level_index)
 	if not loaded_successfully:
 		printerr("Error: Level could not be loaded!")
 	current_level_index = desired_level_index
@@ -101,7 +105,7 @@ func stop_timer():
 
 func get_player_spawn_position():
 	if player_spawn_position == null:
-		player_spawn_position = %LevelManager.get_player_spawn_position_of_level()
+		player_spawn_position = %Levels.get_player_spawn_position_of_level()
 
 	return player_spawn_position
 

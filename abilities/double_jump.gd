@@ -18,8 +18,8 @@ func use(player_manager):
 	player_manager.add_velocity_modifier(vel_modifier)
 
 
-func exit_ability():
-	pass
+func exit():
+	queue_free()
 
 
 func get_color():

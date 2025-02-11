@@ -10,21 +10,24 @@ const INFINITY = 1e20
 @export var speed = 300.0
 @export var acceleration = 80.0
 @export var deceleration = 50.0
+@export var outer_deceleration = 50.0
 @export var jump_velocity = 600.0
 @export var fall_speed_clamp = 600.0
 @export_category("Movement extras")
-@export_range(0.0, 1.0, 0.01) var jump_coyote_time = 0.15
-@export_range(0.0, 1.0, 0.01) var jump_buffer_time = 0.15
+@export_range(.0, 1.0, .01) var jump_coyote_time = .15
+@export_range(.0, 1.0, .01) var jump_buffer_time = .15
+@export_range(.0, 1, .01) var variable_jump_height_min_percentage = .7
+@export_range(.0, .99, .01) var jump_height_continuous_cut_percentage = .6
 @export_category("Enemey Push")
 @export var push_back = 500.0
-@export_range(0.0, 1.5, 0.1) var push_heigth_percentage = .75
+@export_range(.0, 1.5, .1) var push_height_percentage = .75
 
-@onready var ability_manager: Node2D = $AbilityManager
+@onready var abilities: Node2D = $Abilities
 
 var coyote_timer = 0.15
 var jump_buffer_timer = 0.0
 
-var look_direction = 0.0
+var look_direction = 1.0
 var move_direction
 
 var local_velocity := Vector2(0,0)
@@ -32,20 +35,29 @@ var outer_velocity_sources := Vector2(0,0)
 
 var velocity_mod_instigator = []
 var player_control := true
+var is_cancelling_jump := false
+var debug_mode = false
+var debug_speed_modifier = 3
 
 
 func _physics_process(delta):
+
+	if debug_mode:
+		debug_logic()
+		return
+
 	if player_control:
 		run()
 		update_gravity(delta)
 		jump(delta)
 
 	ability_smoothing()
-
-	velocity = local_velocity + outer_velocity_sources
-
+	apply_velocity()
 	clamp_fall_speed()
 	move_and_slide()
+
+func apply_velocity():
+	velocity = local_velocity + outer_velocity_sources
 
 
 func run():
@@ -56,6 +68,7 @@ func run():
 		local_velocity.x = move_toward(local_velocity.x, move_direction * speed, acceleration)
 	else:
 		local_velocity.x = move_toward(local_velocity.x, 0, deceleration)
+	flip()
 
 
 func update_gravity(delta):
@@ -68,7 +81,7 @@ func update_gravity(delta):
 
 func ability_smoothing():
 	if check_movement_mods_empty():
-		outer_velocity_sources.x = move_toward(outer_velocity_sources.x, 0, deceleration)
+		outer_velocity_sources.x = move_toward(outer_velocity_sources.x, 0, outer_deceleration)
 
 		if is_on_floor():
 			outer_velocity_sources.y = 0
@@ -77,6 +90,7 @@ func ability_smoothing():
 func jump(delta):
 	handle_coyote_time(delta)
 	jump_logic()
+	variable_jump_heigth()
 	handle_jump_buffer_time(delta)
 
 
@@ -90,19 +104,30 @@ func calc_look_direction():
 	look_direction = move_direction
 
 
+func flip():
+	if look_direction == 0: return
+
+	set_rotation_degrees(0.0 if look_direction == 1.0 else -180.0)
+	scale.y = look_direction
+
+
 func fall_on_ceiling(delta):
 	if velocity.y: return
 
-	if local_velocity.y or outer_velocity_sources.y:
+	if local_velocity.y or receives_outer_vertical_velocity():
 		local_velocity.y = get_gravity().y * delta
 		outer_velocity_sources.y = 0
 
 
 func handle_coyote_time(delta):
-	if is_on_floor():
+	if is_on_floor() || receives_outer_vertical_velocity() || is_cancelling_jump:
 		coyote_timer = 0.0
 	else:
 		coyote_timer += delta
+
+
+func receives_outer_vertical_velocity():
+	return outer_velocity_sources.y
 
 
 func jump_logic():
@@ -111,6 +136,21 @@ func jump_logic():
 	if !can_jump: return
 
 	local_velocity.y = -jump_velocity
+
+
+func variable_jump_heigth():
+	var is_falling = local_velocity.y < 0
+	if Input.is_action_just_released("jump") && player_control && is_falling:
+		is_cancelling_jump = true
+		if variable_jump_height_min_percentage != 0:
+			local_velocity.y *= variable_jump_height_min_percentage
+
+	if is_on_floor():
+		is_cancelling_jump = false
+
+	if is_cancelling_jump && is_falling:
+		if jump_height_continuous_cut_percentage != 0:
+			local_velocity.y *= jump_height_continuous_cut_percentage
 
 
 func handle_jump_buffer_time(delta):
@@ -160,14 +200,8 @@ func add_velocity_modifier(velocity_mod):
 
 
 func create_vel_duration_timer(velocity_mod):
-	var duration_timer = Timer.new()
-	add_child(duration_timer)
-
-	duration_timer.wait_time = velocity_mod.duration
-	duration_timer.one_shot = true
+	var duration_timer = create_timer(velocity_mod.duration)
 	duration_timer.timeout.connect(on_vel_mod_ended.bind(velocity_mod))
-	duration_timer.timeout.connect(duration_timer.queue_free)
-	duration_timer.start()
 
 
 func on_vel_mod_ended(velocity_mod):
@@ -191,14 +225,13 @@ func delete_vel_mod(velocity_mod):
 
 
 func reset_velocity_mod_effects(velocity_mod):
-
 	player_control = true
-	if velocity_mod.ability != null:
-		velocity_mod.ability.queue_free()
+	if velocity_mod.ability != null && velocity_mod.ability.has_method("exit"):
+		velocity_mod.ability.exit()
 
 
 func clear_abilities():
-	ability_manager.clear_abilities()
+	abilities.clear_abilities()
 
 
 func check_movement_mods_empty():
@@ -255,12 +288,35 @@ func on_reached_checkpoint(checkpoint_position):
 
 
 func on_took_damage(source):
-	if source != null \
-	and source != $DealDamageArea:
+	if source != null:
 		var push_vel = -(source.global_position - position).normalized() * push_back
-		push_vel.y *= push_heigth_percentage
+		push_vel.y *= push_height_percentage
 		add_velocity_modifier(VelocityModifier.new(push_vel, .2, 3, true))
 		# TODO: Stumble back and make invincible for a while, see GDD
 		#note: temporary implementation
 		if Input.get_connected_joypads().size() > 0:
 			Input.start_joy_vibration(0, 0.5, 0.0, 0.5)
+
+
+func create_timer(time):
+	return get_tree().create_timer(time)
+
+
+func toggle_debug():
+	debug_mode = !debug_mode
+	return debug_mode
+
+
+func set_debug_speed_modifier(modifier):
+	debug_speed_modifier = modifier
+
+
+func debug_logic():
+	debug_movement()
+
+
+func debug_movement():
+	velocity = Vector2(Input.get_vector("left", "right", "up", "down")).normalized()
+	velocity *= speed * debug_speed_modifier
+	run()
+	move_and_slide()

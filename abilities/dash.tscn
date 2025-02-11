@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqo5hhva3su4r"]
+[gd_scene load_steps=5 format=3 uid="uid://cqo5hhva3su4r"]
 
 [ext_resource type="Script" path="res://abilities/dash.gd" id="1_708yo"]
+[ext_resource type="PackedScene" uid="uid://dbvyxduyy60pr" path="res://components/damage/deal_damage_area.tscn" id="2_u0oib"]
 
 [sub_resource type="Curve" id="Curve_856f1"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -11,17 +12,17 @@ size = Vector2(150, 100)
 
 [node name="Dash" type="Node2D"]
 script = ExtResource("1_708yo")
-dash_velocity = 1100.0
-dash_duration = 0.25
+dash_velocity = 900.0
+dash_duration = 0.2
+damage_linger_duration = 2.0
 dash_curve = SubResource("Curve_856f1")
 
-[node name="DealDashDamageArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
+[node name="DealDamageArea" parent="." instance=ExtResource("2_u0oib")]
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DealDashDamageArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageArea"]
 shape = SubResource("RectangleShape2D_liclb")
 debug_color = Color(0.82116, 0.40192, 3.85046e-07, 0.42)
 
-[connection signal="body_entered" from="DealDashDamageArea" to="." method="_on_deal_dash_damage_area_body_entered"]
-[connection signal="body_exited" from="DealDashDamageArea" to="." method="_on_deal_dash_damage_area_body_exited"]
+[connection signal="deal_damage_area_entered" from="DealDamageArea" to="." method="on_deal_damage_area_entered"]
+[connection signal="deal_damage_area_exited" from="DealDamageArea" to="." method="on_deal_damage_area_exited"]

@@ -1,0 +1,74 @@
+[gd_scene load_steps=13 format=3 uid="uid://bll3xc6lvwc5"]
+
+[ext_resource type="Script" path="res://enemies/enemy_airborne.gd" id="1_vy1qu"]
+[ext_resource type="PackedScene" uid="uid://dbvyxduyy60pr" path="res://components/damage/deal_damage_area.tscn" id="3_7rhrf"]
+[ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="4_85cx3"]
+[ext_resource type="Texture2D" uid="uid://ug7h6qbp1dgw" path="res://enemies/animations/enemy_airborne_air_spritesheet.png" id="5_vojws"]
+[ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="6_tsxge"]
+[ext_resource type="Script" path="res://enemies/states/enemy_airborne_moving.gd" id="7_su0py"]
+[ext_resource type="Script" path="res://enemies/states/enemy_airborne_idling.gd" id="8_is8ca"]
+[ext_resource type="Script" path="res://enemies/states/enemy_airborne_recovering.gd" id="9_kcogj"]
+
+[sub_resource type="Curve" id="Curve_lxy51"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6sv5j"]
+radius = 31.0161
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xcnqe"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jrlqx"]
+radius = 32.0
+
+[node name="EnemyAirborne" type="PathFollow2D" node_paths=PackedStringArray("idling_state", "moving_state", "recovering_state")]
+rotates = false
+script = ExtResource("1_vy1qu")
+easing_curve = SubResource("Curve_lxy51")
+idling_state = NodePath("StateMachine/Idling")
+moving_state = NodePath("StateMachine/Moving")
+recovering_state = NodePath("StateMachine/Recovering")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+rotation = 1.5708
+collision_layer = 4
+collision_mask = 0
+sync_to_physics = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("CircleShape2D_6sv5j")
+
+[node name="DealDamageArea" parent="." instance=ExtResource("3_7rhrf")]
+unique_name_in_owner = true
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageArea"]
+shape = SubResource("CircleShape2D_xcnqe")
+debug_color = Color(0.976471, 0, 0.411765, 0.419608)
+
+[node name="TakeDamageArea" parent="." instance=ExtResource("4_85cx3")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
+shape = SubResource("CircleShape2D_jrlqx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("5_vojws")
+hframes = 4
+frame = 2
+
+[node name="StateMachine" parent="." instance=ExtResource("6_tsxge")]
+unique_name_in_owner = true
+
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("recovering_state")]
+script = ExtResource("7_su0py")
+recovering_state = NodePath("../Recovering")
+
+[node name="Idling" type="Node" parent="StateMachine" node_paths=PackedStringArray("recovering_state")]
+script = ExtResource("8_is8ca")
+recovering_state = NodePath("../Recovering")
+
+[node name="Recovering" type="Node" parent="StateMachine"]
+script = ExtResource("9_kcogj")
