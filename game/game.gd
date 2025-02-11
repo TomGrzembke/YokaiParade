@@ -143,6 +143,7 @@ func on_player_despawned():
 
 func on_player_reached_goal():
 	stop_timer()
+	get_tree().change_scene_to_file("res://ui/lvlrecap.tscn")
 
 
 func on_player_reached_checkpoint(position):

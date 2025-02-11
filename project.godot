@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+AbilityUI="*res://ui/AbilityUI.tscn"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 
 [display]
@@ -28,6 +29,10 @@ window/stretch/mode="viewport"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
+
+[gui]
+
+theme/custom="res://assets/theme/theme.tres"
 
 [input]
 

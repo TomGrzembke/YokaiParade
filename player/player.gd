@@ -24,7 +24,6 @@ const INFINITY = 1e20
 
 @onready var abilities: Node2D = $Abilities
 
-
 var coyote_timer = 0.15
 var jump_buffer_timer = 0.0
 
@@ -53,9 +52,11 @@ func _physics_process(delta):
 		jump(delta)
 
 	ability_smoothing()
+	calc_vel_mods()
 	apply_velocity()
 	clamp_fall_speed()
 	move_and_slide()
+
 
 func apply_velocity():
 	velocity = local_velocity + outer_velocity_sources
@@ -203,6 +204,7 @@ func add_velocity_modifier(velocity_mod):
 func create_vel_duration_timer(velocity_mod):
 	var duration_timer = create_timer(velocity_mod.duration)
 	duration_timer.timeout.connect(on_vel_mod_ended.bind(velocity_mod))
+	velocity_mod.set_timer(duration_timer)
 
 
 func on_vel_mod_ended(velocity_mod):
@@ -253,7 +255,7 @@ func refresh_velocity_mods(velocity_mod, current_priority):
 
 func apply_vel_mod(velocity_mod):
 	player_control = !velocity_mod.disable_player_movement
-	outer_velocity_sources = velocity_mod.amount
+	outer_velocity_sources = velocity_mod.amount * velocity_mod.sample_curve()
 
 
 func refresh_needed_local_vel(velocity_mod):
