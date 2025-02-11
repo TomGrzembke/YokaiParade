@@ -16,10 +16,12 @@ var ability_progress = .0
 var initial_pos
 var initial_ability_pos
 
+
 func _ready():
 	initial_pos = position
 	position = attack_target.position
 	initial_ability_pos = ability_visual.position
+
 
 func _process(delta):
 	update_trail()

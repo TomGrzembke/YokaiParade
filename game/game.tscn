@@ -1,28 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://daq0ts878ltif"]
+[gd_scene load_steps=4 format=3 uid="uid://daq0ts878ltif"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_g4chm"]
 [ext_resource type="PackedScene" uid="uid://j3prn5a82nr2" path="res://levels/levels.tscn" id="2_7q3um"]
 [ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="4_k85dl"]
-[ext_resource type="Texture2D" uid="uid://d1oi3wstsdacb" path="res://ui/ui_placeholder_topright_back.png" id="8_ltg2l"]
-[ext_resource type="Shader" path="res://shader/exchange_gradient.gdshader" id="9_3dgjy"]
-[ext_resource type="Texture2D" uid="uid://cty3pypmnw01w" path="res://ui/ui_placeholder_topright_front.png" id="9_suwya"]
-[ext_resource type="Texture2D" uid="uid://cgnkxtqnxqyp1" path="res://ui/ui_placeholder_topright_frontII.png" id="11_0766i"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7ves"]
-shader = ExtResource("9_3dgjy")
-shader_parameter/darkness_modifier = 1.0
-shader_parameter/white_feather_range = 0.0
-shader_parameter/black_feather_range = 0.0
-shader_parameter/color_a = Color(0.32549, 0.301961, 0.854902, 1)
-shader_parameter/color_b = Color(0.141176, 0.541176, 0.866667, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gkq5m"]
-shader = ExtResource("9_3dgjy")
-shader_parameter/darkness_modifier = 1.0
-shader_parameter/white_feather_range = 0.0
-shader_parameter/black_feather_range = 0.0
-shader_parameter/color_a = Color(0.32549, 0.301961, 0.854902, 1)
-shader_parameter/color_b = Color(0.141176, 0.541176, 0.866667, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_g4chm")
@@ -51,21 +31,3 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "00:00"
-
-[node name="UITests" type="Node2D" parent="."]
-
-[node name="UiPlaceholderToprightFrontIi" type="Sprite2D" parent="UITests"]
-material = SubResource("ShaderMaterial_p7ves")
-position = Vector2(546, -296)
-texture = ExtResource("11_0766i")
-
-[node name="UIBackDrop" type="Node2D" parent="UITests"]
-
-[node name="UiPlaceholderToprightBack" type="Sprite2D" parent="UITests/UIBackDrop"]
-position = Vector2(-548.5, -294.5)
-texture = ExtResource("8_ltg2l")
-
-[node name="UiPlaceholderToprightFront" type="Sprite2D" parent="UITests/UIBackDrop"]
-material = SubResource("ShaderMaterial_gkq5m")
-position = Vector2(-548.5, -294.5)
-texture = ExtResource("9_suwya")

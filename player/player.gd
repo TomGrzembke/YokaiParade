@@ -53,11 +53,12 @@ func _physics_process(delta):
 		jump(delta)
 
 	ability_smoothing()
-
-	velocity = local_velocity + outer_velocity_sources
-
+	apply_velocity()
 	clamp_fall_speed()
 	move_and_slide()
+
+func apply_velocity():
+	velocity = local_velocity + outer_velocity_sources
 
 
 func run():

@@ -22,8 +22,8 @@ func _ready():
 
 
 func _unhandled_input(_event):
-	if Input.is_action_just_pressed("catch_power"):
-		catch_power()
+	if Input.is_action_just_pressed("catch_ability"):
+		catch_ability()
 
 	if Input.is_action_just_pressed("use_ability"):
 		use_ability()
@@ -39,7 +39,7 @@ func use_ability():
 	current_ability = null
 
 
-func catch_power():
+func catch_ability():
 	if hit_cooldown(): return
 	catch_grace_time()
 	visualizer.attack_command()
