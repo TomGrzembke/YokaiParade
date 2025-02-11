@@ -33,4 +33,4 @@ func set_timer(_timer):
 func sample_curve():
 	if curve == null: return 1
 	if timer == null: return 1
-	return 1.0 - curve.sample(timer.time_left / duration)
+	return curve.sample((duration - timer.time_left) / duration)
