@@ -1,7 +1,9 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://bqdlc5vw8gpa5"]
 
-[ext_resource type="FontFile" uid="uid://cr42l6nb316xs" path="res://assets/fonts/Kenney-Pixel-Square.ttf" id="1_oqyxa"]
+[ext_resource type="FontFile" uid="uid://potb4jbn448t" path="res://assets/fonts/Dracutaz-gwARq.otf" id="1_hmqgt"]
 
 [resource]
-Label/font_sizes/font_size = 48
-Label/fonts/font = ExtResource("1_oqyxa")
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("1_hmqgt")
+Label/font_sizes/font_size = 71
+Label/fonts/font = ExtResource("1_hmqgt")
