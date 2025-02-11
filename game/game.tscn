@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_g4chm"]
 [ext_resource type="Script" path="res://game/camera.gd" id="2_7lcsj"]
-[ext_resource type="PackedScene" path="res://levels/levels.tscn" id="2_ctcuy"]
+[ext_resource type="PackedScene" uid="uid://badws0m5drr6w" path="res://levels/levels.tscn" id="2_ctcuy"]
 [ext_resource type="Texture2D" uid="uid://deamof6wk7rii" path="res://ui/ui_temp_ingame_topright_bg.png" id="3_ajrlu"]
 [ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="4_k85dl"]
 [ext_resource type="Texture2D" uid="uid://cu8145mbillq7" path="res://ui/ui_temp_ingame_topright_main.png" id="8_64m3r"]
