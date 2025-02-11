@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://daq0ts878ltif"]
+[gd_scene load_steps=6 format=3 uid="uid://daq0ts878ltif"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_g4chm"]
 [ext_resource type="PackedScene" uid="uid://j3prn5a82nr2" path="res://levels/levels.tscn" id="2_7q3um"]
+[ext_resource type="Script" path="res://game/camera_.gd" id="3_te1ml"]
 [ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="4_k85dl"]
+
+[sub_resource type="Curve" id="Curve_5lgj1"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), -0.848214, 0.0, 0, 0]
+point_count = 2
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_g4chm")
@@ -13,6 +18,10 @@ unique_name_in_owner = true
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
 position_smoothing_enabled = true
+script = ExtResource("3_te1ml")
+offset_value = Vector2(150, -20)
+lerp_speed = 1.0
+smooth_curve = SubResource("Curve_5lgj1")
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 

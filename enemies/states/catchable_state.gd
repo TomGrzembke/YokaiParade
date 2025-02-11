@@ -6,5 +6,5 @@ extends State
 
 func check_caught():
 	if parent != null \
-	and parent.get_is_getting_caught():
+	and parent.get_is_recovering():
 		return recovering_state

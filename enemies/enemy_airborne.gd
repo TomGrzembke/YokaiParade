@@ -23,7 +23,7 @@ const STATES = preload("res://enemies/enemy_initial_states.gd")
 @export var moving_state: State
 @export var recovering_state: State
 
-var is_getting_caught = false
+var is_recovering = false
 var enemy_animations
 var look_direction
 
@@ -86,12 +86,12 @@ func set_deal_damage_active(active):
 	%DealDamageArea.set_deferred("monitoring", active)
 
 
-func set_is_getting_caught(status):
-	is_getting_caught = status
+func set_is_recovering(status):
+	is_recovering = status
 
 
-func get_is_getting_caught():
-	return is_getting_caught
+func get_is_recovering():
+	return is_recovering
 
 
 func enter_animation_state_moving():
@@ -123,8 +123,11 @@ func get_path_length():
 
 
 func got_caught(_source):
+	if is_recovering:
+		return null
+
 	enemy_caught.emit(self)
-	is_getting_caught = true
+	is_recovering = true
 
 	if element_type == null:
 		return null
