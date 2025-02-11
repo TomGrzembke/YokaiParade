@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dbvyxduyy60pr" path="res://components/damage/deal_damage_area.tscn" id="2_u0oib"]
 
 [sub_resource type="Curve" id="Curve_6cwuf"]
-_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+_data = [Vector2(0, 0.637363), 0.0, 0.156593, 0, 0, Vector2(1, 1), 0.790021, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_liclb"]
