@@ -144,7 +144,6 @@ func on_player_despawned():
 
 func on_player_reached_goal():
 	stop_timer()
-	get_tree().change_scene_to_file.call_deferred("res://ui/level_recap_screen.tscn")
 
 
 func on_player_reached_checkpoint(position):
