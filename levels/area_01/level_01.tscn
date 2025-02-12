@@ -58,10 +58,10 @@ point_count = 2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ogues"]
 shader = ExtResource("16_pak1i")
 shader_parameter/overlay_alpha = 1.0
-shader_parameter/tint_amount = 0.0
-shader_parameter/pattern_scale = Vector2(3, 3)
+shader_parameter/pattern_scale = 1.0
 shader_parameter/tilemap_offset = Vector2(1.035, 0)
 shader_parameter/flip_alpha = true
+shader_parameter/use_local = true
 shader_parameter/pattern_texture = ExtResource("17_a18px")
 
 [node name="Level01" type="Node2D"]
