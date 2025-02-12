@@ -25,6 +25,6 @@ func apply_modulate(node: Node, color: Color):
 	# Only apply modulate to nodes that support it (Sprite2D, Control, etc.)
 	if node is CanvasItem:  # CanvasItem is the base class for nodes like Sprite2D and Control
 		node.modulate = color
-	
+
 	for child in node.get_children():
 		apply_modulate(child, color)

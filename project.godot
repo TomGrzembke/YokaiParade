@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-AbilityUI="*res://ui/AbilityUI.tscn"
+AbilityUI="*res://ui/ability_ui.tscn"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 
 [display]

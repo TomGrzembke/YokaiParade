@@ -104,7 +104,7 @@ func set_current_ability(ability_scene):
 		var ability_color: Color = ability.get_color()
 		visual.self_modulate = ability_color
 		if AbilityUI:
-			var ability_ui = AbilityUI.get_node("CanvasLayer/AbilityUI")
+			var ability_ui = AbilityUI.get_node("CanvasLayer/TextureRect")
 			if ability_ui:
 				ability_ui.modulate = ability_color
 
@@ -122,7 +122,7 @@ func create_timer(time):
 func reset_color():
 	visual.self_modulate = COLOR_PLAIN
 	if AbilityUI:
-		var ability_ui = AbilityUI.get_node("CanvasLayer/AbilityUI")
+		var ability_ui = AbilityUI.get_node("CanvasLayer/TextureRect")
 		if ability_ui:
 			ability_ui.modulate = COLOR_PLAIN
 

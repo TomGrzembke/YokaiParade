@@ -1,5 +1,6 @@
 extends Node
 
+
 enum GameState {
 	STARTING_GAME = 0,
 	LOADING_LEVEL = 500,
@@ -143,7 +144,6 @@ func on_player_despawned():
 
 func on_player_reached_goal():
 	stop_timer()
-	get_tree().change_scene_to_file.call_deferred("res://ui/lvlrecap.tscn")
 
 
 func on_player_reached_checkpoint(position):

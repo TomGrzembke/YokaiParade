@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://0nq0l6sv5208"]
 
-[ext_resource type="Script" path="res://ui/lvlrecap.gd" id="1_wew2x"]
-[ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="2_46bsm"]
+[ext_resource type="Script" path="res://ui/level_recap_screen.gd" id="1_t7mgr"]
+[ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="2_32uef"]
 
-[node name="lvlrecap" type="CanvasLayer"]
+[node name="LevelRecapScreen" type="CanvasLayer"]
 layer = 3
-script = ExtResource("1_wew2x")
+script = ExtResource("1_t7mgr")
 
 [node name="Again" type="Button" parent="."]
 anchors_preset = 8
@@ -44,7 +44,7 @@ offset_right = 1014.0
 offset_bottom = 386.0
 grow_horizontal = 2
 pivot_offset = Vector2(128, 37)
-theme = ExtResource("2_46bsm")
+theme = ExtResource("2_32uef")
 
 [node name="PlayTimeLabel" type="Label" parent="TopUI"]
 unique_name_in_owner = true

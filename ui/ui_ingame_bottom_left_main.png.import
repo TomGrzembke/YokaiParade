@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqbl0stgs86k1"
-path="res://.godot/imported/ui_temp_ingame_bottomleft__bg.png-5e530dfffcc48f73f7b1d07f5be6a119.ctex"
+uid="uid://dx00l7ajc4io6"
+path="res://.godot/imported/ui_ingame_bottom_left_main.png-1d3b279842d994714b6408d5d701f077.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/ui_temp_ingame_bottomleft__bg.png"
-dest_files=["res://.godot/imported/ui_temp_ingame_bottomleft__bg.png-5e530dfffcc48f73f7b1d07f5be6a119.ctex"]
+source_file="res://ui/ui_ingame_bottom_left_main.png"
+dest_files=["res://.godot/imported/ui_ingame_bottom_left_main.png-1d3b279842d994714b6408d5d701f077.ctex"]
 
 [params]
 
