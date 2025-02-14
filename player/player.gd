@@ -142,7 +142,8 @@ func jump_logic():
 
 func variable_jump_heigth():
 	var is_falling = local_velocity.y < 0
-	if Input.is_action_just_released("jump") && player_control && is_falling:
+	var is_canceling_jump = Input.is_action_just_released("jump")
+	if is_canceling_jump && player_control && is_falling:
 		is_cancelling_jump = true
 		if variable_jump_height_min_percentage != 0:
 			local_velocity.y *= variable_jump_height_min_percentage
