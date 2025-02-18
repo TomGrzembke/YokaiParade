@@ -20,6 +20,7 @@ const INFINITY = 1e20
 @export_range(0.0, .99, .01) var jump_height_continuous_cut_percentage = 1.0
 @export var apex_time : float = .1
 @export var apex_strength : float = 1000.0
+@export var apex_smooth_curve : Curve
 @export_category("Enemey Push")
 @export var push_back = 500.0
 @export_range(.0, 1.5, .1) var push_height_percentage = .75
@@ -43,7 +44,6 @@ var is_cancelling_jump := false
 var debug_mode = false
 var debug_speed_modifier = 3
 var apex_timer
-var is_using_apex
 var can_use_apex
 
 
@@ -99,21 +99,7 @@ func jump(delta):
 	coyote_time(delta)
 	jump_logic()
 
-	apex_modifier()
-
-	if is_on_floor():
-		is_using_apex = false
-		can_use_apex = true
-
-	if cached_local_velocity.y < 0.0 && local_velocity.y > 0.0 && can_use_apex:
-		apex_timer = create_timer(apex_time)
-		can_use_apex = false
-		is_using_apex = true
-
-	if apex_timer != null && apex_timer.time_left > 0 && is_using_apex:
-		local_velocity.y -= get_gravity().y * delta / 2
-		local_velocity.x += look_direction * lerpf(apex_strength * .5, apex_strength, quadratic_in_out_lerp(apex_timer.time_left / apex_time))
-		print(lerpf(apex_strength * .5, apex_strength, quadratic_in_out_lerp(apex_timer.time_left / apex_time)))
+	apex_modifier(delta)
 
 	variable_jump_height()
 	update_jump_buffer(delta)
@@ -166,8 +152,6 @@ func jump_logic():
 	if !can_jump: return
 
 	local_velocity.y = -jump_velocity
-
-
 
 
 func variable_jump_height():
@@ -243,8 +227,20 @@ func clamp_fall_speed():
 	velocity.y = clampf(velocity.y, -INFINITY, fall_speed_clamp)
 
 
-func apex_modifier():
-	pass
+func apex_modifier(delta):
+	if is_on_floor():
+		can_use_apex = true
+
+	if cached_local_velocity.y < 0.0 && local_velocity.y > 0.0 && can_use_apex:
+		apex_timer = create_timer(apex_time)
+		can_use_apex = false
+
+	if apex_timer == null: return
+
+	if apex_timer.time_left > 0:
+		local_velocity.y -= get_gravity().y * delta / 2
+		local_velocity.x += look_direction * \
+		lerpf(apex_strength * .5, apex_strength, quadratic_in_out_lerp(apex_timer.time_left / apex_time))
 
 
 func add_velocity_modifier(velocity_mod):
