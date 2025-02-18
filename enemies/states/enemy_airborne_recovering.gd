@@ -1,7 +1,6 @@
 extends State
 
 
-var previous_state
 var recovery_timer
 
 

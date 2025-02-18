@@ -1,5 +1,5 @@
-extends Resource
 class_name EnemyElementType
+extends Resource
 
 
 const ELEMENTS = preload("res://elements/elements.gd")

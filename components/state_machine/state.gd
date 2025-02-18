@@ -2,14 +2,16 @@ extends Node
 class_name State
 
 
-var parent = null
+var parent
+var previous_state
 
 
 func init(parent_node):
 	parent = parent_node
 
 
-func enter(_previous_state):
+func enter(p_previous_state):
+	previous_state = p_previous_state
 	return null
 
 
