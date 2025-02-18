@@ -18,15 +18,21 @@ const INFINITY = 1e20
 @export_range(0.0, 1.0, .01) var jump_buffer_time = .15
 @export_range(0.0, 1.0, .01) var variable_jump_height_min_percentage = .7
 @export_range(0.0, .99, .01) var jump_height_continuous_cut_percentage = 1.0
+@export_category("Apex Settings")
+@export var jump_edge_correction_time : float = 0.1
 @export var apex_time : float = .1
 @export var apex_strength : float = 1000.0
 @export_range(0, 1.0, .01) var apex_negativ_gravity : float = .5
 @export var apex_smooth_curve : Curve
+
 @export_category("Enemey Push")
 @export var push_back = 500.0
 @export_range(.0, 1.5, .1) var push_height_percentage = .75
 
 @onready var abilities: Node2D = $Abilities
+@onready var upper_edge_detection_ray: RayCast2D = $UpperEdgeDetectionRay
+@onready var downer_edge_detection_ray: RayCast2D = $DownerEdgeDetectionRay
+
 
 var coyote_timer = 0.15
 var jump_buffer_timer = 0.0
@@ -40,13 +46,16 @@ var cached_local_velocity := Vector2.ZERO
 
 var velocity_mod_instigator = []
 var player_control := true
+
 var buffer_cancel_jump := false
 var is_cancelling_jump := false
-var debug_mode = false
-var debug_speed_modifier = 3
+var jump_edge_correction_timer
+var is_using_edge_correction
 var apex_timer
 var can_use_apex
 
+var debug_mode = false
+var debug_speed_modifier = 3
 
 func _physics_process(delta):
 	if debug_mode:
@@ -103,6 +112,18 @@ func jump(delta):
 	variable_jump_height()
 	update_jump_buffer(delta)
 	cached_local_velocity = local_velocity
+
+	if is_on_floor():
+		is_using_edge_correction = false
+
+	if upper_edge_detection_ray.has_target():
+		return
+
+	if downer_edge_detection_ray.has_target() && !is_using_edge_correction:
+		jump_edge_correction_timer = create_timer(jump_edge_correction_time)
+		is_using_edge_correction = true
+		local_velocity.x *= -1
+
 
 
 func calc_move_dir():

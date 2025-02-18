@@ -1,9 +1,10 @@
-[gd_scene load_steps=46 format=3 uid="uid://dnxi2gyvo83ec"]
+[gd_scene load_steps=47 format=3 uid="uid://dnxi2gyvo83ec"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/abilities.gd" id="2_es05j"]
 [ext_resource type="PackedScene" uid="uid://dbvyxduyy60pr" path="res://components/damage/deal_damage_area.tscn" id="4_cn11c"]
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="4_y0ly5"]
+[ext_resource type="PackedScene" uid="uid://do4ocmf2wgj2o" path="res://components/raycast/raycast.tscn" id="5_h4r2l"]
 [ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/player_spritesheet.png" id="5_o3mnp"]
 [ext_resource type="AudioStream" uid="uid://coy5ai5tktmgg" path="res://sounds/player_walking.wav" id="6_aukq2"]
 [ext_resource type="Script" path="res://player/player_visuals.gd" id="6_guley"]
@@ -408,6 +409,12 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
 shape = SubResource("CapsuleShape2D_4pm2j")
 debug_color = Color(0.976648, 0, 0.410241, 0.42)
+
+[node name="UpperEdgeDetectionRay" parent="." instance=ExtResource("5_h4r2l")]
+target_position = Vector2(-15, -78)
+
+[node name="DownerEdgeDetectionRay" parent="." instance=ExtResource("5_h4r2l")]
+target_position = Vector2(39, -60)
 
 [node name="PlayerWalk" type="Sprite2D" parent="."]
 texture_filter = 1
