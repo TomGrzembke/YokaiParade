@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://player/movement_line.gd" id="14_p1m7a"]
 
 [sub_resource type="Curve" id="Curve_ix1y4"]
-_data = [Vector2(0, 0.472527), 0.0, 0.0, 0, 0, Vector2(0.426316, 0.989011), 0.284715, 0.284715, 0, 0, Vector2(1, 0.494505), -1.83329, 0.0, 0, 0]
+_data = [Vector2(0, 0.472527), 0.0, 2.88331, 0, 0, Vector2(0.294737, 0.934066), 0.894819, 0.894819, 0, 0, Vector2(1, 0.494505), -1.53114, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1mi2e"]
@@ -465,9 +465,9 @@ fall_speed_clamp = 975.0
 jump_coyote_time = 0.2
 jump_buffer_time = 0.2
 variable_jump_height_min_percentage = 0.58
-apex_time = 0.2
-apex_strength = 35.0
-apex_negativ_gravity = 0.2
+apex_time = 0.18
+apex_strength = 36.0
+apex_negativ_gravity = 0.25
 apex_smooth_curve = SubResource("Curve_ix1y4")
 push_back = 800.0
 push_height_percentage = 0.4
