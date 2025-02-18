@@ -1,19 +1,23 @@
-[gd_scene load_steps=45 format=3 uid="uid://dnxi2gyvo83ec"]
+[gd_scene load_steps=46 format=3 uid="uid://dnxi2gyvo83ec"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/abilities.gd" id="2_es05j"]
 [ext_resource type="PackedScene" uid="uid://dbvyxduyy60pr" path="res://components/damage/deal_damage_area.tscn" id="4_cn11c"]
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="4_y0ly5"]
+[ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/player_spritesheet.png" id="5_o3mnp"]
 [ext_resource type="AudioStream" uid="uid://coy5ai5tktmgg" path="res://sounds/player_walking.wav" id="6_aukq2"]
 [ext_resource type="Script" path="res://player/player_visuals.gd" id="6_guley"]
 [ext_resource type="Script" path="res://player/debug.gd" id="7_3jai0"]
 [ext_resource type="AudioStream" uid="uid://coibewadmss1o" path="res://sounds/player_hittting2.wav" id="7_ilb2w"]
 [ext_resource type="AudioStream" uid="uid://cwgybk1plghnu" path="res://sounds/player_jump.wav" id="8_27va1"]
-[ext_resource type="Texture2D" uid="uid://3o4ihtsqhemf" path="res://player/player_walk.png" id="8_vws15"]
 [ext_resource type="AudioStream" uid="uid://dgk7beqkylhis" path="res://sounds/player_landing.wav" id="9_2d4ee"]
 [ext_resource type="AudioStream" uid="uid://g4orwxysi14l" path="res://sounds/player_got_hit.wav" id="10_5urda"]
 [ext_resource type="AudioStream" uid="uid://cojwru8qh7oh8" path="res://sounds/player_dying.wav" id="11_keeyg"]
 [ext_resource type="Script" path="res://player/movement_line.gd" id="14_p1m7a"]
+
+[sub_resource type="Curve" id="Curve_ix1y4"]
+_data = [Vector2(0, 0.472527), 0.0, 0.0, 0, 0, Vector2(0.426316, 0.989011), 0.284715, 0.284715, 0, 0, Vector2(1, 0.494505), -1.83329, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1mi2e"]
 radius = 25.0
@@ -140,6 +144,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerWalk:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_ko40m"]
@@ -335,7 +351,7 @@ states/landing/position = Vector2(515, -107)
 states/walking/node = SubResource("AnimationNodeAnimation_l41dg")
 states/walking/position = Vector2(537, 114)
 transitions = ["Start", "idling", SubResource("AnimationNodeStateMachineTransition_i4wgy"), "idling", "walking", SubResource("AnimationNodeStateMachineTransition_egflg"), "walking", "idling", SubResource("AnimationNodeStateMachineTransition_1r4x0"), "walking", "jump", SubResource("AnimationNodeStateMachineTransition_87uy6"), "idling", "jump", SubResource("AnimationNodeStateMachineTransition_p4mgk"), "jump", "landing", SubResource("AnimationNodeStateMachineTransition_47fet"), "landing", "idling", SubResource("AnimationNodeStateMachineTransition_71yb5")]
-graph_offset = Vector2(-35, -118)
+graph_offset = Vector2(10, -97)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ovhno"]
 
@@ -362,6 +378,10 @@ fall_speed_clamp = 975.0
 jump_coyote_time = 0.2
 jump_buffer_time = 0.2
 variable_jump_height_min_percentage = 0.58
+apex_time = 0.2
+apex_strength = 35.0
+apex_negativ_gravity = 0.2
+apex_smooth_curve = SubResource("Curve_ix1y4")
 push_back = 800.0
 push_height_percentage = 0.4
 
@@ -391,9 +411,10 @@ debug_color = Color(0.976648, 0, 0.410241, 0.42)
 
 [node name="PlayerWalk" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(15, -11)
-texture = ExtResource("8_vws15")
+position = Vector2(1, -11)
+texture = ExtResource("5_o3mnp")
 hframes = 4
+vframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -401,6 +422,7 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+callback_mode_discrete = 1
 tree_root = SubResource("AnimationNodeStateMachine_h8ooh")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
