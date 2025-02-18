@@ -18,6 +18,10 @@ const INFINITY = 1e20
 @export_range(0.0, 1.0, .01) var jump_buffer_time = .15
 @export_range(0.0, 1.0, .01) var variable_jump_height_min_percentage = .7
 @export_range(0.0, .99, .01) var jump_height_continuous_cut_percentage = 1.0
+@export var apex_time : float = .1
+@export var apex_strength : float = 1000.0
+@export_range(0, 1.0, .01) var apex_negativ_gravity : float = .5
+@export var apex_smooth_curve : Curve
 @export_category("Enemey Push")
 @export var push_back = 500.0
 @export_range(.0, 1.5, .1) var push_height_percentage = .75
@@ -40,10 +44,11 @@ var buffer_cancel_jump := false
 var is_cancelling_jump := false
 var debug_mode = false
 var debug_speed_modifier = 3
+var apex_timer
+var can_use_apex
 
 
 func _physics_process(delta):
-
 	if debug_mode:
 		debug_logic()
 		return
@@ -94,12 +99,7 @@ func ability_smoothing():
 func jump(delta):
 	coyote_time(delta)
 	jump_logic()
-
-	apex_modifier()
-
-	if cached_local_velocity.y < 0.0 && local_velocity.y > 0.0:
-		pass
-
+	apex_modifier(delta)
 	variable_jump_height()
 	update_jump_buffer(delta)
 	cached_local_velocity = local_velocity
@@ -146,8 +146,6 @@ func jump_logic():
 	if !can_jump: return
 
 	local_velocity.y = -jump_velocity
-
-
 
 
 func variable_jump_height():
@@ -223,8 +221,29 @@ func clamp_fall_speed():
 	velocity.y = clampf(velocity.y, -INFINITY, fall_speed_clamp)
 
 
-func apex_modifier():
-	pass
+func apex_modifier(delta):
+	if apex_time == 0: return
+	if apex_strength == 0 && apex_negativ_gravity == 0: return
+	if is_on_floor():
+		can_use_apex = true
+		return
+
+	if cached_local_velocity.y < 0.0 && local_velocity.y > 0.0 && can_use_apex:
+		apex_timer = create_timer(apex_time)
+		can_use_apex = false
+
+	if apex_timer == null: return
+	if apex_timer.time_left <= 0: return
+
+	local_velocity.y -= get_gravity().y * delta * apex_negativ_gravity
+
+	if local_velocity.x == 0: return
+	if apex_smooth_curve == null:
+		local_velocity.x += look_direction * apex_strength
+		return
+
+	local_velocity.x += look_direction * \
+	lerpf(apex_strength * .5, apex_strength, apex_smooth_curve.sample(apex_timer.time_left / apex_time))
 
 
 func add_velocity_modifier(velocity_mod):

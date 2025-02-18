@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dnxi2gyvo83ec"]
+[gd_scene load_steps=46 format=3 uid="uid://dnxi2gyvo83ec"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/abilities.gd" id="2_es05j"]
@@ -14,6 +14,10 @@
 [ext_resource type="AudioStream" uid="uid://g4orwxysi14l" path="res://sounds/player_got_hit.wav" id="10_5urda"]
 [ext_resource type="AudioStream" uid="uid://cojwru8qh7oh8" path="res://sounds/player_dying.wav" id="11_keeyg"]
 [ext_resource type="Script" path="res://player/movement_line.gd" id="14_p1m7a"]
+
+[sub_resource type="Curve" id="Curve_ix1y4"]
+_data = [Vector2(0, 0.472527), 0.0, 0.0, 0, 0, Vector2(0.426316, 0.989011), 0.284715, 0.284715, 0, 0, Vector2(1, 0.494505), -1.83329, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1mi2e"]
 radius = 25.0
@@ -374,6 +378,10 @@ fall_speed_clamp = 975.0
 jump_coyote_time = 0.2
 jump_buffer_time = 0.2
 variable_jump_height_min_percentage = 0.58
+apex_time = 0.2
+apex_strength = 35.0
+apex_negativ_gravity = 0.2
+apex_smooth_curve = SubResource("Curve_ix1y4")
 push_back = 800.0
 push_height_percentage = 0.4
 
