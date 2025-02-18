@@ -18,6 +18,8 @@ const INFINITY = 1e20
 @export_range(0.0, 1.0, .01) var jump_buffer_time = .15
 @export_range(0.0, 1.0, .01) var variable_jump_height_min_percentage = .7
 @export_range(0.0, .99, .01) var jump_height_continuous_cut_percentage = 1.0
+@export var apex_time : float = .1
+@export var apex_strength : float = 1000.0
 @export_category("Enemey Push")
 @export var push_back = 500.0
 @export_range(.0, 1.5, .1) var push_height_percentage = .75
@@ -40,10 +42,12 @@ var buffer_cancel_jump := false
 var is_cancelling_jump := false
 var debug_mode = false
 var debug_speed_modifier = 3
+var apex_timer
+var is_using_apex
+var can_use_apex
 
 
 func _physics_process(delta):
-
 	if debug_mode:
 		debug_logic()
 		return
@@ -97,12 +101,28 @@ func jump(delta):
 
 	apex_modifier()
 
-	if cached_local_velocity.y < 0.0 && local_velocity.y > 0.0:
-		pass
+	if is_on_floor():
+		is_using_apex = false
+		can_use_apex = true
+
+	if cached_local_velocity.y < 0.0 && local_velocity.y > 0.0 && can_use_apex:
+		apex_timer = create_timer(apex_time)
+		can_use_apex = false
+		is_using_apex = true
+
+	if apex_timer != null && apex_timer.time_left > 0 && is_using_apex:
+		local_velocity.y -= get_gravity().y * delta / 2
+		local_velocity.x += look_direction * lerpf(0, apex_strength, custom_lerp(apex_timer.time_left / apex_time))
+
 
 	variable_jump_height()
 	update_jump_buffer(delta)
 	cached_local_velocity = local_velocity
+
+
+func custom_lerp(t):
+	t = clamp(t, 0.0, 1.0)
+	return -4 * (t - 0.5) * (t - 0.5) + 1
 
 
 func calc_move_dir():
