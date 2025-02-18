@@ -1,166 +1,46 @@
-[gd_scene load_steps=15 format=3 uid="uid://daq0ts878ltif"]
+[gd_scene load_steps=13 format=3 uid="uid://daq0ts878ltif"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_g4chm"]
-[ext_resource type="Script" path="res://game/camera.gd" id="2_7lcsj"]
-[ext_resource type="PackedScene" uid="uid://badws0m5drr6w" path="res://levels/levels.tscn" id="2_ctcuy"]
-[ext_resource type="Texture2D" uid="uid://deamof6wk7rii" path="res://ui/ui_ingame_top_right_bg.png" id="3_ajrlu"]
-[ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="4_k85dl"]
-[ext_resource type="Texture2D" uid="uid://cu8145mbillq7" path="res://ui/ui_ingame_top_right_main.png" id="8_64m3r"]
-[ext_resource type="Texture2D" uid="uid://dy473cfis2wyf" path="res://ui/ui_ingame_clock.png" id="9_32rt1"]
-[ext_resource type="Texture2D" uid="uid://cq6ew1rj7i5xf" path="res://ui/ui_ingame_top_right_line.png" id="9_sx365"]
-[ext_resource type="Texture2D" uid="uid://cqbl0stgs86k1" path="res://ui/ui_ingame_bottom_left_bg.png" id="11_f2xfa"]
-[ext_resource type="Texture2D" uid="uid://dx00l7ajc4io6" path="res://ui/ui_ingame_bottom_left_main.png" id="12_sckdn"]
-[ext_resource type="Texture2D" uid="uid://blcmkd8j63hby" path="res://ui/ui_ingame_bottom_left_line.png" id="13_yog8w"]
-[ext_resource type="Texture2D" uid="uid://bsi2owtjdi83n" path="res://ui/ui_ingame_ability_bg.png" id="14_i55oj"]
-[ext_resource type="Texture2D" uid="uid://cajispq8sq8cp" path="res://ui/ui_ingame_ability_line.png" id="16_aq85m"]
+[ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="2_me8mb"]
+[ext_resource type="Script" path="res://game/states/startup.gd" id="15_nvaqt"]
+[ext_resource type="PackedScene" uid="uid://dce17t0phbvrv" path="res://game/scenes/startup.tscn" id="16_fuloq"]
+[ext_resource type="Script" path="res://game/states/main_menu.gd" id="17_dwi8d"]
+[ext_resource type="PackedScene" uid="uid://dk3wuo1sfknyo" path="res://game/scenes/main_menu.tscn" id="18_ujkrk"]
+[ext_resource type="Script" path="res://game/states/in_game.gd" id="19_nmmof"]
+[ext_resource type="Script" path="res://game/states/credits.gd" id="20_40gro"]
+[ext_resource type="Script" path="res://game/states/options.gd" id="20_e22mg"]
+[ext_resource type="PackedScene" uid="uid://m1lhnekkobbt" path="res://game/scenes/options.tscn" id="20_y6pfn"]
+[ext_resource type="PackedScene" uid="uid://daf1dxr8obptf" path="res://game/scenes/credits.tscn" id="22_otbp7"]
+[ext_resource type="PackedScene" uid="uid://cisf071rha1ru" path="res://game/scenes/in_game.tscn" id="24_pnwcx"]
 
-[sub_resource type="Curve" id="Curve_m6gkx"]
-_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_g4chm")
+initial_state = NodePath("StateMachine/InGame")
 
-[node name="Levels" parent="." instance=ExtResource("2_ctcuy")]
+[node name="StateMachine" parent="." instance=ExtResource("2_me8mb")]
 unique_name_in_owner = true
+process_mode = 3
 
-[node name="Camera2D" type="Camera2D" parent="."]
-process_callback = 0
-position_smoothing_enabled = true
-script = ExtResource("2_7lcsj")
-offset_value = Vector2(150, 0)
-lerp_speed = 1.0
-smooth_curve = SubResource("Curve_m6gkx")
+[node name="Startup" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_game_state")]
+script = ExtResource("15_nvaqt")
+next_game_state = NodePath("../MainMenu")
+game_state_packed_scene = ExtResource("16_fuloq")
 
-[node name="UI Layer" type="CanvasLayer" parent="."]
+[node name="MainMenu" type="Node" parent="StateMachine" node_paths=PackedStringArray("in_game_state", "options_game_state", "credits_game_state")]
+script = ExtResource("17_dwi8d")
+in_game_state = NodePath("../InGame")
+options_game_state = NodePath("../Options")
+credits_game_state = NodePath("../Credits")
+game_state_packed_scene = ExtResource("18_ujkrk")
 
-[node name="Control" type="Control" parent="UI Layer"]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
-mouse_filter = 1
+[node name="Options" type="Node" parent="StateMachine"]
+script = ExtResource("20_e22mg")
+game_state_packed_scene = ExtResource("20_y6pfn")
 
-[node name="TopRight bg" type="TextureRect" parent="UI Layer/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -817.0
-offset_top = -1.0
-offset_bottom = 483.0
-texture = ExtResource("3_ajrlu")
+[node name="Credits" type="Node" parent="StateMachine"]
+script = ExtResource("20_40gro")
+game_state_packed_scene = ExtResource("22_otbp7")
 
-[node name="TopRight main" type="TextureRect" parent="UI Layer/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = -0.002
-anchor_right = 1.0
-anchor_bottom = -0.002
-offset_left = -817.0
-offset_top = 0.09
-offset_bottom = 484.09
-texture = ExtResource("8_64m3r")
-
-[node name="TopRight line" type="TextureRect" parent="UI Layer/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = -0.002
-anchor_right = 1.0
-anchor_bottom = -0.002
-offset_left = -817.0
-offset_top = 0.09
-offset_bottom = 484.09
-texture = ExtResource("9_sx365")
-
-[node name="Clock" type="TextureRect" parent="UI Layer/Control"]
-layout_mode = 0
-offset_left = -471.0
-offset_top = 7.0
-offset_right = -12.0
-offset_bottom = 229.0
-texture = ExtResource("9_32rt1")
-
-[node name="TopUI" type="MarginContainer" parent="UI Layer/Control"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = -307.0
-offset_top = 58.0
-offset_right = -177.0
-offset_bottom = 176.0
-grow_horizontal = 2
-pivot_offset = Vector2(128, 37)
-theme = ExtResource("4_k85dl")
-
-[node name="PlayTimeLabel" type="Label" parent="UI Layer/Control/TopUI"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "00:00"
-
-[node name="Control2" type="Control" parent="UI Layer"]
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="BottomLeft bg" type="TextureRect" parent="UI Layer/Control2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = -0.002
-anchor_right = 1.0
-anchor_bottom = -0.002
-offset_left = -40.0
-offset_top = -1039.92
-offset_right = 1036.0
-offset_bottom = 40.08
-texture = ExtResource("11_f2xfa")
-
-[node name="BottomLeft main" type="TextureRect" parent="UI Layer/Control2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = -0.002
-anchor_right = 1.0
-anchor_bottom = -0.002
-offset_left = -40.0
-offset_top = -1039.92
-offset_right = 1036.0
-offset_bottom = 40.08
-texture = ExtResource("12_sckdn")
-
-[node name="BottomLeft line" type="TextureRect" parent="UI Layer/Control2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = -0.002
-anchor_right = 1.0
-anchor_bottom = -0.002
-offset_left = -40.0
-offset_top = -1039.92
-offset_right = 1036.0
-offset_bottom = 40.08
-texture = ExtResource("13_yog8w")
-
-[node name="Ability bg" type="TextureRect" parent="UI Layer/Control2"]
-layout_mode = 0
-offset_top = -373.0
-offset_right = 452.0
-offset_bottom = 40.0
-texture = ExtResource("14_i55oj")
-
-[node name="Ability line" type="TextureRect" parent="UI Layer/Control2"]
-layout_mode = 0
-offset_top = -373.0
-offset_right = 452.0
-offset_bottom = 40.0
-texture = ExtResource("16_aq85m")
+[node name="InGame" type="Node" parent="StateMachine"]
+script = ExtResource("19_nmmof")
+game_state_packed_scene = ExtResource("24_pnwcx")

@@ -1,0 +1,166 @@
+[gd_scene load_steps=15 format=3 uid="uid://cisf071rha1ru"]
+
+[ext_resource type="Script" path="res://game/scenes/in_game.gd" id="1_jmwmp"]
+[ext_resource type="Script" path="res://game/camera.gd" id="2_slqn3"]
+[ext_resource type="PackedScene" uid="uid://badws0m5drr6w" path="res://levels/levels.tscn" id="3_45cmx"]
+[ext_resource type="Texture2D" uid="uid://deamof6wk7rii" path="res://ui/ui_ingame_top_right_bg.png" id="4_1ymkj"]
+[ext_resource type="Texture2D" uid="uid://cu8145mbillq7" path="res://ui/ui_ingame_top_right_main.png" id="5_1whgf"]
+[ext_resource type="Texture2D" uid="uid://cq6ew1rj7i5xf" path="res://ui/ui_ingame_top_right_line.png" id="6_010ge"]
+[ext_resource type="Texture2D" uid="uid://dy473cfis2wyf" path="res://ui/ui_ingame_clock.png" id="7_bjrkf"]
+[ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="8_l8w65"]
+[ext_resource type="Texture2D" uid="uid://cqbl0stgs86k1" path="res://ui/ui_ingame_bottom_left_bg.png" id="9_tvxpd"]
+[ext_resource type="Texture2D" uid="uid://dx00l7ajc4io6" path="res://ui/ui_ingame_bottom_left_main.png" id="10_bjykd"]
+[ext_resource type="Texture2D" uid="uid://blcmkd8j63hby" path="res://ui/ui_ingame_bottom_left_line.png" id="11_7oqmf"]
+[ext_resource type="Texture2D" uid="uid://bsi2owtjdi83n" path="res://ui/ui_ingame_ability_bg.png" id="12_yb5sd"]
+[ext_resource type="Texture2D" uid="uid://cajispq8sq8cp" path="res://ui/ui_ingame_ability_line.png" id="13_m5arx"]
+
+[sub_resource type="Curve" id="Curve_12gxh"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="InGame" type="Node2D"]
+script = ExtResource("1_jmwmp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("2_slqn3")
+offset_value = Vector2(150, 0)
+lerp_speed = 1.0
+smooth_curve = SubResource("Curve_12gxh")
+
+[node name="Levels" parent="." instance=ExtResource("3_45cmx")]
+unique_name_in_owner = true
+
+[node name="UI Layer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI Layer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+mouse_filter = 1
+
+[node name="TopRight bg" type="TextureRect" parent="UI Layer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -817.0
+offset_top = -1.0
+offset_bottom = 483.0
+texture = ExtResource("4_1ymkj")
+
+[node name="TopRight main" type="TextureRect" parent="UI Layer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -0.002
+anchor_right = 1.0
+anchor_bottom = -0.002
+offset_left = -817.0
+offset_top = 0.09
+offset_bottom = 484.09
+texture = ExtResource("5_1whgf")
+
+[node name="TopRight line" type="TextureRect" parent="UI Layer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -0.002
+anchor_right = 1.0
+anchor_bottom = -0.002
+offset_left = -817.0
+offset_top = 0.09
+offset_bottom = 484.09
+texture = ExtResource("6_010ge")
+
+[node name="Clock" type="TextureRect" parent="UI Layer/Control"]
+layout_mode = 0
+offset_left = -471.0
+offset_top = 7.0
+offset_right = -12.0
+offset_bottom = 229.0
+texture = ExtResource("7_bjrkf")
+
+[node name="TopUI" type="MarginContainer" parent="UI Layer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -307.0
+offset_top = 58.0
+offset_right = -177.0
+offset_bottom = 176.0
+grow_horizontal = 2
+pivot_offset = Vector2(128, 37)
+theme = ExtResource("8_l8w65")
+
+[node name="PlayTimeLabel" type="Label" parent="UI Layer/Control/TopUI"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "00:00"
+
+[node name="Control2" type="Control" parent="UI Layer"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="BottomLeft bg" type="TextureRect" parent="UI Layer/Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -0.002
+anchor_right = 1.0
+anchor_bottom = -0.002
+offset_left = -40.0
+offset_top = -1039.92
+offset_right = 1036.0
+offset_bottom = 40.08
+texture = ExtResource("9_tvxpd")
+
+[node name="BottomLeft main" type="TextureRect" parent="UI Layer/Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -0.002
+anchor_right = 1.0
+anchor_bottom = -0.002
+offset_left = -40.0
+offset_top = -1039.92
+offset_right = 1036.0
+offset_bottom = 40.08
+texture = ExtResource("10_bjykd")
+
+[node name="BottomLeft line" type="TextureRect" parent="UI Layer/Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -0.002
+anchor_right = 1.0
+anchor_bottom = -0.002
+offset_left = -40.0
+offset_top = -1039.92
+offset_right = 1036.0
+offset_bottom = 40.08
+texture = ExtResource("11_7oqmf")
+
+[node name="Ability bg" type="TextureRect" parent="UI Layer/Control2"]
+layout_mode = 0
+offset_top = -373.0
+offset_right = 452.0
+offset_bottom = 40.0
+texture = ExtResource("12_yb5sd")
+
+[node name="Ability line" type="TextureRect" parent="UI Layer/Control2"]
+layout_mode = 0
+offset_top = -373.0
+offset_right = 452.0
+offset_bottom = 40.0
+texture = ExtResource("13_m5arx")
