@@ -11,8 +11,8 @@
 [ext_resource type="Script" path="res://player/movement_line.gd" id="14_p1m7a"]
 
 [sub_resource type="Curve" id="Curve_8672j"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.242105, 0.153846), 1.39194, 1.39194, 0, 0, Vector2(0.473684, 0.923077), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.110526, 0.021978), 0.0, 0.0, 0, 0, Vector2(0.289474, 0.263736), 1.39194, 1.39194, 0, 0, Vector2(0.557895, 0.901099), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="Curve" id="Curve_ix1y4"]
 _data = [Vector2(0, 0.472527), 0.0, 2.88331, 0, 0, Vector2(0.294737, 0.934066), 0.894819, 0.894819, 0, 0, Vector2(1, 0.494505), -1.53114, 0.0, 0, 0]
