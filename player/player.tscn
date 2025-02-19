@@ -11,8 +11,8 @@
 [ext_resource type="Script" path="res://player/movement_line.gd" id="14_p1m7a"]
 
 [sub_resource type="Curve" id="Curve_8672j"]
-_data = [Vector2(0, 0), 0.0, 1.37713, 0, 0, Vector2(0.410526, 0.879121), 0.42829, 0.42829, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.242105, 0.153846), 1.39194, 1.39194, 0, 0, Vector2(0.473684, 0.923077), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Curve" id="Curve_ix1y4"]
 _data = [Vector2(0, 0.472527), 0.0, 2.88331, 0, 0, Vector2(0.294737, 0.934066), 0.894819, 0.894819, 0, 0, Vector2(1, 0.494505), -1.53114, 0.0, 0, 0]
@@ -52,6 +52,8 @@ acceleration = 100.0
 deceleration = 70.0
 jump_velocity = 750.0
 fall_speed_clamp = 975.0
+max_token_speed_percentage = 40.0
+speed_toke_fall_off_time = 0.7
 token_value_curve = SubResource("Curve_8672j")
 jump_coyote_time = 0.2
 jump_buffer_time = 0.2

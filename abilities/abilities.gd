@@ -37,6 +37,7 @@ func use_ability():
 
 	if current_ability.has_method("use"):
 		current_ability.use(player)
+		player.add_current_speed_tokens(1)
 		used_ability.emit()
 
 	reset_color()

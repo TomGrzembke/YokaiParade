@@ -23,7 +23,7 @@ func use(player_manager):
 		animation_player.play("on_ability")
 	contoller_rumble()
 
-	if !get_tree(): return
+	if is_inside_tree() == null: return
 	create_timer(double_jump_duration).timeout.connect(exit)
 
 
