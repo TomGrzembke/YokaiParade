@@ -89,7 +89,7 @@ position = Vector2(12125, 162)
 
 [node name="Enemies" type="Node2D" parent="1st-2ndCheckpoint"]
 
-[node name="AirGroundedIdling4" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_vvroe")]
+[node name="AirGroundedMoving" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_vvroe")]
 position = Vector2(6516, 680)
 initial_state = 200
 element_type = ExtResource("9_5kbpl")
@@ -192,6 +192,7 @@ curve = SubResource("Curve2D_nj15r")
 
 [node name="EnemyAirborne" parent="1st-2ndCheckpoint/Enemies/AirFlyingIdling6" instance=ExtResource("11_o4jt2")]
 position = Vector2(6903, 863)
+recovery_time = 2.0
 element_type = ExtResource("9_5kbpl")
 
 [node name="AirFlyingIdling4" type="Path2D" parent="1st-2ndCheckpoint/Enemies"]
