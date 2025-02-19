@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dnxi2gyvo83ec"]
+[gd_scene load_steps=51 format=3 uid="uid://dnxi2gyvo83ec"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/abilities.gd" id="2_es05j"]
@@ -419,13 +419,21 @@ advance_mode = 2
 advance_expression = "velocity.y != 0
 "
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_47fet"]
-advance_mode = 2
-advance_expression = "velocity.y == 0"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_71yb5"]
 switch_mode = 2
 advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dyay8"]
+advance_mode = 2
+advance_expression = "velocity.y > 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gvbew"]
+advance_mode = 2
+advance_expression = "velocity.y == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_in6c8"]
+advance_mode = 2
+advance_expression = "velocity.y < 0"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h8ooh"]
 states/falling/node = SubResource("AnimationNodeAnimation_q240u")
@@ -435,11 +443,11 @@ states/idling/position = Vector2(447, -12)
 states/jump/node = SubResource("AnimationNodeAnimation_ukipm")
 states/jump/position = Vector2(618, -23)
 states/landing/node = SubResource("AnimationNodeAnimation_sc3xl")
-states/landing/position = Vector2(515, -107)
+states/landing/position = Vector2(503, -111)
 states/walking/node = SubResource("AnimationNodeAnimation_l41dg")
 states/walking/position = Vector2(537, 114)
-transitions = ["Start", "idling", SubResource("AnimationNodeStateMachineTransition_i4wgy"), "idling", "walking", SubResource("AnimationNodeStateMachineTransition_egflg"), "walking", "idling", SubResource("AnimationNodeStateMachineTransition_1r4x0"), "walking", "jump", SubResource("AnimationNodeStateMachineTransition_87uy6"), "idling", "jump", SubResource("AnimationNodeStateMachineTransition_p4mgk"), "jump", "landing", SubResource("AnimationNodeStateMachineTransition_47fet"), "landing", "idling", SubResource("AnimationNodeStateMachineTransition_71yb5")]
-graph_offset = Vector2(25, -121)
+transitions = ["Start", "idling", SubResource("AnimationNodeStateMachineTransition_i4wgy"), "idling", "walking", SubResource("AnimationNodeStateMachineTransition_egflg"), "walking", "idling", SubResource("AnimationNodeStateMachineTransition_1r4x0"), "walking", "jump", SubResource("AnimationNodeStateMachineTransition_87uy6"), "idling", "jump", SubResource("AnimationNodeStateMachineTransition_p4mgk"), "landing", "idling", SubResource("AnimationNodeStateMachineTransition_71yb5"), "jump", "falling", SubResource("AnimationNodeStateMachineTransition_dyay8"), "falling", "landing", SubResource("AnimationNodeStateMachineTransition_gvbew"), "falling", "jump", SubResource("AnimationNodeStateMachineTransition_in6c8")]
+graph_offset = Vector2(57, -171)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ovhno"]
 
