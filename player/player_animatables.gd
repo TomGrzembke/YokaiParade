@@ -11,6 +11,7 @@ func _ready():
 	abilities.player_hits.connect(func(): state_machine.travel("hit"))
 	abilities.used_ability.connect(func(): state_machine.travel("dash"))
 
+	player.player_despawned.connect(func(): state_machine.travel("dying"))
 	player.player_gets_pushed.connect(func(): state_machine.travel("got_hit"))
 
 

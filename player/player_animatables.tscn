@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://b173nlre4ndsy"]
+[gd_scene load_steps=45 format=3 uid="uid://b173nlre4ndsy"]
 
 [ext_resource type="Script" path="res://player/player_animatables.gd" id="1_japyu"]
 [ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/player_spritesheet.png" id="1_wuri4"]
@@ -266,11 +266,11 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": [{
-"end_offset": 0.159431,
-"start_offset": 0.0553616,
+"end_offset": 0.175193,
+"start_offset": 0.0534553,
 "stream": ExtResource("6_f5xr2")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.00234111)
 }
 tracks/0/use_blend = true
 tracks/1/type = "value"
@@ -437,6 +437,10 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5yhxo"]
+advance_mode = 2
+advance_expression = "velocity.y == 0"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h8ooh"]
 states/dash/node = SubResource("AnimationNodeAnimation_n5upi")
 states/dash/position = Vector2(663, -202)
@@ -455,11 +459,11 @@ states/idling2/position = Vector2(322, 64)
 states/jump/node = SubResource("AnimationNodeAnimation_ukipm")
 states/jump/position = Vector2(377, -98)
 states/landing/node = SubResource("AnimationNodeAnimation_sc3xl")
-states/landing/position = Vector2(275, -135)
+states/landing/position = Vector2(245, -135)
 states/walking/node = SubResource("AnimationNodeAnimation_l41dg")
 states/walking/position = Vector2(436, -18)
-transitions = ["Start", "idling", SubResource("AnimationNodeStateMachineTransition_i4wgy"), "idling", "walking", SubResource("AnimationNodeStateMachineTransition_egflg"), "walking", "idling", SubResource("AnimationNodeStateMachineTransition_1r4x0"), "walking", "jump", SubResource("AnimationNodeStateMachineTransition_87uy6"), "idling", "jump", SubResource("AnimationNodeStateMachineTransition_p4mgk"), "landing", "idling", SubResource("AnimationNodeStateMachineTransition_71yb5"), "jump", "falling", SubResource("AnimationNodeStateMachineTransition_dyay8"), "falling", "landing", SubResource("AnimationNodeStateMachineTransition_gvbew"), "falling", "jump", SubResource("AnimationNodeStateMachineTransition_in6c8"), "dash", "falling", SubResource("AnimationNodeStateMachineTransition_s3chn"), "got_hit", "falling", SubResource("AnimationNodeStateMachineTransition_kpurb"), "hit", "idling", SubResource("AnimationNodeStateMachineTransition_ebmfl")]
-graph_offset = Vector2(11, -231)
+transitions = ["Start", "idling", SubResource("AnimationNodeStateMachineTransition_i4wgy"), "idling", "walking", SubResource("AnimationNodeStateMachineTransition_egflg"), "walking", "idling", SubResource("AnimationNodeStateMachineTransition_1r4x0"), "walking", "jump", SubResource("AnimationNodeStateMachineTransition_87uy6"), "idling", "jump", SubResource("AnimationNodeStateMachineTransition_p4mgk"), "landing", "idling", SubResource("AnimationNodeStateMachineTransition_71yb5"), "jump", "falling", SubResource("AnimationNodeStateMachineTransition_dyay8"), "falling", "landing", SubResource("AnimationNodeStateMachineTransition_gvbew"), "falling", "jump", SubResource("AnimationNodeStateMachineTransition_in6c8"), "dash", "falling", SubResource("AnimationNodeStateMachineTransition_s3chn"), "got_hit", "falling", SubResource("AnimationNodeStateMachineTransition_kpurb"), "hit", "idling", SubResource("AnimationNodeStateMachineTransition_ebmfl"), "jump", "landing", SubResource("AnimationNodeStateMachineTransition_5yhxo")]
+graph_offset = Vector2(-133, -209)
 
 [node name="PlayerAnimatables" type="Node2D"]
 script = ExtResource("1_japyu")

@@ -60,6 +60,7 @@ var can_use_apex
 var debug_mode = false
 var debug_speed_modifier = 3
 
+
 func _physics_process(delta):
 	if debug_mode:
 		debug_logic()
