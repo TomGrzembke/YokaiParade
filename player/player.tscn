@@ -499,10 +499,10 @@ collision_layer = 4
 shape = SubResource("CapsuleShape2D_4pm2j")
 debug_color = Color(0.976648, 0, 0.410241, 0.42)
 
-[node name="UpperEdgeDetectionRay" parent="." instance=ExtResource("5_5gjfl")]
+[node name="CantEdgeDetectRay" parent="." instance=ExtResource("5_5gjfl")]
 target_position = Vector2(-23, -68)
 
-[node name="DownerEdgeDetectionRay" parent="." instance=ExtResource("5_5gjfl")]
+[node name="CanEdgeDetectRay" parent="." instance=ExtResource("5_5gjfl")]
 target_position = Vector2(32, -63)
 
 [node name="PlayerWalk" type="Sprite2D" parent="."]
