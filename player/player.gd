@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal player_despawned
 signal player_reached_checkpoint(position)
 signal player_reached_goal
+signal player_gets_pushed
 
 const INFINITY = 1e20
 
@@ -379,13 +380,15 @@ func on_reached_checkpoint(checkpoint_position):
 
 
 func on_took_damage(source):
-	if source != null:
-		var push_vel = -(source.global_position - position).normalized() * push_back
-		push_vel.y *= push_height_percentage
-		add_velocity_modifier(VelocityModifier.new(push_vel, .2, 3, true))
+	if source == null: return
 
-		if Input.get_connected_joypads().size() > 0:
-			Input.start_joy_vibration(0, 0.5, 0.0, 0.5)
+	var push_vel = -(source.global_position - position).normalized() * push_back
+	push_vel.y *= push_height_percentage
+	add_velocity_modifier(VelocityModifier.new(push_vel, .2, 3, true))
+	player_gets_pushed.emit()
+
+	if Input.get_connected_joypads().size() > 0:
+		Input.start_joy_vibration(0, 0.5, 0.0, 0.5)
 
 
 func create_timer(time):

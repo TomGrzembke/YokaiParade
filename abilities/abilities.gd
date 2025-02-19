@@ -3,7 +3,6 @@ extends Node2D
 
 const COLOR_PLAIN = Color("#949494")
 
-
 var current_ability
 var damage_subject
 
@@ -17,6 +16,7 @@ var hit_grace_timer
 var hit_queue_timer
 
 @onready var visualizer: Node2D =  $"../Visuals/AbilityVisualizer"
+signal player_hits
 
 
 func _ready():
@@ -47,6 +47,7 @@ func catch_ability():
 		return
 
 	catch_grace_time()
+	player_hits.emit()
 	visualizer.attack_command()
 	absorb_ability()
 
