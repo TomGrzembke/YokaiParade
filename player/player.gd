@@ -93,7 +93,10 @@ func apply_velocity():
 
 
 func get_current_speed_tokens_value():
-	return 1 +  max_token_speed_percentage * .01 * token_value_curve.sample(current_speed_tokens / max_token_amount)
+	if token_value_curve == null:
+		return 1 + max_token_speed_percentage * .01 * current_speed_tokens / max_token_amount
+	else:
+		return 1 +  max_token_speed_percentage * .01 * token_value_curve.sample(current_speed_tokens / max_token_amount)
 
 
 func run():
@@ -314,12 +317,12 @@ func speed_toke_falloff():
 	if max_token_amount == 0: return
 	if max_token_speed_percentage == 0: return
 
-	print(get_current_speed_tokens_value())
+	print(current_speed_tokens)
 	if velocity.x != 0:
 		speed_token_fall_off_timer = create_timer(speed_toke_fall_off_time)
 
 	if speed_token_fall_off_timer != null && speed_token_fall_off_timer.time_left == 0:
-		current_speed_tokens = 0
+		add_current_speed_tokens(-1)
 
 
 func add_velocity_modifier(velocity_mod):
