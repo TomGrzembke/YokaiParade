@@ -81,6 +81,7 @@ func _physics_process(delta):
 		update_gravity(delta)
 		jump(delta)
 		speed_token_falloff()
+		print(current_speed_tokens)
 
 	ability_smoothing()
 	calc_vel_mods()
@@ -325,13 +326,12 @@ func speed_token_falloff():
 	if velocity.x != 0:
 		speed_token_fall_off_timer = create_timer(speed_token_fall_off_time)
 
-	if speed_token_fall_off_timer != null && speed_token_fall_off_timer.time_left == 0:
-		if interval_speed_token_fall_off_timer != null && interval_speed_token_fall_off_timer.time_left <= 0:
-			interval_speed_token_fall_off_timer = create_timer(interval_falloff_speed_token)
-			add_current_speed_tokens(-1)
-		elif interval_speed_token_fall_off_timer == null:
-			interval_speed_token_fall_off_timer = create_timer(interval_falloff_speed_token)
-			add_current_speed_tokens(-1)
+	if speed_token_fall_off_timer == null || speed_token_fall_off_timer.time_left > 0: return
+
+	if interval_speed_token_fall_off_timer == null || interval_speed_token_fall_off_timer.time_left == 0:
+		interval_speed_token_fall_off_timer = create_timer(interval_falloff_speed_token)
+		add_current_speed_tokens(-1)
+
 
 func is_using_speed_token_system():
 	if max_token_amount == 0: return false
