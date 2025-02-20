@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://do4ocmf2wgj2o" path="res://components/raycast/raycast.tscn" id="5_5gjfl"]
 [ext_resource type="Script" path="res://player/player_visuals.gd" id="6_guley"]
 [ext_resource type="Script" path="res://player/debug.gd" id="7_3jai0"]
-[ext_resource type="PackedScene" uid="uid://b173nlre4ndsy" path="res://player/player_animatables.tscn" id="7_74yxj"]
+[ext_resource type="PackedScene" path="res://player/player_animatables.tscn" id="7_74yxj"]
 [ext_resource type="Script" path="res://player/movement_line.gd" id="14_p1m7a"]
 
 [sub_resource type="Curve" id="Curve_8672j"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.110526, 0.021978), 0.0, 0.0, 0, 0, Vector2(0.289474, 0.263736), 1.39194, 1.39194, 0, 0, Vector2(0.557895, 0.901099), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.157895, 0.043956), 0.395011, 0.395011, 0, 0, Vector2(0.310526, 0.351648), 2.94764, 2.94764, 0, 0, Vector2(0.673684, 0.923077), 0.657306, 0.657306, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 5
 
 [sub_resource type="Curve" id="Curve_ix1y4"]
@@ -53,6 +53,9 @@ deceleration = 70.0
 jump_velocity = 750.0
 fall_speed_clamp = 975.0
 max_token_speed_percentage = 40.0
+max_token_amount = 75.0
+speed_token_fall_off_time = 0.7
+interval_falloff_speed_token = 0.333
 token_value_curve = SubResource("Curve_8672j")
 jump_coyote_time = 0.2
 jump_buffer_time = 0.2
