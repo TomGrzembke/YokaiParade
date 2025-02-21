@@ -19,6 +19,7 @@ var hit_grace_timer
 var hit_queue_timer
 
 @onready var visualizer: Node2D =  $"../Visuals/AbilityVisualizer"
+@onready var hit_enemy_ray: RayCast2D = $"../HitEnemyRay"
 signal player_hits
 signal used_ability
 
@@ -137,6 +138,8 @@ func get_current_ability():
 
 func on_deal_damage_area_entered(other):
 	damage_subject = other
+	if hit_enemy_ray.has_target:
+		pass
 
 	if hit_timer_active():
 		absorb_ability()

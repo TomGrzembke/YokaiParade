@@ -10,3 +10,7 @@ func _process(_delta):
 
 func has_target():
 	return is_colliding()
+
+func get_target():
+	if !has_target(): return null
+	return get_collider()
