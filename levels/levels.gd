@@ -3,6 +3,7 @@ extends Node
 
 signal level_load_progress(progress)
 signal level_load_completed(level_packed_scene)
+signal player_ability_changed(color)
 signal player_despawned
 signal player_reached_goal
 
@@ -148,8 +149,9 @@ func spawn_player():
 	player = player_scene.instantiate()
 	player.position = get_player_spawn_position()
 
-	player.player_reached_checkpoint.connect(on_player_reached_checkpoint)
+	player.player_ability_changed.connect(on_player_ability_changed)
 	player.player_despawned.connect(on_player_despawned)
+	player.player_reached_checkpoint.connect(on_player_reached_checkpoint)
 	player.player_reached_goal.connect(on_player_reached_goal)
 
 	var remote_transform = RemoteTransform2D.new()
@@ -158,6 +160,10 @@ func spawn_player():
 
 	%CurrentLevel.add_child.call_deferred(player)
 	await player.tree_entered
+
+
+func on_player_ability_changed(color):
+	player_ability_changed.emit(color)
 
 
 func on_player_despawned():

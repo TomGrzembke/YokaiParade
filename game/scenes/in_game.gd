@@ -15,6 +15,7 @@ var current_level_state_scene
 
 
 func _ready():
+	%Levels.player_ability_changed.connect(on_player_ability_changed)
 	%Levels.player_despawned.connect(on_player_despawned)
 	%Levels.player_reached_goal.connect(on_player_reached_goal)
 	%Levels.level_load_progress.connect(on_level_load_progress)
@@ -52,9 +53,21 @@ func get_play_time():
 	return play_time
 
 
+func disable_player_controls():
+	print("Disabling player controls is not implemented yet")
+
+
+# UI
+
 func set_play_time(new_time):
 	play_time = new_time
 	%PlayTimeLabel.text = "%5.2f" % play_time
+
+
+# Signal Handlers
+
+func on_player_ability_changed(color):
+	%CurrentAbility.modulate = color
 
 
 func on_player_despawned():
@@ -67,10 +80,6 @@ func on_player_reached_goal():
 
 func on_level_load_progress(progress):
 	level_load_progress.emit(progress)
-
-
-func disable_player_controls():
-	print("Disabling player controls is not implemented yet")
 
 
 # Level Loading

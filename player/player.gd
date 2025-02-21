@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal player_ability_changed(color)
 signal player_despawned
 signal player_reached_checkpoint(position)
 signal player_reached_goal
@@ -70,6 +71,10 @@ var interval_speed_token_fall_off_timer
 
 var debug_mode = false
 var debug_speed_modifier = 3
+
+
+func _ready():
+	%Abilities.ability_changed.connect(func (color): player_ability_changed.emit(color))
 
 
 func _physics_process(delta):

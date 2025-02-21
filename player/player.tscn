@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://do4ocmf2wgj2o" path="res://components/raycast/raycast.tscn" id="5_5gjfl"]
 [ext_resource type="Script" path="res://player/player_visuals.gd" id="6_guley"]
 [ext_resource type="Script" path="res://player/debug.gd" id="7_3jai0"]
-[ext_resource type="PackedScene" uid="uid://b173nlre4ndsy" path="res://player/player_animatables.tscn" id="7_74yxj"]
+[ext_resource type="PackedScene" path="res://player/player_animatables.tscn" id="7_74yxj"]
 [ext_resource type="Script" path="res://player/movement_line.gd" id="14_p1m7a"]
 
 [sub_resource type="Curve" id="Curve_8672j"]
@@ -70,6 +70,7 @@ push_back = 800.0
 push_height_percentage = 0.4
 
 [node name="Abilities" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_es05j")
 hit_cooldown_time = 0.3
 hit_queue_time = 0.1

@@ -1,6 +1,9 @@
 extends Node2D
 
 
+signal ability_changed(color)
+
+
 const COLOR_PLAIN = Color("#949494")
 
 var current_ability
@@ -110,16 +113,7 @@ func set_current_ability(ability_scene):
 	if ability.has_method("get_color"):
 		var ability_color: Color = ability.get_color()
 		visual.self_modulate = ability_color
-		refresh_ui_color(ability_color)
-
-
-func refresh_ui_color(ability_color):
-	pass
-	#if !AbilityUI: return
-	#var ability_ui = AbilityUI.get_node("CanvasLayer/TextureRect")
-	#if !ability_ui: return
-
-	#ability_ui.modulate = ability_color
+		ability_changed.emit(ability_color)
 
 
 func clear_abilities():
@@ -134,12 +128,7 @@ func create_timer(time):
 
 func reset_color():
 	visual.self_modulate = COLOR_PLAIN
-
-	#if !AbilityUI: return
-	#var ability_ui = AbilityUI.get_node("CanvasLayer/TextureRect")
-	#if !ability_ui: return
-#
-	#ability_ui.modulate = COLOR_PLAIN
+	ability_changed.emit(COLOR_PLAIN)
 
 
 func get_current_ability():
