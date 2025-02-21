@@ -61,6 +61,8 @@ func catch_ability():
 
 func absorb_ability():
 	if damage_subject == null: return
+	if hit_enemy_ray.has_target() && hit_enemy_ray.get_target() is TileMapLayer: return
+
 	var subject_parent = damage_subject.get_damage_subject()
 	if subject_parent == null: return
 	if not subject_parent.has_method("got_caught"): return
@@ -135,11 +137,8 @@ func reset_color():
 func get_current_ability():
 	return current_ability
 
-
 func on_deal_damage_area_entered(other):
 	damage_subject = other
-	if hit_enemy_ray.has_target:
-		pass
 
 	if hit_timer_active():
 		absorb_ability()
