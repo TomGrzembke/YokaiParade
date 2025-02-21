@@ -54,6 +54,9 @@ func catch_ability():
 		hit_queue_timer = create_timer(hit_queue_time)
 		return
 
+	if get_nearest_target() != null:
+		hit_enemy_ray.lookat_direction(get_nearest_target().global_position)
+
 	catch_grace_time()
 	player_hits.emit()
 	visualizer.attack_command()
