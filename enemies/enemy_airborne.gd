@@ -23,24 +23,28 @@ const STATES = preload("res://enemies/enemy_initial_states.gd")
 @export var moving_state: State
 @export var recovering_state: State
 
+var path_2d
 var is_recovering = false
 var enemy_animations
 var look_direction
 
 
 func _ready():
-	if element_type.animations_airborne != null:
-		enemy_animations = element_type.animations_airborne.instantiate()
-		add_child(enemy_animations)
+	path_2d = get_parent()
 
-		enemy_animations.position = %Sprite2D.position
-		%Sprite2D.visible = false
+	check_validity()
 
-		var direction
-		match initial_look_direction:
-			1: direction = Vector2.RIGHT
-			2: direction = Vector2.LEFT
-		set_direction(direction)
+	enemy_animations = element_type.animations_airborne.instantiate()
+	add_child(enemy_animations)
+
+	enemy_animations.position = %Sprite2D.position
+	%Sprite2D.visible = false
+
+	var direction
+	match initial_look_direction:
+		1: direction = Vector2.RIGHT
+		2: direction = Vector2.LEFT
+	set_direction(direction)
 
 	var init_state
 	match initial_state:
@@ -66,6 +70,30 @@ func _unhandled_input(event):
 
 func _input(event):
 	%StateMachine.input(event)
+
+
+func check_validity():
+	var is_valid = true
+
+	if element_type == null:
+		printerr("No element_type resource set for enemy %s!" % self.get_path())
+		is_valid = false
+
+	if element_type != null \
+	and element_type.animations_airborne == null:
+		printerr("No animations for enemy %s provided in element type %s" % [self.get_path(), element_type])
+		is_valid = false
+
+	if path_2d == null:
+		printerr("Enemy %s has no parent!" % self.get_path())
+		is_valid = false
+
+	if path_2d != null \
+	   and path_2d.curve.get_baked_points().size() == 0:
+		printerr("Curve in Path2D of enemy %s has no points!" % self.get_path())
+		is_valid = false
+
+	assert(is_valid, "Error: Enemy not set up properly, check errors above!")
 
 
 func set_direction(value):
@@ -98,12 +126,16 @@ func get_is_recovering():
 	return is_recovering
 
 
+func enter_animation_state_idling():
+	enemy_animations.enter_state_idling()
+
+
 func enter_animation_state_moving():
 	enemy_animations.enter_state_moving()
 
 
-func enter_animation_state_idling():
-	enemy_animations.enter_state_idling()
+func enter_animation_state_attacking():
+	enemy_animations.enter_state_attacking()
 
 
 func enter_animation_state_recovering():
@@ -111,19 +143,14 @@ func enter_animation_state_recovering():
 
 
 func get_is_path_closed():
-	var path = get_parent()
-	if path == null \
-	and path:
-		return
-
-	if path.curve.get_point_position(0) == path.curve.get_point_position(path.curve.point_count - 1):
+	if path_2d.curve.get_point_position(0) == path_2d.curve.get_point_position(path_2d.curve.point_count - 1):
 		return true
 
 	return false
 
 
 func get_path_length():
-	return get_parent().curve.get_baked_length()
+	return path_2d.curve.get_baked_length()
 
 
 func got_caught(_source):

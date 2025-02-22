@@ -28,14 +28,15 @@ var direction
 
 
 func _ready():
-	if element_type.animations_grounded != null:
-		enemy_animations = element_type.animations_grounded.instantiate()
-		add_child(enemy_animations)
+	check_validity()
 
-		enemy_animations.position = %Sprite2D.position
-		%Sprite2D.visible = false
+	enemy_animations = element_type.animations_grounded.instantiate()
+	add_child(enemy_animations)
 
-		set_direction(initial_direction)
+	enemy_animations.position = %Sprite2D.position
+	%Sprite2D.visible = false
+
+	set_direction(initial_direction)
 
 	var init_state
 	match initial_state:
@@ -61,6 +62,21 @@ func _unhandled_input(event):
 
 func _input(event):
 	%StateMachine.input(event)
+
+
+func check_validity():
+	var is_valid = true
+
+	if element_type == null:
+		printerr("No element_type resource set for enemy %s!" % self.get_path())
+		is_valid = false
+
+	if element_type != null \
+	and element_type.animations_airborne == null:
+		printerr("No animations for enemy %s provided in element type %s" % [self.get_path(), element_type])
+		is_valid = false
+
+	assert(is_valid, "Error: Enemy not set up properly, check errors above!")
 
 
 func set_direction(value):
