@@ -16,6 +16,4 @@ func get_target():
 
 
 func lookat_direction(target_pos):
-	var look_pos = to_local(target_pos)
-	target_position = look_pos.normalized() * initial_length
-	print(target_position)
+	target_position = to_local(target_pos)
