@@ -26,7 +26,7 @@ func _ready():
 func _process(delta):
 	update_trail()
 	flip()
-	attack(delta)
+	#attack(delta)
 	ability(delta)
 
 
