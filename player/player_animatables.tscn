@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://b173nlre4ndsy"]
+[gd_scene load_steps=53 format=3 uid="uid://b173nlre4ndsy"]
 
 [ext_resource type="Script" path="res://player/player_animatables.gd" id="1_japyu"]
 [ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/player_spritesheet.png" id="1_wuri4"]
@@ -6,10 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://cd6wlp83vhnik" path="res://assets/vfx/vfx_hit_animation_mittig.png" id="2_o2y2d"]
 [ext_resource type="Texture2D" uid="uid://bmndbrp8ewpdu" path="res://assets/vfx/vfx_walk_animation.png" id="3_3jvwm"]
 [ext_resource type="AudioStream" uid="uid://g4orwxysi14l" path="res://sounds/player_got_hit.wav" id="3_yjdp8"]
+[ext_resource type="Shader" path="res://shader/exchange_color_on_asset.gdshader" id="4_jiapn"]
 [ext_resource type="AudioStream" uid="uid://coibewadmss1o" path="res://sounds/player_hittting2.wav" id="4_wmhc6"]
 [ext_resource type="AudioStream" uid="uid://cwgybk1plghnu" path="res://sounds/player_jump.wav" id="5_irw32"]
 [ext_resource type="AudioStream" uid="uid://dgk7beqkylhis" path="res://sounds/player_landing.wav" id="6_f5xr2"]
 [ext_resource type="AudioStream" uid="uid://coy5ai5tktmgg" path="res://sounds/player_walking.wav" id="7_rrgwt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n0aer"]
+shader = ExtResource("4_jiapn")
+shader_parameter/color_to_replace = Color(1, 0, 0, 1)
+shader_parameter/wanted_color = Color(0, 0.643137, 1, 1)
+shader_parameter/feather_range = 0.489
 
 [sub_resource type="Animation" id="Animation_1fs6i"]
 length = 0.001
@@ -564,6 +571,7 @@ frame = 1
 
 [node name="PlayerWalk" type="Sprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_n0aer")
 position = Vector2(1, -9)
 texture = ExtResource("1_wuri4")
 hframes = 4
