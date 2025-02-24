@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://0wrfx826uek5"]
+[gd_scene load_steps=28 format=3 uid="uid://0wrfx826uek5"]
 
 [ext_resource type="Script" path="res://enemies/animations/enemy_animations.gd" id="1_k13mu"]
 [ext_resource type="Texture2D" uid="uid://ug7h6qbp1dgw" path="res://enemies/animations/enemy_airborne_air_spritesheet.png" id="2_2mfax"]
@@ -261,52 +261,85 @@ _data = {
 "recovering_right": SubResource("Animation_qoxmf")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vrkxr"]
-animation = &"idling_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c7ddt"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rg0hh"]
 animation = &"idling_left"
 
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_pijj5"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_vrkxr")
-blend_point_0/pos = 1.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_c7ddt")
-blend_point_1/pos = -1.0
-blend_mode = 2
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k3y11"]
+animation = &"idling_right"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l7orj"]
-animation = &"moving_right"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xvo3o"]
+animation = &"idling_right"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fcgc2"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vr4qk"]
+animation = &"idling_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_xo1fb"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_rg0hh")
+blend_point_0/pos = Vector2(-1, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_k3y11")
+blend_point_1/pos = Vector2(1, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_xvo3o")
+blend_point_2/pos = Vector2(1, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_vr4qk")
+blend_point_3/pos = Vector2(-1, -1)
+snap = Vector2(1, 1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yqll5"]
 animation = &"moving_left"
 
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_8era8"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_l7orj")
-blend_point_0/pos = 1.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_fcgc2")
-blend_point_1/pos = -1.0
-blend_mode = 2
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sx4y5"]
+animation = &"moving_left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_otoyg"]
-animation = &"recovering_right"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ipbdk"]
+animation = &"moving_right"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rrkm5"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ftcmw"]
+animation = &"moving_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_fcraj"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_yqll5")
+blend_point_0/pos = Vector2(-1, -1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_sx4y5")
+blend_point_1/pos = Vector2(-1, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ipbdk")
+blend_point_2/pos = Vector2(1, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_ftcmw")
+blend_point_3/pos = Vector2(1, -1)
+snap = Vector2(1, 1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iuocu"]
 animation = &"recovering_left"
 
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_q3m1i"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_otoyg")
-blend_point_0/pos = 1.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_rrkm5")
-blend_point_1/pos = -1.0
-blend_mode = 2
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xxpu8"]
+animation = &"recovering_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gv5uf"]
+animation = &"recovering_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wdsqu"]
+animation = &"recovering_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_1yn5u"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_iuocu")
+blend_point_0/pos = Vector2(-1, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_xxpu8")
+blend_point_1/pos = Vector2(-1, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_gv5uf")
+blend_point_2/pos = Vector2(1, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_wdsqu")
+blend_point_3/pos = Vector2(1, 1)
+snap = Vector2(1, 1)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rc335"]
-states/Idling/node = SubResource("AnimationNodeBlendSpace1D_pijj5")
-states/Idling/position = Vector2(352, 101.556)
-states/Moving/node = SubResource("AnimationNodeBlendSpace1D_8era8")
-states/Moving/position = Vector2(566.667, 16)
-states/Recovering/node = SubResource("AnimationNodeBlendSpace1D_q3m1i")
-states/Recovering/position = Vector2(566.444, 164)
+states/Idling/node = SubResource("AnimationNodeBlendSpace2D_xo1fb")
+states/Idling/position = Vector2(372, 100.333)
+states/Moving/node = SubResource("AnimationNodeBlendSpace2D_fcraj")
+states/Moving/position = Vector2(566.518, 8.33333)
+states/Recovering/node = SubResource("AnimationNodeBlendSpace2D_1yn5u")
+states/Recovering/position = Vector2(565.901, 159.667)
 graph_offset = Vector2(56, -37)
 
 [node name="EnemyAirborneAirAnimations" type="Node2D"]
@@ -330,6 +363,6 @@ root_node = NodePath("%AnimationTree/..")
 tree_root = SubResource("AnimationNodeStateMachine_rc335")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Idling/blend_position = 0
-parameters/Moving/blend_position = 0.57971
-parameters/Recovering/blend_position = 0
+parameters/Idling/blend_position = Vector2(0, 0)
+parameters/Moving/blend_position = Vector2(0, 0)
+parameters/Recovering/blend_position = Vector2(0, 0)
