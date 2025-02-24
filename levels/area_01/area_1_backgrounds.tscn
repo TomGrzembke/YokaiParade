@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://i5u70jl4fc3v" path="res://levels/area_01/clouds_blue.png" id="9_poku5"]
 [ext_resource type="Texture2D" uid="uid://gxi2kaj7h5fr" path="res://levels/area_01/clouds_white.png" id="10_37g1q"]
 [ext_resource type="Shader" path="res://shader/pattern_overlay.gdshader" id="11_85k4m"]
-[ext_resource type="Texture2D" uid="uid://ct878em515kjj" path="res://levels/area_01/flowers_red.png" id="12_vrjr5"]
+[ext_resource type="Texture2D" uid="uid://b0vv3r8mo5474" path="res://levels/area_01/flowers_red_single.png" id="12_81uk2"]
 
 [sub_resource type="Shader" id="Shader_8lk6j"]
 code = "shader_type canvas_item;
@@ -187,7 +187,7 @@ position = Vector2(0, 1000)
 texture = ExtResource("10_37g1q")
 
 [node name="Foreground" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.9, 0.9)
+scroll_scale = Vector2(1.1, 1.1)
 scroll_offset = Vector2(-444, -528)
 repeat_size = Vector2(2200, 0)
 repeat_times = 3
@@ -198,7 +198,5 @@ material = SubResource("ShaderMaterial_gghgl")
 position = Vector2(0, 1392)
 texture = ExtResource("10_37g1q")
 
-[node name="FlowersRed" type="Sprite2D" parent="."]
-z_index = 19
-position = Vector2(-666, 429)
-texture = ExtResource("12_vrjr5")
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture = ExtResource("12_81uk2")
