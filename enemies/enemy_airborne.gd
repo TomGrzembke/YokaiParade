@@ -99,7 +99,7 @@ func check_validity():
 func set_direction(value):
 	look_direction = value
 	if look_direction != null:
-		enemy_animations.update_direction(look_direction.x)
+		enemy_animations.update_direction(look_direction)
 
 
 func get_direction():

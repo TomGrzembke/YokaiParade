@@ -36,7 +36,7 @@ func _ready():
 	enemy_animations.position = %Sprite2D.position
 	%Sprite2D.visible = false
 
-	set_direction(initial_direction)
+	set_direction(Vector2(initial_direction, 0.0))
 
 	var init_state
 	match initial_state:
