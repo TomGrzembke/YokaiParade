@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c8mxwfqxutdoi"]
+[gd_scene load_steps=20 format=3 uid="uid://c8mxwfqxutdoi"]
 
 [ext_resource type="Texture2D" uid="uid://tgdbge36wevk" path="res://assets/patterns/t-texture_lines.png" id="2_y3agf"]
 [ext_resource type="Texture2D" uid="uid://b66gcqiak8txp" path="res://levels/area_01/mountains_far.png" id="3_6pkbi"]
@@ -106,6 +106,12 @@ shader_parameter/flip_alpha = true
 shader_parameter/use_local = true
 shader_parameter/pattern_texture = ExtResource("2_y3agf")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0adue"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
 [node name="Area1Backgrounds" type="Node2D"]
 z_index = -10
 
@@ -198,5 +204,30 @@ material = SubResource("ShaderMaterial_gghgl")
 position = Vector2(0, 1392)
 texture = ExtResource("10_37g1q")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="Flowers" type="Parallax2D" parent="."]
+physics_interpolation_mode = 1
+scroll_offset = Vector2(-444, -528)
+repeat_size = Vector2(2200, 0)
+repeat_times = 3
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Flowers"]
+physics_interpolation_mode = 1
+z_index = 18
+material = SubResource("CanvasItemMaterial_0adue")
+position = Vector2(0, 400)
+amount = 20
+lifetime = 3.0
+speed_scale = 0.1
+local_coords = true
 texture = ExtResource("12_81uk2")
+emission_shape = 3
+emission_rect_extents = Vector2(1200, 1)
+spread = 52.27
+gravity = Vector2(1000, 400)
+initial_velocity_max = 20.0
+angular_velocity_max = 181.82
+linear_accel_max = 2.02
+damping_max = 100.0
+scale_amount_min = 0.4
+scale_amount_max = 0.5
+anim_offset_max = 1.0
