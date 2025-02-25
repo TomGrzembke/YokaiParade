@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rva1rtld2rnu"
-path="res://.godot/imported/UI_outline_ingame.png-6c7ac1c0c37128ca339a287a01cf99b2.ctex"
+uid="uid://dwmdm47c5unwn"
+path="res://.godot/imported/UI_ingame_tr_line.png-8ab14a88534dde80a0131e631d949ab1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/UI_outline_ingame.png"
-dest_files=["res://.godot/imported/UI_outline_ingame.png-6c7ac1c0c37128ca339a287a01cf99b2.ctex"]
+source_file="res://ui/UI_ingame_tr_line.png"
+dest_files=["res://.godot/imported/UI_ingame_tr_line.png-8ab14a88534dde80a0131e631d949ab1.ctex"]
 
 [params]
 

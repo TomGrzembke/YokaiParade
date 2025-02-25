@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cisf071rha1ru"]
+[gd_scene load_steps=35 format=3 uid="uid://cisf071rha1ru"]
 
 [ext_resource type="Script" path="res://game/scenes/in_game.gd" id="1_jmwmp"]
 [ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="2_7ssm8"]
@@ -27,9 +27,12 @@
 [ext_resource type="Script" path="res://levels/states/options_in_game.gd" id="17_7gv5i"]
 [ext_resource type="PackedScene" uid="uid://bhgs0xub5lxvf" path="res://levels/scenes/reset_level.tscn" id="18_0wv6n"]
 [ext_resource type="PackedScene" uid="uid://dw0g44fku0ne6" path="res://levels/scenes/options_in_game.tscn" id="18_nem0v"]
-[ext_resource type="Texture2D" uid="uid://rva1rtld2rnu" path="res://ui/UI_outline_ingame.png" id="26_yldei"]
-[ext_resource type="Texture2D" uid="uid://dh55060bnnyup" path="res://ui/UI_ingame_bl_main.png" id="27_4tfmb"]
+[ext_resource type="Texture2D" uid="uid://c4sqq0jqsepxe" path="res://ui/UI_ingame_tr_back.png" id="25_fgtsb"]
+[ext_resource type="Texture2D" uid="uid://f8apw8d4yauy" path="res://ui/UI_ingame_tr_main.png" id="26_tmpbm"]
+[ext_resource type="Texture2D" uid="uid://cyj6mx31cxvsi" path="res://ui/UI_ingame_bl_main.png" id="27_4tfmb"]
+[ext_resource type="Texture2D" uid="uid://dwmdm47c5unwn" path="res://ui/UI_ingame_tr_line.png" id="27_a7dat"]
 [ext_resource type="Texture2D" uid="uid://dkyc7k5vyjc10" path="res://ui/UI_ingame_bl_line.png" id="28_k2h10"]
+[ext_resource type="Texture2D" uid="uid://d0cyqkl45rojo" path="res://ui/UI_ingame_bl_back.png" id="29_iur5k"]
 [ext_resource type="Texture2D" uid="uid://w26g1il2kwn7" path="res://ui/ui_ingame_ability_main.png" id="35_by3sm"]
 
 [node name="InGame" type="Node" node_paths=PackedStringArray("initial_level_state")]
@@ -119,6 +122,36 @@ anchor_right = 1.0
 grow_horizontal = 0
 mouse_filter = 1
 
+[node name="TopRightBg" type="TextureRect" parent="UILayer/Top"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -816.0
+offset_bottom = 766.0
+grow_horizontal = 0
+texture = ExtResource("25_fgtsb")
+
+[node name="TopRightMain" type="TextureRect" parent="UILayer/Top"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -816.0
+offset_bottom = 766.0
+grow_horizontal = 0
+texture = ExtResource("26_tmpbm")
+
+[node name="TopRightLine" type="TextureRect" parent="UILayer/Top"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -816.0
+offset_bottom = 766.0
+grow_horizontal = 0
+texture = ExtResource("27_a7dat")
+
 [node name="TopUI" type="MarginContainer" parent="UILayer/Top"]
 layout_mode = 1
 anchors_preset = 10
@@ -156,7 +189,7 @@ anchor_bottom = 1.0
 offset_top = -1033.0
 offset_right = 1127.0
 grow_vertical = 0
-texture = ExtResource("26_yldei")
+texture = ExtResource("29_iur5k")
 
 [node name="BottomLeftMain" type="TextureRect" parent="UILayer/Bottom"]
 layout_mode = 1
