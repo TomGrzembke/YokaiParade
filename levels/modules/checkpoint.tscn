@@ -5,10 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://b6tphfuf0dkud" path="res://levels/modules/assets/p_checkpoint_active.png" id="3_wkqfe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_775ek"]
-size = Vector2(160, 200)
+size = Vector2(160, 163)
 
 [node name="Checkpoint" type="Area2D"]
-position = Vector2(0, -20)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_np4pl")
@@ -17,12 +16,12 @@ texture_active = ExtResource("3_wkqfe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -80)
+position = Vector2(0, -100)
 texture = ExtResource("2_03nk7")
 offset = Vector2(0, 40)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -60)
+position = Vector2(0, -62.5)
 shape = SubResource("RectangleShape2D_775ek")
 
 [connection signal="area_entered" from="." to="." method="on_checkpoint_area_entered"]

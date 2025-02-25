@@ -48,7 +48,7 @@ script = ExtResource("19_nmmof")
 main_menu_game_state = NodePath("../MainMenu")
 game_state_packed_scene = ExtResource("12_omxsr")
 
-[node name="BackgroundmusicYokaiparade" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(-245, 298)
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_ii117")
+volume_db = -27.171
 autoplay = true

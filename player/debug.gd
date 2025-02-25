@@ -10,10 +10,13 @@ var debug_speed
 var debug_mode
 
 
-func _unhandled_input(_event):
+func _unhandled_input(event):
 	if !visible: return
 
-	if Input.is_action_just_pressed("DebugMode"):
+	if not OS.has_feature("debug"):
+		return
+
+	if event.is_action_pressed("debug_mode"):
 		debug_mode = player.toggle_debug()
 		collision_shape.disabled = debug_mode
 		movement_line.visible = true
@@ -23,7 +26,7 @@ func _unhandled_input(_event):
 
 func set_debug_speed():
 	if !debug_mode: return
-	var speed_up_direction = sign(Input.get_axis("SpeedDownDebug", "SpeedUpDebug"))
+	var speed_up_direction = sign(Input.get_axis("debug_mode_faster", "debug_mode_slower"))
 	if speed_up_direction == 0: return
 
 	debug_speed = player.debug_speed_modifier
