@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://sxpubdb03xgr" path="res://levels/modules/wall_destructible_big.tscn" id="1_y4vog"]
 [ext_resource type="Texture2D" uid="uid://dxdfcsh6knkl8" path="res://levels/area_01/obstacles_spritesheet.png" id="2_pr8rr"]
-[ext_resource type="PackedScene" uid="uid://bccs4lkv5eou5" path="res://levels/modules/wall_destructible_small.tscn" id="2_ytg1e"]
+[ext_resource type="PackedScene" path="res://levels/modules/wall_destructible_small.tscn" id="2_ytg1e"]
 [ext_resource type="PackedScene" uid="uid://dotrddyc18eeh" path="res://levels/modules/checkpoint.tscn" id="3_baion"]
 [ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/modules/goal.tscn" id="4_5nafx"]
 
