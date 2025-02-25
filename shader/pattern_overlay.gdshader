@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform sampler2D pattern_texture;
-uniform float overlay_alpha : hint_range(0.0, 1.0);
+uniform float overlay_alpha : hint_range(0.0, 1.0) = 1.0;
 uniform float pattern_scale = 1.0;
 uniform vec2 tilemap_offset = vec2(0.0, 0.0);
 uniform bool flip_alpha = true;

@@ -55,6 +55,7 @@ unique_name_in_owner = true
 position = Vector2(0, -26)
 texture = ExtResource("4_vdafv")
 hframes = 4
+vframes = 4
 frame = 1
 
 [node name="StateMachine" parent="." instance=ExtResource("5_2m4gu")]

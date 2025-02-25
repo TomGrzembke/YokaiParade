@@ -1,11 +1,16 @@
 extends Area2D
 
 
-const TEXTURE_ACTIVE = preload("res://levels/modules/checkpoint_active.png")
+@export var texture_inactive: Texture2D
+@export var texture_active: Texture2D
+
+
+func _ready():
+	%Sprite2D.texture = texture_inactive
 
 
 func on_checkpoint_area_entered(other):
 	if other != null \
 	and other.has_method("on_reached_checkpoint"):
 		other.on_reached_checkpoint(global_position)
-		%Sprite2D.texture = TEXTURE_ACTIVE
+		%Sprite2D.texture = texture_active

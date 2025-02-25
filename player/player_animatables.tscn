@@ -1,13 +1,22 @@
-[gd_scene load_steps=49 format=3 uid="uid://b173nlre4ndsy"]
+[gd_scene load_steps=53 format=3 uid="uid://b173nlre4ndsy"]
 
 [ext_resource type="Script" path="res://player/player_animatables.gd" id="1_japyu"]
 [ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/player_spritesheet.png" id="1_wuri4"]
 [ext_resource type="AudioStream" uid="uid://cojwru8qh7oh8" path="res://sounds/player_dying.wav" id="2_jfhhs"]
+[ext_resource type="Texture2D" uid="uid://cd6wlp83vhnik" path="res://assets/vfx/vfx_hit_animation_mittig.png" id="2_o2y2d"]
+[ext_resource type="Texture2D" uid="uid://bmndbrp8ewpdu" path="res://assets/vfx/vfx_walk_animation.png" id="3_3jvwm"]
 [ext_resource type="AudioStream" uid="uid://g4orwxysi14l" path="res://sounds/player_got_hit.wav" id="3_yjdp8"]
+[ext_resource type="Shader" path="res://shader/exchange_color_on_asset.gdshader" id="4_jiapn"]
 [ext_resource type="AudioStream" uid="uid://coibewadmss1o" path="res://sounds/player_hittting2.wav" id="4_wmhc6"]
 [ext_resource type="AudioStream" uid="uid://cwgybk1plghnu" path="res://sounds/player_jump.wav" id="5_irw32"]
 [ext_resource type="AudioStream" uid="uid://dgk7beqkylhis" path="res://sounds/player_landing.wav" id="6_f5xr2"]
 [ext_resource type="AudioStream" uid="uid://coy5ai5tktmgg" path="res://sounds/player_walking.wav" id="7_rrgwt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n0aer"]
+shader = ExtResource("4_jiapn")
+shader_parameter/color_to_replace = Color(1, 0, 0, 1)
+shader_parameter/wanted_color = Color(0, 0.643137, 1, 1)
+shader_parameter/feather_range = 0.489
 
 [sub_resource type="Animation" id="Animation_1fs6i"]
 length = 0.001
@@ -22,6 +31,66 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimatables/VfxHitAnimationMittig:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerAnimatables/VfxHitAnimationMittig:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-47, -64)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerAnimatables/VfxHitAnimationMittig:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerAnimatables/VfxWalkAnimation:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerAnimatables/VfxWalkAnimation:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_802ph"]
@@ -135,10 +204,46 @@ tracks/1/path = NodePath("PlayerAnimatables/PlayerWalk:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.122497),
+"times": PackedFloat32Array(0, 0.0788742),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [17, 21]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerAnimatables/VfxHitAnimationMittig:visible")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.243085, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerAnimatables/VfxHitAnimationMittig:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.079842, 0.113799, 0.131184, 0.180265, 0.21837),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-47, -64), Vector2(109, -44), Vector2(115, -11), Vector2(113, 12), Vector2(67, -4), Vector2(71, -17)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerAnimatables/VfxHitAnimationMittig:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.079756, 0.208358),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 0]
 }
 
 [sub_resource type="Animation" id="Animation_ko40m"]
@@ -285,6 +390,30 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerAnimatables/VfxWalkAnimation:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerAnimatables/VfxWalkAnimation:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x7y5v"]
 _data = {
@@ -426,13 +555,26 @@ graph_offset = Vector2(-85, -93)
 [node name="PlayerAnimatables" type="Node2D"]
 script = ExtResource("1_japyu")
 
+[node name="VfxHitAnimationMittig" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-47, -64)
+texture = ExtResource("2_o2y2d")
+hframes = 4
+frame = 3
+
+[node name="VfxWalkAnimation" type="Sprite2D" parent="."]
+position = Vector2(-44, -4)
+texture = ExtResource("3_3jvwm")
+hframes = 4
+
 [node name="PlayerWalk" type="Sprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_n0aer")
 position = Vector2(1, -9)
 texture = ExtResource("1_wuri4")
 hframes = 4
 vframes = 10
-frame = 11
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")

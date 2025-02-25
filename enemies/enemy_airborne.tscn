@@ -57,6 +57,7 @@ shape = SubResource("CircleShape2D_jrlqx")
 unique_name_in_owner = true
 texture = ExtResource("5_vojws")
 hframes = 4
+vframes = 3
 frame = 2
 
 [node name="StateMachine" parent="." instance=ExtResource("6_tsxge")]

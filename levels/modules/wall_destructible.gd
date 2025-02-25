@@ -1,19 +1,17 @@
 extends StaticBody2D
 
+
 const BREAK_ANIMATION = "break"
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var mesh_instance_2d: MeshInstance2D = $MeshInstance2D
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var take_damage_area: Area2D = $TakeDamageArea
+
 
 func _ready():
-	animation_player.animation_finished.connect(delete)
+	if get_node_or_null("%AnimationPlayer") != null:
+		%AnimationPlayer.animation_finished.connect(delete)
 
 
 func took_fire_damage(_source):
-	mesh_instance_2d.visible = false
-	collision_shape_2d.disabled = true
-	animation_player.play(BREAK_ANIMATION)
+	%CollisionShape2D.disabled = true
+	%AnimationPlayer.play(BREAK_ANIMATION)
 
 
 func delete(animation_name):
