@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://c8mxwfqxutdoi"]
+[gd_scene load_steps=21 format=3 uid="uid://c8mxwfqxutdoi"]
 
 [ext_resource type="Texture2D" uid="uid://tgdbge36wevk" path="res://assets/patterns/t-texture_lines.png" id="2_y3agf"]
 [ext_resource type="Texture2D" uid="uid://b66gcqiak8txp" path="res://levels/area_01/mountains_far.png" id="3_6pkbi"]
 [ext_resource type="Texture2D" uid="uid://bmo1tv4fy75om" path="res://levels/area_01/mountains_middle.png" id="4_hhbm4"]
 [ext_resource type="Shader" path="res://shader/pattern_screen_overlay.gdshader" id="5_w3sdd"]
 [ext_resource type="Texture2D" uid="uid://bn0cpcfikbpp5" path="res://shader/testing_assets/empty_white.png" id="6_53e8n"]
+[ext_resource type="Texture2D" uid="uid://c5frpar7yqfe2" path="res://levels/area_01/mountains_spritesheet.png" id="7_7xycs"]
 [ext_resource type="Texture2D" uid="uid://bckrmvjg8p3jq" path="res://levels/area_01/mountains_close.png" id="7_qvnb5"]
 [ext_resource type="Material" uid="uid://bfm15gm2njxtq" path="res://shader/cloud_shader.tres" id="8_afjxq"]
 [ext_resource type="Texture2D" uid="uid://dd4dbqeurgyvx" path="res://levels/area_01/clouds_red.png" id="8_lwp6k"]
@@ -159,8 +160,22 @@ repeat_size = Vector2(1920, 0)
 repeat_times = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="MountainsCloseParallax"]
+visible = false
 position = Vector2(0, 800)
 texture = ExtResource("7_qvnb5")
+
+[node name="MountainsSpritesheet" type="Sprite2D" parent="MountainsCloseParallax"]
+position = Vector2(1310, 592)
+texture = ExtResource("7_7xycs")
+hframes = 4
+vframes = 3
+frame = 1
+
+[node name="MountainsSpritesheet2" type="Sprite2D" parent="MountainsCloseParallax"]
+position = Vector2(837, 634)
+texture = ExtResource("7_7xycs")
+hframes = 4
+vframes = 3
 
 [node name="CloudsRedPrallax" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.6, 0.6)
