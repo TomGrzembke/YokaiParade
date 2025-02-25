@@ -34,6 +34,9 @@ func unhandled_input(event):
 	if event.is_action_pressed("reset_level"):
 		return reset_level_state
 
+	if not OS.has_feature("debug"):
+		return
+
 	if event.is_action_pressed("load_previous_level"):
 		parent.request_setting_previous_level_path_index()
 		return loading_level_state
