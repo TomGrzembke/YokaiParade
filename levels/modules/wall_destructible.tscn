@@ -36,13 +36,13 @@ tracks/1/path = NodePath("MeshInstance2D:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_nbdu7"]
+[sub_resource type="Animation" id="Animation_lnwdc"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -59,7 +59,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iqlt8"]
 _data = {
-"RESET": SubResource("Animation_nbdu7"),
+"RESET": SubResource("Animation_lnwdc"),
 "break": SubResource("Animation_ia2fe")
 }
 

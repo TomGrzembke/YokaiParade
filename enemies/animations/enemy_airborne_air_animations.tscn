@@ -162,8 +162,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_up30f"]
 resource_name = "lunging_left"
-length = 0.5
-loop_mode = 1
+length = 0.625
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -192,7 +191,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ii3n3"]
 resource_name = "lunging_right"
-length = 0.5
+length = 0.625
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -454,7 +453,7 @@ states/Moving/node = SubResource("AnimationNodeBlendSpace1D_8era8")
 states/Moving/position = Vector2(666.708, 9.4965)
 states/Recovering/node = SubResource("AnimationNodeBlendSpace1D_q3m1i")
 states/Recovering/position = Vector2(669.044, 190)
-graph_offset = Vector2(179, -44.4219)
+graph_offset = Vector2(-60, -194.422)
 
 [node name="EnemyAirborneAirAnimations" type="Node2D"]
 script = ExtResource("1_k13mu")
@@ -467,6 +466,7 @@ vframes = 3
 frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_vyi56")
 }
@@ -479,6 +479,6 @@ advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Attacking/blend_position = 0
 parameters/Idling/blend_position = 0
-parameters/Lunging/blend_position = 0
+parameters/Lunging/blend_position = -0.995829
 parameters/Moving/blend_position = 0.57971
 parameters/Recovering/blend_position = 0

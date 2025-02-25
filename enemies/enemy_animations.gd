@@ -6,7 +6,11 @@ var animation_state_machine
 
 func _ready():
 	animation_state_machine = %AnimationTree.get("parameters/playback")
+	%AnimationTree.animation_finished.connect(temp)
 
+
+func temp(name):
+	print("animation %s finished" % name)
 
 func update_direction(direction):
 	%AnimationTree.set("parameters/Idling/blend_position", direction)
@@ -26,12 +30,14 @@ func enter_state_moving():
 
 func enter_state_lunging():
 	animation_state_machine.travel("Lunging")
-	await get_tree().create_timer(0.875).timeout # TODO: Await signal that animation is finished
+	print("not finished")
+	await %AnimationTree.animation_finished
+	print("finished")
 
 
 func enter_state_attacking():
 	animation_state_machine.travel("Attacking")
-	await get_tree().create_timer(0.875).timeout # TODO: Await signal that animation is finished
+	await %AnimationTree.animation_finished
 
 
 func enter_state_recovering():
