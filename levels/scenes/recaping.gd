@@ -1,6 +1,8 @@
 extends Node
 
 
+var play_time
+
 var state_node
 
 var loading_level_state
@@ -16,6 +18,11 @@ func _ready():
 	%ResetLevelButton.pressed.connect(change_to_reset_level_state)
 	%ReturnToMainMenuButton.pressed.connect(change_to_return_to_main_menu_state)
 	%QuitGameButton.pressed.connect(quit_game)
+
+
+func set_play_time(p_play_time):
+	play_time = p_play_time
+	%PlayTimeLabel.text = "%5.2f" % play_time
 
 
 # Level States

@@ -15,6 +15,8 @@ func enter(p_previous_state):
 	state_scene.set_return_to_main_menu_level_state(return_to_main_menu_level_state)
 	state_scene.set_reset_level_state(reset_level_state)
 
+	state_scene.set_play_time(parent.get_play_time())
+
 
 func request_setting_next_level_path_index():
 	parent.request_setting_next_level_path_index()

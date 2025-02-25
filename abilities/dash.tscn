@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b63j8p43v3758" path="res://sounds/player_ability_fire_dash.wav" id="3_1xdef"]
 
 [sub_resource type="Curve" id="Curve_6cwuf"]
-_data = [Vector2(0, 1), 0.0, 0.289987, 0, 0, Vector2(1, 0.769231), -0.334066, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.410989, 0, 0, Vector2(1, 0.846154), -0.57481, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_liclb"]
@@ -37,9 +37,9 @@ _data = {
 
 [node name="Dash" type="Node2D"]
 script = ExtResource("1_708yo")
-dash_velocity = 1150.0
+dash_velocity = 1200.0
 dash_duration = 0.24
-damage_linger_duration = 0.75
+damage_linger_duration = 0.8
 disable_player_movement = false
 velocity_curve = SubResource("Curve_6cwuf")
 

@@ -71,16 +71,18 @@ push_height_percentage = 0.4
 
 [node name="Abilities" type="Node2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, -51)
 script = ExtResource("2_es05j")
 hit_cooldown_time = 0.3
 hit_grace_time = 0.27
 hit_queue_time = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, -43)
 shape = SubResource("CapsuleShape2D_1mi2e")
 
 [node name="DealDamageArea" parent="." instance=ExtResource("4_cn11c")]
+position = Vector2(0, -51)
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageArea"]
@@ -89,10 +91,12 @@ shape = SubResource("CapsuleShape2D_82728")
 debug_color = Color(0.595658, 0.545411, 0, 0.42)
 
 [node name="HitWallRay" parent="." instance=ExtResource("5_5gjfl")]
+position = Vector2(0, -51)
 target_position = Vector2(124, 0)
 hit_from_inside = true
 
 [node name="TakeDamageArea" parent="." instance=ExtResource("4_y0ly5")]
+position = Vector2(0, -51)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
@@ -100,16 +104,19 @@ shape = SubResource("CapsuleShape2D_4pm2j")
 debug_color = Color(0.976648, 0, 0.410241, 0.42)
 
 [node name="CantEdgeCorrectRay" parent="." instance=ExtResource("5_5gjfl")]
+position = Vector2(0, -51)
 target_position = Vector2(-32, -102)
 
 [node name="HasAirTargetRay" parent="." instance=ExtResource("5_5gjfl")]
-position = Vector2(0, -123)
+position = Vector2(0, -174)
 target_position = Vector2(111, -0.595001)
 
 [node name="CanEdgeCorrectRay" parent="." instance=ExtResource("5_5gjfl")]
+position = Vector2(0, -51)
 target_position = Vector2(50, -85)
 
 [node name="Visuals" type="Node2D" parent="."]
+position = Vector2(0, -51)
 
 [node name="AbilityVisualizer" type="Node2D" parent="Visuals"]
 position = Vector2(38, 18)
@@ -136,18 +143,13 @@ z_index = 1
 width_curve = SubResource("Curve_xeqma")
 
 [node name="PlayerAnimatables" parent="." instance=ExtResource("7_74yxj")]
-
-[node name="VfxWalkAnimation" parent="PlayerAnimatables" index="1"]
-visible = false
-frame = 1
-
-[node name="PlayerWalk" parent="PlayerAnimatables" index="2"]
-frame = 8
+position = Vector2(0, -51)
 
 [node name="PlayerWalk" parent="PlayerAnimatables" index="0"]
 frame = 8
 
 [node name="Debug" type="Node2D" parent="."]
+position = Vector2(0, -51)
 script = ExtResource("7_3jai0")
 
 [node name="MovementLine" type="Line2D" parent="Debug"]
