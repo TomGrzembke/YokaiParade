@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8mxwfqxutdoi"]
+[gd_scene load_steps=19 format=3 uid="uid://c8mxwfqxutdoi"]
 
 [ext_resource type="Texture2D" uid="uid://tgdbge36wevk" path="res://assets/patterns/t-texture_lines.png" id="2_y3agf"]
 [ext_resource type="Texture2D" uid="uid://b66gcqiak8txp" path="res://levels/area_01/mountains_far.png" id="3_6pkbi"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dd4dbqeurgyvx" path="res://levels/area_01/clouds_red.png" id="8_lwp6k"]
 [ext_resource type="Texture2D" uid="uid://i5u70jl4fc3v" path="res://levels/area_01/clouds_blue.png" id="9_poku5"]
 [ext_resource type="Texture2D" uid="uid://gxi2kaj7h5fr" path="res://levels/area_01/clouds_white.png" id="10_37g1q"]
+[ext_resource type="Shader" path="res://shader/pattern_overlay.gdshader" id="11_85k4m"]
+[ext_resource type="Texture2D" uid="uid://ct878em515kjj" path="res://levels/area_01/flowers_red.png" id="12_vrjr5"]
 
 [sub_resource type="Shader" id="Shader_8lk6j"]
 code = "shader_type canvas_item;
@@ -95,6 +97,15 @@ shader_parameter/tilemap_offset = Vector2(0, 0)
 shader_parameter/flip_alpha = false
 shader_parameter/pattern_texture = ExtResource("2_y3agf")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gghgl"]
+shader = ExtResource("11_85k4m")
+shader_parameter/overlay_alpha = 1.0
+shader_parameter/pattern_scale = -0.7
+shader_parameter/tilemap_offset = Vector2(-0.115, 0)
+shader_parameter/flip_alpha = true
+shader_parameter/use_local = true
+shader_parameter/pattern_texture = ExtResource("2_y3agf")
+
 [node name="Area1Backgrounds" type="Node2D"]
 z_index = -10
 
@@ -166,6 +177,7 @@ texture = ExtResource("9_poku5")
 
 [node name="CloudsWhiteParallax" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.7, 0.7)
+scroll_offset = Vector2(-444, -528)
 repeat_size = Vector2(2200, 0)
 repeat_times = 3
 
@@ -173,3 +185,20 @@ repeat_times = 3
 material = ExtResource("8_afjxq")
 position = Vector2(0, 1000)
 texture = ExtResource("10_37g1q")
+
+[node name="Foreground" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.9, 0.9)
+scroll_offset = Vector2(-444, -528)
+repeat_size = Vector2(2200, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground"]
+z_index = 20
+material = SubResource("ShaderMaterial_gghgl")
+position = Vector2(0, 1392)
+texture = ExtResource("10_37g1q")
+
+[node name="FlowersRed" type="Sprite2D" parent="."]
+z_index = 19
+position = Vector2(-666, 429)
+texture = ExtResource("12_vrjr5")

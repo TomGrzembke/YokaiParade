@@ -1,31 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnq2l128u47ma"]
 
 [ext_resource type="Script" path="res://levels/modules/goal.gd" id="1_jmwwo"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_1oiji"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_wwu48"]
+[ext_resource type="Texture2D" uid="uid://bfe2dg8ykjd3l" path="res://levels/modules/assets/p_goal_inactive.png" id="2_lqggy"]
+[ext_resource type="Texture2D" uid="uid://b7bdx67irenol" path="res://levels/modules/assets/p_goal_active.png" id="3_bety5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkh4u"]
-size = Vector2(10, 132)
+size = Vector2(160, 160)
 
 [node name="Goal" type="Area2D"]
+position = Vector2(0, 20)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_jmwwo")
+texture_inactive = ExtResource("2_lqggy")
+texture_active = ExtResource("3_bety5")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(0, -66)
-scale = Vector2(10, 132)
-mesh = SubResource("BoxMesh_1oiji")
-
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(35, -115)
-scale = Vector2(61.5692, 33)
-mesh = SubResource("SphereMesh_wwu48")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -80)
+texture = ExtResource("2_lqggy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -66)
+position = Vector2(0, -80)
 shape = SubResource("RectangleShape2D_qkh4u")
 
 [connection signal="body_entered" from="." to="." method="on_body_entered"]

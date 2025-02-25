@@ -1,6 +1,17 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://4v2t32qfx3hb"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://4v2t32qfx3hb"]
 
+[ext_resource type="PackedScene" uid="uid://sxpubdb03xgr" path="res://levels/modules/wall_destructible_big.tscn" id="1_y4vog"]
 [ext_resource type="Texture2D" uid="uid://dxdfcsh6knkl8" path="res://levels/area_01/obstacles_spritesheet.png" id="2_pr8rr"]
+[ext_resource type="PackedScene" uid="uid://bccs4lkv5eou5" path="res://levels/modules/wall_destructible_small.tscn" id="2_ytg1e"]
+[ext_resource type="PackedScene" uid="uid://dotrddyc18eeh" path="res://levels/modules/checkpoint.tscn" id="3_baion"]
+[ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/modules/goal.tscn" id="4_5nafx"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vyxa4"]
+resource_name = "LevelModules"
+scenes/1/scene = ExtResource("1_y4vog")
+scenes/2/scene = ExtResource("2_ytg1e")
+scenes/3/scene = ExtResource("3_baion")
+scenes/4/scene = ExtResource("4_5nafx")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nggdj"]
 texture = ExtResource("2_pr8rr")
@@ -334,6 +345,7 @@ terrain_set_0/terrain_0/color = Color(0.471687, 0.303699, 0.554854, 1)
 terrain_set_0/terrain_1/name = "Bamboo"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/5 = SubResource("TileSetAtlasSource_nggdj")
+sources/0 = SubResource("TileSetScenesCollectionSource_vyxa4")
 tile_proxies/coords_level = [[1, Vector2i(0, 0)], [5, Vector2i(3, 2)], [1, Vector2i(2, 0)], [5, Vector2i(5, 2)], [1, Vector2i(3, 0)], [5, Vector2i(6, 2)], [1, Vector2i(4, 0)], [5, Vector2i(7, 2)], [1, Vector2i(5, 0)], [5, Vector2i(8, 2)], [1, Vector2i(6, 0)], [5, Vector2i(9, 2)], [1, Vector2i(7, 0)], [5, Vector2i(10, 2)]]
 metadata/_better_terrain = {
 "decoration": ["Decoration", Color(0.411765, 0.411765, 0.411765, 1), 3, [], {
