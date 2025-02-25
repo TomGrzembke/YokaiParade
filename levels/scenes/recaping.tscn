@@ -139,6 +139,7 @@ grow_horizontal = 2
 texture = ExtResource("4_0ksdu")
 
 [node name="Decoration" type="TextureRect" parent="CanvasLayer/Main"]
+layout_mode = 0
 offset_left = 1439.0
 offset_top = 72.0
 offset_right = 1547.0
