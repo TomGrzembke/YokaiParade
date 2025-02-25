@@ -6,6 +6,7 @@ var state_node
 
 func _ready():
 	%BackButton.pressed.connect(change_to_previous_state)
+	%BackButton.grab_focus()
 
 
 # Game States

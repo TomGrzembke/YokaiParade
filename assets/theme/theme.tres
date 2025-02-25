@@ -31,6 +31,7 @@ CountDownLabel/colors/font_color = Color(0.937255, 0.443137, 0.282353, 1)
 CountDownLabel/colors/font_outline_color = Color(1, 1, 1, 1)
 CountDownLabel/constants/outline_size = 20
 CountDownLabel/font_sizes/font_size = 240
+Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 71
 Label/fonts/font = ExtResource("1_hmqgt")
 MMButton/base_type = &"Button"

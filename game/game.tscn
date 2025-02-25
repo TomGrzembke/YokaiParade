@@ -17,7 +17,7 @@
 [node name="Game" type="Node2D" node_paths=PackedStringArray("initial_game_state")]
 process_mode = 3
 script = ExtResource("1_g4chm")
-initial_game_state = NodePath("GameStateMachine/InGame")
+initial_game_state = NodePath("GameStateMachine/MainMenu")
 
 [node name="GameStateMachine" parent="." instance=ExtResource("2_me8mb")]
 unique_name_in_owner = true

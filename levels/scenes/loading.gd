@@ -11,6 +11,7 @@ func _ready():
 	%StartButton.pressed.connect(change_to_next_level_state)
 	await %AnimationPlayer.animation_finished
 	await state_node.load_level()
+	%StartButton.grab_focus()
 
 
 func set_start_button_enabled(enabled):
