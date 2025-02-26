@@ -26,6 +26,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/fuzzy/Videos/Captures/yokai-parade.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")

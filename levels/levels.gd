@@ -62,7 +62,7 @@ func try_changing_to_requested_level():
 		return succeeded
 
 	if requested_level_path_index == current_level_path_index:
-		printerr("Error: Level %s is already loaded!" % current_level_path_index)
+		printerr("Error: Level %s is already the current level!" % current_level_path_index)
 
 	succeeded = await try_changing_to_level(requested_level_path_index)
 	return succeeded

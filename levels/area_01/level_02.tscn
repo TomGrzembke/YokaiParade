@@ -429,11 +429,3 @@ tile_set = ExtResource("18_m31j8")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("19_0ogvx")]
 position = Vector2(-599, 995)
-
-[connection signal="area_entered" from="GameplayTileMapLayer/Checkpoint" to="GameplayTileMapLayer/Checkpoint" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/Checkpoint" to="GameplayTileMapLayer/Checkpoint" method="on_checkpoint_area_entered"]
-[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@29342" to="GameplayTileMapLayer/@Area2D@29342" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@29342" to="GameplayTileMapLayer/@Area2D@29342" method="on_checkpoint_area_entered"]
-[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@29347" to="GameplayTileMapLayer/@Area2D@29347" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@29347" to="GameplayTileMapLayer/@Area2D@29347" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/Goal" to="GameplayTileMapLayer/Goal" method="on_body_entered"]
