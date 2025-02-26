@@ -208,12 +208,14 @@ position = Vector2(0, 1000)
 texture = ExtResource("10_37g1q")
 
 [node name="Foreground" type="Parallax2D" parent="."]
+visible = false
 scroll_scale = Vector2(1.1, 1.1)
 scroll_offset = Vector2(-444, -528)
 repeat_size = Vector2(2200, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Foreground"]
+modulate = Color(1, 1, 1, 0.407843)
 z_index = 20
 material = SubResource("ShaderMaterial_gghgl")
 position = Vector2(0, 1392)
