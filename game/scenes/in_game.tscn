@@ -38,7 +38,7 @@
 [ext_resource type="Material" uid="uid://diak12n0funuu" path="res://shader/ui_foreground.tres" id="29_157pf"]
 [ext_resource type="Texture2D" uid="uid://d0cyqkl45rojo" path="res://ui/UI_ingame_bl_back.png" id="29_iur5k"]
 [ext_resource type="Texture2D" uid="uid://bv3x16bvcgjdh" path="res://ui/UI_ingame_sign.png" id="32_rb5aa"]
-[ext_resource type="Texture2D" uid="uid://w26g1il2kwn7" path="res://ui/ui_ingame_ability_main.png" id="35_by3sm"]
+[ext_resource type="Texture2D" uid="uid://cnj6o61ajdyke" path="res://ui/ui_ingame_ability_main.png" id="35_by3sm"]
 
 [node name="InGame" type="Node" node_paths=PackedStringArray("initial_level_state")]
 script = ExtResource("1_jmwmp")
@@ -239,22 +239,28 @@ texture = ExtResource("28_k2h10")
 
 [node name="Ability bg" type="TextureRect" parent="UILayer/Bottom"]
 layout_mode = 0
-offset_top = -373.0
-offset_right = 452.0
-offset_bottom = 40.0
+offset_left = -88.0
+offset_top = -338.0
+offset_right = 364.0
+offset_bottom = 75.0
 texture = ExtResource("12_yb5sd")
-
-[node name="Ability line" type="TextureRect" parent="UILayer/Bottom"]
-layout_mode = 0
-offset_top = -373.0
-offset_right = 452.0
-offset_bottom = 40.0
-texture = ExtResource("13_m5arx")
+stretch_mode = 3
 
 [node name="CurrentAbility" type="TextureRect" parent="UILayer/Bottom"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_top = -373.0
-offset_right = 452.0
-offset_bottom = 40.0
+offset_left = -88.0
+offset_top = -338.0
+offset_right = 364.0
+offset_bottom = 75.0
 texture = ExtResource("35_by3sm")
+stretch_mode = 3
+
+[node name="Ability line" type="TextureRect" parent="UILayer/Bottom"]
+layout_mode = 0
+offset_left = -88.0
+offset_top = -338.0
+offset_right = 364.0
+offset_bottom = 75.0
+texture = ExtResource("13_m5arx")
+stretch_mode = 3
