@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8mxwfqxutdoi"]
+[gd_scene load_steps=22 format=3 uid="uid://c8mxwfqxutdoi"]
 
 [ext_resource type="Texture2D" uid="uid://tgdbge36wevk" path="res://assets/patterns/t-texture_lines.png" id="2_y3agf"]
 [ext_resource type="Texture2D" uid="uid://b66gcqiak8txp" path="res://levels/area_01/mountains_far.png" id="3_6pkbi"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://gxi2kaj7h5fr" path="res://levels/area_01/clouds_white.png" id="10_37g1q"]
 [ext_resource type="Shader" path="res://shader/pattern_overlay.gdshader" id="11_85k4m"]
 [ext_resource type="Texture2D" uid="uid://b0vv3r8mo5474" path="res://levels/area_01/flowers_red_single.png" id="12_81uk2"]
+[ext_resource type="Script" path="res://assets/vfx/particle_startup.gd" id="14_btyqu"]
 
 [sub_resource type="Shader" id="Shader_8lk6j"]
 code = "shader_type canvas_item;
@@ -232,6 +233,7 @@ physics_interpolation_mode = 1
 z_index = 18
 material = SubResource("CanvasItemMaterial_0adue")
 position = Vector2(0, 400)
+emitting = false
 amount = 20
 lifetime = 3.0
 speed_scale = 0.1
@@ -248,3 +250,4 @@ damping_max = 100.0
 scale_amount_min = 0.4
 scale_amount_max = 0.5
 anim_offset_max = 1.0
+script = ExtResource("14_btyqu")
