@@ -1,8 +1,10 @@
-[gd_scene load_steps=55 format=3 uid="uid://b173nlre4ndsy"]
+[gd_scene load_steps=58 format=3 uid="uid://b173nlre4ndsy"]
 
 [ext_resource type="Script" path="res://player/player_animatables.gd" id="1_japyu"]
 [ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/player_spritesheet.png" id="1_wuri4"]
 [ext_resource type="AudioStream" uid="uid://cojwru8qh7oh8" path="res://sounds/player_dying.wav" id="2_jfhhs"]
+[ext_resource type="Shader" path="res://shader/pattern_overlay.gdshader" id="2_ygekg"]
+[ext_resource type="Texture2D" uid="uid://df651a1g7mxit" path="res://assets/patterns/t-texture_lines_white.png" id="3_bxexl"]
 [ext_resource type="AudioStream" uid="uid://g4orwxysi14l" path="res://sounds/player_got_hit.wav" id="3_yjdp8"]
 [ext_resource type="Texture2D" uid="uid://lbun5m4epu5r" path="res://assets/vfx/vfx_animation_character.png" id="4_f7hvb"]
 [ext_resource type="Shader" path="res://shader/exchange_color_on_asset.gdshader" id="4_jiapn"]
@@ -10,6 +12,16 @@
 [ext_resource type="AudioStream" uid="uid://cwgybk1plghnu" path="res://sounds/player_jump.wav" id="5_irw32"]
 [ext_resource type="AudioStream" uid="uid://dgk7beqkylhis" path="res://sounds/player_landing.wav" id="6_f5xr2"]
 [ext_resource type="AudioStream" uid="uid://coy5ai5tktmgg" path="res://sounds/player_walking.wav" id="7_rrgwt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbauj"]
+shader = ExtResource("2_ygekg")
+shader_parameter/overlay_alpha = 1.0
+shader_parameter/pattern_scale = 0.67
+shader_parameter/tilemap_offset = Vector2(-1.125, 0)
+shader_parameter/flip_alpha = false
+shader_parameter/use_hard_blend = true
+shader_parameter/use_local = false
+shader_parameter/pattern_texture = ExtResource("3_bxexl")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n0aer"]
 shader = ExtResource("4_jiapn")
@@ -606,6 +618,7 @@ graph_offset = Vector2(-53, -74)
 script = ExtResource("1_japyu")
 
 [node name="VfxAnimationCharacter" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qbauj")
 texture = ExtResource("4_f7hvb")
 hframes = 4
 vframes = 10

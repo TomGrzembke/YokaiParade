@@ -5,6 +5,7 @@ uniform float overlay_alpha : hint_range(0.0, 1.0) = 1.0;
 uniform float pattern_scale = 1.0;
 uniform vec2 tilemap_offset = vec2(0.0, 0.0);
 uniform bool flip_alpha = true;
+uniform bool use_hard_blend = false;
 uniform bool use_local = true;
 varying vec2 world_position;
 varying vec2 local_position;
@@ -22,6 +23,11 @@ vec4 overlay(vec4 base, vec4 blend){
 
 vec4 color_dodge(vec4 base, vec4 blend){
 	return base / 1.0 + blend;
+}
+
+float get_luminocity(vec4 color){
+	float luminance =  0.5 * color.r + 0.3 * color.g + 0.2 * color.b;
+	return clamp(luminance, .0 ,1.);
 }
 
 void vertex() {
@@ -45,11 +51,22 @@ void fragment() {
 	vec4 pattern = mix(texture_color, pattern_color, filtered_alpha);
 
 	vec4 soft_light_blend = soft_light_blend(texture_color, pattern, overlay_alpha);
+	
 
 	float alpha = -soft_light_blend.r * 2.0 * overlay_alpha * pattern_color.a;
 	alpha = flip_alpha ? -alpha : alpha;
 
 	vec4 final_color = mix(texture_color, soft_light_blend, alpha);
+	
+	if (use_hard_blend){
+	final_color = mix(texture_color, pattern, texture_color.a);
+	float brightness = get_luminocity(final_color);
+    float flipped_brightness = 1.0 - brightness;
+
+    vec4 flipped_color = vec4(vec3(flipped_brightness), texture_color.a);
+	
+	final_color = !flip_alpha ? final_color : flipped_color;
+	}
 
 	COLOR = final_color;
 }
