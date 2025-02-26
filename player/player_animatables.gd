@@ -16,7 +16,7 @@ func _ready():
 	player.player_despawned.connect(func(): state_machine.start("dying"))
 	player.player_gets_pushed.connect(func(): state_machine.start("got_hit"))
 
-	sort_dictionary()
+	sort_dictionary_descending()
 
 
 func _on_animation_finished(anim_name):
@@ -27,22 +27,28 @@ func different_idles(anim_name):
 	if !anim_name in idle_animation_probability: return
 	if anim_name == "idling3": return
 
-	var total_weight = 0
-	for value in idle_animation_probability.values():
-		total_weight += value
-
-	var random_value = randf_range(0, total_weight)
+	var random_value = randf_range(0, get_total_idle_percentage())
 
 	for key in idle_animation_probability:
-		if random_value < idle_animation_probability[key]:
-			state_machine.start(key)
-			return
+		if random_value >= idle_animation_probability[key]: continue
+
+		state_machine.start(key)
+		return
 
 	var last_key = idle_animation_probability.keys()[idle_animation_probability.size() - 1]
 	state_machine.start(last_key)
 
 
-func sort_dictionary():
+func get_total_idle_percentage():
+	var total_percentage = 0
+
+	for value in idle_animation_probability.values():
+		total_percentage += value
+
+	return total_percentage
+
+
+func sort_dictionary_descending():
 	var sorted_items = idle_animation_probability.keys()
 	sorted_items.sort_custom(func(a, b): return idle_animation_probability[a] < idle_animation_probability[b])
 
