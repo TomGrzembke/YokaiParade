@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="4_85cx3"]
 [ext_resource type="Texture2D" uid="uid://ug7h6qbp1dgw" path="res://enemies/animations/enemy_airborne_air_spritesheet.png" id="5_vojws"]
 [ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="6_tsxge"]
-[ext_resource type="Script" path="res://enemies/states/enemy_airborne_moving.gd" id="7_su0py"]
-[ext_resource type="Script" path="res://enemies/states/enemy_airborne_lunging.gd" id="8_81glp"]
-[ext_resource type="Script" path="res://enemies/states/enemy_airborne_idling.gd" id="8_is8ca"]
-[ext_resource type="Script" path="res://enemies/states/enemy_airborne_attacking.gd" id="8_noh7y"]
-[ext_resource type="Script" path="res://enemies/states/enemy_airborne_recovering.gd" id="9_kcogj"]
+[ext_resource type="Script" path="res://enemies/states/airborne_moving.gd" id="7_su0py"]
+[ext_resource type="Script" path="res://enemies/states/lunging.gd" id="8_81glp"]
+[ext_resource type="Script" path="res://enemies/states/idling.gd" id="8_is8ca"]
+[ext_resource type="Script" path="res://enemies/states/attacking.gd" id="8_noh7y"]
+[ext_resource type="Script" path="res://enemies/states/recovering.gd" id="9_kcogj"]
 
 [sub_resource type="Curve" id="Curve_lxy51"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -20,13 +20,14 @@ radius = 30.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u632v"]
 radius = 80.0
-height = 304.0
+height = 350.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p1742"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gwnps"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8npgo"]
 radius = 80.0
+height = 200.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jrlqx"]
 radius = 32.0
@@ -45,7 +46,7 @@ hframes = 4
 vframes = 3
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 0
 sync_to_physics = false
 
@@ -55,17 +56,18 @@ shape = SubResource("CircleShape2D_6sv5j")
 
 [node name="PerceptionArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PerceptionArea"]
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_u632v")
 debug_color = Color(0.734891, 0.688246, 3.85046e-07, 0.419608)
 
-[node name="DealShoveDamageArea" parent="." instance=ExtResource("3_7rhrf")]
+[node name="DealBumpDamageArea" parent="." instance=ExtResource("3_7rhrf")]
 unique_name_in_owner = true
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DealShoveDamageArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DealBumpDamageArea"]
 shape = SubResource("CircleShape2D_p1742")
 debug_color = Color(0.85749, 0.365079, 0, 0.42)
 
@@ -73,9 +75,9 @@ debug_color = Color(0.85749, 0.365079, 0, 0.42)
 unique_name_in_owner = true
 collision_mask = 4
 
-[node name="DealDamageCollisionShape" type="CollisionShape2D" parent="DealAttackDamageArea"]
-unique_name_in_owner = true
-shape = SubResource("CircleShape2D_gwnps")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DealAttackDamageArea"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8npgo")
 debug_color = Color(0.976471, 0, 0.411765, 0.419608)
 
 [node name="TakeDamageArea" parent="." instance=ExtResource("4_85cx3")]
@@ -88,14 +90,14 @@ debug_color = Color(0, 0.245, 0.7, 0.419608)
 [node name="StateMachine" parent="." instance=ExtResource("6_tsxge")]
 unique_name_in_owner = true
 
-[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("lunging_state", "recovering_state")]
-script = ExtResource("7_su0py")
-lunging_state = NodePath("../Lunging")
-recovering_state = NodePath("../Recovering")
-
 [node name="Idling" type="Node" parent="StateMachine" node_paths=PackedStringArray("lunging_enemy_state", "recovering_state")]
 script = ExtResource("8_is8ca")
 lunging_enemy_state = NodePath("../Lunging")
+recovering_state = NodePath("../Recovering")
+
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("lunging_state", "recovering_state")]
+script = ExtResource("7_su0py")
+lunging_state = NodePath("../Lunging")
 recovering_state = NodePath("../Recovering")
 
 [node name="Lunging" type="Node" parent="StateMachine" node_paths=PackedStringArray("attacking_state", "recovering_state")]
@@ -111,5 +113,6 @@ recovering_state = NodePath("../Recovering")
 [node name="Recovering" type="Node" parent="StateMachine"]
 script = ExtResource("9_kcogj")
 
-[connection signal="body_entered" from="PerceptionArea" to="." method="on_perception_area_entered"]
-[connection signal="body_exited" from="PerceptionArea" to="." method="on_perception_area_exited"]
+[connection signal="area_entered" from="PerceptionArea" to="." method="on_perception_area_entered"]
+[connection signal="area_exited" from="PerceptionArea" to="." method="on_perception_area_exited"]
+[connection signal="deal_damage_area_entered" from="DealBumpDamageArea" to="." method="on_bump_damage_area_entered"]

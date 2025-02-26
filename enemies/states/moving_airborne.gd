@@ -57,5 +57,5 @@ func update_direction():
 		last_position = position
 		return
 
-	parent.set_direction((position - last_position).normalized())
+	parent.set_look_direction((position - last_position).normalized())
 	last_position = position

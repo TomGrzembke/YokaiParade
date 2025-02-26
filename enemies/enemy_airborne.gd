@@ -27,7 +27,6 @@ var is_recovering = false
 var state_animations_scene
 var look_direction
 var target_in_perception_area
-var default_deal_damage_area_radius
 
 
 func _ready():
@@ -35,16 +34,13 @@ func _ready():
 
 	check_validity()
 
-	default_deal_damage_area_radius = %PhysicsBodyCollisionShape.shape.radius
-	reset_deal_damage_area_radius()
-
 	state_animations_scene = element_type.animations_airborne.instantiate()
 	add_child(state_animations_scene)
 
 	state_animations_scene.position = %Sprite2D.position
 	%Sprite2D.visible = false
 
-	reset_direction()
+	reset_look_direction()
 
 	var init_state = get_initial_state()
 	%StateMachine.init(self, init_state)
@@ -106,64 +102,70 @@ func get_target_in_perception_area():
 	return target_in_perception_area
 
 
-func set_direction(value):
+func set_look_direction(value):
 	look_direction = value
 	if look_direction != null:
-		state_animations_scene.update_direction(look_direction.x)
+		state_animations_scene.update_direction(look_direction)
 
 
-func get_direction():
+func get_look_direction():
 	return look_direction
 
 
-func reset_direction():
+func reset_look_direction():
 	var direction
 	match initial_look_direction:
 		1: direction = Vector2.RIGHT
-		2: direction = Vector2.LEFT
-	set_direction(direction)
+		-1: direction = Vector2.LEFT
+	set_look_direction(direction)
 
 
 func get_max_speed():
 	return max_speed
 
 
-func get_recovery_time():
-	return recovery_time
-
-
-func set_deal_damage_area_radius(radius):
-	%DealDamageCollisionShape.shape.radius = radius
-
-
-func reset_deal_damage_area_radius():
-	%DealDamageCollisionShape.shape.radius = default_deal_damage_area_radius
-
-
-func set_deal_damage_active(active):
-	%DealAttackDamageArea.set_deferred("monitoring", active)
+func set_deal_bump_damage_active(active):
+	%DealBumpDamageArea.set_deferred("monitoring", active)
 
 
 func on_perception_area_entered(target):
-	print("TODO: Needs check if body is player")
-	# TODO: Check if body is player!
-	target_in_perception_area = target
-	var player_direction = global_position.direction_to(target.global_position)
-	set_direction(player_direction)
+	var subject = %DealAttackDamageArea.get_damageable_subject(target)
+
+	if subject == null: return
+
+	target_in_perception_area = subject
+	var target_direction = global_position.direction_to(target_in_perception_area.global_position)
+	set_look_direction(target_direction)
 
 
 func on_perception_area_exited(_target):
 	target_in_perception_area = null
-	# TODO: Return from state lunging
+
+
+func on_bump_damage_area_entered(target):
+	attack(%DealBumpDamageArea.get_damageable_subject(target))
+
+
+func attack(target):
+	if target == null: return
+
+	target.on_took_damage(self)
 
 
 # TODO: Try getting rid of this and setting monitoring and state change by returning from state
+
+func get_recovery_time():
+	return recovery_time
+
+
 func set_is_recovering(status):
 	is_recovering = status
 
 
 func get_is_recovering():
 	return is_recovering
+
+# End
 
 
 func get_is_path_closed():

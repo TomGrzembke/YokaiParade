@@ -50,6 +50,11 @@ position = Vector2(608, 792)
 element_type = ExtResource("4_rtyjb")
 initial_look_direction = 1
 
+[node name="EnemyGrounded" parent="Start-1stCheckpoint/Enemies" instance=ExtResource("3_o5nyp")]
+position = Vector2(1656, 952)
+initial_state = 200
+element_type = ExtResource("4_rtyjb")
+
 [node name="AirGroundedIdling" parent="Start-1stCheckpoint/Enemies" instance=ExtResource("3_o5nyp")]
 position = Vector2(3823, 593)
 element_type = ExtResource("4_rtyjb")

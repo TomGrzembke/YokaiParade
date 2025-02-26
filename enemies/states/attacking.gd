@@ -11,14 +11,15 @@ func enter(p_previous_state):
 
 	is_animation_running = true
 	await state_animations_scene.enter_state_attacking()
-	parent.set_deal_damage_area_radius(80.0)
 	is_animation_running = false
 
 
 func exit():
 	super.exit()
 
-	parent.reset_deal_damage_area_radius()
+
+func attack():
+	parent.attack(parent.get_target_in_perception_area())
 
 
 func physics_process(_delta):

@@ -14,7 +14,7 @@ const STATES = preload("res://enemies/enemy_initial_states.gd")
 @export var element_type: EnemyElementType
 
 @export_category("Movement")
-@export_enum("Right:1", "Left:-1") var initial_direction = -1
+@export_enum("Right:1", "Left:-1") var initial_look_direction = -1
 @export var speed = 150.0
 
 @export_category("State Machine")
@@ -23,7 +23,8 @@ const STATES = preload("res://enemies/enemy_initial_states.gd")
 
 var is_recovering = false
 var state_animations_scene
-var direction
+var look_direction
+var target_in_perception_area
 
 
 func _ready():
@@ -35,10 +36,9 @@ func _ready():
 	state_animations_scene.position = %Sprite2D.position
 	%Sprite2D.visible = false
 
-	set_direction(Vector2(initial_direction, 0.0))
+	reset_look_direction()
 
 	var init_state = get_initial_state()
-
 	%StateMachine.init(self, init_state)
 
 
@@ -85,26 +85,64 @@ func get_state_animations_scene():
 	return state_animations_scene
 
 
-func set_direction(value):
-	direction = value
-	state_animations_scene.update_direction(direction)
+func get_target_in_perception_area():
+	return target_in_perception_area
 
 
-func get_direction():
-	return direction
+func set_look_direction(value):
+	look_direction = value
+	if look_direction != null:
+		state_animations_scene.update_direction(look_direction)
+
+
+func get_look_direction():
+	return look_direction
+
+
+func reset_look_direction():
+	var direction
+	match initial_look_direction:
+		1: direction = Vector2.RIGHT
+		-1: direction = Vector2.LEFT
+	set_look_direction(direction)
 
 
 func get_speed():
 	return speed
 
 
+func set_deal_bump_damage_active(active):
+	%DealBumpDamageArea.set_deferred("monitoring", active)
+
+
+func on_perception_area_entered(target):
+	var subject = %DealAttackDamageArea.get_damageable_subject(target)
+
+	if subject == null: return
+
+	target_in_perception_area = subject
+	var target_direction = global_position.direction_to(target_in_perception_area.global_position)
+	set_look_direction(target_direction)
+
+
+func on_perception_area_exited(_target):
+	target_in_perception_area = null
+
+
+func on_bump_damage_area_entered(target):
+	attack(%DealBumpDamageArea.get_damageable_subject(target))
+
+
+func attack(target):
+	if target == null: return
+
+	target.on_took_damage(self)
+
+
+# TODO: Try getting rid of this and setting monitoring and state change by returning from state
+
 func get_recovery_time():
 	return recovery_time
-
-
-func set_deal_damage_active(active):
-	%DealDamageArea.set_deferred("monitoring", active)
-
 
 func set_is_recovering(status):
 	is_recovering = status
@@ -113,17 +151,7 @@ func set_is_recovering(status):
 func get_is_recovering():
 	return is_recovering
 
-
-func enter_animation_state_moving():
-	state_animations_scene.enter_state_moving()
-
-
-func enter_animation_state_idling():
-	state_animations_scene.enter_state_idling()
-
-
-func enter_animation_state_recovering():
-	state_animations_scene.enter_state_recovering()
+# End
 
 
 func handle_gravity(delta):

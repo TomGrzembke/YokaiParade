@@ -145,9 +145,6 @@ width_curve = SubResource("Curve_xeqma")
 [node name="PlayerAnimatables" parent="." instance=ExtResource("7_74yxj")]
 position = Vector2(0, -51)
 
-[node name="PlayerWalk" parent="PlayerAnimatables" index="0"]
-frame = 8
-
 [node name="Debug" type="Node2D" parent="."]
 position = Vector2(0, -51)
 script = ExtResource("7_3jai0")
@@ -165,6 +162,5 @@ trail_points_max = 300
 
 [connection signal="deal_damage_area_entered" from="DealDamageArea" to="Abilities" method="on_deal_damage_area_entered"]
 [connection signal="deal_damage_area_exited" from="DealDamageArea" to="Abilities" method="on_deal_damage_area_exited"]
-[connection signal="take_damage_area_entered" from="TakeDamageArea" to="." method="on_took_damage"]
 
 [editable path="PlayerAnimatables"]

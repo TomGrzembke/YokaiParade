@@ -24,6 +24,6 @@ func physics_process(_delta):
 	if parent.get_target_in_perception_area() != null:
 		next_state = attacking_state
 	else:
-		parent.reset_direction()
+		parent.reset_look_direction()
 		next_state = parent.get_initial_state()
 	return next_state
