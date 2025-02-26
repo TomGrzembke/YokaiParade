@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnxi2gyvo83ec"]
+[gd_scene load_steps=18 format=3 uid="uid://dnxi2gyvo83ec"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/abilities.gd" id="2_es05j"]
@@ -29,8 +29,6 @@ height = 168.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4pm2j"]
 radius = 18.0
 height = 74.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_ovhno"]
 
 [sub_resource type="Curve" id="Curve_xeqma"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -122,21 +120,6 @@ position = Vector2(0, -51)
 position = Vector2(38, 18)
 script = ExtResource("6_guley")
 trail_points_max = 10
-hit_speed = 0.4
-
-[node name="AttackTarget" type="Node2D" parent="Visuals"]
-position = Vector2(86, 21)
-
-[node name="AbilityVisual" type="MeshInstance2D" parent="Visuals"]
-unique_name_in_owner = true
-self_modulate = Color(0.580392, 0.580392, 0.580392, 1)
-z_index = -1
-position = Vector2(36, -61)
-scale = Vector2(32.1261, 32.1261)
-mesh = SubResource("SphereMesh_ovhno")
-
-[node name="AbilityTarget" type="Node2D" parent="Visuals"]
-position = Vector2(54, 2)
 
 [node name="AttackLine" type="Line2D" parent="Visuals"]
 z_index = 1

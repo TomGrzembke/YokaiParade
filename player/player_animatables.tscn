@@ -14,7 +14,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n0aer"]
 shader = ExtResource("4_jiapn")
 shader_parameter/color_to_replace = Color(1, 0, 0, 1)
-shader_parameter/wanted_color = Color(0, 0.643137, 1, 1)
+shader_parameter/wanted_color = Color(0.470248, 0.454168, 0.494929, 1)
 shader_parameter/feather_range = 0.489
 
 [sub_resource type="Animation" id="Animation_1fs6i"]
@@ -609,7 +609,7 @@ script = ExtResource("1_japyu")
 texture = ExtResource("4_f7hvb")
 hframes = 4
 vframes = 10
-frame = 3
+frame = 4
 
 [node name="Player" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -618,7 +618,7 @@ position = Vector2(1, -9)
 texture = ExtResource("1_wuri4")
 hframes = 4
 vframes = 10
-frame = 11
+frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")

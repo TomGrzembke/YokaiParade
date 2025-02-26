@@ -33,16 +33,14 @@ func set_play_time(p_play_time):
 # Level States
 
 func set_next_level_state():
-	var current_level_path_index = state_node.get_current_level_path_index()
+	var current_level_path_index = state_node.get_requested_level_path_index()
 	state_node.request_setting_next_level_path_index()
-	var next_level_path_index = state_node.get_current_level_path_index()
+	var next_level_path_index = state_node.get_requested_level_path_index()
 
 	if current_level_path_index == next_level_path_index:
 		next_level_state = game_over_level_state
 	else:
 		next_level_state = loading_level_state
-
-	next_level_state = loading_level_state # TODO: Bug bypass
 
 
 func set_state_node(node):

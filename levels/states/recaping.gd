@@ -20,8 +20,8 @@ func enter(p_previous_state):
 	state_scene.set_play_time(parent.get_play_time())
 
 
-func get_current_level_path_index():
-	return parent.get_current_level_path_index()
+func get_requested_level_path_index():
+	return parent.get_requested_level_path_index()
 
 
 func request_setting_next_level_path_index():

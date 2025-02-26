@@ -36,8 +36,8 @@ func _physics_process(_delta):
 			level_load_completed.emit(null)
 
 
-func get_current_level_path_index():
-	return current_level_path_index
+func get_requested_level_path_index():
+	return requested_level_path_index
 
 
 func request_setting_level_path_index(index):

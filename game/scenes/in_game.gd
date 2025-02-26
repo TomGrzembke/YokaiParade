@@ -84,8 +84,8 @@ func on_level_load_progress(progress):
 
 # Level Loading
 
-func get_current_level_path_index():
-	return %Levels.get_current_level_path_index()
+func get_requested_level_path_index():
+	return %Levels.get_requested_level_path_index()
 
 
 func request_setting_level_path_index(index):
