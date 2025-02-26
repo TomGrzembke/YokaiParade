@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="4_85cx3"]
 [ext_resource type="Texture2D" uid="uid://ug7h6qbp1dgw" path="res://enemies/animations/enemy_airborne_air_spritesheet.png" id="5_vojws"]
 [ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="6_tsxge"]
-[ext_resource type="Script" path="res://enemies/states/airborne_moving.gd" id="7_su0py"]
+[ext_resource type="Script" path="res://enemies/states/moving_airborne.gd" id="7_16tgl"]
 [ext_resource type="Script" path="res://enemies/states/lunging.gd" id="8_81glp"]
 [ext_resource type="Script" path="res://enemies/states/idling.gd" id="8_is8ca"]
 [ext_resource type="Script" path="res://enemies/states/attacking.gd" id="8_noh7y"]
@@ -96,7 +96,7 @@ lunging_enemy_state = NodePath("../Lunging")
 recovering_state = NodePath("../Recovering")
 
 [node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("lunging_state", "recovering_state")]
-script = ExtResource("7_su0py")
+script = ExtResource("7_16tgl")
 lunging_state = NodePath("../Lunging")
 recovering_state = NodePath("../Recovering")
 

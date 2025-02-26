@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bllds58nj1vyh"]
+[gd_scene load_steps=20 format=4 uid="uid://bllds58nj1vyh"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_g2jxr"]
 [ext_resource type="Texture2D" uid="uid://bhldpe8filivy" path="res://assets/signs/p_sign_keyboardjumpshort.png" id="3_dup0x"]
@@ -19,12 +19,6 @@
 [ext_resource type="TileSet" uid="uid://4v2t32qfx3hb" path="res://levels/area_01/tileset_area_01.tres" id="12_wenur"]
 [ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/modules/player_spawn_point.tscn" id="13_86720"]
 
-[sub_resource type="Curve2D" id="Curve2D_8hj1s"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 608, 792, 0, 0, 0, 0, 696, 888)
-}
-point_count = 2
-
 [sub_resource type="Curve2D" id="Curve2D_j4ig6"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 14163, 1125, 0, 0, 0, 0, 14160, 1139)
@@ -40,20 +34,6 @@ script = ExtResource("1_g2jxr")
 position = Vector2(12363, 228)
 
 [node name="Enemies" type="Node2D" parent="Start-1stCheckpoint"]
-
-[node name="Path2D" type="Path2D" parent="Start-1stCheckpoint/Enemies"]
-position = Vector2(-24, 200)
-curve = SubResource("Curve2D_8hj1s")
-
-[node name="EnemyAirborne" parent="Start-1stCheckpoint/Enemies/Path2D" instance=ExtResource("6_idxr6")]
-position = Vector2(608, 792)
-element_type = ExtResource("4_rtyjb")
-initial_look_direction = 1
-
-[node name="EnemyGrounded" parent="Start-1stCheckpoint/Enemies" instance=ExtResource("3_o5nyp")]
-position = Vector2(1656, 952)
-initial_state = 200
-element_type = ExtResource("4_rtyjb")
 
 [node name="AirGroundedIdling" parent="Start-1stCheckpoint/Enemies" instance=ExtResource("3_o5nyp")]
 position = Vector2(3823, 593)

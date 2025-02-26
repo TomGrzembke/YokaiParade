@@ -44,7 +44,7 @@ unique_name_in_owner = true
 
 [node name="Loading" type="Node" parent="LevelStateMachine" node_paths=PackedStringArray("next_level_state")]
 script = ExtResource("3_gfwu5")
-next_level_state = NodePath("../Playing")
+next_level_state = NodePath("../Starting")
 level_state_packed_scene = ExtResource("4_sfxgs")
 
 [node name="Starting" type="Node" parent="LevelStateMachine" node_paths=PackedStringArray("next_level_state")]
