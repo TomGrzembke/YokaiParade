@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://tgdbge36wevk" path="res://assets/patterns/t-texture_lines.png" id="2_y3agf"]
 [ext_resource type="Shader" path="res://shader/pattern_screen_overlay.gdshader" id="5_w3sdd"]
 [ext_resource type="Texture2D" uid="uid://bn0cpcfikbpp5" path="res://shader/testing_assets/empty_white.png" id="6_53e8n"]
-[ext_resource type="Material" path="res://shader/mountain_pattern.tres" id="6_b515f"]
+[ext_resource type="Material" uid="uid://dlplujjkjxtxg" path="res://shader/mountain_pattern.tres" id="6_b515f"]
 [ext_resource type="Texture2D" uid="uid://c5frpar7yqfe2" path="res://levels/area_01/mountains_spritesheet.png" id="7_7xycs"]
 [ext_resource type="Material" uid="uid://bfm15gm2njxtq" path="res://shader/cloud_shader.tres" id="8_afjxq"]
 [ext_resource type="Texture2D" uid="uid://dd4dbqeurgyvx" path="res://levels/area_01/clouds_red.png" id="8_lwp6k"]
@@ -105,6 +105,8 @@ shader_parameter/tilemap_offset = Vector2(-0.115, 0)
 shader_parameter/flip_alpha = true
 shader_parameter/use_hard_blend = false
 shader_parameter/use_local = true
+shader_parameter/world_scale = 1.0
+shader_parameter/end_tint = Color(0, 0, 0, 1)
 shader_parameter/pattern_texture = ExtResource("2_y3agf")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0adue"]
@@ -245,6 +247,7 @@ position = Vector2(0, 400)
 emitting = false
 amount = 20
 lifetime = 3.0
+preprocess = 30.0
 speed_scale = 0.1
 local_coords = true
 texture = ExtResource("12_81uk2")
