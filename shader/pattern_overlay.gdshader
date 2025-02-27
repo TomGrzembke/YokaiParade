@@ -8,6 +8,7 @@ uniform bool flip_alpha = true;
 uniform bool use_hard_blend = false;
 uniform bool use_local = true;
 varying vec2 world_position;
+uniform float world_speed = 1.0;
 varying vec2 local_position;
 
 vec4 soft_light_blend(vec4 base, vec4 blend, float alpha){
@@ -31,7 +32,7 @@ float get_luminocity(vec4 color){
 }
 
 void vertex() {
-	world_position = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
+	world_position = (MODEL_MATRIX * vec4(VERTEX , 0.0, 1.0 * world_speed)).xy;
 	local_position = (inverse(MODEL_MATRIX) * vec4(world_position, 0.0, 1.0)).xy;
 }
 
@@ -41,7 +42,7 @@ void fragment() {
 
 	vec2 pattern_uv = fract(scaled_position);
 
-	vec4 pattern_color = texture(pattern_texture, pattern_uv);
+	vec4 pattern_color = texture(pattern_texture, pattern_uv) ;
 
 	vec4 texture_color = texture(TEXTURE, UV);
 
