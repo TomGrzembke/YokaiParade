@@ -1,7 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbew8yq4n6jan"]
+[gd_scene load_steps=6 format=3 uid="uid://bbew8yq4n6jan"]
 
 [ext_resource type="Script" path="res://levels/scenes/loading.gd" id="1_4fevy"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="2_b1mnc"]
+
+[sub_resource type="Animation" id="Animation_753kk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Main:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mo4sr"]
+resource_name = "loading_finished"
+step = 0.125
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_78vyi"]
+_data = {
+"RESET": SubResource("Animation_753kk"),
+"loading_finished": SubResource("Animation_mo4sr")
+}
 
 [node name="Loading" type="Node"]
 script = ExtResource("1_4fevy")
@@ -18,7 +43,6 @@ grow_vertical = 2
 color = Color(0.4725, 0.55575, 0.75, 1)
 
 [node name="Main" type="Control" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
 z_index = 100
 layout_mode = 3
 anchors_preset = 15
@@ -46,15 +70,10 @@ text = "Loading"
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="CanvasLayer/Main/CenterContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-disabled = true
-text = "Start"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
+"": SubResource("AnimationLibrary_78vyi"),
 "state_transitions_long": ExtResource("2_b1mnc")
 }
 autoplay = "state_transitions_long/show_state_scene"

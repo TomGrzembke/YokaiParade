@@ -2,8 +2,11 @@ extends Node2D
 
 
 signal ability_changed(color)
+signal used_ability(ability)
+signal player_hits
 
 const COLOR_PLAIN = Color("#949494")
+
 
 var current_ability
 
@@ -19,8 +22,6 @@ var hit_queue_timer
 
 @onready var hit_wall_ray: RayCast2D = $"../HitWallRay"
 var targets_in_range = []
-signal player_hits
-signal used_ability
 
 
 func _ready():
@@ -45,7 +46,7 @@ func use_ability():
 	if current_ability.has_method("use"):
 		current_ability.use(player)
 		player.add_current_speed_tokens(1)
-		used_ability.emit()
+		used_ability.emit(current_ability)
 
 	reset_color()
 	current_ability = null

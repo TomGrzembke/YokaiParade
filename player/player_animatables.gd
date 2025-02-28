@@ -1,5 +1,6 @@
 extends Node2D
 
+const ELEMENTS = preload("res://elements/elements.gd")
 @export var idle_animation_probability : Dictionary = {"idling" : 75, "idling4": 7, "idling2": 15, "idling3": 3}
 @onready var player: CharacterBody2D = $".."
 @onready var abilities: Node2D = $"../Abilities"
@@ -11,12 +12,19 @@ var state_machine
 func _ready():
 	state_machine = animation_tree.get("parameters/playback")
 	abilities.player_hits.connect(func(): state_machine.start("hit"))
-	abilities.used_ability.connect(func(): state_machine.start("dash"))
+	abilities.used_ability.connect(on_ability)
 
 	player.player_despawned.connect(func(): state_machine.start("dying"))
 	player.player_gets_pushed.connect(func(): state_machine.start("got_hit"))
 
 	sort_dictionary_descending()
+
+
+func on_ability(current_ability):
+	if current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.FIRE:
+		state_machine.start("dash")
+	elif current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.AIR:
+		state_machine.start("jump")
 
 
 func _on_animation_finished(anim_name):

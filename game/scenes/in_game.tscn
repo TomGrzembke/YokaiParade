@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cisf071rha1ru"]
+[gd_scene load_steps=41 format=3 uid="uid://cisf071rha1ru"]
 
 [ext_resource type="Script" path="res://game/scenes/in_game.gd" id="1_jmwmp"]
 [ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="2_7ssm8"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://d0cyqkl45rojo" path="res://ui/UI_ingame_bl_back.png" id="29_iur5k"]
 [ext_resource type="Texture2D" uid="uid://bv3x16bvcgjdh" path="res://ui/UI_ingame_sign.png" id="32_rb5aa"]
 [ext_resource type="Texture2D" uid="uid://cnj6o61ajdyke" path="res://ui/ui_ingame_ability_main.png" id="35_by3sm"]
+[ext_resource type="AudioStream" uid="uid://dscogde3yxus3" path="res://sounds/backgroundmusic_yokaiparade.wav" id="40_ti11l"]
 
 [node name="InGame" type="Node" node_paths=PackedStringArray("initial_level_state")]
 script = ExtResource("1_jmwmp")
@@ -264,3 +265,8 @@ offset_right = 364.0
 offset_bottom = 75.0
 texture = ExtResource("13_m5arx")
 stretch_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("40_ti11l")
+volume_db = -27.171
+autoplay = true

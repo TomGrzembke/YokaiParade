@@ -21,7 +21,7 @@ func _ready():
 	%ResetLevelButton.pressed.connect(change_to_reset_level_state)
 	%ReturnToMainMenuButton.pressed.connect(change_to_return_to_main_menu_state)
 	%QuitGameButton.pressed.connect(quit_game)
-	
+
 	%NextLevelButton.grab_focus()
 
 

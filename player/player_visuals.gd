@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var trail_points_max = 4
-@onready var flip_line: Line2D = $"../AttackLine"
+@onready var flip_line: Line2D = $"../FlipLine"
 
 
 func _process(_delta):
@@ -17,4 +17,4 @@ func update_trail():
 
 
 func flip():
-	flip_line.scale.x = $"../..".look_direction
+	flip_line.scale.x = $"..".look_direction

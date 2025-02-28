@@ -9,5 +9,7 @@ shader_parameter/overlay_alpha = 0.427
 shader_parameter/pattern_scale = 1.0
 shader_parameter/tilemap_offset = Vector2(0, 0)
 shader_parameter/flip_alpha = true
+shader_parameter/use_hard_blend = false
 shader_parameter/use_local = true
+shader_parameter/world_speed = 1.0
 shader_parameter/pattern_texture = ExtResource("1_pvebt")

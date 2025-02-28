@@ -323,7 +323,7 @@ metadata/_edit_lock_ = true
 
 [node name="TileMapBackground" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray("AABFADYAAAA0ABEAAAD4/zQAAAAAADEAAABSAD0AAAAkAAIAAABfACgAAAAjAAwAAABZADQAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAATAEIAAAAtAAIAAAALAEIAAAAkAAIAAAAjADYAAAA0ABEAAAAqAD0AAAAkAAIAAABHAD0AAAAtAAIAAAA+AD0AAAAkAAIAABB+ACYAAAA1AAkAAAC7AEAAAAAlAAYAAAC/AEAAAAArAAYAAADFAEEAAAAwAAgAAADkAEEAAAAwAAgAAADgAEAAAAArAAYAAAC8ADUAAAAAAAAAAAC4ACIAAAArAAYAAAAVATgAAAAtAAIAAAAmAScAAAAkAAIAAAAhASQAAAA1AAkAAAATAScAAAAkAAIAAAAdAQ0AAAAjAAwAAABPADIAAAAAAAAAABDw/0EAAAAjAAwAAADjATYAAAArAAYAAADmATcAAAAwAAgAAADTATwAAAAwAAgAAADAASQAAAAlAAYAAADeATgAAAAwAAgAABA=")
 tile_set = ExtResource("11_p05d4")
 
 [node name="GameplayTileMapLayer" type="TileMapLayer" parent="."]
@@ -333,10 +333,11 @@ tile_map_data = PackedByteArray("AAATABUABQAIAAIAAAAUABUABQAIAAIAAAAVABUABQAFAAI
 tile_set = ExtResource("18_wer3n")
 
 [node name="TileMapForeground" type="TileMapLayer" parent="."]
+z_index = 10
 tile_set = ExtResource("11_p05d4")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("19_stf0i")]
-position = Vector2(-225, 991)
+position = Vector2(-232, 1069)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c3u4k")

@@ -113,20 +113,21 @@ target_position = Vector2(111, -0.595001)
 position = Vector2(0, -51)
 target_position = Vector2(50, -85)
 
-[node name="Visuals" type="Node2D" parent="."]
-position = Vector2(0, -51)
-
-[node name="AbilityVisualizer" type="Node2D" parent="Visuals"]
-position = Vector2(38, 18)
+[node name="FlipLineController" type="Node2D" parent="."]
+position = Vector2(49, -33)
 script = ExtResource("6_guley")
 trail_points_max = 10
 
-[node name="AttackLine" type="Line2D" parent="Visuals"]
+[node name="FlipLine" type="Line2D" parent="."]
 z_index = 1
+position = Vector2(0, -51)
 width_curve = SubResource("Curve_xeqma")
 
 [node name="PlayerAnimatables" parent="." instance=ExtResource("7_74yxj")]
 position = Vector2(0, -51)
+
+[node name="Player" parent="PlayerAnimatables" index="1"]
+frame = 8
 
 [node name="Debug" type="Node2D" parent="."]
 position = Vector2(0, -51)

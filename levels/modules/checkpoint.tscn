@@ -8,6 +8,7 @@
 size = Vector2(160, 163)
 
 [node name="Checkpoint" type="Area2D"]
+position = Vector2(0, 20)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_np4pl")
@@ -16,13 +17,16 @@ texture_active = ExtResource("3_wkqfe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -100)
+position = Vector2(0, -120)
 texture = ExtResource("2_03nk7")
 offset = Vector2(0, 40)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -62.5)
+position = Vector2(0, -82)
 shape = SubResource("RectangleShape2D_775ek")
+
+[node name="Spawnpoint" type="Node2D" parent="."]
+position = Vector2(76, -51)
 
 [connection signal="area_entered" from="." to="." method="on_checkpoint_area_entered"]
 [connection signal="body_entered" from="." to="." method="on_checkpoint_area_entered"]

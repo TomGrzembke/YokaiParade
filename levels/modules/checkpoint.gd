@@ -3,6 +3,7 @@ extends Area2D
 
 @export var texture_inactive: Texture2D
 @export var texture_active: Texture2D
+@onready var spawnpoint = $Spawnpoint
 
 
 func _ready():
@@ -10,7 +11,7 @@ func _ready():
 
 
 func on_checkpoint_area_entered(other):
-	if other != null \
-	and other.has_method("on_reached_checkpoint"):
-		other.on_reached_checkpoint(global_position)
-		%Sprite2D.texture = texture_active
+	if !other.has_method("on_reached_checkpoint"): return
+
+	other.on_reached_checkpoint(spawnpoint.global_position)
+	%Sprite2D.texture = texture_active

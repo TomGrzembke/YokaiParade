@@ -685,7 +685,7 @@ vframes = 3
 frame = 2
 
 [node name="VfxEnemyairFlying" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_1oahi")
 flip_h = true
 hframes = 4

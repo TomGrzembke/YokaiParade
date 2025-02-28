@@ -95,6 +95,11 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+func set_controls_active(active):
+	print("Controls active: %s" % active)
+	print("Please implement! Only deactivate player controls, not gravity!")
+
+
 func apply_velocity():
 	var token_value = Vector2(get_current_speed_tokens_value(), 1)
 	velocity =  local_velocity * token_value + outer_velocity_sources

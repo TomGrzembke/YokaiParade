@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dk3wuo1sfknyo"]
+[gd_scene load_steps=8 format=3 uid="uid://dk3wuo1sfknyo"]
 
 [ext_resource type="Script" path="res://game/scenes/main_menu.gd" id="1_qg7wj"]
 [ext_resource type="Texture2D" uid="uid://umkmwt4e2066" path="res://assets/patterns/t_texture_patternwithpapertexture.png" id="2_6u7ei"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bjn40nw0c0byv" path="res://ui/ui_panel_mainmenu.png" id="4_12tus"]
 [ext_resource type="AnimationLibrary" uid="uid://cc0at063bwqni" path="res://assets/animations/game_quit_transitions.res" id="5_f1605"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="5_hmdbx"]
+[ext_resource type="AudioStream" uid="uid://bj141maa185rk" path="res://sounds/menumusic_yokaiparade.wav" id="7_7wmbr"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_qg7wj")
@@ -115,3 +116,8 @@ libraries = {
 "state_transitions_long": ExtResource("5_hmdbx")
 }
 autoplay = "state_transitions_long/show_state_scene"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7wmbr")
+volume_db = -19.932
+autoplay = true

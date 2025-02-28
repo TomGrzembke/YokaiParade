@@ -1,20 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c00f5fspkqsfg"]
+[gd_scene load_steps=6 format=3 uid="uid://c00f5fspkqsfg"]
 
 [ext_resource type="Script" path="res://levels/scenes/finishing.gd" id="1_b8501"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p4rwd"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(500, 1, 1)
-direction = Vector3(0, -1, 0)
-spread = 25.0
-initial_velocity_min = 200.0
-initial_velocity_max = 240.0
-gravity = Vector3(0, 98, 0)
-scale_min = 5.0
-scale_max = 10.0
-hue_variation_min = -1.0
-hue_variation_max = 1.0
 
 [sub_resource type="Animation" id="Animation_pf1e8"]
 length = 0.001
@@ -22,7 +8,7 @@ step = 0.033
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Confetti/GPUParticles2D:emitting")
+tracks/0/path = NodePath("CanvasLayer/FrontCover:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,43 +20,42 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/FrontCover:visible")
+tracks/1/path = NodePath("CanvasLayer/FrontCover:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/FrontCover:modulate")
+tracks/2/path = NodePath("CanvasLayer/Confetti/CPUParticles2D:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_debm7"]
 resource_name = "confetti"
-length = 2.0
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Confetti/GPUParticles2D:emitting")
+tracks/0/path = NodePath("CanvasLayer/Confetti/CPUParticles2D:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_qiw1m"]
@@ -127,13 +112,23 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer/Confetti"]
-unique_name_in_owner = true
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/Confetti"]
 emitting = false
-amount = 48
-process_material = SubResource("ParticleProcessMaterial_p4rwd")
-lifetime = 5.0
-trail_enabled = true
+amount = 64
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2(0, -1)
+initial_velocity_min = 800.0
+initial_velocity_max = 1600.0
+angular_velocity_max = 100.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+color = Color(1, 0.48, 0.48, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
 
 [node name="FrontCover" type="ColorRect" parent="CanvasLayer"]
 visible = false
