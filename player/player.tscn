@@ -64,7 +64,7 @@ apex_time = 0.18
 apex_strength = 36.0
 apex_negativ_gravity = 0.25
 apex_smooth_curve = SubResource("Curve_ix1y4")
-push_back = 800.0
+push_back = 675.0
 push_height_percentage = 0.4
 
 [node name="Abilities" type="Node2D" parent="."]
