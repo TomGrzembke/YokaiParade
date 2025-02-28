@@ -26,3 +26,7 @@ func get_requested_level_path_index():
 
 func request_setting_next_level_path_index():
 	parent.request_setting_next_level_path_index()
+
+
+func request_setting_previous_level_path_index():
+	parent.request_setting_previous_level_path_index()

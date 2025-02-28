@@ -72,6 +72,7 @@ func change_to_return_to_main_menu_state():
 
 
 func change_to_reset_level_state():
+	state_node.request_setting_previous_level_path_index()
 	change_to_level_state(reset_level_state)
 
 
