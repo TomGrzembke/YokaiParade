@@ -197,3 +197,14 @@ func on_player_reached_checkpoint(position):
 
 func on_player_reached_goal():
 	player_reached_goal.emit()
+
+
+# Player Controls
+
+func set_player_controls_active(active):
+	var player = %CurrentLevel.get_node_or_null("Player")
+
+	if player == null:
+		return
+
+	player.set_controls_active(active)

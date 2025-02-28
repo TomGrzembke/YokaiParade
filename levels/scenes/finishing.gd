@@ -8,7 +8,7 @@ var state_node
 
 func _ready():
 	await %AnimationPlayer.animation_finished
-	state_node.disable_player_controls()
+
 	change_to_next_level_state()
 
 

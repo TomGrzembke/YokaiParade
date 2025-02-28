@@ -53,8 +53,8 @@ func get_play_time():
 	return play_time
 
 
-func disable_player_controls():
-	print("Disabling player controls is not implemented yet")
+func set_player_controls_active(active):
+	%Levels.set_player_controls_active(active)
 
 
 # UI
