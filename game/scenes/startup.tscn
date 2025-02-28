@@ -278,7 +278,7 @@ theme_override_constants/margin_top = 20
 
 [node name="Label" type="Label" parent="CanvasLayer/LogoTeam/CenterContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.174778, 0.106038, 0.856436, 1)
+theme_override_colors/font_color = Color(0.0784314, 0.0980392, 0.960784, 1)
 text = "Pretentious Possums
 present"
 horizontal_alignment = 1
