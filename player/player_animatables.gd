@@ -1,15 +1,22 @@
 extends Node2D
 
 const ELEMENTS = preload("res://elements/elements.gd")
+const COLOR_BLACK = Color(0,0,0,1)
+@export var default_vfx_col : Color
+@export var time_to_blend : float = 1.7
 @export var idle_animation_probability : Dictionary = {"idling" : 75, "idling4": 7, "idling2": 15, "idling3": 3}
 @onready var player: CharacterBody2D = $".."
 @onready var abilities: Node2D = $"../Abilities"
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var vfx_animation_character = $VfxAnimationCharacter
+var shader_mat
+var color_blend_timer
 var state_machine
 
 
 func _ready():
+	shader_mat = vfx_animation_character.material as ShaderMaterial
 	state_machine = animation_tree.get("parameters/playback")
 	abilities.player_hits.connect(func(): state_machine.start("hit"))
 	abilities.used_ability.connect(on_ability)
@@ -20,11 +27,22 @@ func _ready():
 	sort_dictionary_descending()
 
 
+func _physics_process(delta):
+	if shader_mat.get_shader_parameter("end_tint") != COLOR_BLACK:
+		shader_mat.set_shader_parameter("end_tint", lerp(shader_mat.get_shader_parameter("end_tint"), default_vfx_col, .03))
+
+
 func on_ability(current_ability):
+	shader_mat.set_shader_parameter("end_tint", ELEMENTS.COLOR_MAP[current_ability.ELEMENT_TYPE])
+
 	if current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.FIRE:
 		state_machine.start("dash")
 	elif current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.AIR:
 		state_machine.start("jump")
+
+	color_blend_timer = create_timer(time_to_blend)
+	color_blend_timer.timeout.connect(func(): if color_blend_timer.time_left <= 0: \
+		shader_mat.set_shader_parameter("end_tint", COLOR_BLACK))
 
 
 func _on_animation_finished(anim_name):
@@ -65,3 +83,6 @@ func sort_dictionary_descending():
 		sorted_dict[key] = idle_animation_probability[key]
 
 	idle_animation_probability = sorted_dict
+
+func create_timer(time):
+	return get_tree().create_timer(time)
