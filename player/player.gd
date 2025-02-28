@@ -84,10 +84,12 @@ func _physics_process(delta):
 
 	if player_control:
 		run()
-		update_gravity(delta)
+		fall_on_ceiling(delta)
+		reset_vertical_velocity()
 		jump(delta)
 		speed_token_falloff()
 
+	update_gravity(delta)
 	ability_smoothing()
 	calc_vel_mods()
 	apply_velocity()
@@ -96,8 +98,9 @@ func _physics_process(delta):
 
 
 func set_controls_active(active):
-	print("Controls active: %s" % active)
-	print("Please implement! Only deactivate player controls, not gravity!")
+	player_control = active
+	local_velocity.x = 0
+	velocity.x = 0
 
 
 func apply_velocity():
@@ -127,10 +130,6 @@ func run():
 
 func update_gravity(delta):
 	local_velocity.y += get_gravity().y * delta
-
-	fall_on_ceiling(delta)
-
-	reset_vertical_velocity()
 
 
 func ability_smoothing():
