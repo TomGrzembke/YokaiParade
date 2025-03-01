@@ -1,8 +1,8 @@
 [gd_scene load_steps=44 format=3 uid="uid://ddyyhxxuwsxtk"]
 
 [ext_resource type="Script" path="res://enemies/enemy_animations.gd" id="1_ladii"]
-[ext_resource type="Texture2D" uid="uid://ba1gmfx4honp5" path="res://enemies/animations/enemy_fire_spritesheet.png" id="2_t1kpb"]
-[ext_resource type="Texture2D" uid="uid://dwqiklm7ujj6i" path="res://enemies/animations/VFX_animation_enemyfire.png" id="3_4dobx"]
+[ext_resource type="Texture2D" uid="uid://ba1gmfx4honp5" path="res://enemies/animations/assets/enemy_fire_spritesheet.png" id="2_t1kpb"]
+[ext_resource type="Texture2D" uid="uid://dwqiklm7ujj6i" path="res://enemies/animations/assets/vfx_animation_enemy_fire.png" id="3_4dobx"]
 
 [sub_resource type="Animation" id="Animation_36pp3"]
 length = 0.001

@@ -1,7 +1,7 @@
 [gd_scene load_steps=58 format=3 uid="uid://b173nlre4ndsy"]
 
 [ext_resource type="Script" path="res://player/player_animatables.gd" id="1_japyu"]
-[ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/player_spritesheet.png" id="1_wuri4"]
+[ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/assets/player_spritesheet.png" id="1_wuri4"]
 [ext_resource type="AudioStream" uid="uid://cojwru8qh7oh8" path="res://sounds/player_dying.wav" id="2_jfhhs"]
 [ext_resource type="Shader" path="res://shader/pattern_overlay.gdshader" id="2_ygekg"]
 [ext_resource type="Texture2D" uid="uid://ba5pi8b15xb8a" path="res://assets/patterns/t_pattern_flowers.png" id="3_os8yi"]

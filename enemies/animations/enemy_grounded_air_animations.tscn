@@ -1,8 +1,8 @@
 [gd_scene load_steps=38 format=3 uid="uid://b5x05pl1dh0ey"]
 
-[ext_resource type="Texture2D" uid="uid://cxsfo7protit" path="res://enemies/animations/enemy_grounded_air_spritesheet.png" id="1_ngobw"]
+[ext_resource type="Texture2D" uid="uid://cxsfo7protit" path="res://enemies/animations/assets/enemy_grounded_air_spritesheet.png" id="1_ngobw"]
 [ext_resource type="Script" path="res://enemies/enemy_animations.gd" id="1_t3cf0"]
-[ext_resource type="Texture2D" uid="uid://diek5e44plaf3" path="res://enemies/animations/VFX_enemyair_grounded_.png" id="3_3p7um"]
+[ext_resource type="Texture2D" uid="uid://diek5e44plaf3" path="res://enemies/animations/assets/vfx_enemy_grounded_air.png" id="3_3p7um"]
 
 [sub_resource type="Animation" id="Animation_563iv"]
 length = 0.001

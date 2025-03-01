@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://enemies/enemy_airborne.gd" id="1_vy1qu"]
 [ext_resource type="PackedScene" uid="uid://dbvyxduyy60pr" path="res://components/damage/deal_damage_area.tscn" id="3_7rhrf"]
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="4_85cx3"]
-[ext_resource type="Texture2D" uid="uid://ug7h6qbp1dgw" path="res://enemies/animations/enemy_airborne_air_spritesheet.png" id="5_vojws"]
+[ext_resource type="Texture2D" uid="uid://ug7h6qbp1dgw" path="res://enemies/animations/assets/enemy_airborne_air_spritesheet.png" id="5_vojws"]
 [ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="6_tsxge"]
 [ext_resource type="Script" path="res://enemies/states/moving_airborne.gd" id="7_16tgl"]
 [ext_resource type="Script" path="res://enemies/states/lunging.gd" id="8_81glp"]

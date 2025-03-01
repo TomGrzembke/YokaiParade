@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs8134b3xsw0g"
-path="res://.godot/imported/VFX_enemyair_flying.png-9ced003ec22d97914a455a6c4c7d9f39.ctex"
+uid="uid://dchjx31w1tyge"
+path="res://.godot/imported/player_spritesheet.png-a6cccd0261773260d695a8d4e44d9dd9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/animations/VFX_enemyair_flying.png"
-dest_files=["res://.godot/imported/VFX_enemyair_flying.png-9ced003ec22d97914a455a6c4c7d9f39.ctex"]
+source_file="res://player/assets/player_spritesheet.png"
+dest_files=["res://.godot/imported/player_spritesheet.png-a6cccd0261773260d695a8d4e44d9dd9.ctex"]
 
 [params]
 

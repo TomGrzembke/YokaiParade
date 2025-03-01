@@ -1,8 +1,8 @@
 [gd_scene load_steps=32 format=3 uid="uid://0wrfx826uek5"]
 
 [ext_resource type="Script" path="res://enemies/enemy_animations.gd" id="1_k13mu"]
-[ext_resource type="Texture2D" uid="uid://ug7h6qbp1dgw" path="res://enemies/animations/enemy_airborne_air_spritesheet.png" id="2_2mfax"]
-[ext_resource type="Texture2D" uid="uid://bs8134b3xsw0g" path="res://enemies/animations/VFX_enemyair_flying.png" id="3_1oahi"]
+[ext_resource type="Texture2D" uid="uid://ug7h6qbp1dgw" path="res://enemies/animations/assets/enemy_airborne_air_spritesheet.png" id="2_2mfax"]
+[ext_resource type="Texture2D" uid="uid://bs8134b3xsw0g" path="res://enemies/animations/assets/vfx_enemy_airborne_air.png" id="3_1oahi"]
 
 [sub_resource type="Animation" id="Animation_jungp"]
 length = 0.001

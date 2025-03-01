@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ug7h6qbp1dgw"
-path="res://.godot/imported/enemy_airborne_air_spritesheet.png-d330b8a4329c9ea9f4392f98f3cb5fe7.ctex"
+uid="uid://3o4ihtsqhemf"
+path="res://.godot/imported/player_walk.png-2fa6ef2eff801151c1b9d0104c4a078c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/animations/enemy_airborne_air_spritesheet.png"
-dest_files=["res://.godot/imported/enemy_airborne_air_spritesheet.png-d330b8a4329c9ea9f4392f98f3cb5fe7.ctex"]
+source_file="res://player/assets/player_walk.png"
+dest_files=["res://.godot/imported/player_walk.png-2fa6ef2eff801151c1b9d0104c4a078c.ctex"]
 
 [params]
 
