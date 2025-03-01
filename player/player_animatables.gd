@@ -27,7 +27,7 @@ func _ready():
 	sort_dictionary_descending()
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if shader_mat.get_shader_parameter("end_tint") != COLOR_BLACK:
 		shader_mat.set_shader_parameter("end_tint", lerp(shader_mat.get_shader_parameter("end_tint"), default_vfx_col, .03))
 
