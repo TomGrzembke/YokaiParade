@@ -8,6 +8,14 @@ func enter(p_previous_state):
 
 	state_scene.set_state_node(self)
 
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func exit():
+	super.exit()
+
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
 
 func change_to_previous_state():
 	change_state(previous_state)

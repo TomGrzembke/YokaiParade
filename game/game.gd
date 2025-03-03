@@ -8,6 +8,12 @@ extends Node
 var current_game_state_scene
 
 
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
+	%GameStateMachine.init(self, initial_game_state)
+
+
 # Music
 
 func get_is_music_playing():
@@ -79,10 +85,6 @@ func get_volume_audio_bus(bus_id):
 
 
 # State Machine
-
-func _ready() -> void:
-	%GameStateMachine.init(self, initial_game_state)
-
 
 func _physics_process(delta):
 	%GameStateMachine.physics_process(delta)

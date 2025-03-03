@@ -20,3 +20,11 @@ func enter(p_previous_state):
 	state_scene.set_quit_game_state(quit_game_state)
 
 	parent.play_title_music()
+
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func exit():
+	super.exit()
+
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN

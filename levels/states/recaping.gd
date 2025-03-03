@@ -21,6 +21,14 @@ func enter(p_previous_state):
 
 	state_scene.set_play_time(parent.get_play_time())
 
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func exit():
+	super.exit()
+
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
 
 func get_requested_level_path_index():
 	return parent.get_requested_level_path_index()

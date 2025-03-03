@@ -31,6 +31,14 @@ func enter(p_previous_state):
 	state_scene.update_volume_sfx(get_volume_audio_bus(2))
 	state_scene.update_volume_ui(get_volume_audio_bus(3))
 
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func exit():
+	super.exit()
+
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
 
 func change_to_previous_level_state():
 	change_state(previous_state)
