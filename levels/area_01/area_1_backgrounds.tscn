@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c8mxwfqxutdoi"]
+[gd_scene load_steps=20 format=3 uid="uid://c8mxwfqxutdoi"]
 
 [ext_resource type="Texture2D" uid="uid://tgdbge36wevk" path="res://assets/patterns/t-texture_lines.png" id="2_y3agf"]
 [ext_resource type="Shader" path="res://shader/pattern_screen_overlay.gdshader" id="5_w3sdd"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://bfm15gm2njxtq" path="res://shader/cloud_shader.tres" id="8_afjxq"]
 [ext_resource type="Texture2D" uid="uid://dd4dbqeurgyvx" path="res://levels/area_01/assets/clouds_red.png" id="8_lwp6k"]
 [ext_resource type="Texture2D" uid="uid://i5u70jl4fc3v" path="res://levels/area_01/assets/clouds_blue.png" id="9_poku5"]
+[ext_resource type="Script" path="res://levels/area_01/foreground.gd" id="10_8rpt5"]
 [ext_resource type="Texture2D" uid="uid://gxi2kaj7h5fr" path="res://levels/area_01/assets/clouds_white.png" id="10_37g1q"]
 [ext_resource type="Texture2D" uid="uid://bpc6enr0ut8jn" path="res://levels/area_01/assets/foreground.png" id="10_wr23i"]
 [ext_resource type="Texture2D" uid="uid://b0vv3r8mo5474" path="res://levels/area_01/assets/flowers_red_single.png" id="12_81uk2"]
@@ -207,11 +208,13 @@ position = Vector2(0, 600)
 texture = ExtResource("9_poku5")
 
 [node name="Foreground" type="Parallax2D" parent="."]
+visible = false
 z_index = 20
 scroll_scale = Vector2(0.2, -0.01)
 scroll_offset = Vector2(-444, -528)
 repeat_size = Vector2(1920, 0)
 repeat_times = 3
+script = ExtResource("10_8rpt5")
 
 [node name="Foreground2" type="Sprite2D" parent="Foreground"]
 position = Vector2(443, 1190)
