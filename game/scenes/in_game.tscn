@@ -128,7 +128,7 @@ unique_name_in_owner = true
 
 [node name="Levels" parent="Main" instance=ExtResource("3_45cmx")]
 unique_name_in_owner = true
-level_paths = Array[String](["res://levels/area_01/level_00.tscn", "res://levels/area_01/level_01.tscn", "res://levels/area_01/level_02.tscn", "res://levels/area_01/level_03.tscn"])
+level_paths = Array[String](["res://levels/area_01/level_00.tscn", "res://levels/area_01/level_01.tscn", "res://levels/area_01/level_02.tscn", "res://levels/area_01/level_03.tscn", "res://levels/area_01/level_04.tscn"])
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
