@@ -16,6 +16,7 @@ func enter(p_previous_state):
 
 	parent.player_despawned.connect(func(): change_state(despawning_level_state))
 	parent.player_reached_goal.connect(func(): change_state(finishing_level_state))
+
 	parent.set_player_controls_active(true)
 	parent.set_game_paused(false)
 

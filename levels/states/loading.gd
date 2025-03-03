@@ -18,6 +18,19 @@ func exit():
 	parent.set_game_paused(false)
 
 
+func unhandled_input(event):
+	if not OS.has_feature("debug"):
+		return
+
+	if event.is_action_pressed("load_previous_level"):
+		parent.request_setting_previous_level_path_index()
+		return self
+
+	if event.is_action_pressed("load_next_level"):
+		parent.request_setting_next_level_path_index()
+		return self
+
+
 func change_to_next_level_state():
 	change_state(next_level_state)
 
