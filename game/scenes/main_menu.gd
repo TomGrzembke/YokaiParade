@@ -12,6 +12,10 @@ var quit_game_state
 func _ready():
 	%StartButton.pressed.connect(change_to_in_game_state)
 	%OptionsButton.pressed.connect(change_to_options_game_state)
+	%OptionsButton.mouse_entered.connect(
+		func():
+			%OptionsButton.grab_focus()
+	)
 	%CreditsButton.pressed.connect(change_to_credits_game_state)
 	%QuitGameButton.pressed.connect(change_to_quit_game_state)
 	%StartButton.grab_focus()
