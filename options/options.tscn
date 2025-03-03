@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c04lg3aglqhgy"]
+[gd_scene load_steps=17 format=3 uid="uid://c04lg3aglqhgy"]
 
 [ext_resource type="Script" path="res://options/options.gd" id="1_c48yv"]
 [ext_resource type="Texture2D" uid="uid://c3i6sr0g87h2b" path="res://ui/ui_panel_horimain.png" id="2_d7f8b"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b7bu0g5d2kfpc" path="res://ui/ui_panel_deco.png" id="5_c7ss1"]
 [ext_resource type="Script" path="res://ui/custom_controls/slider_focus_on_hover.gd" id="5_kto3a"]
 [ext_resource type="AudioStream" uid="uid://djqvbt1j40cgp" path="res://sounds/enemy_kick.wav" id="6_rr6gf"]
+[ext_resource type="Script" path="res://ui/custom_controls/checkbox_focus_on_hover.gd" id="6_uxoii"]
 [ext_resource type="Script" path="res://ui/custom_controls/button_focus_on_hover.gd" id="7_8s0a2"]
 [ext_resource type="AudioStream" uid="uid://c475r5in65dtp" path="res://sounds/menu_button1.wav" id="7_a73mq"]
 
@@ -195,11 +196,10 @@ theme_type_variation = &"SubHeadingLabel"
 text = "Fullscreen"
 horizontal_alignment = 2
 
-[node name="FullscreenCheckBox" type="TextureButton" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
+[node name="FullscreenCheckBox" type="CheckBox" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-toggle_mode = true
-script = ExtResource("7_8s0a2")
+script = ExtResource("6_uxoii")
 
 [node name="BackButton" type="Button" parent="MainPanel/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
