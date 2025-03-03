@@ -1,7 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbew8yq4n6jan"]
+[gd_scene load_steps=12 format=3 uid="uid://bbew8yq4n6jan"]
 
 [ext_resource type="Script" path="res://levels/scenes/loading.gd" id="1_4fevy"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="2_b1mnc"]
+[ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/assets/player_spritesheet.png" id="2_vro33"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fh3l"]
+atlas = ExtResource("2_vro33")
+region = Rect2(0, 0, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap2j7"]
+atlas = ExtResource("2_vro33")
+region = Rect2(200, 0, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kedto"]
+atlas = ExtResource("2_vro33")
+region = Rect2(400, 0, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owd0r"]
+atlas = ExtResource("2_vro33")
+region = Rect2(600, 0, 200, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f51r6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fh3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap2j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kedto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owd0r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="Animation" id="Animation_753kk"]
 length = 0.001
@@ -69,6 +106,23 @@ text = "Loading"
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Main/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/Main"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Main/Control"]
+position = Vector2(-176, -80)
+sprite_frames = SubResource("SpriteFrames_f51r6")
+autoplay = "default"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
