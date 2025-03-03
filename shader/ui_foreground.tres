@@ -1,6 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://diak12n0funuu"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://diak12n0funuu"]
 
 [ext_resource type="Shader" path="res://shader/exchange_gradient.gdshader" id="1_jdoyj"]
+[ext_resource type="Texture2D" uid="uid://bx1y0r1lo05y5" path="res://assets/patterns/t-texture_pinesmorerepeat.png" id="2_x0efq"]
 
 [resource]
 shader = ExtResource("1_jdoyj")
@@ -9,3 +10,13 @@ shader_parameter/white_feather_range = 0.0
 shader_parameter/black_feather_range = 0.0
 shader_parameter/color_a = Color(0.333333, 0.411765, 0.85098, 1)
 shader_parameter/color_b = Color(0.0862745, 0.0941176, 0.184314, 1)
+shader_parameter/overlay_alpha = 1.0
+shader_parameter/pattern_scale = 1.0
+shader_parameter/tilemap_offset = Vector2(0, 0)
+shader_parameter/flip_alpha = true
+shader_parameter/use_hard_blend = false
+shader_parameter/use_local = true
+shader_parameter/world_scale = 1.0
+shader_parameter/pattern_multiplier = 1.0
+shader_parameter/end_tint = Color(0, 0, 0, 1)
+shader_parameter/pattern_texture = ExtResource("2_x0efq")
