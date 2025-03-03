@@ -31,7 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://dw0g44fku0ne6" path="res://levels/scenes/options_in_game.tscn" id="18_nem0v"]
 [ext_resource type="Texture2D" uid="uid://c4sqq0jqsepxe" path="res://ui/ingame/UI_ingame_tr_back.png" id="25_fgtsb"]
 [ext_resource type="Script" path="res://levels/states/quit_game.gd" id="26_71ton"]
-[ext_resource type="Texture2D" uid="uid://f8apw8d4yauy" path="res://ui/UI_ingame_tr_main.png" id="26_tmpbm"]
+[ext_resource type="Texture2D" uid="uid://f8apw8d4yauy" path="res://ui/ingame/UI_ingame_tr_main.png" id="26_tmpbm"]
 [ext_resource type="Texture2D" uid="uid://cyj6mx31cxvsi" path="res://ui/ingame/UI_ingame_bl_main.png" id="27_4tfmb"]
 [ext_resource type="Texture2D" uid="uid://dwmdm47c5unwn" path="res://ui/ingame/UI_ingame_tr_line.png" id="27_a7dat"]
 [ext_resource type="Material" uid="uid://fv8etmrty0xl" path="res://shader/ui_background.tres" id="27_xthkp"]
@@ -128,7 +128,7 @@ unique_name_in_owner = true
 
 [node name="Levels" parent="Main" instance=ExtResource("3_45cmx")]
 unique_name_in_owner = true
-level_paths = Array[String](["res://levels/area_01/level_00.tscn", "res://levels/area_01/level_01.tscn", "res://levels/area_01/level_02.tscn", "res://levels/area_01/level_03.tscn", "res://levels/area_01/level_04.tscn"])
+level_paths = Array[String](["res://levels/area_01/level_00.tscn", "res://levels/area_01/level_01.tscn", "res://levels/area_01/level_02.tscn", "res://levels/area_01/level_03.tscn"])
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
