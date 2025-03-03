@@ -238,6 +238,7 @@ texture = ExtResource("10_37g1q")
 
 [node name="Flowers" type="Parallax2D" parent="."]
 physics_interpolation_mode = 1
+scroll_scale = Vector2(1, 0)
 scroll_offset = Vector2(-444, -528)
 repeat_size = Vector2(2200, 0)
 repeat_times = 3
@@ -252,7 +253,6 @@ amount = 20
 lifetime = 3.0
 preprocess = 30.0
 speed_scale = 0.1
-local_coords = true
 texture = ExtResource("12_81uk2")
 emission_shape = 3
 emission_rect_extents = Vector2(1200, 1)

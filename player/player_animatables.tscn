@@ -620,7 +620,7 @@ graph_offset = Vector2(15, -277)
 [node name="PlayerAnimatables" type="Node2D"]
 script = ExtResource("1_japyu")
 time_till_blend = 1.45
-time_to_blend = 0.75
+time_to_blend = 0.8
 default_vfx_col = Color(0.521569, 0.501961, 0.882353, 1)
 
 [node name="VfxAnimationCharacter" type="Sprite2D" parent="."]
