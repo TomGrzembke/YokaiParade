@@ -217,6 +217,7 @@ repeat_times = 3
 script = ExtResource("10_8rpt5")
 
 [node name="Foreground2" type="Sprite2D" parent="Foreground"]
+visible = false
 position = Vector2(443, 1190)
 texture = ExtResource("10_wr23i")
 
