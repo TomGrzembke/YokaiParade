@@ -52,10 +52,18 @@ func on_ability(current_ability):
 
 
 func blend_vfx_back():
-	color_blend_timer = create_timer(time_to_blend)
-	color_blend_timer.timeout.connect(func(): if color_blend_timer.time_left <= 0: \
-	shader_mat.set_shader_parameter("end_tint", COLOR_BLACK))
+	if color_stay_timer.time_left > 0: return
+	if color_blend_timer != null && color_blend_timer.time_left > 0: return
 
+	color_blend_timer = create_timer(time_to_blend)
+	color_blend_timer.timeout.connect(reset_vfx)
+
+
+func reset_vfx():
+	if color_stay_timer.time_left > 0: return
+	if color_blend_timer != null && color_blend_timer.time_left > 0: return
+
+	shader_mat.set_shader_parameter("end_tint", COLOR_BLACK)
 
 func _on_animation_finished(anim_name):
 	different_idles(anim_name)
