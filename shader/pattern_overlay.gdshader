@@ -73,13 +73,13 @@ void fragment() {
 
 	if (use_hard_blend)
 		final_color = hard_blend_result(texture_color, soft_light_blend_result, final_color);
-	
+
 	if (end_tint != BLACK_COLOR){
 		float brightness = get_luminocity(final_color);
 		float flipped_brightness = 1.0 - brightness;
 		brightness = flip_alpha ? flipped_brightness : brightness;
 		final_color = overlay(vec4(vec3(brightness), texture_color.a), end_tint);
 	}
-	
+
 	COLOR = final_color;
 }
