@@ -4,6 +4,7 @@
 
 [node name="Levels" type="Node"]
 script = ExtResource("1_blmvj")
+debug_level_path = "res://levels/area_01/debug_playground.tscn"
 
 [node name="CurrentLevel" type="Node" parent="."]
 unique_name_in_owner = true

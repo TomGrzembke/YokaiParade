@@ -9,6 +9,8 @@ signal player_reached_goal
 
 
 @export var level_paths: Array[String]
+@export var debug_level_path: String
+
 
 var requested_level_path_index
 var current_level_path_index
@@ -208,3 +210,15 @@ func set_player_controls_active(active):
 		return
 
 	player.set_controls_active(active)
+
+
+# Debug Level
+
+func set_is_debug_level_active(active):
+	if active:
+		level_paths.insert(0, debug_level_path)
+	else:
+		var index = level_paths.find(debug_level_path)
+		if index < 0:
+			return
+		level_paths.remove_at(index)

@@ -9,6 +9,7 @@ func enter(p_previous_state):
 
 	state_scene.set_state_node(self)
 
+	parent.set_game_paused(false)
 	parent.set_player_controls_active(false)
 
 	parent.play_game_music()

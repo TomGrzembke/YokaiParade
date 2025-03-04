@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://v24eao35y2ad"]
+[gd_scene load_steps=11 format=3 uid="uid://v24eao35y2ad"]
 
 [ext_resource type="Script" path="res://levels/scenes/paused.gd" id="1_8c3f4"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="2_eci05"]
 [ext_resource type="Texture2D" uid="uid://b8vmow7sts1ib" path="res://ui/ui_panel_vertmain.png" id="2_njg0m"]
 [ext_resource type="Texture2D" uid="uid://ccqqryg10q8ye" path="res://ui/ui_panel_verttop.png" id="3_6bdlb"]
+[ext_resource type="Script" path="res://ui/custom_controls/button_focus_on_hover.gd" id="4_73kvt"]
 [ext_resource type="Texture2D" uid="uid://cf638huksnygw" path="res://ui/ui_panel_vertbottom.png" id="4_sd1pi"]
 [ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="5_d3x38"]
 [ext_resource type="Texture2D" uid="uid://b7bu0g5d2kfpc" path="res://ui/ui_panel_deco.png" id="5_w1drn"]
@@ -90,31 +91,37 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "Resume"
+script = ExtResource("4_73kvt")
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
+script = ExtResource("4_73kvt")
 
 [node name="ReturnToMainMenuButton" type="Button" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Main Menu"
+script = ExtResource("4_73kvt")
 
 [node name="ResetCheckpointButton" type="Button" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Last Checkpoint"
+script = ExtResource("4_73kvt")
 
 [node name="ResetLevelButton" type="Button" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Reset Level"
+script = ExtResource("4_73kvt")
 
 [node name="QuitGameButton" type="Button" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit Game"
+script = ExtResource("4_73kvt")
 
 [node name="BottomRoll" type="TextureRect" parent="CanvasLayer/Main"]
 layout_mode = 1

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyElementType" load_steps=4 format=3 uid="uid://be56k4m11w44j"]
 
 [ext_resource type="PackedScene" uid="uid://ddyyhxxuwsxtk" path="res://enemies/animations/enemy_fire_animations.tscn" id="1_6e8h7"]
-[ext_resource type="Script" path="res://enemies/types/enemy_element_type.gd" id="1_qrc77"]
+[ext_resource type="Script" path="res://enemies/enemy_element_type.gd" id="1_qrc77"]
 [ext_resource type="PackedScene" uid="uid://cqo5hhva3su4r" path="res://abilities/dash.tscn" id="2_cg1uj"]
 
 [resource]
