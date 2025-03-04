@@ -6,7 +6,8 @@ const COLOR_BLACK = Color(0,0,0,1)
 @export var time_to_blend : float = 1.0
 @export var blend_curve : Curve
 @export var default_vfx_col : Color
-
+@export_category("Shrug")
+@export var shrug_cooldown : float = .8
 @export_category("Idle")
 @export var idle_animation_probability : Dictionary = {"idling" : 75, "idling4": 7, "idling2": 15, "idling3": 3}
 @onready var player: CharacterBody2D = $".."
@@ -17,6 +18,7 @@ const COLOR_BLACK = Color(0,0,0,1)
 var shader_mat
 var color_blend_timer
 var state_machine
+var shrug_timer
 
 
 func _ready():
@@ -25,9 +27,10 @@ func _ready():
 	abilities.player_hits.connect(func(): state_machine.start("hit"))
 	abilities.used_ability.connect(on_ability)
 	abilities.ability_changed.connect(on_pickup)
+	player.player_reached_goal.connect(func(): state_machine.start("dying"))
 
 	player.player_despawned.connect(func(): state_machine.start("dying"))
-	player.player_gets_pushed.connect(func(): state_machine.start("got_hit"))
+	player.player_reached_goal.connect(func(): state_machine.start("celebration"))
 
 	sort_dictionary_descending()
 
@@ -41,6 +44,12 @@ func _physics_process(_delta):
 
 
 func on_ability(current_ability):
+	if current_ability == null:
+		if shrug_timer == null || shrug_timer.time_left == 0:
+			state_machine.start("no_ability_hit")
+			shrug_timer = create_timer(shrug_cooldown)
+		return
+
 	if current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.FIRE:
 		state_machine.start("dash")
 	elif current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.AIR:

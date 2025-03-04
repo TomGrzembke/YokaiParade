@@ -41,7 +41,9 @@ func _unhandled_input(_event):
 
 
 func use_ability():
-	if current_ability == null: return
+	if current_ability == null:
+		used_ability.emit(current_ability)
+		return
 
 	if current_ability.has_method("use"):
 		current_ability.use(player)

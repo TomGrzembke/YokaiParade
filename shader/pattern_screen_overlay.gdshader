@@ -53,6 +53,6 @@ void fragment() {
 	vec4 screen_color = texture(existing_screen_texture, SCREEN_UV, 0.0);
 
 	vec4 screen_pattern_overlay = overlay_screen_pattern(screen_color);
-	
+
 	COLOR = screen_pattern_overlay;
 }
