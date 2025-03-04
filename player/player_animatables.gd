@@ -1,22 +1,73 @@
 extends Node2D
 
+const ELEMENTS = preload("res://elements/elements.gd")
+const COLOR_BLACK = Color(0,0,0,1)
+@export_category("VFX Color")
+@export var time_to_blend : float = 1.0
+@export var blend_curve : Curve
+@export var default_vfx_col : Color
+
+@export_category("Idle")
 @export var idle_animation_probability : Dictionary = {"idling" : 75, "idling4": 7, "idling2": 15, "idling3": 3}
 @onready var player: CharacterBody2D = $".."
 @onready var abilities: Node2D = $"../Abilities"
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var vfx_animation_character = $VfxAnimationCharacter
+var shader_mat
+var color_blend_timer
 var state_machine
 
 
 func _ready():
+	shader_mat = vfx_animation_character.material as ShaderMaterial
 	state_machine = animation_tree.get("parameters/playback")
 	abilities.player_hits.connect(func(): state_machine.start("hit"))
-	abilities.used_ability.connect(func(): state_machine.start("dash"))
+	abilities.used_ability.connect(on_ability)
+	abilities.ability_changed.connect(on_pickup)
 
 	player.player_despawned.connect(func(): state_machine.start("dying"))
 	player.player_gets_pushed.connect(func(): state_machine.start("got_hit"))
 
 	sort_dictionary_descending()
+
+
+func _physics_process(_delta):
+	if shader_mat.get_shader_parameter("end_tint") == COLOR_BLACK: return
+	if color_blend_timer == null || color_blend_timer.time_left <= 0: return
+
+	var step = blend_curve.sample(1.0 - color_blend_timer.time_left / time_to_blend)
+	shader_mat.set_shader_parameter("end_tint", lerp(shader_mat.get_shader_parameter("end_tint"), default_vfx_col, step))
+
+
+func on_ability(current_ability):
+	if current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.FIRE:
+		state_machine.start("dash")
+	elif current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.AIR:
+		state_machine.start("jump")
+
+
+func on_pickup(color):
+	if color == abilities.COLOR_PLAIN:
+		blend_vfx_back()
+		return
+
+	shader_mat.set_shader_parameter("end_tint", color)
+
+	if color_blend_timer != null:
+		color_blend_timer.timeout.disconnect(reset_vfx)
+		color_blend_timer = null
+
+
+func blend_vfx_back():
+	color_blend_timer = create_timer(time_to_blend)
+	color_blend_timer.timeout.connect(reset_vfx)
+
+
+func reset_vfx():
+	if color_blend_timer != null && color_blend_timer.time_left > 0: return
+
+	shader_mat.set_shader_parameter("end_tint", COLOR_BLACK)
 
 
 func _on_animation_finished(anim_name):
@@ -57,3 +108,7 @@ func sort_dictionary_descending():
 		sorted_dict[key] = idle_animation_probability[key]
 
 	idle_animation_probability = sorted_dict
+
+
+func create_timer(time):
+	return get_tree().create_timer(time)

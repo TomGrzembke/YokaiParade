@@ -1,18 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8mxwfqxutdoi"]
+[gd_scene load_steps=20 format=3 uid="uid://c8mxwfqxutdoi"]
 
 [ext_resource type="Texture2D" uid="uid://tgdbge36wevk" path="res://assets/patterns/t-texture_lines.png" id="2_y3agf"]
-[ext_resource type="Texture2D" uid="uid://b66gcqiak8txp" path="res://levels/area_01/mountains_far.png" id="3_6pkbi"]
-[ext_resource type="Texture2D" uid="uid://bmo1tv4fy75om" path="res://levels/area_01/mountains_middle.png" id="4_hhbm4"]
 [ext_resource type="Shader" path="res://shader/pattern_screen_overlay.gdshader" id="5_w3sdd"]
 [ext_resource type="Texture2D" uid="uid://bn0cpcfikbpp5" path="res://shader/testing_assets/empty_white.png" id="6_53e8n"]
-[ext_resource type="Texture2D" uid="uid://c5frpar7yqfe2" path="res://levels/area_01/mountains_spritesheet.png" id="7_7xycs"]
-[ext_resource type="Texture2D" uid="uid://bckrmvjg8p3jq" path="res://levels/area_01/mountains_close.png" id="7_qvnb5"]
+[ext_resource type="Material" uid="uid://dlplujjkjxtxg" path="res://shader/mountain_pattern.tres" id="6_b515f"]
+[ext_resource type="Texture2D" uid="uid://c5frpar7yqfe2" path="res://levels/area_01/assets/mountains_spritesheet.png" id="7_7xycs"]
 [ext_resource type="Material" uid="uid://bfm15gm2njxtq" path="res://shader/cloud_shader.tres" id="8_afjxq"]
-[ext_resource type="Texture2D" uid="uid://dd4dbqeurgyvx" path="res://levels/area_01/clouds_red.png" id="8_lwp6k"]
-[ext_resource type="Texture2D" uid="uid://i5u70jl4fc3v" path="res://levels/area_01/clouds_blue.png" id="9_poku5"]
-[ext_resource type="Texture2D" uid="uid://gxi2kaj7h5fr" path="res://levels/area_01/clouds_white.png" id="10_37g1q"]
-[ext_resource type="Shader" path="res://shader/pattern_overlay.gdshader" id="11_85k4m"]
-[ext_resource type="Texture2D" uid="uid://b0vv3r8mo5474" path="res://levels/area_01/flowers_red_single.png" id="12_81uk2"]
+[ext_resource type="Texture2D" uid="uid://dd4dbqeurgyvx" path="res://levels/area_01/assets/clouds_red.png" id="8_lwp6k"]
+[ext_resource type="Texture2D" uid="uid://i5u70jl4fc3v" path="res://levels/area_01/assets/clouds_blue.png" id="9_poku5"]
+[ext_resource type="Script" path="res://levels/area_01/foreground.gd" id="10_8rpt5"]
+[ext_resource type="Texture2D" uid="uid://gxi2kaj7h5fr" path="res://levels/area_01/assets/clouds_white.png" id="10_37g1q"]
+[ext_resource type="Texture2D" uid="uid://bpc6enr0ut8jn" path="res://levels/area_01/assets/foreground.png" id="10_wr23i"]
+[ext_resource type="Texture2D" uid="uid://b0vv3r8mo5474" path="res://levels/area_01/assets/flowers_red_single.png" id="12_81uk2"]
+[ext_resource type="Script" path="res://assets/vfx/particle_startup.gd" id="14_btyqu"]
 
 [sub_resource type="Shader" id="Shader_8lk6j"]
 code = "shader_type canvas_item;
@@ -80,7 +80,7 @@ shader_parameter/pattern_texture = ExtResource("2_y3agf")
 
 [sub_resource type="Gradient" id="Gradient_ee1f0"]
 interpolation_color_space = 1
-colors = PackedColorArray(0.658824, 0.835294, 0.847059, 1, 0.752941, 0.85098, 0.921569, 1)
+colors = PackedColorArray(0.658824, 0.835294, 0.847059, 1, 0.850002, 0.909723, 0.953148, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_e7778"]
 gradient = SubResource("Gradient_ee1f0")
@@ -91,20 +91,11 @@ fill_to = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ovdoh"]
 shader = ExtResource("5_w3sdd")
-shader_parameter/overlay_alpha = 1.0
-shader_parameter/color_multiplier = 1.0
+shader_parameter/overlay_alpha = 0.613
+shader_parameter/color_multiplier = 2.289
 shader_parameter/pattern_scale = Vector2(1, 1)
 shader_parameter/tilemap_offset = Vector2(0, 0)
 shader_parameter/flip_alpha = false
-shader_parameter/pattern_texture = ExtResource("2_y3agf")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gghgl"]
-shader = ExtResource("11_85k4m")
-shader_parameter/overlay_alpha = 1.0
-shader_parameter/pattern_scale = -0.7
-shader_parameter/tilemap_offset = Vector2(-0.115, 0)
-shader_parameter/flip_alpha = true
-shader_parameter/use_local = true
 shader_parameter/pattern_texture = ExtResource("2_y3agf")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0adue"]
@@ -125,15 +116,6 @@ material = SubResource("ShaderMaterial_ssyoq")
 position = Vector2(0, 540)
 texture = SubResource("GradientTexture2D_e7778")
 
-[node name="MountainsFarParallax" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.01, 0.01)
-repeat_size = Vector2(1000, 0)
-repeat_times = 7
-
-[node name="Sprite2D" type="Sprite2D" parent="MountainsFarParallax"]
-position = Vector2(0, 800)
-texture = ExtResource("3_6pkbi")
-
 [node name="BGPatternParallax" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.04, 0.04)
 repeat_size = Vector2(1000, 0)
@@ -145,61 +127,58 @@ position = Vector2(963.5, 1086)
 scale = Vector2(1000, 562.5)
 texture = ExtResource("6_53e8n")
 
+[node name="MountainsFarParallax" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.01, 0.01)
+repeat_size = Vector2(1000, 0)
+repeat_times = 7
+
+[node name="MountainsSpritesheet" type="Sprite2D" parent="MountainsFarParallax"]
+material = ExtResource("6_b515f")
+position = Vector2(1925, 510)
+texture = ExtResource("7_7xycs")
+hframes = 4
+vframes = 3
+frame = 5
+region_rect = Rect2(0, 0, 2048, 2048)
+
 [node name="MountainsMiddleParallax" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.05, 0.05)
 repeat_size = Vector2(1500, 0)
 repeat_times = 6
 
-[node name="Sprite2D" type="Sprite2D" parent="MountainsMiddleParallax"]
-position = Vector2(0, 800)
-texture = ExtResource("4_hhbm4")
+[node name="MountainsSpritesheet" type="Sprite2D" parent="MountainsMiddleParallax"]
+material = ExtResource("6_b515f")
+position = Vector2(1930, 817)
+texture = ExtResource("7_7xycs")
+region_enabled = true
+region_rect = Rect2(1039.51, 254.247, 902.831, 606.821)
 
 [node name="MountainsCloseParallax" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.1, 0.1)
 repeat_size = Vector2(1920, 0)
 repeat_times = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="MountainsCloseParallax"]
-visible = false
-position = Vector2(0, 800)
-texture = ExtResource("7_qvnb5")
-
 [node name="MountainsSpritesheet" type="Sprite2D" parent="MountainsCloseParallax"]
-position = Vector2(1310, 592)
+material = ExtResource("6_b515f")
+position = Vector2(1302, 587)
 texture = ExtResource("7_7xycs")
 hframes = 4
 vframes = 3
 frame = 1
+region_rect = Rect2(0, 0, 2048, 2048)
 
 [node name="MountainsSpritesheet2" type="Sprite2D" parent="MountainsCloseParallax"]
+material = ExtResource("6_b515f")
 position = Vector2(837, 634)
 texture = ExtResource("7_7xycs")
 hframes = 4
 vframes = 3
 
-[node name="CloudsRedPrallax" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.6, 0.6)
-repeat_size = Vector2(2800, 0)
-repeat_times = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="CloudsRedPrallax"]
-position = Vector2(0, 1000)
-texture = ExtResource("8_lwp6k")
-
-[node name="CloudsBlueParallax" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.6, 0.6)
-repeat_size = Vector2(3000, 0)
-repeat_times = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="CloudsBlueParallax"]
-material = ExtResource("8_afjxq")
-position = Vector2(0, 600)
-texture = ExtResource("9_poku5")
-
 [node name="CloudsWhiteParallax" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.7, 0.7)
+scroll_scale = Vector2(0.4, 0.4)
 scroll_offset = Vector2(-444, -528)
 repeat_size = Vector2(2200, 0)
+autoscroll = Vector2(-10, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="CloudsWhiteParallax"]
@@ -207,20 +186,44 @@ material = ExtResource("8_afjxq")
 position = Vector2(0, 1000)
 texture = ExtResource("10_37g1q")
 
-[node name="Foreground" type="Parallax2D" parent="."]
-scroll_scale = Vector2(1.1, 1.1)
-scroll_offset = Vector2(-444, -528)
-repeat_size = Vector2(2200, 0)
+[node name="CloudsRedPrallax" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.6, 0.6)
+repeat_size = Vector2(2800, 0)
+autoscroll = Vector2(-20, 0)
 repeat_times = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="Foreground"]
+[node name="Sprite2D" type="Sprite2D" parent="CloudsRedPrallax"]
+position = Vector2(-285, 957)
+texture = ExtResource("8_lwp6k")
+
+[node name="CloudsBlueParallax" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.65, 0.65)
+repeat_size = Vector2(3000, 0)
+autoscroll = Vector2(-35, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="CloudsBlueParallax"]
+material = ExtResource("8_afjxq")
+position = Vector2(0, 600)
+texture = ExtResource("9_poku5")
+
+[node name="Foreground" type="Parallax2D" parent="."]
+visible = false
 z_index = 20
-material = SubResource("ShaderMaterial_gghgl")
-position = Vector2(0, 1392)
-texture = ExtResource("10_37g1q")
+scroll_scale = Vector2(0.2, -0.01)
+scroll_offset = Vector2(-444, -528)
+repeat_size = Vector2(1920, 0)
+repeat_times = 3
+script = ExtResource("10_8rpt5")
+
+[node name="Foreground2" type="Sprite2D" parent="Foreground"]
+visible = false
+position = Vector2(443, 1190)
+texture = ExtResource("10_wr23i")
 
 [node name="Flowers" type="Parallax2D" parent="."]
 physics_interpolation_mode = 1
+scroll_scale = Vector2(1, 0)
 scroll_offset = Vector2(-444, -528)
 repeat_size = Vector2(2200, 0)
 repeat_times = 3
@@ -230,15 +233,16 @@ physics_interpolation_mode = 1
 z_index = 18
 material = SubResource("CanvasItemMaterial_0adue")
 position = Vector2(0, 400)
+emitting = false
 amount = 20
 lifetime = 3.0
+preprocess = 30.0
 speed_scale = 0.1
-local_coords = true
 texture = ExtResource("12_81uk2")
 emission_shape = 3
 emission_rect_extents = Vector2(1200, 1)
 spread = 52.27
-gravity = Vector2(1000, 400)
+gravity = Vector2(-1000, 400)
 initial_velocity_max = 20.0
 angular_velocity_max = 181.82
 linear_accel_max = 2.02
@@ -246,3 +250,4 @@ damping_max = 100.0
 scale_amount_min = 0.4
 scale_amount_max = 0.5
 anim_offset_max = 1.0
+script = ExtResource("14_btyqu")

@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://enemies/enemy_grounded.gd" id="1_ckp3m"]
 [ext_resource type="PackedScene" uid="uid://dbvyxduyy60pr" path="res://components/damage/deal_damage_area.tscn" id="2_jj2bd"]
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="3_rf8mi"]
-[ext_resource type="Texture2D" uid="uid://cxsfo7protit" path="res://enemies/animations/enemy_grounded_air_spritesheet.png" id="4_vdafv"]
+[ext_resource type="Texture2D" uid="uid://cxsfo7protit" path="res://enemies/animations/assets/enemy_grounded_air_spritesheet.png" id="4_vdafv"]
 [ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="5_2m4gu"]
-[ext_resource type="Script" path="res://enemies/states/idling.gd" id="6_wqm1a"]
+[ext_resource type="Script" path="res://enemies/states/idling_grounded.gd" id="6_ltbao"]
 [ext_resource type="Script" path="res://enemies/states/moving_grounded.gd" id="7_sppxq"]
 [ext_resource type="Script" path="res://enemies/states/lunging.gd" id="8_2a3fu"]
 [ext_resource type="Script" path="res://enemies/states/attacking.gd" id="9_dbaq0"]
@@ -47,11 +47,11 @@ shape = SubResource("CircleShape2D_i3f1p")
 
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(34, 0)
+position = Vector2(20, 0)
 
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-34, 0)
+position = Vector2(-20, 0)
 
 [node name="PerceptionArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -92,7 +92,7 @@ debug_color = Color(0, 0.243137, 0.701961, 0.419608)
 unique_name_in_owner = true
 
 [node name="Idling" type="Node" parent="StateMachine" node_paths=PackedStringArray("lunging_enemy_state", "recovering_state")]
-script = ExtResource("6_wqm1a")
+script = ExtResource("6_ltbao")
 lunging_enemy_state = NodePath("../Lunging")
 recovering_state = NodePath("../Recovering")
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqxanhxshi7ms"]
+[gd_scene load_steps=9 format=3 uid="uid://dqxanhxshi7ms"]
 
 [ext_resource type="Script" path="res://levels/scenes/recaping.gd" id="1_set1l"]
-[ext_resource type="AnimationLibrary" uid="uid://cc0at063bwqni" path="res://assets/animations/game_quit_transitions.res" id="2_2p7rv"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="2_3n6t2"]
 [ext_resource type="Texture2D" uid="uid://c3i6sr0g87h2b" path="res://ui/ui_panel_horimain.png" id="2_v8yip"]
 [ext_resource type="Texture2D" uid="uid://ck7yd2b51exe3" path="res://ui/ui_panel_horibottom.png" id="3_gndks"]
@@ -153,13 +152,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.4725, 0.55575, 0.75, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_oc3uq"),
-"game_quit_transitions": ExtResource("2_2p7rv"),
 "state_transitions_long": ExtResource("2_3n6t2")
 }
 autoplay = "state_transitions_long/show_state_scene"

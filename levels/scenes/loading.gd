@@ -1,24 +1,36 @@
 extends Node
 
 
-signal level_loading_ready
-
+const PROGRESS_BAR_LERP_SPEED_FACTOR = 5.0
 
 var state_node
+var progress_percent = 0.0
+var loading_finished = false
 
 
 func _ready():
-	%StartButton.pressed.connect(change_to_next_level_state)
 	await %AnimationPlayer.animation_finished
 	await state_node.load_level()
-	%StartButton.grab_focus()
 
 
-func set_start_button_enabled(enabled):
-	%StartButton.disabled = not enabled
+func _process(delta):
+	%ProgressBar.value = lerp(%ProgressBar.value, progress_percent, delta * PROGRESS_BAR_LERP_SPEED_FACTOR)
 
-func update_progress_bar(progress):
-	%ProgressBar.value = progress * 100
+
+func update_progress(progress):
+	# Loader can set progress back to 0.0 after loading, so we skip updating once we reached 1.0
+	if loading_finished:
+		return
+
+	progress_percent = progress * 100.0
+
+	if progress == 1.0:
+		finish_loading()
+
+
+func finish_loading():
+	loading_finished = true
+	change_to_next_level_state()
 
 
 # Level States
@@ -28,11 +40,7 @@ func set_state_node(node):
 
 
 func change_to_next_level_state():
-	%AnimationPlayer.stop()
-	%AnimationPlayer.play("state_transitions_long/hide_state_scene")
+	%AnimationPlayer.queue("loading_finished")
+	%AnimationPlayer.queue("state_transitions_long/hide_state_scene")
 	await %AnimationPlayer.animation_finished
 	state_node.change_to_next_level_state()
-
-
-func emit_level_loading_ready_signal():
-	level_loading_ready.emit()

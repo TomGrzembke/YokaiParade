@@ -10,7 +10,10 @@ func _ready():
 
 
 func on_body_entered(other):
-	if other != null \
-	and other.has_method("on_goal_reached"):
-		other.on_goal_reached()
-		%Sprite2D.texture = texture_active
+	if other == null \
+	or not other.has_method("on_goal_reached"):
+		return
+
+	other.on_goal_reached()
+	%Sprite2D.texture = texture_active
+	set_deferred("monitoring", false)

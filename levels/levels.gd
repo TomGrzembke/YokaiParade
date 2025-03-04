@@ -9,6 +9,8 @@ signal player_reached_goal
 
 
 @export var level_paths: Array[String]
+@export var debug_level_path: String
+
 
 var requested_level_path_index
 var current_level_path_index
@@ -34,6 +36,10 @@ func _physics_process(_delta):
 		_:
 			printerr("Error: Loading %s failed." % currently_loading_level_path)
 			level_load_completed.emit(null)
+
+
+func get_requested_level_path_index():
+	return requested_level_path_index
 
 
 func request_setting_level_path_index(index):
@@ -62,7 +68,7 @@ func try_changing_to_requested_level():
 		return succeeded
 
 	if requested_level_path_index == current_level_path_index:
-		printerr("Error: Level %s is already loaded!" % current_level_path_index)
+		printerr("Error: Level %s is already the current level!" % current_level_path_index)
 
 	succeeded = await try_changing_to_level(requested_level_path_index)
 	return succeeded
@@ -193,3 +199,26 @@ func on_player_reached_checkpoint(position):
 
 func on_player_reached_goal():
 	player_reached_goal.emit()
+
+
+# Player Controls
+
+func set_player_controls_active(active):
+	var player = %CurrentLevel.get_node_or_null("Player")
+
+	if player == null:
+		return
+
+	player.set_controls_active(active)
+
+
+# Debug Level
+
+func set_is_debug_level_active(active):
+	if active:
+		level_paths.insert(0, debug_level_path)
+	else:
+		var index = level_paths.find(debug_level_path)
+		if index < 0:
+			return
+		level_paths.remove_at(index)

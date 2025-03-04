@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://umkmwt4e2066" path="res://assets/patterns/t_texture_patternwithpapertexture.png" id="2_6u7ei"]
 [ext_resource type="Texture2D" uid="uid://blc60y10cn7yx" path="res://ui/ui_outline_mainmenu_rip.png" id="3_2t40p"]
 [ext_resource type="Texture2D" uid="uid://bjn40nw0c0byv" path="res://ui/ui_panel_mainmenu.png" id="4_12tus"]
-[ext_resource type="AnimationLibrary" uid="uid://cc0at063bwqni" path="res://assets/animations/game_quit_transitions.res" id="5_f1605"]
+[ext_resource type="Script" path="res://ui/custom_controls/button_focus_on_hover.gd" id="5_a6jfj"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="5_hmdbx"]
 
 [node name="MainMenu" type="Node"]
@@ -66,41 +66,46 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main/CenterContainer/Panel"]
 layout_mode = 0
-offset_left = 117.0
-offset_top = 500.0
-offset_right = 276.0
-offset_bottom = 752.0
+offset_left = 81.0
+offset_top = 491.0
+offset_right = 298.0
+offset_bottom = 835.0
 scale = Vector2(1.4, 1.4)
 alignment = 1
 
 [node name="StartButton" type="Button" parent="CanvasLayer/Main/CenterContainer/Panel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_top = NodePath("../QuitGameButton")
 theme_type_variation = &"MMButton"
 text = "Start"
+script = ExtResource("5_a6jfj")
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/Main/CenterContainer/Panel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"MMButton"
 text = "Options"
+script = ExtResource("5_a6jfj")
 
 [node name="CreditsButton" type="Button" parent="CanvasLayer/Main/CenterContainer/Panel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"MMButton"
 text = "Credits"
+script = ExtResource("5_a6jfj")
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/Main/CenterContainer/Panel/VBoxContainer"]
+[node name="QuitGameButton" type="Button" parent="CanvasLayer/Main/CenterContainer/Panel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../StartButton")
 theme_type_variation = &"MMButton"
 text = "Quit"
+script = ExtResource("5_a6jfj")
 
 [node name="FrontCover" type="ColorRect" parent="CanvasLayer"]
 visible = false
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -111,7 +116,6 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
-"game_quit_transitions": ExtResource("5_f1605"),
 "state_transitions_long": ExtResource("5_hmdbx")
 }
 autoplay = "state_transitions_long/show_state_scene"

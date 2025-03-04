@@ -1,4 +1,15 @@
-[gd_scene format=3 uid="uid://bxb7rgxfvtxf2"]
+[gd_scene load_steps=3 format=3 uid="uid://bxb7rgxfvtxf2"]
+
+[ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/assets/player_spritesheet.png" id="1_hna5i"]
+[ext_resource type="Script" path="res://levels/modules/player_spawn_point.gd" id="1_lk6sh"]
 
 [node name="PlayerSpawnPoint" type="Marker2D"]
-position = Vector2(76, 622)
+script = ExtResource("1_lk6sh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -60)
+texture = ExtResource("1_hna5i")
+hframes = 4
+vframes = 10
+frame = 1

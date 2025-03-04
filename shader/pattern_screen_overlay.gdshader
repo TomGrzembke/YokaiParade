@@ -25,14 +25,7 @@ vec4 color_dodge(vec4 base, vec4 blend){
 	return base / 1.0 + blend;
 }
 
-void vertex() {
-	world_position = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
-	local_position = (inverse(MODEL_MATRIX) * vec4(world_position, 0.0, 1.0)).xy;
-}
-
-void fragment() {
-	vec4 screen_color = texture(existing_screen_texture, SCREEN_UV, 0.0);
-
+vec4 overlay_screen_pattern(vec4 screen_color){
 	vec2 scaled_position = (local_position - tilemap_offset) * pattern_scale ;
 
 	vec2 pattern_uv = fract(scaled_position);
@@ -46,7 +39,20 @@ void fragment() {
 	float alpha = -soft_light_blend.r * color_multiplier * pattern_color.a;
 	alpha = flip_alpha ? -alpha : alpha;
 
-	vec4 final_color = mix(screen_color, soft_light_blend, alpha * overlay_alpha);
+	vec4 result = mix(screen_color, soft_light_blend, alpha * overlay_alpha);
 
-	COLOR = final_color;
+	return result;
+}
+
+void vertex() {
+	world_position = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
+	local_position = (inverse(MODEL_MATRIX) * vec4(world_position, 0.0, 1.0)).xy;
+}
+
+void fragment() {
+	vec4 screen_color = texture(existing_screen_texture, SCREEN_UV, 0.0);
+
+	vec4 screen_pattern_overlay = overlay_screen_pattern(screen_color);
+	
+	COLOR = screen_pattern_overlay;
 }

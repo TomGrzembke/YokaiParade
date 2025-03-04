@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://vmyjhk5ja4df"]
+
+[ext_resource type="Shader" path="res://shader/exchange_gradient.gdshader" id="1_1g5tn"]
+
+[resource]
+shader = ExtResource("1_1g5tn")
+shader_parameter/darkness_modifier = 1.0
+shader_parameter/white_feather_range = 0.0
+shader_parameter/black_feather_range = 0.0
+shader_parameter/color_a = Color(0.956863, 0.658824, 0.329412, 1)
+shader_parameter/color_b = Color(0.87451, 0.466667, 0.313726, 1)
+shader_parameter/overlay_alpha = 1.0
+shader_parameter/pattern_scale = 1.0
+shader_parameter/tilemap_offset = Vector2(0, 0)
+shader_parameter/flip_alpha = true
+shader_parameter/use_hard_blend = false
+shader_parameter/use_local = true
+shader_parameter/world_scale = 1.0
+shader_parameter/pattern_multiplier = 1.0
+shader_parameter/end_tint = Color(0, 0, 0, 1)

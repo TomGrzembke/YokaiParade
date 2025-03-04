@@ -1,0 +1,259 @@
+[gd_scene load_steps=17 format=3 uid="uid://c04lg3aglqhgy"]
+
+[ext_resource type="Script" path="res://options/options.gd" id="1_c48yv"]
+[ext_resource type="Texture2D" uid="uid://c3i6sr0g87h2b" path="res://ui/ui_panel_horimain.png" id="2_d7f8b"]
+[ext_resource type="Texture2D" uid="uid://ck7yd2b51exe3" path="res://ui/ui_panel_horibottom.png" id="3_bf6v8"]
+[ext_resource type="Texture2D" uid="uid://byoa2xpuaro8g" path="res://ui/UI_Controls_Controller.png" id="3_m7fsm"]
+[ext_resource type="Texture2D" uid="uid://de8n4chrqn73o" path="res://ui/ui_panel_horitop.png" id="4_bvb6k"]
+[ext_resource type="Texture2D" uid="uid://cvcpym3grnxa6" path="res://ui/UI_Controls_keyboard.png" id="4_i05pu"]
+[ext_resource type="Texture2D" uid="uid://b7bu0g5d2kfpc" path="res://ui/ui_panel_deco.png" id="5_c7ss1"]
+[ext_resource type="Script" path="res://ui/custom_controls/slider_focus_on_hover.gd" id="5_kto3a"]
+[ext_resource type="AudioStream" uid="uid://djqvbt1j40cgp" path="res://sounds/enemy_kick.wav" id="6_rr6gf"]
+[ext_resource type="Script" path="res://ui/custom_controls/checkbox_focus_on_hover.gd" id="6_uxoii"]
+[ext_resource type="Script" path="res://ui/custom_controls/button_focus_on_hover.gd" id="7_8s0a2"]
+[ext_resource type="AudioStream" uid="uid://c475r5in65dtp" path="res://sounds/menu_button1.wav" id="7_a73mq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6pi0t"]
+
+[sub_resource type="Animation" id="Animation_dwq7n"]
+resource_name = "loop_sfx_sound"
+length = 0.5
+loop_mode = 1
+step = 0.125
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SfxAudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0fvai"]
+resource_name = "loop_ui_sound"
+length = 0.5
+loop_mode = 1
+step = 0.125
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UiAudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_krax2"]
+_data = {
+"loop_sfx_sound": SubResource("Animation_dwq7n"),
+"loop_ui_sound": SubResource("Animation_0fvai")
+}
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_c48yv")
+
+[node name="MainPanel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 400.0
+offset_top = 96.0
+offset_right = 1480.0
+offset_bottom = 944.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_d7f8b")
+
+[node name="PanelContainer" type="PanelContainer" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -451.0
+offset_top = -355.0
+offset_right = 562.0
+offset_bottom = 448.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6pi0t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/PanelContainer"]
+layout_mode = 2
+
+[node name="OptionsLabel" type="Label" parent="MainPanel/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+horizontal_alignment = 1
+
+[node name="ControlsHBoxContainer" type="HBoxContainer" parent="MainPanel/PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="UiControlsController" type="TextureRect" parent="MainPanel/PanelContainer/VBoxContainer/ControlsHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("3_m7fsm")
+stretch_mode = 3
+
+[node name="UiControlsKeyboard" type="TextureRect" parent="MainPanel/PanelContainer/VBoxContainer/ControlsHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("4_i05pu")
+
+[node name="AudioLabel" type="Label" parent="MainPanel/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="SettingsGridContainer" type="GridContainer" parent="MainPanel/PanelContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="VolumeMasterLabel" type="Label" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
+layout_mode = 2
+theme_type_variation = &"SubHeadingLabel"
+text = "Master Volume"
+horizontal_alignment = 2
+
+[node name="VolumeMasterSlider" type="HSlider" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+script = ExtResource("5_kto3a")
+
+[node name="VolumeMusicLabel" type="Label" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
+layout_mode = 2
+theme_type_variation = &"SubHeadingLabel"
+text = "Music"
+horizontal_alignment = 2
+
+[node name="VolumeMusicSlider" type="HSlider" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+script = ExtResource("5_kto3a")
+
+[node name="VolumeSfxLabel" type="Label" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
+layout_mode = 2
+theme_type_variation = &"SubHeadingLabel"
+text = "Sound Effects"
+horizontal_alignment = 2
+
+[node name="VolumeSfxSlider" type="HSlider" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("5_kto3a")
+
+[node name="VolumeUiLabel" type="Label" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
+layout_mode = 2
+theme_type_variation = &"SubHeadingLabel"
+text = "User Interface Effects"
+horizontal_alignment = 2
+
+[node name="VolumeUiSlider" type="HSlider" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("5_kto3a")
+
+[node name="FullscreenLabel" type="Label" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
+layout_mode = 2
+theme_type_variation = &"SubHeadingLabel"
+text = "Fullscreen"
+horizontal_alignment = 2
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("6_uxoii")
+
+[node name="BackButton" type="Button" parent="MainPanel/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"
+script = ExtResource("7_8s0a2")
+
+[node name="BottomRoll" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.53
+anchor_right = 0.5
+anchor_bottom = 0.53
+offset_left = 353.0
+offset_top = 888.8
+offset_right = 1527.0
+offset_bottom = 972.8
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bf6v8")
+
+[node name="TopRoll" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 348.5
+offset_right = 1531.5
+offset_bottom = 148.0
+grow_horizontal = 2
+texture = ExtResource("4_bvb6k")
+
+[node name="Decoration" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1439.0
+offset_top = 72.0
+offset_right = 1547.0
+offset_bottom = 730.0
+texture = ExtResource("5_c7ss1")
+
+[node name="SfxAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_rr6gf")
+bus = &"SFX"
+
+[node name="UiAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_a73mq")
+bus = &"UI"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_krax2")
+}

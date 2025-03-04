@@ -8,10 +8,14 @@ func enter(p_previous_state):
 	super.enter(p_previous_state)
 	state_scene.set_state_node(self)
 
-	parent.level_load_progress.connect(func(progress): state_scene.update_progress_bar(progress))
-	state_scene.level_loading_ready.connect(load_level)
+	parent.level_load_progress.connect(func(progress): state_scene.update_progress(progress))
 
 	parent.set_game_paused(true)
+
+
+func exit():
+	super.exit()
+	parent.set_game_paused(false)
 
 
 func change_to_next_level_state():
@@ -23,7 +27,6 @@ func load_level():
 
 	if succeeded == true:
 		await parent.spawn_player()
-		state_scene.set_start_button_enabled(true)
-		state_scene.update_progress_bar(1)
+		state_scene.update_progress(1.0)
 	else:
 		printerr("Error: Loading of level failed!")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnxi2gyvo83ec"]
+[gd_scene load_steps=18 format=3 uid="uid://dnxi2gyvo83ec"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/abilities.gd" id="2_es05j"]
@@ -23,14 +23,12 @@ radius = 25.0
 height = 86.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82728"]
-radius = 77.3333
+radius = 83.3333
 height = 168.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4pm2j"]
 radius = 18.0
 height = 74.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_ovhno"]
 
 [sub_resource type="Curve" id="Curve_xeqma"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -66,7 +64,7 @@ apex_time = 0.18
 apex_strength = 36.0
 apex_negativ_gravity = 0.25
 apex_smooth_curve = SubResource("Curve_ix1y4")
-push_back = 800.0
+push_back = 675.0
 push_height_percentage = 0.4
 
 [node name="Abilities" type="Node2D" parent="."]
@@ -86,13 +84,19 @@ position = Vector2(0, -51)
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageArea"]
-position = Vector2(46.6667, 0)
+position = Vector2(51.6667, 0)
+shape = SubResource("CapsuleShape2D_82728")
+debug_color = Color(0.595658, 0.545411, 0, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DealDamageArea"]
+position = Vector2(-47, 12)
+scale = Vector2(0.605, 0.605)
 shape = SubResource("CapsuleShape2D_82728")
 debug_color = Color(0.595658, 0.545411, 0, 0.42)
 
 [node name="HitWallRay" parent="." instance=ExtResource("5_5gjfl")]
 position = Vector2(0, -51)
-target_position = Vector2(124, 0)
+target_position = Vector2(135, 0)
 hit_from_inside = true
 
 [node name="TakeDamageArea" parent="." instance=ExtResource("4_y0ly5")]
@@ -115,31 +119,14 @@ target_position = Vector2(111, -0.595001)
 position = Vector2(0, -51)
 target_position = Vector2(50, -85)
 
-[node name="Visuals" type="Node2D" parent="."]
-position = Vector2(0, -51)
-
-[node name="AbilityVisualizer" type="Node2D" parent="Visuals"]
-position = Vector2(38, 18)
+[node name="FlipLineController" type="Node2D" parent="."]
+position = Vector2(49, -33)
 script = ExtResource("6_guley")
 trail_points_max = 10
-hit_speed = 0.4
 
-[node name="AttackTarget" type="Node2D" parent="Visuals"]
-position = Vector2(86, 21)
-
-[node name="AbilityVisual" type="MeshInstance2D" parent="Visuals"]
-unique_name_in_owner = true
-self_modulate = Color(0.580392, 0.580392, 0.580392, 1)
-z_index = -1
-position = Vector2(36, -61)
-scale = Vector2(32.1261, 32.1261)
-mesh = SubResource("SphereMesh_ovhno")
-
-[node name="AbilityTarget" type="Node2D" parent="Visuals"]
-position = Vector2(54, 2)
-
-[node name="AttackLine" type="Line2D" parent="Visuals"]
+[node name="FlipLine" type="Line2D" parent="."]
 z_index = 1
+position = Vector2(0, -51)
 width_curve = SubResource("Curve_xeqma")
 
 [node name="PlayerAnimatables" parent="." instance=ExtResource("7_74yxj")]

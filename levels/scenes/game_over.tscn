@@ -1,0 +1,155 @@
+[gd_scene load_steps=9 format=3 uid="uid://dj8bkbrvcyudi"]
+
+[ext_resource type="Script" path="res://levels/scenes/game_over.gd" id="1_8nfyu"]
+[ext_resource type="Texture2D" uid="uid://c3i6sr0g87h2b" path="res://ui/ui_panel_horimain.png" id="1_hjsj7"]
+[ext_resource type="Texture2D" uid="uid://ck7yd2b51exe3" path="res://ui/ui_panel_horibottom.png" id="2_yq4p4"]
+[ext_resource type="Texture2D" uid="uid://de8n4chrqn73o" path="res://ui/ui_panel_horitop.png" id="3_e7tb1"]
+[ext_resource type="Texture2D" uid="uid://b7bu0g5d2kfpc" path="res://ui/ui_panel_deco.png" id="4_voaui"]
+[ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="7_3xw7a"]
+
+[sub_resource type="Animation" id="Animation_rx4qx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/FrontCover:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/FrontCover:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oc3uq"]
+_data = {
+"RESET": SubResource("Animation_rx4qx")
+}
+
+[node name="GameOver" type="Node"]
+script = ExtResource("1_8nfyu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="BackCover" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.409603, 0.409603, 0.409603, 1)
+
+[node name="Main" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPanel" type="TextureRect" parent="CanvasLayer/Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -424.0
+offset_right = 540.0
+offset_bottom = 424.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hjsj7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main/MainPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -93.5
+offset_bottom = 93.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ThankYouLabel" type="Label" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Thank you for playing!"
+horizontal_alignment = 1
+
+[node name="ReturnToMainMenuButton" type="Button" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Main Menu"
+
+[node name="QuitGameButton" type="Button" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit Game"
+
+[node name="BottomRoll" type="TextureRect" parent="CanvasLayer/Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.53
+anchor_right = 0.5
+anchor_bottom = 0.53
+offset_left = -587.0
+offset_top = 337.6
+offset_right = 587.0
+offset_bottom = 421.6
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_yq4p4")
+
+[node name="TopRoll" type="TextureRect" parent="CanvasLayer/Main"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -591.5
+offset_right = 591.5
+offset_bottom = 148.0
+grow_horizontal = 2
+texture = ExtResource("3_e7tb1")
+
+[node name="Decoration" type="TextureRect" parent="CanvasLayer/Main"]
+layout_mode = 0
+offset_left = 1439.0
+offset_top = 72.0
+offset_right = 1547.0
+offset_bottom = 730.0
+texture = ExtResource("4_voaui")
+
+[node name="FrontCover" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_oc3uq"),
+"state_transitions_long": ExtResource("7_3xw7a")
+}
+autoplay = "state_transitions_long/show_state_scene"

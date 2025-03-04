@@ -10,11 +10,19 @@ var state_scene
 func enter(p_previous_state):
 	super.enter(p_previous_state)
 
+	if game_state_packed_scene == null:
+		return
+
 	state_scene = game_state_packed_scene.instantiate()
 	parent.load_game_state_scene(state_scene)
 
 
 func exit():
+	super.exit()
+
+	if state_scene == null:
+		return
+
 	parent.unload_game_state_scene(state_scene)
 
 

@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://daq0ts878ltif"]
+[gd_scene load_steps=17 format=3 uid="uid://daq0ts878ltif"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_g4chm"]
 [ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="2_me8mb"]
+[ext_resource type="AudioStream" uid="uid://bj141maa185rk" path="res://sounds/menumusic_yokaiparade.wav" id="2_uun0v"]
+[ext_resource type="AudioStream" uid="uid://dscogde3yxus3" path="res://sounds/backgroundmusic_yokaiparade.wav" id="3_7uv71"]
 [ext_resource type="PackedScene" uid="uid://cisf071rha1ru" path="res://game/scenes/in_game.tscn" id="12_omxsr"]
-[ext_resource type="AudioStream" uid="uid://dscogde3yxus3" path="res://sounds/backgroundmusic_yokaiparade.wav" id="13_ii117"]
+[ext_resource type="Script" path="res://game/states/quit_game.gd" id="15_45678"]
 [ext_resource type="Script" path="res://game/states/startup.gd" id="15_nvaqt"]
+[ext_resource type="PackedScene" uid="uid://ceul82s53rfq2" path="res://game/scenes/quit_game.tscn" id="16_37cfx"]
 [ext_resource type="PackedScene" uid="uid://dce17t0phbvrv" path="res://game/scenes/startup.tscn" id="16_fuloq"]
 [ext_resource type="Script" path="res://game/states/main_menu.gd" id="17_dwi8d"]
 [ext_resource type="PackedScene" uid="uid://dk3wuo1sfknyo" path="res://game/scenes/main_menu.tscn" id="18_ujkrk"]
@@ -18,6 +21,8 @@
 process_mode = 3
 script = ExtResource("1_g4chm")
 initial_game_state = NodePath("GameStateMachine/Startup")
+title_music_stream = ExtResource("2_uun0v")
+game_music_stream = ExtResource("3_7uv71")
 
 [node name="GameStateMachine" parent="." instance=ExtResource("2_me8mb")]
 unique_name_in_owner = true
@@ -28,11 +33,12 @@ script = ExtResource("15_nvaqt")
 next_game_state = NodePath("../MainMenu")
 game_state_packed_scene = ExtResource("16_fuloq")
 
-[node name="MainMenu" type="Node" parent="GameStateMachine" node_paths=PackedStringArray("in_game_state", "options_game_state", "credits_game_state")]
+[node name="MainMenu" type="Node" parent="GameStateMachine" node_paths=PackedStringArray("in_game_state", "options_game_state", "credits_game_state", "quit_game_state")]
 script = ExtResource("17_dwi8d")
 in_game_state = NodePath("../InGame")
 options_game_state = NodePath("../Options")
 credits_game_state = NodePath("../Credits")
+quit_game_state = NodePath("../QuitGame")
 game_state_packed_scene = ExtResource("18_ujkrk")
 
 [node name="Options" type="Node" parent="GameStateMachine"]
@@ -43,12 +49,16 @@ game_state_packed_scene = ExtResource("20_y6pfn")
 script = ExtResource("20_40gro")
 game_state_packed_scene = ExtResource("22_otbp7")
 
-[node name="InGame" type="Node" parent="GameStateMachine" node_paths=PackedStringArray("main_menu_game_state")]
+[node name="InGame" type="Node" parent="GameStateMachine" node_paths=PackedStringArray("main_menu_game_state", "quit_game_state")]
 script = ExtResource("19_nmmof")
 main_menu_game_state = NodePath("../MainMenu")
+quit_game_state = NodePath("../QuitGame")
 game_state_packed_scene = ExtResource("12_omxsr")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_ii117")
-volume_db = -27.171
-autoplay = true
+[node name="QuitGame" type="Node" parent="GameStateMachine"]
+script = ExtResource("15_45678")
+game_state_packed_scene = ExtResource("16_37cfx")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"Music"

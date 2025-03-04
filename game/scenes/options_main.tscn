@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://m1lhnekkobbt"]
+[gd_scene load_steps=5 format=3 uid="uid://m1lhnekkobbt"]
 
 [ext_resource type="Script" path="res://game/scenes/options_main.gd" id="1_txjm3"]
-[ext_resource type="Texture2D" uid="uid://c3i6sr0g87h2b" path="res://ui/ui_panel_horimain.png" id="2_0o24f"]
+[ext_resource type="PackedScene" uid="uid://c04lg3aglqhgy" path="res://options/options.tscn" id="2_am0n7"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="2_jyb6w"]
-[ext_resource type="Texture2D" uid="uid://ck7yd2b51exe3" path="res://ui/ui_panel_horibottom.png" id="3_3ug6j"]
-[ext_resource type="Texture2D" uid="uid://de8n4chrqn73o" path="res://ui/ui_panel_horitop.png" id="4_65img"]
-[ext_resource type="Texture2D" uid="uid://b7bu0g5d2kfpc" path="res://ui/ui_panel_deco.png" id="5_dikul"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kp36c"]
 
 [node name="OptionsMain" type="Node"]
 script = ExtResource("1_txjm3")
@@ -20,80 +19,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainPanel" type="TextureRect" parent="CanvasLayer/Main"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -424.0
-offset_right = 540.0
-offset_bottom = 424.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_0o24f")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main/MainPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -107.0
-offset_top = -65.5
-offset_right = 107.0
-offset_bottom = 65.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
-layout_mode = 2
-text = "Options"
-
-[node name="BackButton" type="Button" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
+[node name="Options" parent="CanvasLayer/Main" instance=ExtResource("2_am0n7")]
 unique_name_in_owner = true
-layout_mode = 2
-text = "Back"
-
-[node name="BottomRoll" type="TextureRect" parent="CanvasLayer/Main"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.53
-anchor_right = 0.5
-anchor_bottom = 0.53
-offset_left = -587.0
-offset_top = 337.6
-offset_right = 587.0
-offset_bottom = 421.6
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_3ug6j")
-
-[node name="TopRoll" type="TextureRect" parent="CanvasLayer/Main"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -591.5
-offset_right = 591.5
-offset_bottom = 148.0
-grow_horizontal = 2
-texture = ExtResource("4_65img")
-
-[node name="Decoration" type="TextureRect" parent="CanvasLayer/Main"]
-offset_left = 1439.0
-offset_top = 72.0
-offset_right = 1547.0
-offset_bottom = 730.0
-texture = ExtResource("5_dikul")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
+"": SubResource("AnimationLibrary_kp36c"),
 "state_transitions_long": ExtResource("2_jyb6w")
 }
 autoplay = "state_transitions_long/show_state_scene"
+
+[connection signal="back_button_pressed" from="CanvasLayer/Main/Options" to="." method="on_back_button_pressed"]
+[connection signal="volume_audio_bus_changed" from="CanvasLayer/Main/Options" to="." method="on_volume_audio_bus_changed"]
+[connection signal="window_fullscreen_changed" from="CanvasLayer/Main/Options" to="." method="on_window_fullscreen_changed"]

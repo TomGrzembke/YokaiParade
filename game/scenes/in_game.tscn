@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cisf071rha1ru"]
+[gd_scene load_steps=41 format=3 uid="uid://cisf071rha1ru"]
 
 [ext_resource type="Script" path="res://game/scenes/in_game.gd" id="1_jmwmp"]
 [ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="2_7ssm8"]
@@ -17,27 +17,34 @@
 [ext_resource type="Script" path="res://levels/states/paused.gd" id="11_k5x60"]
 [ext_resource type="PackedScene" uid="uid://c00f5fspkqsfg" path="res://levels/scenes/finishing.tscn" id="12_q0gsl"]
 [ext_resource type="PackedScene" uid="uid://dqxanhxshi7ms" path="res://levels/scenes/recaping.tscn" id="12_tbifs"]
-[ext_resource type="Texture2D" uid="uid://bsi2owtjdi83n" path="res://ui/ui_ingame_ability_bg.png" id="12_yb5sd"]
-[ext_resource type="Texture2D" uid="uid://cajispq8sq8cp" path="res://ui/ui_ingame_ability_line.png" id="13_m5arx"]
+[ext_resource type="Texture2D" uid="uid://bsi2owtjdi83n" path="res://ui/ingame/ui_ingame_ability_bg.png" id="12_yb5sd"]
+[ext_resource type="Texture2D" uid="uid://cajispq8sq8cp" path="res://ui/ingame/ui_ingame_ability_line.png" id="13_m5arx"]
 [ext_resource type="PackedScene" uid="uid://v24eao35y2ad" path="res://levels/scenes/paused.tscn" id="13_o02i2"]
 [ext_resource type="Script" path="res://levels/states/return_to_main_menu.gd" id="15_a0dd1"]
+[ext_resource type="Script" path="res://levels/states/game_over.gd" id="15_e62cx"]
 [ext_resource type="Script" path="res://levels/states/reset_to_checkpoint.gd" id="15_t1lu2"]
 [ext_resource type="Script" path="res://levels/states/reset_level.gd" id="16_0moau"]
+[ext_resource type="PackedScene" uid="uid://dj8bkbrvcyudi" path="res://levels/scenes/game_over.tscn" id="16_jypa4"]
 [ext_resource type="PackedScene" uid="uid://bp10lwi3myrce" path="res://levels/scenes/reset_to_checkpoint.tscn" id="16_tucxx"]
 [ext_resource type="Script" path="res://levels/states/options_in_game.gd" id="17_7gv5i"]
 [ext_resource type="PackedScene" uid="uid://bhgs0xub5lxvf" path="res://levels/scenes/reset_level.tscn" id="18_0wv6n"]
 [ext_resource type="PackedScene" uid="uid://dw0g44fku0ne6" path="res://levels/scenes/options_in_game.tscn" id="18_nem0v"]
-[ext_resource type="Texture2D" uid="uid://c4sqq0jqsepxe" path="res://ui/UI_ingame_tr_back.png" id="25_fgtsb"]
-[ext_resource type="Texture2D" uid="uid://f8apw8d4yauy" path="res://ui/UI_ingame_tr_main.png" id="26_tmpbm"]
-[ext_resource type="Texture2D" uid="uid://cyj6mx31cxvsi" path="res://ui/UI_ingame_bl_main.png" id="27_4tfmb"]
-[ext_resource type="Texture2D" uid="uid://dwmdm47c5unwn" path="res://ui/UI_ingame_tr_line.png" id="27_a7dat"]
-[ext_resource type="Texture2D" uid="uid://dkyc7k5vyjc10" path="res://ui/UI_ingame_bl_line.png" id="28_k2h10"]
-[ext_resource type="Texture2D" uid="uid://d0cyqkl45rojo" path="res://ui/UI_ingame_bl_back.png" id="29_iur5k"]
-[ext_resource type="Texture2D" uid="uid://w26g1il2kwn7" path="res://ui/ui_ingame_ability_main.png" id="35_by3sm"]
+[ext_resource type="Texture2D" uid="uid://c4sqq0jqsepxe" path="res://ui/ingame/UI_ingame_tr_back.png" id="25_fgtsb"]
+[ext_resource type="Script" path="res://levels/states/quit_game.gd" id="26_71ton"]
+[ext_resource type="Texture2D" uid="uid://f8apw8d4yauy" path="res://ui/ingame/UI_ingame_tr_main.png" id="26_tmpbm"]
+[ext_resource type="Texture2D" uid="uid://cyj6mx31cxvsi" path="res://ui/ingame/UI_ingame_bl_main.png" id="27_4tfmb"]
+[ext_resource type="Texture2D" uid="uid://dwmdm47c5unwn" path="res://ui/ingame/UI_ingame_tr_line.png" id="27_a7dat"]
+[ext_resource type="Material" uid="uid://vmyjhk5ja4df" path="res://shader/ui_background.tres" id="27_xthkp"]
+[ext_resource type="Texture2D" uid="uid://dkyc7k5vyjc10" path="res://ui/ingame/UI_ingame_bl_line.png" id="28_k2h10"]
+[ext_resource type="Material" uid="uid://diak12n0funuu" path="res://shader/ui_foreground.tres" id="29_157pf"]
+[ext_resource type="Texture2D" uid="uid://d0cyqkl45rojo" path="res://ui/ingame/UI_ingame_bl_back.png" id="29_iur5k"]
+[ext_resource type="Texture2D" uid="uid://bv3x16bvcgjdh" path="res://ui/ingame/UI_ingame_sign.png" id="32_rb5aa"]
+[ext_resource type="Texture2D" uid="uid://cnj6o61ajdyke" path="res://ui/ingame/ui_ingame_ability_main.png" id="35_by3sm"]
 
 [node name="InGame" type="Node" node_paths=PackedStringArray("initial_level_state")]
 script = ExtResource("1_jmwmp")
 initial_level_state = NodePath("LevelStateMachine/Loading")
+is_debug_mode_active = true
 
 [node name="LevelStateMachine" parent="." instance=ExtResource("2_7ssm8")]
 unique_name_in_owner = true
@@ -72,20 +79,29 @@ script = ExtResource("9_u70qo")
 next_level_state = NodePath("../Recaping")
 level_state_packed_scene = ExtResource("12_q0gsl")
 
-[node name="Recaping" type="Node" parent="LevelStateMachine" node_paths=PackedStringArray("loading_level_state", "return_to_main_menu_level_state", "reset_level_state")]
+[node name="Recaping" type="Node" parent="LevelStateMachine" node_paths=PackedStringArray("loading_level_state", "game_over_level_state", "return_to_main_menu_level_state", "reset_level_state", "quit_game_level_state")]
 script = ExtResource("10_8fb6y")
 loading_level_state = NodePath("../Loading")
+game_over_level_state = NodePath("../GameOver")
 return_to_main_menu_level_state = NodePath("../ReturnToMainMenu")
 reset_level_state = NodePath("../ResetLevel")
+quit_game_level_state = NodePath("../QuitGame")
 level_state_packed_scene = ExtResource("12_tbifs")
 
-[node name="Paused" type="Node" parent="LevelStateMachine" node_paths=PackedStringArray("playing_level_state", "return_to_main_menu_level_state", "options_in_game_level_state", "reset_to_checkpoint_level_state", "reset_level_state")]
+[node name="GameOver" type="Node" parent="LevelStateMachine" node_paths=PackedStringArray("return_to_main_menu_level_state", "quit_game_level_state")]
+script = ExtResource("15_e62cx")
+return_to_main_menu_level_state = NodePath("../ReturnToMainMenu")
+quit_game_level_state = NodePath("../QuitGame")
+level_state_packed_scene = ExtResource("16_jypa4")
+
+[node name="Paused" type="Node" parent="LevelStateMachine" node_paths=PackedStringArray("playing_level_state", "return_to_main_menu_level_state", "options_in_game_level_state", "reset_to_checkpoint_level_state", "reset_level_state", "quit_game_level_state")]
 script = ExtResource("11_k5x60")
 playing_level_state = NodePath("../Playing")
 return_to_main_menu_level_state = NodePath("../ReturnToMainMenu")
 options_in_game_level_state = NodePath("../OptionsInGame")
 reset_to_checkpoint_level_state = NodePath("../ResetToCheckpoint")
 reset_level_state = NodePath("../ResetLevel")
+quit_game_level_state = NodePath("../QuitGame")
 level_state_packed_scene = ExtResource("13_o02i2")
 
 [node name="OptionsInGame" type="Node" parent="LevelStateMachine"]
@@ -105,12 +121,15 @@ level_state_packed_scene = ExtResource("18_0wv6n")
 [node name="ReturnToMainMenu" type="Node" parent="LevelStateMachine"]
 script = ExtResource("15_a0dd1")
 
+[node name="QuitGame" type="Node" parent="LevelStateMachine"]
+script = ExtResource("26_71ton")
+
 [node name="Main" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="Levels" parent="Main" instance=ExtResource("3_45cmx")]
 unique_name_in_owner = true
-level_paths = Array[String](["res://levels/area_01/level_tutorial.tscn", "res://levels/area_01/level_01.tscn", "res://levels/area_01/level_02.tscn", "res://levels/area_01/level_03.tscn"])
+level_paths = Array[String](["res://levels/area_01/level_00.tscn", "res://levels/area_01/level_01.tscn", "res://levels/area_01/level_02.tscn", "res://levels/area_01/level_03.tscn"])
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -123,16 +142,18 @@ grow_horizontal = 0
 mouse_filter = 1
 
 [node name="TopRightBg" type="TextureRect" parent="UILayer/Top"]
+material = ExtResource("27_xthkp")
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -816.0
-offset_bottom = 766.0
+offset_bottom = 781.0
 grow_horizontal = 0
 texture = ExtResource("25_fgtsb")
 
 [node name="TopRightMain" type="TextureRect" parent="UILayer/Top"]
+material = ExtResource("29_157pf")
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -152,14 +173,25 @@ offset_bottom = 766.0
 grow_horizontal = 0
 texture = ExtResource("27_a7dat")
 
+[node name="TextureRect2" type="TextureRect" parent="UILayer/Top"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -531.0
+offset_right = -6.0
+offset_bottom = 208.0
+grow_horizontal = 0
+texture = ExtResource("32_rb5aa")
+
 [node name="TopUI" type="MarginContainer" parent="UILayer/Top"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = -307.0
-offset_top = 58.0
-offset_right = -177.0
-offset_bottom = 176.0
+offset_left = -413.0
+offset_top = 66.0
+offset_right = -283.0
+offset_bottom = 184.0
 grow_horizontal = 2
 pivot_offset = Vector2(128, 37)
 theme = ExtResource("8_l8w65")
@@ -182,6 +214,7 @@ mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="BottomLeftBg" type="TextureRect" parent="UILayer/Bottom"]
+material = ExtResource("27_xthkp")
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -192,6 +225,7 @@ grow_vertical = 0
 texture = ExtResource("29_iur5k")
 
 [node name="BottomLeftMain" type="TextureRect" parent="UILayer/Bottom"]
+material = ExtResource("29_157pf")
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -213,22 +247,28 @@ texture = ExtResource("28_k2h10")
 
 [node name="Ability bg" type="TextureRect" parent="UILayer/Bottom"]
 layout_mode = 0
-offset_top = -373.0
-offset_right = 452.0
-offset_bottom = 40.0
+offset_left = -88.0
+offset_top = -338.0
+offset_right = 364.0
+offset_bottom = 75.0
 texture = ExtResource("12_yb5sd")
-
-[node name="Ability line" type="TextureRect" parent="UILayer/Bottom"]
-layout_mode = 0
-offset_top = -373.0
-offset_right = 452.0
-offset_bottom = 40.0
-texture = ExtResource("13_m5arx")
+stretch_mode = 3
 
 [node name="CurrentAbility" type="TextureRect" parent="UILayer/Bottom"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_top = -373.0
-offset_right = 452.0
-offset_bottom = 40.0
+offset_left = -88.0
+offset_top = -338.0
+offset_right = 364.0
+offset_bottom = 75.0
 texture = ExtResource("35_by3sm")
+stretch_mode = 3
+
+[node name="Ability line" type="TextureRect" parent="UILayer/Bottom"]
+layout_mode = 0
+offset_left = -88.0
+offset_top = -338.0
+offset_right = 364.0
+offset_bottom = 75.0
+texture = ExtResource("13_m5arx")
+stretch_mode = 3

@@ -9,6 +9,10 @@ signal level_load_progress(progress)
 @export_category("Level States")
 @export var initial_level_state: LevelState
 
+@export_category("Debug Mode")
+@export var is_debug_mode_active = false
+
+
 var play_time
 var state_node
 var current_level_state_scene
@@ -20,25 +24,32 @@ func _ready():
 	%Levels.player_reached_goal.connect(on_player_reached_goal)
 	%Levels.level_load_progress.connect(on_level_load_progress)
 
+	if OS.has_feature("debug"):
+		%Levels.set_is_debug_level_active(is_debug_mode_active)
+
 	reset_play_time()
 	request_setting_next_level_path_index()
 	%LevelStateMachine.init(self, initial_level_state)
 
 
-func _physics_process(delta):
-	%LevelStateMachine.physics_process(delta)
+func set_window_fullscreen(active):
+	state_node.set_window_fullscreen(active)
 
 
-func _process(delta):
-	%LevelStateMachine.process(delta)
+func get_window_fullscreen():
+	return state_node.get_window_fullscreen()
 
 
-func _unhandled_input(event):
-	%LevelStateMachine.unhandled_input(event)
+func set_volume_audio_bus(bus_id, volume_db):
+	state_node.set_volume_audio_bus(bus_id, volume_db)
 
 
-func _input(event):
-	%LevelStateMachine.input(event)
+func get_volume_audio_bus(bus_id):
+	return state_node.get_volume_audio_bus(bus_id)
+
+
+func play_game_music():
+	state_node.play_game_music()
 
 
 func set_game_paused(should_pause):
@@ -53,8 +64,8 @@ func get_play_time():
 	return play_time
 
 
-func disable_player_controls():
-	print("Disabling player controls is not implemented yet")
+func set_player_controls_active(active):
+	%Levels.set_player_controls_active(active)
 
 
 # UI
@@ -83,6 +94,10 @@ func on_level_load_progress(progress):
 
 
 # Level Loading
+
+func get_requested_level_path_index():
+	return %Levels.get_requested_level_path_index()
+
 
 func request_setting_level_path_index(index):
 	%Levels.request_setting_level_path_index(index)
@@ -114,6 +129,24 @@ func reset_level():
 	reset_play_time()
 
 
+# State Machine
+
+func _physics_process(delta):
+	%LevelStateMachine.physics_process(delta)
+
+
+func _process(delta):
+	%LevelStateMachine.process(delta)
+
+
+func _unhandled_input(event):
+	%LevelStateMachine.unhandled_input(event)
+
+
+func _input(event):
+	%LevelStateMachine.input(event)
+
+
 # Level State
 
 func load_level_state_scene(level_state_scene):
@@ -142,3 +175,7 @@ func set_state_node(node):
 
 func change_to_main_menu_game_state():
 	state_node.change_to_main_menu_game_state()
+
+
+func change_to_quit_game_state():
+	state_node.change_to_quit_game_state()
