@@ -9,6 +9,10 @@ signal level_load_progress(progress)
 @export_category("Level States")
 @export var initial_level_state: LevelState
 
+@export_category("Debug Mode")
+@export var is_debug_mode_active = false
+
+
 var play_time
 var state_node
 var current_level_state_scene
@@ -19,6 +23,9 @@ func _ready():
 	%Levels.player_despawned.connect(on_player_despawned)
 	%Levels.player_reached_goal.connect(on_player_reached_goal)
 	%Levels.level_load_progress.connect(on_level_load_progress)
+
+	if OS.has_feature("debug"):
+		%Levels.set_is_debug_level_active(is_debug_mode_active)
 
 	reset_play_time()
 	request_setting_next_level_path_index()
