@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c8mxwfqxutdoi"]
+[gd_scene load_steps=25 format=3 uid="uid://c8mxwfqxutdoi"]
 
 [ext_resource type="Texture2D" uid="uid://tgdbge36wevk" path="res://assets/patterns/t-texture_lines.png" id="2_y3agf"]
 [ext_resource type="Shader" path="res://shader/pattern_screen_overlay.gdshader" id="5_w3sdd"]
@@ -11,7 +11,9 @@
 [ext_resource type="Script" path="res://levels/area_01/foreground.gd" id="10_8rpt5"]
 [ext_resource type="Texture2D" uid="uid://gxi2kaj7h5fr" path="res://levels/area_01/assets/clouds_white.png" id="10_37g1q"]
 [ext_resource type="Texture2D" uid="uid://bpc6enr0ut8jn" path="res://levels/area_01/assets/foreground.png" id="10_wr23i"]
+[ext_resource type="Shader" path="res://shader/water_foreground.gdshader" id="12_7qcqm"]
 [ext_resource type="Texture2D" uid="uid://b0vv3r8mo5474" path="res://levels/area_01/assets/flowers_red_single.png" id="12_81uk2"]
+[ext_resource type="Texture2D" uid="uid://bj6xd1fu7tx7y" path="res://icon.svg" id="13_ks2ix"]
 [ext_resource type="Script" path="res://assets/vfx/particle_startup.gd" id="14_btyqu"]
 
 [sub_resource type="Shader" id="Shader_8lk6j"]
@@ -103,6 +105,21 @@ particles_animation = true
 particles_anim_h_frames = 2
 particles_anim_v_frames = 3
 particles_anim_loop = false
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_30o58"]
+seed = 115
+frequency = 0.0078
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_do8d5"]
+width = 200
+height = 20
+noise = SubResource("FastNoiseLite_30o58")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spnxp"]
+shader = ExtResource("12_7qcqm")
+shader_parameter/smoothing = 10.0
+shader_parameter/water_color = Color(0, 0.164706, 0.858824, 1)
+shader_parameter/wave_noise = SubResource("NoiseTexture2D_do8d5")
 
 [node name="Area1Backgrounds" type="Node2D"]
 z_index = -10
@@ -251,3 +268,16 @@ scale_amount_min = 0.4
 scale_amount_max = 0.5
 anim_offset_max = 1.0
 script = ExtResource("14_btyqu")
+
+[node name="Water" type="Parallax2D" parent="."]
+visible = false
+repeat_size = Vector2(2800, 0)
+autoscroll = Vector2(-20, 0)
+repeat_times = 3
+
+[node name="Water" type="Sprite2D" parent="Water"]
+z_index = 12
+material = SubResource("ShaderMaterial_spnxp")
+position = Vector2(475, 1558)
+scale = Vector2(21.875, 4.35938)
+texture = ExtResource("13_ks2ix")
