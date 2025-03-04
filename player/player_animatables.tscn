@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b173nlre4ndsy"]
+[gd_scene load_steps=61 format=3 uid="uid://b173nlre4ndsy"]
 
 [ext_resource type="Script" path="res://player/player_animatables.gd" id="1_japyu"]
 [ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/assets/player_spritesheet.png" id="1_wuri4"]
@@ -61,6 +61,21 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_xbpvk"]
+resource_name = "celebration"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimatables/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [44, 45, 46, 47]
 }
 
 [sub_resource type="Animation" id="Animation_802ph"]
@@ -428,6 +443,21 @@ tracks/2/keys = {
 "values": [37, 38]
 }
 
+[sub_resource type="Animation" id="Animation_cmshr"]
+resource_name = "no_ability_hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimatables/Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.433333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [40, 41, 42, 41]
+}
+
 [sub_resource type="Animation" id="Animation_2eqfq"]
 resource_name = "walking"
 length = 0.5
@@ -476,6 +506,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x7y5v"]
 _data = {
 "RESET": SubResource("Animation_1fs6i"),
+"celebration": SubResource("Animation_xbpvk"),
 "dash": SubResource("Animation_802ph"),
 "dying": SubResource("Animation_hhc52"),
 "falling": SubResource("Animation_qskf8"),
@@ -487,6 +518,7 @@ _data = {
 "idling4": SubResource("Animation_wys6x"),
 "jump": SubResource("Animation_xmvxb"),
 "landing": SubResource("Animation_uoss2"),
+"no_ability_hit": SubResource("Animation_cmshr"),
 "walking": SubResource("Animation_2eqfq")
 }
 
@@ -642,7 +674,7 @@ material = SubResource("ShaderMaterial_n0aer")
 position = Vector2(1, -9)
 texture = ExtResource("1_wuri4")
 hframes = 4
-vframes = 10
+vframes = 12
 frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
