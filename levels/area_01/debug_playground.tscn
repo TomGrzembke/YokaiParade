@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://chw071c302k1s"]
+[gd_scene load_steps=20 format=4 uid="uid://chw071c302k1s"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5yuc3"]
 [ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/modules/goal.tscn" id="2_12oxi"]
@@ -20,6 +20,30 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 14163, 1125, 0, 0, 0, 0, 14160, 1139)
 }
 point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_xprnm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2816, 576, 0, 0, 0, 0, 3200, 576)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_7t57f"]
+_data = {
+"points": PackedVector2Array(68.8251, 0, -68.8251, 0, 3608, 184, -1.41421, -56.0971, 1.41421, 56.0971, 3488, 296, -53.2687, 1.88562, 53.2687, -1.88562, 3624, 400, -3.29983, 52.3259, 3.29983, -52.3259, 3736, 296, 61.2826, 0.471405, -61.2826, -0.471405, 3608, 184)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_blg6u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2336, 504, 0, 0, 0, 0, 2600, 288)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_h3j2p"]
+_data = {
+"points": PackedVector2Array(49.0815, -1.88775, -49.0815, 1.88775, 1800, 272, -2.517, -68.5882, 2.517, 68.5882, 1640, 416, -93.7582, -0.629249, 93.7582, 0.629249, 1784, 568, 0.629249, 44.6767, -0.629249, -44.6767, 1952, 424, 48.4522, -0.629249, -48.4522, 0.629249, 1800, 272)
+}
+point_count = 5
 
 [node name="debug_playground" type="Node2D"]
 script = ExtResource("1_5yuc3")
@@ -162,6 +186,38 @@ curve = SubResource("Curve2D_j4ig6")
 [node name="EnemyFlying" parent="Start-1stCheckpoint/Enemies/AirFlyingIdling15" instance=ExtResource("6_tj8ky")]
 position = Vector2(14163, 1125)
 element_type = ExtResource("4_bqem7")
+
+[node name="AirFlyingMoving" type="Path2D" parent="Start-1stCheckpoint/Enemies"]
+curve = SubResource("Curve2D_xprnm")
+
+[node name="EnemyAirborne" parent="Start-1stCheckpoint/Enemies/AirFlyingMoving" instance=ExtResource("6_tj8ky")]
+position = Vector2(2816, 576)
+initial_state = 200
+element_type = ExtResource("4_bqem7")
+
+[node name="AirFlyingMoving2" type="Path2D" parent="Start-1stCheckpoint/Enemies"]
+curve = SubResource("Curve2D_7t57f")
+
+[node name="EnemyAirborne" parent="Start-1stCheckpoint/Enemies/AirFlyingMoving2" instance=ExtResource("6_tj8ky")]
+position = Vector2(3608, 184)
+initial_state = 200
+element_type = ExtResource("4_bqem7")
+
+[node name="FireFlyingMoving" type="Path2D" parent="Start-1stCheckpoint/Enemies"]
+curve = SubResource("Curve2D_blg6u")
+
+[node name="EnemyAirborne" parent="Start-1stCheckpoint/Enemies/FireFlyingMoving" instance=ExtResource("6_tj8ky")]
+position = Vector2(2336, 504)
+initial_state = 200
+element_type = ExtResource("5_spnqd")
+
+[node name="FireFlyingMoving2" type="Path2D" parent="Start-1stCheckpoint/Enemies"]
+curve = SubResource("Curve2D_h3j2p")
+
+[node name="EnemyAirborne" parent="Start-1stCheckpoint/Enemies/FireFlyingMoving2" instance=ExtResource("6_tj8ky")]
+position = Vector2(1800, 272)
+initial_state = 200
+element_type = ExtResource("5_spnqd")
 
 [node name="Controls_Signs" type="Node2D" parent="."]
 

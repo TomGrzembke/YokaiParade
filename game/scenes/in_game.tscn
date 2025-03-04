@@ -44,6 +44,7 @@
 [node name="InGame" type="Node" node_paths=PackedStringArray("initial_level_state")]
 script = ExtResource("1_jmwmp")
 initial_level_state = NodePath("LevelStateMachine/Loading")
+is_debug_mode_active = true
 
 [node name="LevelStateMachine" parent="." instance=ExtResource("2_7ssm8")]
 unique_name_in_owner = true

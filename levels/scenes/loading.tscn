@@ -1,8 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbew8yq4n6jan"]
+[gd_scene load_steps=14 format=3 uid="uid://bbew8yq4n6jan"]
 
 [ext_resource type="Script" path="res://levels/scenes/loading.gd" id="1_4fevy"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="2_b1mnc"]
+[ext_resource type="Shader" path="res://shader/exchange_color_on_asset.gdshader" id="2_fomcb"]
 [ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/assets/player_spritesheet.png" id="2_vro33"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bq87"]
+shader = ExtResource("2_fomcb")
+shader_parameter/color_to_replace = Color(1, 1, 0.0117647, 1)
+shader_parameter/wanted_color = Color(0.172549, 0.784314, 0.737255, 1)
+shader_parameter/feather_range = 0.826
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1fh3l"]
 atlas = ExtResource("2_vro33")
@@ -120,6 +127,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Main/Control"]
+material = SubResource("ShaderMaterial_0bq87")
 position = Vector2(-176, -80)
 sprite_frames = SubResource("SpriteFrames_f51r6")
 autoplay = "default"

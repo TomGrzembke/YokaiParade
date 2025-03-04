@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b173nlre4ndsy"]
+[gd_scene load_steps=59 format=3 uid="uid://b173nlre4ndsy"]
 
 [ext_resource type="Script" path="res://player/player_animatables.gd" id="1_japyu"]
 [ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/assets/player_spritesheet.png" id="1_wuri4"]
@@ -12,6 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://cwgybk1plghnu" path="res://sounds/player_jump.wav" id="5_irw32"]
 [ext_resource type="AudioStream" uid="uid://dgk7beqkylhis" path="res://sounds/player_landing.wav" id="6_f5xr2"]
 [ext_resource type="AudioStream" uid="uid://coy5ai5tktmgg" path="res://sounds/player_walking.wav" id="7_rrgwt"]
+
+[sub_resource type="Curve" id="Curve_uxwp6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qbauj"]
 shader = ExtResource("2_ygekg")
@@ -619,8 +623,7 @@ graph_offset = Vector2(15, -277)
 
 [node name="PlayerAnimatables" type="Node2D"]
 script = ExtResource("1_japyu")
-time_till_blend = 1.45
-time_to_blend = 0.8
+blend_curve = SubResource("Curve_uxwp6")
 default_vfx_col = Color(0.521569, 0.501961, 0.882353, 1)
 
 [node name="VfxAnimationCharacter" type="Sprite2D" parent="."]

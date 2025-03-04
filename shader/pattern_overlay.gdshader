@@ -45,20 +45,13 @@ vec4 hard_blend_result(vec4 texture_color, vec4 pattern, vec4 final_color){
 	return final_color;
 }
 
-void vertex() {
-	world_position = (MODEL_MATRIX * vec4(VERTEX , 0.0, world_scale)).xy;
-	local_position = (inverse(MODEL_MATRIX) * vec4(world_position, 0.0, 1.0)).xy;
-}
-
-void fragment() {
+vec4 overlay_pattern(vec4 texture_color){
 	vec2 position_type = use_local ? local_position : world_position;
 	vec2 scaled_position = position_type * vec2(1.0 / 1920.0, 1.0 / 1080.0) * vec2(pattern_scale) - tilemap_offset;
 
 	vec2 pattern_uv = fract(scaled_position);
 
 	vec4 pattern_color = texture(pattern_texture, pattern_uv) ;
-
-	vec4 texture_color = texture(TEXTURE, UV);
 
 	float filtered_alpha = mix(texture_color, pattern_color, pattern_color.x).a;
 
@@ -69,17 +62,32 @@ void fragment() {
 	float alpha = -soft_light_blend_result.r * 2.0 * overlay_alpha * pattern_color.a;
 	alpha = flip_alpha ? -alpha : alpha;
 
-	vec4 final_color = mix(texture_color, soft_light_blend_result, alpha);
+	vec4 result = mix(texture_color, soft_light_blend_result, alpha);
+
+	if (use_hard_blend && end_tint == BLACK_COLOR)
+		return result;
 
 	if (use_hard_blend)
-		final_color = hard_blend_result(texture_color, soft_light_blend_result, final_color);
+		result = hard_blend_result(texture_color, soft_light_blend_result, result);
 
 	if (end_tint != BLACK_COLOR){
-		float brightness = get_luminocity(final_color);
+		float brightness = get_luminocity(result);
 		float flipped_brightness = 1.0 - brightness;
 		brightness = flip_alpha ? flipped_brightness : brightness;
-		final_color = overlay(vec4(vec3(brightness), texture_color.a), end_tint);
+		result = overlay(vec4(vec3(brightness), texture_color.a), end_tint);
 	}
 
-	COLOR = final_color;
+	return result;
+}
+
+void vertex() {
+	world_position = (MODEL_MATRIX * vec4(VERTEX , 0.0, world_scale)).xy;
+	local_position = (inverse(MODEL_MATRIX) * vec4(world_position, 0.0, 1.0)).xy;
+}
+
+void fragment() {
+	vec4 texture_color = texture(TEXTURE, UV);
+	vec4 overlayed_pattern = overlay_pattern(texture_color);
+
+	COLOR = overlayed_pattern;
 }

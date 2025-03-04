@@ -10,7 +10,7 @@ uniform sampler2D pattern_texture;
 uniform float overlay_alpha : hint_range(0.0, 1.0) = 1.0;
 uniform float pattern_scale = 1.0;
 uniform vec2 tilemap_offset = vec2(0.0, 0.0);
-uniform bool flip_alpha = true;
+uniform bool flip_alpha = false;
 uniform float pattern_multiplier = 1.0;
 uniform vec4 end_tint : source_color = vec4(0,0,0,1);
 const vec4 BLACK_COLOR = vec4(0,0,0,1);
@@ -50,21 +50,25 @@ vec4 exchange_color_gradient(vec4 texture_color){
 	vec4 first_color = mix(texture_color, color_a, smoothstep(.0 , .1, texture_color.r));
 	vec4 second_color = mix(flipped_color, color_b, smoothstep(1. , .5, texture_color.r));
 
-	vec4 final_mix = mix(first_color, second_color, 1.- brightness);
+	vec4 result = mix(first_color, second_color, 1.- brightness);
 
-	final_mix.a = texture_color.a;
+	result.a = texture_color.a;
 
 
 	if (distance(texture_color.rgb, vec3(1.0)) < white_feather_range)
-    	final_mix = texture_color;
+    	result = texture_color;
 
 	if (distance(texture_color.rgb, vec3(0.0)) < black_feather_range)
-    	final_mix = texture_color;
+    	result = texture_color;
 	
-	return final_mix;
+	return result;
 }
 
 vec4 pattern_overlay(vec4 texture_color){
+	ivec2 size = textureSize(pattern_texture,  0);
+	if(size.x < 5)
+	return texture_color;
+	
 	vec2 scaled_position = world_position * vec2(1.0 / 1920.0, 1.0 / 1080.0) * vec2(pattern_scale) - tilemap_offset;
 
 	vec2 pattern_uv = fract(scaled_position);
@@ -78,7 +82,7 @@ vec4 pattern_overlay(vec4 texture_color){
 	vec4 soft_light_blend_result = soft_light_blend(texture_color, pattern * pattern_multiplier, overlay_alpha);
 
 	float alpha = -soft_light_blend_result.r * 2.0 * overlay_alpha * pattern_color.a;
-	alpha = flip_alpha ? -alpha : alpha;
+	alpha = flip_alpha ? alpha : -alpha;
 
 	vec4 final_color = mix(texture_color, soft_light_blend_result, alpha);
 
@@ -88,12 +92,7 @@ vec4 pattern_overlay(vec4 texture_color){
 		brightness = flip_alpha ? flipped_brightness : brightness;
 		final_color = overlay(vec4(vec3(brightness), texture_color.a), end_tint);
 	}
- 
 	
-	ivec2 size = textureSize(pattern_texture,  0);
-	if(size.x < 5)
-	return texture_color;
-
 	return final_color;
 }
 
@@ -105,8 +104,7 @@ void vertex() {
 void fragment() {
 	vec4 texture_color = texture(TEXTURE, UV);
 	vec4 exchanged_gradient = exchange_color_gradient(texture_color);
-
-
 	vec4 overlayed_pattern = pattern_overlay(exchanged_gradient);
+	
 	COLOR = overlayed_pattern;
 }
