@@ -1,19 +1,18 @@
 extends StaticBody2D
 
 
-const BREAK_ANIMATION = "break"
+func took_fire_damage(source):
+	var animation_name = "break_right"
+	if source.global_position.x > %CollisionShape2D.global_position.x:
+		animation_name = "break_left"
 
-
-func _ready():
-	%AnimationPlayer.animation_finished.connect(delete)
-
-
-func took_fire_damage(_source):
 	%CollisionShape2D.disabled = true
-	%AnimationPlayer.play(BREAK_ANIMATION)
+	%TakeDamageArea.monitorable = false
+	%TakeDamageArea.monitoring = false
 
+	%AudioStreamPlayer2D.play()
+	%AnimatedSprite2D.play(animation_name)
 
-func delete(animation_name):
-	if animation_name != BREAK_ANIMATION: return
+	await %AnimatedSprite2D.animation_finished
 
 	queue_free()
