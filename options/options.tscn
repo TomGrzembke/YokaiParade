@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://options/options.gd" id="1_c48yv"]
 [ext_resource type="Texture2D" uid="uid://c3i6sr0g87h2b" path="res://ui/ui_panel_horimain.png" id="2_d7f8b"]
 [ext_resource type="Texture2D" uid="uid://ck7yd2b51exe3" path="res://ui/ui_panel_horibottom.png" id="3_bf6v8"]
-[ext_resource type="Texture2D" uid="uid://byoa2xpuaro8g" path="res://ui/UI_Controls_Controller.png" id="3_m7fsm"]
+[ext_resource type="Texture2D" uid="uid://cwvx7x2akvm35" path="res://ui/ui_controls_controller.png" id="3_jg2bf"]
 [ext_resource type="Texture2D" uid="uid://de8n4chrqn73o" path="res://ui/ui_panel_horitop.png" id="4_bvb6k"]
-[ext_resource type="Texture2D" uid="uid://cvcpym3grnxa6" path="res://ui/UI_Controls_keyboard.png" id="4_i05pu"]
+[ext_resource type="Texture2D" uid="uid://ccwi7avw2apse" path="res://ui/ui_controls_keyboard.png" id="4_e2u6s"]
 [ext_resource type="Texture2D" uid="uid://b7bu0g5d2kfpc" path="res://ui/ui_panel_deco.png" id="5_c7ss1"]
 [ext_resource type="Script" path="res://ui/custom_controls/slider_focus_on_hover.gd" id="5_kto3a"]
 [ext_resource type="AudioStream" uid="uid://djqvbt1j40cgp" path="res://sounds/enemy_kick.wav" id="6_rr6gf"]
@@ -107,6 +107,12 @@ layout_mode = 2
 text = "Options"
 horizontal_alignment = 1
 
+[node name="AudioLabel2" type="Label" parent="MainPanel/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+text = "controls"
+horizontal_alignment = 1
+
 [node name="ControlsHBoxContainer" type="HBoxContainer" parent="MainPanel/PanelContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -115,14 +121,14 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture = ExtResource("3_m7fsm")
+texture = ExtResource("3_jg2bf")
 stretch_mode = 3
 
 [node name="UiControlsKeyboard" type="TextureRect" parent="MainPanel/PanelContainer/VBoxContainer/ControlsHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture = ExtResource("4_i05pu")
+texture = ExtResource("4_e2u6s")
 
 [node name="AudioLabel" type="Label" parent="MainPanel/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -190,13 +196,17 @@ max_value = 1.0
 step = 0.05
 script = ExtResource("5_kto3a")
 
-[node name="FullscreenLabel" type="Label" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="FullscreenLabel" type="Label" parent="MainPanel/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"SubHeadingLabel"
 text = "Fullscreen"
 horizontal_alignment = 2
 
-[node name="FullscreenCheckBox" type="CheckBox" parent="MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer"]
+[node name="FullscreenCheckBox" type="CheckBox" parent="MainPanel/PanelContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("6_uxoii")
