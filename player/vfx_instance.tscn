@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://lbun5m4epu5r" path="res://assets/vfx/vfx_animation_character.png" id="2_yam44"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmtn4"]
-size = Vector2(189, 55)
+size = Vector2(52, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kmuem"]
 atlas = ExtResource("2_yam44")
@@ -52,7 +52,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"absorb",
-"speed": 8.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 3.0,
@@ -78,11 +78,12 @@ animations = [{
 script = ExtResource("1_ul387")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-collision_layer = 16
+collision_layer = 0
 lock_rotation = true
+freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(0, 27.5)
+position = Vector2(0, 28.5)
 shape = SubResource("RectangleShape2D_lmtn4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
