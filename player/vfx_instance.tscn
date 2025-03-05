@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://h3ruips3t7l8"]
+[gd_scene load_steps=13 format=3 uid="uid://h3ruips3t7l8"]
 
 [ext_resource type="Material" uid="uid://c68p80bnif4bc" path="res://assets/vfx/player_vfx.tres" id="1_awcbs"]
 [ext_resource type="Script" path="res://player/vfx_instance.gd" id="1_ul387"]
@@ -6,6 +6,22 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmtn4"]
 size = Vector2(189, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmuem"]
+atlas = ExtResource("2_yam44")
+region = Rect2(0, 1200, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr74a"]
+atlas = ExtResource("2_yam44")
+region = Rect2(200, 1200, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iinel"]
+atlas = ExtResource("2_yam44")
+region = Rect2(400, 1200, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vg6pf"]
+atlas = ExtResource("2_yam44")
+region = Rect2(600, 1200, 200, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrwa6"]
 atlas = ExtResource("2_yam44")
@@ -21,7 +37,19 @@ region = Rect2(400, 1080, 200, 120)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3awqp"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmuem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr74a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iinel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vg6pf")
+}],
 "loop": false,
 "name": &"absorb",
 "speed": 8.0
@@ -61,6 +89,8 @@ shape = SubResource("RectangleShape2D_lmtn4")
 z_index = 1
 material = ExtResource("1_awcbs")
 sprite_frames = SubResource("SpriteFrames_3awqp")
-animation = &"land"
+animation = &"absorb"
+frame = 3
+frame_progress = 1.0
 
 [connection signal="animation_finished" from="RigidBody2D/AnimatedSprite2D" to="." method="on_animation_finished"]

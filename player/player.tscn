@@ -76,7 +76,7 @@ hit_grace_time = 0.27
 hit_queue_time = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -43)
+position = Vector2(0, -34)
 shape = SubResource("CapsuleShape2D_1mi2e")
 
 [node name="DealDamageArea" parent="." instance=ExtResource("4_cn11c")]
@@ -151,3 +151,4 @@ trail_points_max = 300
 [connection signal="deal_damage_area_exited" from="DealDamageArea" to="Abilities" method="on_deal_damage_area_exited"]
 
 [editable path="PlayerAnimatables"]
+[editable path="PlayerAnimatables/VfxInstance"]
