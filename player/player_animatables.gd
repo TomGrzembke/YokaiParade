@@ -55,7 +55,7 @@ func on_ability(current_ability):
 		state_machine.start("dash")
 	elif current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.AIR:
 		state_machine.start("jump")
-		spawn_vfx("jump", true, false)
+		spawn_vfx("jump", true, true)
 
 
 func spawn_vfx(anim_name, emit_in_global, freeze_physics):

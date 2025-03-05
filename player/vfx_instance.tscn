@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://lbun5m4epu5r" path="res://assets/vfx/vfx_animation_character.png" id="2_yam44"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmtn4"]
-size = Vector2(189, 60)
+size = Vector2(189, 55)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrwa6"]
 atlas = ExtResource("2_yam44")
@@ -54,7 +54,7 @@ collision_layer = 16
 lock_rotation = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(0, 30)
+position = Vector2(0, 27.5)
 shape = SubResource("RectangleShape2D_lmtn4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
