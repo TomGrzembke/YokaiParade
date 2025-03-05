@@ -44,7 +44,6 @@ const INFINITY = 1e20
 @onready var has_air_target_ray: RayCast2D = $HasAirTargetRay
 @onready var can_edge_detect_ray: RayCast2D = $CanEdgeCorrectRay
 
-
 var coyote_timer = 0.15
 var jump_buffer_timer = 0.0
 

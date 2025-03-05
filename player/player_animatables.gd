@@ -28,10 +28,10 @@ func _ready():
 	abilities.player_hits.connect(func(): state_machine.start("hit"))
 	abilities.used_ability.connect(on_ability)
 	abilities.ability_changed.connect(on_pickup)
-	player.player_reached_goal.connect(func(): state_machine.start("dying"))
+	player.player_reached_goal.connect(func(): state_machine.start("celebration"))
+	#player.player_reached_goal.connect(func(): state_machine.start("dying"))
 
 	player.player_despawned.connect(func(): state_machine.start("dying"))
-	player.player_reached_goal.connect(func(): state_machine.start("celebration"))
 
 	sort_dictionary_descending()
 
@@ -55,15 +55,17 @@ func on_ability(current_ability):
 		state_machine.start("dash")
 	elif current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.AIR:
 		state_machine.start("jump")
-		spawn_vfx("jump")
+		spawn_vfx("jump", true, true)
 
 
-func spawn_vfx(anim_name):
+func spawn_vfx(anim_name, emit_in_global, freeze_physics):
 	var vfx = vfx_instance.instantiate()
-	vfx.position = position
 	add_child(vfx)
-	if vfx.has_method("play"): vfx.play(anim_name)
-	vfx.reparent(get_tree().root)
+	if vfx.has_method("play"): vfx.play(anim_name, emit_in_global, freeze_physics)
+
+
+func land():
+	spawn_vfx("land", true, false)
 
 
 func on_pickup(color):

@@ -1,8 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://h3ruips3t7l8"]
+[gd_scene load_steps=13 format=3 uid="uid://h3ruips3t7l8"]
 
 [ext_resource type="Material" uid="uid://c68p80bnif4bc" path="res://assets/vfx/player_vfx.tres" id="1_awcbs"]
 [ext_resource type="Script" path="res://player/vfx_instance.gd" id="1_ul387"]
 [ext_resource type="Texture2D" uid="uid://lbun5m4epu5r" path="res://assets/vfx/vfx_animation_character.png" id="2_yam44"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmtn4"]
+size = Vector2(189, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmuem"]
+atlas = ExtResource("2_yam44")
+region = Rect2(0, 1200, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr74a"]
+atlas = ExtResource("2_yam44")
+region = Rect2(200, 1200, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iinel"]
+atlas = ExtResource("2_yam44")
+region = Rect2(400, 1200, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vg6pf"]
+atlas = ExtResource("2_yam44")
+region = Rect2(600, 1200, 200, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrwa6"]
 atlas = ExtResource("2_yam44")
@@ -18,7 +37,19 @@ region = Rect2(400, 1080, 200, 120)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3awqp"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmuem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr74a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iinel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vg6pf")
+}],
 "loop": false,
 "name": &"absorb",
 "speed": 8.0
@@ -32,7 +63,7 @@ animations = [{
 "speed": 8.0
 }, {
 "frames": [{
-"duration": 13.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_ign40")
 }, {
 "duration": 1.0,
@@ -44,15 +75,22 @@ animations = [{
 }]
 
 [node name="VfxInstance" type="Node2D"]
-material = ExtResource("1_awcbs")
-scale = Vector2(1.44, 1.44)
 script = ExtResource("1_ul387")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 1
-use_parent_material = true
-position = Vector2(0, 13.8889)
-sprite_frames = SubResource("SpriteFrames_3awqp")
-animation = &"land"
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 16
+lock_rotation = true
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="on_animation_finished"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, 27.5)
+shape = SubResource("RectangleShape2D_lmtn4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+z_index = 1
+material = ExtResource("1_awcbs")
+sprite_frames = SubResource("SpriteFrames_3awqp")
+animation = &"absorb"
+frame = 3
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="RigidBody2D/AnimatedSprite2D" to="." method="on_animation_finished"]

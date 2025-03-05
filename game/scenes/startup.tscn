@@ -266,6 +266,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/LogoTeam"]
 layout_mode = 1
@@ -293,6 +294,8 @@ theme_override_constants/margin_top = 20
 [node name="Label" type="Label" parent="CanvasLayer/LogoTeam/CenterContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0784314, 0.0980392, 0.960784, 1)
+theme_override_colors/font_outline_color = Color(0.870588, 0.776471, 0.870588, 1)
+theme_override_constants/outline_size = 15
 text = "Pretentious Possums
 present"
 horizontal_alignment = 1

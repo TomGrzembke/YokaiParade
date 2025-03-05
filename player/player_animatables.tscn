@@ -430,17 +430,19 @@ tracks/1/keys = {
 "update": 0,
 "values": [36, 37]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerAnimatables/VfxAnimationCharacter:frame")
+tracks/2/path = NodePath("PlayerAnimatables")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0971445),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [37, 38]
+"times": PackedFloat32Array(0.00129042),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"land"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_cmshr"]
@@ -682,7 +684,7 @@ states/no_ability_hit/position = Vector2(60, -103)
 states/walking/node = SubResource("AnimationNodeAnimation_l41dg")
 states/walking/position = Vector2(436, -18)
 transitions = ["Start", "idling", SubResource("AnimationNodeStateMachineTransition_i4wgy"), "idling", "walking", SubResource("AnimationNodeStateMachineTransition_egflg"), "walking", "idling", SubResource("AnimationNodeStateMachineTransition_1r4x0"), "walking", "jump", SubResource("AnimationNodeStateMachineTransition_87uy6"), "idling", "jump", SubResource("AnimationNodeStateMachineTransition_p4mgk"), "landing", "idling", SubResource("AnimationNodeStateMachineTransition_71yb5"), "jump", "falling", SubResource("AnimationNodeStateMachineTransition_dyay8"), "falling", "landing", SubResource("AnimationNodeStateMachineTransition_gvbew"), "falling", "jump", SubResource("AnimationNodeStateMachineTransition_in6c8"), "dash", "falling", SubResource("AnimationNodeStateMachineTransition_s3chn"), "got_hit", "falling", SubResource("AnimationNodeStateMachineTransition_kpurb"), "hit", "idling", SubResource("AnimationNodeStateMachineTransition_ebmfl"), "jump", "landing", SubResource("AnimationNodeStateMachineTransition_5yhxo"), "idling2", "walking", SubResource("AnimationNodeStateMachineTransition_0gbqa"), "idling3", "walking", SubResource("AnimationNodeStateMachineTransition_3olmi"), "idling4", "walking", SubResource("AnimationNodeStateMachineTransition_874ca"), "no_ability_hit", "idling", SubResource("AnimationNodeStateMachineTransition_8s21v"), "celebration", "idling", SubResource("AnimationNodeStateMachineTransition_kii8v")]
-graph_offset = Vector2(-265, -250)
+graph_offset = Vector2(-358, -257)
 
 [node name="PlayerAnimatables" type="Node2D"]
 script = ExtResource("1_japyu")
@@ -697,17 +699,16 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("4_f7hvb")
 offset = Vector2(972.5, -99.1667)
 hframes = 4
-vframes = 10
+vframes = 11
 frame = 4
 
 [node name="Player" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_n0aer")
-position = Vector2(1, -9)
 texture = ExtResource("1_wuri4")
 hframes = 4
 vframes = 12
-frame = 11
+frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
@@ -725,4 +726,9 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"
 
+[node name="VfxInstance" parent="." instance=ExtResource("5_av5c8")]
+visible = false
+
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_finished"]
+
+[editable path="VfxInstance"]
