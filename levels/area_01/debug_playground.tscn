@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://chw071c302k1s"]
+[gd_scene load_steps=19 format=4 uid="uid://chw071c302k1s"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5yuc3"]
 [ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/modules/goal.tscn" id="2_12oxi"]
@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://tvyt8dx4csl5" path="res://enemies/types/enemy_element_type_air.tres" id="4_bqem7"]
 [ext_resource type="Resource" uid="uid://be56k4m11w44j" path="res://enemies/types/enemy_element_type_fire.tres" id="5_spnqd"]
 [ext_resource type="PackedScene" uid="uid://bll3xc6lvwc5" path="res://enemies/enemy_airborne.tscn" id="6_tj8ky"]
-[ext_resource type="Texture2D" uid="uid://61orpbtks2al" path="res://assets/signs/p_sign_keyboardattack.png" id="11_ftw14"]
 [ext_resource type="Texture2D" uid="uid://bjfc5fcaaujsb" path="res://assets/signs/p_sign_keyboarduseair.png" id="12_etfgi"]
 [ext_resource type="Texture2D" uid="uid://dpupbyyq251qm" path="res://assets/signs/p_sign_keyboardusefire.png" id="13_d6fcy"]
 [ext_resource type="PackedScene" uid="uid://cijdb50pj3jc7" path="res://levels/modules/despawn_area.tscn" id="14_20vgg"]
@@ -220,10 +219,6 @@ initial_state = 200
 element_type = ExtResource("5_spnqd")
 
 [node name="Controls_Signs" type="Node2D" parent="."]
-
-[node name="Attack_sign" type="Sprite2D" parent="Controls_Signs"]
-position = Vector2(3685, 557)
-texture = ExtResource("11_ftw14")
 
 [node name="DoubleJump_sign" type="Sprite2D" parent="Controls_Signs"]
 position = Vector2(4370, 558)

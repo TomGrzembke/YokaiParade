@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://coi8ugqglvv5u"
-path="res://.godot/imported/p_sign_controllerjmpshort.png-36975c582173a2e2e93c99a992688dc7.ctex"
+path="res://.godot/imported/p_sign_controllerjumpshort.png-ecb8c39bbd48e76f532149cb7501e9e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/signs/p_sign_controllerjmpshort.png"
-dest_files=["res://.godot/imported/p_sign_controllerjmpshort.png-36975c582173a2e2e93c99a992688dc7.ctex"]
+source_file="res://assets/signs/p_sign_controllerjumpshort.png"
+dest_files=["res://.godot/imported/p_sign_controllerjumpshort.png-ecb8c39bbd48e76f532149cb7501e9e5.ctex"]
 
 [params]
 
