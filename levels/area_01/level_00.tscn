@@ -1,26 +1,30 @@
-[gd_scene load_steps=23 format=4 uid="uid://bllds58nj1vyh"]
+[gd_scene load_steps=27 format=4 uid="uid://bllds58nj1vyh"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_vx1lh"]
 [ext_resource type="PackedScene" uid="uid://bomxlv8ndomnc" path="res://enemies/enemy_grounded.tscn" id="2_k5gev"]
 [ext_resource type="Resource" uid="uid://tvyt8dx4csl5" path="res://enemies/types/enemy_element_type_air.tres" id="3_lrn1s"]
 [ext_resource type="Resource" uid="uid://be56k4m11w44j" path="res://enemies/types/enemy_element_type_fire.tres" id="4_f34p5"]
 [ext_resource type="PackedScene" uid="uid://bll3xc6lvwc5" path="res://enemies/enemy_airborne.tscn" id="5_kt7br"]
-[ext_resource type="Texture2D" uid="uid://das1j75r1h4t" path="res://assets/signs/p_sign_keyboardleftright.png" id="6_p0bpm"]
-[ext_resource type="Texture2D" uid="uid://bhldpe8filivy" path="res://assets/signs/p_sign_keyboardjumpshort.png" id="7_bvrmb"]
-[ext_resource type="Script" path="res://assets/signs/exchangable_sign.gd" id="7_rcvfa"]
+[ext_resource type="PackedScene" path="res://assets/signs/control_sign.tscn" id="6_mmdxv"]
+[ext_resource type="Texture2D" uid="uid://bhldpe8filivy" path="res://assets/signs/p_sign_keyboardjumpshort.png" id="7_yh7xr"]
+[ext_resource type="Texture2D" uid="uid://coi8ugqglvv5u" path="res://assets/signs/p_sign_controllerjumpshort.png" id="8_b3dpd"]
 [ext_resource type="Texture2D" uid="uid://df8gaqo3luqc1" path="res://assets/signs/p_sign_keyboardjumplong.png" id="8_gdrju"]
-[ext_resource type="Texture2D" uid="uid://dqgof1y6y8jv1" path="res://assets/signs/p_sign_controllerleftright.png" id="8_tdnop"]
-[ext_resource type="Texture2D" uid="uid://61orpbtks2al" path="res://assets/signs/p_sign_keyboardattack.png" id="9_fqvf2"]
 [ext_resource type="Texture2D" uid="uid://bjfc5fcaaujsb" path="res://assets/signs/p_sign_keyboarduseair.png" id="10_ayddn"]
+[ext_resource type="Texture2D" uid="uid://brwq2oe463ap3" path="res://assets/signs/p_sign_controllerjumplong.png" id="10_qud1e"]
+[ext_resource type="Texture2D" uid="uid://votvlodcxbcr" path="res://assets/signs/p_sign_keyboardattackfire.png" id="11_34rrk"]
 [ext_resource type="Texture2D" uid="uid://dpupbyyq251qm" path="res://assets/signs/p_sign_keyboardusefire.png" id="11_bn4d5"]
+[ext_resource type="Texture2D" uid="uid://diqtg4e0rrxo0" path="res://assets/signs/p_sign_controllerattackfire.png" id="12_bcb5q"]
 [ext_resource type="PackedScene" uid="uid://cijdb50pj3jc7" path="res://levels/modules/despawn_area.tscn" id="12_corae"]
 [ext_resource type="PackedScene" uid="uid://c8mxwfqxutdoi" path="res://levels/area_01/area_1_backgrounds.tscn" id="13_poah6"]
+[ext_resource type="Texture2D" uid="uid://dxpa74q5wj6gj" path="res://assets/signs/p_sign_keyboardattackair.png" id="13_swkv1"]
+[ext_resource type="Texture2D" uid="uid://bgxraqdhjv10a" path="res://assets/signs/p_sign_controllerattackair.png" id="14_447da"]
 [ext_resource type="Material" uid="uid://wyxyitttdya3" path="res://shader/TilemapShader.tres" id="14_jolra"]
 [ext_resource type="TileSet" uid="uid://b4k5ayqgk5hiq" path="res://levels/area_01/assets/decoration_tileset_area_01.tres" id="14_reit7"]
 [ext_resource type="TileSet" uid="uid://4v2t32qfx3hb" path="res://levels/area_01/assets/tileset_area_01.tres" id="15_4fppq"]
 [ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/modules/player_spawn_point.tscn" id="16_riu0e"]
-[ext_resource type="Material" uid="uid://td4fx63dfxad" path="res://shader/mountain_pattern2.tres" id="17_soat7"]
-[ext_resource type="Texture2D" uid="uid://c5frpar7yqfe2" path="res://levels/area_01/assets/mountains_spritesheet.png" id="18_jpa5m"]
+[ext_resource type="Texture2D" uid="uid://chl3v23uvjvpm" path="res://assets/signs/p_sign_controllerusefire.png" id="16_rlxis"]
+[ext_resource type="Texture2D" uid="uid://byxc1err51yh0" path="res://assets/signs/p_sign_controlleruseair.png" id="18_xc5u8"]
+[ext_resource type="PackedScene" uid="uid://dteyua7jnwy11" path="res://levels/area_01/giant_mountains_start.tscn" id="22_a1smv"]
 
 [sub_resource type="Curve2D" id="Curve2D_j4ig6"]
 _data = {
@@ -81,37 +85,37 @@ element_type = ExtResource("3_lrn1s")
 
 [node name="Controls_Signs" type="Node2D" parent="."]
 
-[node name="Movement_sign" type="Sprite2D" parent="Controls_Signs"]
-position = Vector2(567, 961.625)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_p0bpm")
-script = ExtResource("7_rcvfa")
-controller_variant = ExtResource("8_tdnop")
+[node name="Movement_sign" parent="Controls_Signs" instance=ExtResource("6_mmdxv")]
 
-[node name="ShortJump_sign" type="Sprite2D" parent="Controls_Signs"]
-position = Vector2(1575, 891)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("7_bvrmb")
+[node name="Shortjump_sign" parent="Controls_Signs" instance=ExtResource("6_mmdxv")]
+position = Vector2(1557, 890)
+texture = ExtResource("7_yh7xr")
+controller_variant = ExtResource("8_b3dpd")
 
-[node name="LongJump_sign" type="Sprite2D" parent="Controls_Signs"]
-position = Vector2(2465, 801.625)
-scale = Vector2(0.75, 0.75)
+[node name="Longjump_sign" parent="Controls_Signs" instance=ExtResource("6_mmdxv")]
+position = Vector2(2445, 813)
 texture = ExtResource("8_gdrju")
+controller_variant = ExtResource("10_qud1e")
 
-[node name="Attack_sign" type="Sprite2D" parent="Controls_Signs"]
-position = Vector2(3685, 520.625)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("9_fqvf2")
+[node name="AttackFire_sign" parent="Controls_Signs" instance=ExtResource("6_mmdxv")]
+position = Vector2(3681, 534)
+texture = ExtResource("11_34rrk")
+controller_variant = ExtResource("12_bcb5q")
 
-[node name="DoubleJump_sign" type="Sprite2D" parent="Controls_Signs"]
-position = Vector2(7980, 364.625)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("10_ayddn")
+[node name="AttackAir_sign" parent="Controls_Signs" instance=ExtResource("6_mmdxv")]
+position = Vector2(7416, 373)
+texture = ExtResource("13_swkv1")
+controller_variant = ExtResource("14_447da")
 
-[node name="Dash_sign" type="Sprite2D" parent="Controls_Signs"]
-position = Vector2(4374, 525.625)
-scale = Vector2(0.75, 0.75)
+[node name="Dash_sign" parent="Controls_Signs" instance=ExtResource("6_mmdxv")]
+position = Vector2(4374, 526)
 texture = ExtResource("11_bn4d5")
+controller_variant = ExtResource("16_rlxis")
+
+[node name="Doublejump_sign" parent="Controls_Signs" instance=ExtResource("6_mmdxv")]
+position = Vector2(7980, 377)
+texture = ExtResource("10_ayddn")
+controller_variant = ExtResource("18_xc5u8")
 
 [node name="Deathzones" type="Node2D" parent="."]
 
@@ -132,33 +136,10 @@ metadata/_edit_lock_ = true
 
 [node name="TileMapBackground" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray("AAALAEIAAAAXACEAAAAOAEEAAAAkACgAAAAiAEYAAAAAAGoAAAAMAEcAAAAAAF4AAABIADcAAAAAAAAAABBKAEcAAAAAAFIAABBCAEcAAAAAAF4AABBQAEcAAAAAAFIAABBNAEEAAAAtAAIAAACHADUAAAA1AAkAAAB0ADwAAAAUACYAABByADwAAAAkACgAAADNADYAAAAlAAYAAADNADwAAAAAAF4AAACqAD0AAAAAAGoAAADcACwAAAAAAGoAABALASsAAAAAAGoAAADDADgAAAAXACEAAAC/ADcAAAAUACYAABC1AC0AAAAkACgAAAC3AC0AAAAkACgAABDdACQAAAA1AAkAAACIASUAAAArAAYAAACFASYAAAAwAAgAAACPASYAAAAlACQAAABNASsAAAAAAGoAAAA4ASQAAAA1AAkAAABBASYAAAAkACgAABAWASYAAAAwAAgAAAB4ASYAAAAUACYAABB9ASYAAAAXACEAABB7ASUAAAAkACgAAABcAR4AAAAtAAIAAACpARYAAAA0ABEAAACpARsAAAArAAYAAACfASEAAAAAAGoAAAB9ASwAAAAAAGoAAAAoASsAAAAAAF4AAADyACwAAAAAAF4AABBlASsAAAAAAF4AAAC3ASEAAAAAAF4AAABZAR4AAAAkAAIAABAYAv7/AAAAAAAAAAAZAg4AAAAAAF4AAAAPAg4AAAAAAF4AAAASAggAAAAtAAIAABAOAggAAAAkAAIAAAAHAhsAAAAUACYAABAEAhwAAAAUACYAABD8ARwAAAAtAAIAAADLARoAAAA1AAkAABDCARwAAAAlACQAAADdASEAAAAAAGoAAAD1ASEAAAAAAFIAABA9AisAAAAAAGoAABAlAggAAAAtAAIAAAB6AiQAAAA1AAkAAACGAiYAAAAlACQAAACGAiQAAAAkACgAAACDAiYAAAAkACgAABBgAisAAAAAAGoAAACPAg4AAAAAAF4AAACxAg4AAAAAAFIAABBjAg4AAAAAAFIAABDZAgYAAAA1AAkAABDlAggAAAAkACgAABA8AiUAAAAlAAYAAAA5AiUAAAArAAYAAABSAiYAAAAUACYAAABOAiYAAAAXACEAABBRAiQAAAAkACgAAACRAggAAAAUACYAAACNAggAAAAXACEAABDjAg4AAAAAAFIAABDRAg4AAAAAAFIAABAFAw0AAAAAAGoAAAAZAw0AAAAAAFIAABAzAxYAAAAAAF4AABAeAw8AAAAUACYAAAAgAw8AAAAkACgAABBLAxUAAAA1AAkAAABgAx0AAAAAAGoAAAB9Ax0AAAAAAF4AAACtAwgAAAAAAGoAAACaAx0AAAAAAFIAAACTAx0AAAAAAFIAABCBAxcAAAAkAAIAAAB/AxcAAAAkAAIAAAB8AxcAAAAtAAIAAAA8AxYAAAAkACgAAABzAxcAAAAXACEAAABvAxcAAAAUACYAABB7AwUAAAAAAF4AAAAyAwgAAAAAAF4AAAAxAg0AAAAAAFIAAACzAggAAAAXACEAAACwAggAAAAlACQAAACmAggAAAAwAAgAAAAJAwgAAAAUACYAAAALAwgAAAAkACgAAAARAwkAAAAkAAIAAAA=")
+tile_map_data = PackedByteArray("AAALAEIAAAAXACEAAAAOAEEAAAAkACgAAAAiAEYAAAAAAGoAAAAMAEcAAAAAAF4AAABIADcAAAAAAAAAABBKAEcAAAAAAFIAABBCAEcAAAAAAF4AABBQAEcAAAAAAFIAABBNAEEAAAAtAAIAAACHADUAAAA1AAkAAAB0ADwAAAAUACYAABByADwAAAAkACgAAADNADYAAAAlAAYAAADNADwAAAAAAF4AAACqAD0AAAAAAGoAAADcACwAAAAAAGoAABALASsAAAAAAGoAAADDADgAAAAXACEAAAC/ADcAAAAUACYAABC1AC0AAAAkACgAAAC3AC0AAAAkACgAABDdACQAAAA1AAkAAACIASUAAAArAAYAAACFASYAAAAwAAgAAACPASYAAAAlACQAAABNASsAAAAAAGoAAAA4ASQAAAA1AAkAAABBASYAAAAkACgAABAWASYAAAAwAAgAAAB4ASYAAAAUACYAABB9ASYAAAAXACEAABB7ASUAAAAkACgAAABcAR4AAAAtAAIAAACfASEAAAAAAGoAAAB9ASwAAAAAAGoAAAAoASsAAAAAAF4AAADyACwAAAAAAF4AABBlASsAAAAAAF4AAAC3ASEAAAAAAF4AAABZAR4AAAAkAAIAABAYAv7/AAAAAAAAAAAZAg4AAAAAAF4AAAAPAg4AAAAAAF4AAAASAggAAAAtAAIAABAOAggAAAAkAAIAAAAHAhsAAAAUACYAABAEAhwAAAAUACYAABD8ARwAAAAtAAIAAADdASEAAAAAAGoAAAD1ASEAAAAAAFIAABA9AisAAAAAAGoAABAlAggAAAAtAAIAAAB6AiQAAAA1AAkAAACGAiYAAAAlACQAAACGAiQAAAAkACgAAACDAiYAAAAkACgAABBgAisAAAAAAGoAAACPAg4AAAAAAF4AAACxAg4AAAAAAFIAABBjAg4AAAAAAFIAABDZAgYAAAA1AAkAABDlAggAAAAkACgAABA8AiUAAAAlAAYAAAA5AiUAAAArAAYAAABSAiYAAAAUACYAAABOAiYAAAAXACEAABBRAiQAAAAkACgAAACRAggAAAAUACYAAACNAggAAAAXACEAABDjAg4AAAAAAFIAABDRAg4AAAAAAFIAABAFAw0AAAAAAGoAAAAZAw0AAAAAAFIAABAzAxYAAAAAAF4AABAeAw8AAAAUACYAAAAgAw8AAAAkACgAABBLAxUAAAA1AAkAAABgAx0AAAAAAGoAAAB9Ax0AAAAAAF4AAACtAwgAAAAAAGoAAACaAx0AAAAAAFIAAACTAx0AAAAAAFIAABCBAxcAAAAkAAIAAAB/AxcAAAAkAAIAAAB8AxcAAAAtAAIAAAA8AxYAAAAkACgAAABzAxcAAAAXACEAAABvAxcAAAAUACYAABB7AwUAAAAAAF4AAAAyAwgAAAAAAF4AAAAxAg0AAAAAAFIAAACzAggAAAAXACEAAACwAggAAAAlACQAAACmAggAAAAwAAgAAAAJAwgAAAAUACYAAAALAwgAAAAkACgAAAARAwkAAAAkAAIAAACjARYAAAA0ABEAAACjARsAAAArAAYAAAC0ARwAAAAlACQAAAC9ARoAAAA1AAkAABA=")
 tile_set = ExtResource("14_reit7")
 
-[node name="GiantMountain" type="Sprite2D" parent="TileMapBackground"]
-material = ExtResource("17_soat7")
-position = Vector2(-202.004, 1016.05)
-scale = Vector2(2.06761, 2.06761)
-texture = ExtResource("18_jpa5m")
-hframes = 4
-vframes = 3
-
-[node name="GiantMountain1" type="Sprite2D" parent="TileMapBackground"]
-material = ExtResource("17_soat7")
-position = Vector2(-907.004, 1311.05)
-scale = Vector2(1.99777, 1.99777)
-texture = ExtResource("18_jpa5m")
-region_enabled = true
-region_rect = Rect2(1039.51, 254.247, 902.831, 606.821)
-
-[node name="GiantMountain2" type="Sprite2D" parent="TileMapBackground"]
-material = ExtResource("17_soat7")
-position = Vector2(-217.004, 1565.05)
-scale = Vector2(1.98913, 1.98913)
-texture = ExtResource("18_jpa5m")
-hframes = 4
-vframes = 3
-frame = 4
+[node name="GiantMountainsStart" parent="TileMapBackground" instance=ExtResource("22_a1smv")]
 
 [node name="GameplayTileMapLayer" type="TileMapLayer" parent="."]
 material = ExtResource("14_jolra")

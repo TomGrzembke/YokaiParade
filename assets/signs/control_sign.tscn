@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfo2kxh1sqjax"]
+
+[ext_resource type="Texture2D" uid="uid://das1j75r1h4t" path="res://assets/signs/p_sign_keyboardleftright.png" id="1_mi21x"]
+[ext_resource type="Script" path="res://assets/signs/exchangable_sign.gd" id="2_5sdm8"]
+[ext_resource type="Texture2D" uid="uid://dqgof1y6y8jv1" path="res://assets/signs/p_sign_controllerleftright.png" id="3_ykdw6"]
+
+[node name="Control_sign" type="Sprite2D"]
+position = Vector2(567, 961.625)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_mi21x")
+script = ExtResource("2_5sdm8")
+controller_variant = ExtResource("3_ykdw6")

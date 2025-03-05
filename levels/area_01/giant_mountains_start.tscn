@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dteyua7jnwy11"]
+
+[ext_resource type="Material" uid="uid://td4fx63dfxad" path="res://shader/mountain_pattern2.tres" id="1_5bejs"]
+[ext_resource type="Texture2D" uid="uid://c5frpar7yqfe2" path="res://levels/area_01/assets/mountains_spritesheet.png" id="2_k8x7w"]
+
+[node name="GiantMountainsStart" type="Node2D"]
+
+[node name="GiantMountain" type="Sprite2D" parent="."]
+material = ExtResource("1_5bejs")
+position = Vector2(-202.004, 1016.05)
+scale = Vector2(2.06761, 2.06761)
+texture = ExtResource("2_k8x7w")
+hframes = 4
+vframes = 3
+
+[node name="GiantMountain1" type="Sprite2D" parent="."]
+material = ExtResource("1_5bejs")
+position = Vector2(-907.004, 1311.05)
+scale = Vector2(1.99777, 1.99777)
+texture = ExtResource("2_k8x7w")
+region_enabled = true
+region_rect = Rect2(1039.51, 254.247, 902.831, 606.821)
+
+[node name="GiantMountain2" type="Sprite2D" parent="."]
+material = ExtResource("1_5bejs")
+position = Vector2(-217.004, 1565.05)
+scale = Vector2(1.98913, 1.98913)
+texture = ExtResource("2_k8x7w")
+hframes = 4
+vframes = 3
+frame = 4

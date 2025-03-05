@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://n0cyvaeyik24"]
+[gd_scene load_steps=16 format=4 uid="uid://n0cyvaeyik24"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_1hebm"]
 [ext_resource type="PackedScene" uid="uid://bll3xc6lvwc5" path="res://enemies/enemy_airborne.tscn" id="5_bw4o2"]
 [ext_resource type="PackedScene" uid="uid://bomxlv8ndomnc" path="res://enemies/enemy_grounded.tscn" id="8_d6tq4"]
+[ext_resource type="TileSet" uid="uid://b4k5ayqgk5hiq" path="res://levels/area_01/assets/decoration_tileset_area_01.tres" id="8_xv74f"]
 [ext_resource type="PackedScene" uid="uid://c8mxwfqxutdoi" path="res://levels/area_01/area_1_backgrounds.tscn" id="9_8t6st"]
 [ext_resource type="Resource" uid="uid://tvyt8dx4csl5" path="res://enemies/types/enemy_element_type_air.tres" id="9_mevgi"]
 [ext_resource type="Resource" uid="uid://be56k4m11w44j" path="res://enemies/types/enemy_element_type_fire.tres" id="10_o7ka8"]
@@ -416,9 +417,6 @@ curve = SubResource("Curve2D_5q0cv")
 position = Vector2(14163, 1125)
 element_type = ExtResource("10_o7ka8")
 
-[node name="Area1Backgrounds" parent="." instance=ExtResource("9_8t6st")]
-metadata/_edit_lock_ = true
-
 [node name="Deathzones" type="Node2D" parent="."]
 position = Vector2(2597, 0)
 
@@ -446,6 +444,13 @@ scale = Vector2(4.56001, 1)
 position = Vector2(20988, 413)
 scale = Vector2(44.44, 1)
 
+[node name="Area1Backgrounds" parent="." instance=ExtResource("9_8t6st")]
+metadata/_edit_lock_ = true
+
+[node name="TileMapBackground" type="TileMapLayer" parent="."]
+z_index = -1
+tile_set = ExtResource("8_xv74f")
+
 [node name="GameplayTileMapLayer" type="TileMapLayer" parent="."]
 material = ExtResource("11_8v1uk")
 position = Vector2(2597, 149)
@@ -454,3 +459,11 @@ tile_set = ExtResource("18_nyflo")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("19_1e57h")]
 position = Vector2(-2962, 1309)
+
+[connection signal="area_entered" from="GameplayTileMapLayer/Checkpoint" to="GameplayTileMapLayer/Checkpoint" method="on_checkpoint_area_entered"]
+[connection signal="body_entered" from="GameplayTileMapLayer/Checkpoint" to="GameplayTileMapLayer/Checkpoint" method="on_checkpoint_area_entered"]
+[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@66501" to="GameplayTileMapLayer/@Area2D@66501" method="on_checkpoint_area_entered"]
+[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@66501" to="GameplayTileMapLayer/@Area2D@66501" method="on_checkpoint_area_entered"]
+[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@66502" to="GameplayTileMapLayer/@Area2D@66502" method="on_checkpoint_area_entered"]
+[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@66502" to="GameplayTileMapLayer/@Area2D@66502" method="on_checkpoint_area_entered"]
+[connection signal="body_entered" from="GameplayTileMapLayer/Goal" to="GameplayTileMapLayer/Goal" method="on_body_entered"]
