@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://h3ruips3t7l8"]
+[gd_scene load_steps=15 format=3 uid="uid://h3ruips3t7l8"]
 
 [ext_resource type="Material" uid="uid://c68p80bnif4bc" path="res://assets/vfx/player_vfx.tres" id="1_awcbs"]
 [ext_resource type="Script" path="res://player/vfx_instance.gd" id="1_ul387"]
@@ -22,6 +22,14 @@ region = Rect2(400, 1200, 200, 120)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vg6pf"]
 atlas = ExtResource("2_yam44")
 region = Rect2(600, 1200, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tqf5"]
+atlas = ExtResource("2_yam44")
+region = Rect2(400, 840, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_risp0"]
+atlas = ExtResource("2_yam44")
+region = Rect2(600, 840, 200, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrwa6"]
 atlas = ExtResource("2_yam44")
@@ -53,6 +61,17 @@ animations = [{
 "loop": false,
 "name": &"absorb",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tqf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_risp0")
+}],
+"loop": false,
+"name": &"air_jump",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 3.0,
@@ -90,8 +109,6 @@ shape = SubResource("RectangleShape2D_lmtn4")
 z_index = 1
 material = ExtResource("1_awcbs")
 sprite_frames = SubResource("SpriteFrames_3awqp")
-animation = &"absorb"
-frame = 3
-frame_progress = 1.0
+animation = &"air_jump"
 
 [connection signal="animation_finished" from="RigidBody2D/AnimatedSprite2D" to="." method="on_animation_finished"]

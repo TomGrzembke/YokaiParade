@@ -697,7 +697,7 @@ material = ExtResource("2_xp0es")
 texture = ExtResource("4_f7hvb")
 hframes = 4
 vframes = 11
-frame = 4
+frame = 29
 region_rect = Rect2(692.748, 853.145, 150.645, 210.275)
 
 [node name="Player" type="Sprite2D" parent="."]
@@ -706,7 +706,7 @@ material = SubResource("ShaderMaterial_n0aer")
 texture = ExtResource("1_wuri4")
 hframes = 4
 vframes = 12
-frame = 8
+frame = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")

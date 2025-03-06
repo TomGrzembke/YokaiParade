@@ -1,7 +1,6 @@
 extends Node2D
 var anim_sprite
 var rigid_body
-var cached_position
 var freeze_physics
 
 func play(animation_name, emit_in_global = false, _freeze_physics = false):
@@ -10,9 +9,9 @@ func play(animation_name, emit_in_global = false, _freeze_physics = false):
 	anim_sprite.play(animation_name, 1.0, false)
 	if emit_in_global: call_deferred("to_root")
 
+	call_deferred("reset_rb")
 	freeze_physics = _freeze_physics
 	rigid_body.freeze = freeze_physics
-	cached_position = position
 
 
 func to_root():
@@ -20,13 +19,17 @@ func to_root():
 
 
 func _physics_process(_delta):
-	if scale.y == 1 && rotation == 0: return
-	if freeze_physics:
-		position = cached_position
-	scale.y = 1
-	rotation = 0
+	if scale.y == 1 && rotation == 0 && (rigid_body == null || rigid_body.rotation == 0): return
+
+	reset_rb()
 
 
 func on_animation_finished():
 	queue_free()
 	pass
+
+
+func reset_rb():
+	scale.y = 1
+	rotation = 0
+	rigid_body.rotation = 0

@@ -39,6 +39,7 @@ func subscribe_events():
 	player.player_despawned.connect(func(): state_machine.start("dying"))
 	player.player_despawned.connect(default_vfx)
 	player.on_reload.connect(default_vfx)
+	player.on_jump.connect(func(): spawn_vfx("jump", true, false))
 
 
 func _exit_tree():
@@ -68,7 +69,7 @@ func on_ability(current_ability):
 		state_machine.start("dash")
 	elif current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.AIR:
 		state_machine.start("jump")
-		spawn_vfx("jump", true, true)
+		spawn_vfx("air_jump", true, true)
 
 
 func spawn_vfx(anim_name, emit_in_global, freeze_physics):

@@ -5,6 +5,7 @@ signal player_despawned
 signal player_reached_checkpoint(position)
 signal player_reached_goal
 signal player_gets_pushed
+signal on_jump
 signal on_reload
 
 const INFINITY = 1e20
@@ -194,6 +195,7 @@ func jump_logic():
 	var can_jump = should_jump && is_on_floor() || can_use_coyote_time(should_jump)
 	if !can_jump: return
 
+	on_jump.emit()
 	local_velocity.y = -jump_velocity
 
 
