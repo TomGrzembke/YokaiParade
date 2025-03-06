@@ -93,7 +93,6 @@ func reset_vfx_conditionally():
 
 
 func default_vfx():
-	print("a")
 	shader_mat.set_shader_parameter("end_tint", COLOR_BLACK)
 
 
