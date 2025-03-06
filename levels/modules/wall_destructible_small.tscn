@@ -97,7 +97,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"break_left",
-"speed": 8.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -126,7 +126,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"break_right",
-"speed": 8.0
+"speed": 16.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kk5bv"]
