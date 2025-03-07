@@ -46,6 +46,14 @@ use_texture_padding = false
 0:94/0 = 0
 0:106/size_in_atlas = Vector2i(20, 10)
 0:106/0 = 0
+72:1/size_in_atlas = Vector2i(33, 32)
+72:1/0 = 0
+28:94/size_in_atlas = Vector2i(13, 10)
+28:94/0 = 0
+28:106/size_in_atlas = Vector2i(21, 10)
+28:106/0 = 0
+28:82/size_in_atlas = Vector2i(8, 10)
+28:82/0 = 0
 
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_p06g3")
