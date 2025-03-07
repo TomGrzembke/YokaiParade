@@ -697,16 +697,17 @@ material = ExtResource("2_xp0es")
 texture = ExtResource("4_f7hvb")
 hframes = 4
 vframes = 11
-frame = 29
+frame = 4
 region_rect = Rect2(692.748, 853.145, 150.645, 210.275)
 
 [node name="Player" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_n0aer")
+position = Vector2(0, 6)
 texture = ExtResource("1_wuri4")
 hframes = 4
 vframes = 12
-frame = 11
+frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
@@ -729,8 +730,6 @@ visible = false
 
 [node name="AnimatedSprite2D" parent="VfxInstance/RigidBody2D" index="1"]
 animation = &"jump"
-frame = 0
-frame_progress = 0.0
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_finished"]
 

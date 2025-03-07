@@ -60,7 +60,7 @@ vec4 exchange_color_gradient(vec4 texture_color){
 
 	if (distance(texture_color.rgb, vec3(0.0)) < black_feather_range)
     	result = texture_color;
-	
+
 	return result;
 }
 
@@ -68,7 +68,7 @@ vec4 pattern_overlay(vec4 texture_color){
 	ivec2 size = textureSize(pattern_texture,  0);
 	if(size.x < 5)
 	return texture_color;
-	
+
 	vec2 scaled_position = world_position * vec2(1.0 / 1920.0, 1.0 / 1080.0) * vec2(pattern_scale) - tilemap_offset;
 
 	vec2 pattern_uv = fract(scaled_position);
@@ -92,7 +92,7 @@ vec4 pattern_overlay(vec4 texture_color){
 		brightness = flip_alpha ? flipped_brightness : brightness;
 		final_color = overlay(vec4(vec3(brightness), texture_color.a), end_tint);
 	}
-	
+
 	return final_color;
 }
 
@@ -105,6 +105,6 @@ void fragment() {
 	vec4 texture_color = texture(TEXTURE, UV);
 	vec4 exchanged_gradient = exchange_color_gradient(texture_color);
 	vec4 overlayed_pattern = pattern_overlay(exchanged_gradient);
-	
+
 	COLOR = overlayed_pattern;
 }
