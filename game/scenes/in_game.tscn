@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cisf071rha1ru"]
+[gd_scene load_steps=45 format=3 uid="uid://cisf071rha1ru"]
 
 [ext_resource type="Script" path="res://game/scenes/in_game.gd" id="1_jmwmp"]
 [ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="2_7ssm8"]
@@ -43,6 +43,10 @@
 [ext_resource type="Texture2D" uid="uid://c5jcfqrvtv365" path="res://ui/ingame/ui_ingame_ability_empty.png" id="41_tsfkn"]
 [ext_resource type="Texture2D" uid="uid://c0ucro4fp5xxe" path="res://ui/ingame/ui_ingame_ability_air.png" id="42_nebps"]
 [ext_resource type="Texture2D" uid="uid://de6ebs41cg745" path="res://ui/ingame/ui_ingame_ability_fire.png" id="43_v3yth"]
+
+[sub_resource type="Curve" id="Curve_iou1a"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.870192, 0.0, 0, 0]
+point_count = 2
 
 [node name="InGame" type="Node" node_paths=PackedStringArray("initial_level_state")]
 script = ExtResource("1_jmwmp")
@@ -279,6 +283,7 @@ anchor_bottom = 1.0
 offset_top = -40.0
 offset_right = 40.0
 script = ExtResource("41_4gbec")
+blend_curve = SubResource("Curve_iou1a")
 air_frame = NodePath("AirAbility")
 fire_frame = NodePath("FireAbility")
 

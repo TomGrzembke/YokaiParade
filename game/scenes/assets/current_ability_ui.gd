@@ -3,6 +3,7 @@ extends Control
 const ELEMENTS = preload("res://elements/elements.gd")
 
 @export var blend_time : float = .5
+@export var blend_curve : Curve
 @export var air_frame : TextureRect
 @export var fire_frame : TextureRect
 
@@ -38,7 +39,14 @@ func activate_rect(rect):
 
 
 func fadeout_rect(rect):
-	rect.modulate = get_white_set_alpha(lerpf(rect.modulate.a, 0.0, 1.0 - blend_timer.time_left / blend_time))
+	var current_value
+	var time_percentage =  1.0 - blend_timer.time_left / blend_time
+	if blend_curve == null:
+		current_value = lerpf(rect.modulate.a, 0.0, time_percentage)
+	else:
+		current_value = lerpf(rect.modulate.a, 0.0, blend_curve.sample(time_percentage))
+
+	rect.modulate = get_white_set_alpha(current_value)
 
 
 func get_white_set_alpha(alpha):
