@@ -27,11 +27,10 @@ func physics_process(_delta):
 	or is_animation_running:
 		return next_state
 
-	var new_direction
 	var ranged_attack_target = ranged_attack_component.get_target_in_visible_range()
 	if ranged_attack_target != null:
 		next_state = attacking_enemy_state
-		new_direction = update_direction(ranged_attack_target)
+		update_direction(ranged_attack_target)
 	else:
 		next_state = parent.get_initial_state()
 	return next_state
