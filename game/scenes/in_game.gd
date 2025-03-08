@@ -14,6 +14,7 @@ signal level_load_progress(progress)
 
 
 var play_time
+var stored_music_volume_db
 var state_node
 var current_level_state_scene
 
@@ -50,6 +51,27 @@ func get_volume_audio_bus(bus_id):
 
 func play_game_music():
 	state_node.play_game_music()
+
+
+func dim_music_volume(to_fraction):
+	stored_music_volume_db = get_volume_audio_bus(1)
+	var music_volume_linear = db_to_linear(stored_music_volume_db)
+	music_volume_linear *= to_fraction
+	set_volume_audio_bus(1, linear_to_db(music_volume_linear))
+
+
+func reset_music_volume(duration):
+	var music_volume_db = get_volume_audio_bus(1)
+
+	var tween = get_tree().create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_method(set_volume_audio_bus_music, music_volume_db, stored_music_volume_db, duration)
+
+	await tween.finished
+
+
+func set_volume_audio_bus_music(volume_db):
+	set_volume_audio_bus(1, volume_db)
 
 
 func set_game_paused(should_pause):

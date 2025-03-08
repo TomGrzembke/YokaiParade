@@ -12,6 +12,10 @@ func _ready():
 	change_to_next_level_state()
 
 
+func reset_music_volue(duration):
+	await state_node.reset_music_volume(duration)
+
+
 func set_state_node(node):
 	state_node = node
 
