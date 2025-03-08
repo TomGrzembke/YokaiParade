@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://h3ruips3t7l8"]
+[gd_scene load_steps=21 format=3 uid="uid://h3ruips3t7l8"]
 
 [ext_resource type="Material" uid="uid://c68p80bnif4bc" path="res://assets/vfx/player_vfx.tres" id="1_awcbs"]
 [ext_resource type="Script" path="res://player/vfx_instance.gd" id="1_ul387"]
@@ -30,6 +30,30 @@ region = Rect2(400, 840, 200, 120)
 [sub_resource type="AtlasTexture" id="AtlasTexture_risp0"]
 atlas = ExtResource("2_yam44")
 region = Rect2(600, 840, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfqup"]
+atlas = ExtResource("2_yam44")
+region = Rect2(200, 120, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h6ki"]
+atlas = ExtResource("2_yam44")
+region = Rect2(400, 120, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srfcp"]
+atlas = ExtResource("2_yam44")
+region = Rect2(600, 120, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxxyq"]
+atlas = ExtResource("2_yam44")
+region = Rect2(0, 240, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcqxc"]
+atlas = ExtResource("2_yam44")
+region = Rect2(200, 240, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfhoo"]
+atlas = ExtResource("2_yam44")
+region = Rect2(400, 240, 200, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrwa6"]
 atlas = ExtResource("2_yam44")
@@ -74,6 +98,29 @@ animations = [{
 "speed": 8.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfqup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h6ki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srfcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxxyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcqxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfhoo")
+}],
+"loop": false,
+"name": &"dying",
+"speed": 8.0
+}, {
+"frames": [{
 "duration": 3.0,
 "texture": SubResource("AtlasTexture_qrwa6")
 }],
@@ -109,6 +156,8 @@ shape = SubResource("RectangleShape2D_lmtn4")
 z_index = 1
 material = ExtResource("1_awcbs")
 sprite_frames = SubResource("SpriteFrames_3awqp")
-animation = &"air_jump"
+animation = &"dying"
+frame = 5
+frame_progress = 0.867769
 
 [connection signal="animation_finished" from="RigidBody2D/AnimatedSprite2D" to="." method="on_animation_finished"]

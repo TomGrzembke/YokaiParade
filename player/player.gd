@@ -428,7 +428,6 @@ func on_despawn():
 	if Input.get_connected_joypads().size() > 0:
 		Input.start_joy_vibration(0, 1.0, 0.0, 2.0)
 	player_despawned.emit()
-	queue_free()
 
 
 func on_goal_reached():

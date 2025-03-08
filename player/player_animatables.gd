@@ -36,7 +36,7 @@ func subscribe_events():
 	abilities.ability_changed.connect(on_pickup)
 
 	player.player_reached_goal.connect(func(): state_machine.start("celebration"))
-	player.player_despawned.connect(func(): state_machine.start("dying"))
+	player.player_despawned.connect(player_death)
 	player.player_despawned.connect(default_vfx)
 	player.on_reload.connect(default_vfx)
 	player.on_jump.connect(func(): spawn_vfx("jump", true, false))
@@ -48,6 +48,7 @@ func _exit_tree():
 
 	player.player_despawned.disconnect(default_vfx)
 	player.on_reload.disconnect(default_vfx)
+	player.player_despawned.disconnect(player_death)
 
 
 func _physics_process(_delta):
@@ -68,7 +69,7 @@ func on_ability(current_ability):
 	if current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.FIRE:
 		state_machine.start("dash")
 	elif current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.AIR:
-		state_machine.start("jump")
+		state_machine.start("double_jump")
 		spawn_vfx("air_jump", true, true)
 
 
@@ -81,6 +82,11 @@ func spawn_vfx(anim_name, emit_in_global, freeze_physics):
 
 func land():
 	spawn_vfx("land", true, false)
+
+
+func player_death():
+	state_machine.start("dying")
+	spawn_vfx("dying", true, true)
 
 
 func on_pickup(color):

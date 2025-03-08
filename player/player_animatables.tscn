@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://b173nlre4ndsy"]
+[gd_scene load_steps=70 format=3 uid="uid://b173nlre4ndsy"]
 
 [ext_resource type="Script" path="res://player/player_animatables.gd" id="1_japyu"]
 [ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/assets/player_spritesheet.png" id="1_wuri4"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cwgybk1plghnu" path="res://sounds/player_jump.wav" id="5_irw32"]
 [ext_resource type="AudioStream" uid="uid://dgk7beqkylhis" path="res://sounds/player_landing.wav" id="6_f5xr2"]
 [ext_resource type="AudioStream" uid="uid://coy5ai5tktmgg" path="res://sounds/player_walking.wav" id="7_rrgwt"]
+[ext_resource type="AudioStream" uid="uid://cvdi5cwdtgjef" path="res://sounds/player_ability_double_jump.wav" id="13_8mpil"]
 
 [sub_resource type="Curve" id="Curve_uxwp6"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -49,6 +50,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [4]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerAnimatables/VfxAnimationCharacter:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
 
 [sub_resource type="Animation" id="Animation_xbpvk"]
 resource_name = "celebration"
@@ -75,7 +88,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [4]
 }
 
 [sub_resource type="Animation" id="Animation_802ph"]
@@ -470,7 +483,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [9]
+"values": [11]
 }
 
 [sub_resource type="Animation" id="Animation_2eqfq"]
@@ -518,11 +531,56 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_o3nxy"]
+resource_name = "double_jump"
+length = 0.38
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimatables/VfxAnimationCharacter:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimatables/Player:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.000868827, 0.0525644, 0.10426),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [36, 29, 30]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerAnimatables/AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_8mpil")
+}],
+"times": PackedFloat32Array(0.000434416)
+}
+tracks/2/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x7y5v"]
 _data = {
 "RESET": SubResource("Animation_1fs6i"),
 "celebration": SubResource("Animation_xbpvk"),
 "dash": SubResource("Animation_802ph"),
+"double_jump": SubResource("Animation_o3nxy"),
 "dying": SubResource("Animation_hhc52"),
 "falling": SubResource("Animation_qskf8"),
 "got_hit": SubResource("Animation_ykyju"),
@@ -542,6 +600,9 @@ animation = &"celebration"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n5upi"]
 animation = &"dash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sjerf"]
+animation = &"double_jump"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_54gw0"]
 animation = &"dying"
@@ -654,11 +715,26 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qomkr"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "velocity.y > 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3qk0m"]
+advance_mode = 2
+advance_expression = "velocity.y > 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cmh50"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h8ooh"]
 states/celebration/node = SubResource("AnimationNodeAnimation_fyh5j")
 states/celebration/position = Vector2(50, -50)
 states/dash/node = SubResource("AnimationNodeAnimation_n5upi")
 states/dash/position = Vector2(616, -272)
+states/double_jump/node = SubResource("AnimationNodeAnimation_sjerf")
+states/double_jump/position = Vector2(238, -219)
 states/dying/node = SubResource("AnimationNodeAnimation_54gw0")
 states/dying/position = Vector2(616, -143)
 states/falling/node = SubResource("AnimationNodeAnimation_q240u")
@@ -683,8 +759,8 @@ states/no_ability_hit/node = SubResource("AnimationNodeAnimation_e0jbb")
 states/no_ability_hit/position = Vector2(60, -103)
 states/walking/node = SubResource("AnimationNodeAnimation_l41dg")
 states/walking/position = Vector2(436, -18)
-transitions = ["Start", "idling", SubResource("AnimationNodeStateMachineTransition_i4wgy"), "idling", "walking", SubResource("AnimationNodeStateMachineTransition_egflg"), "walking", "idling", SubResource("AnimationNodeStateMachineTransition_1r4x0"), "walking", "jump", SubResource("AnimationNodeStateMachineTransition_87uy6"), "idling", "jump", SubResource("AnimationNodeStateMachineTransition_p4mgk"), "landing", "idling", SubResource("AnimationNodeStateMachineTransition_71yb5"), "jump", "falling", SubResource("AnimationNodeStateMachineTransition_dyay8"), "falling", "landing", SubResource("AnimationNodeStateMachineTransition_gvbew"), "falling", "jump", SubResource("AnimationNodeStateMachineTransition_in6c8"), "dash", "falling", SubResource("AnimationNodeStateMachineTransition_s3chn"), "got_hit", "falling", SubResource("AnimationNodeStateMachineTransition_kpurb"), "hit", "idling", SubResource("AnimationNodeStateMachineTransition_ebmfl"), "jump", "landing", SubResource("AnimationNodeStateMachineTransition_5yhxo"), "idling2", "walking", SubResource("AnimationNodeStateMachineTransition_0gbqa"), "idling3", "walking", SubResource("AnimationNodeStateMachineTransition_3olmi"), "idling4", "walking", SubResource("AnimationNodeStateMachineTransition_874ca"), "no_ability_hit", "idling", SubResource("AnimationNodeStateMachineTransition_8s21v"), "celebration", "idling", SubResource("AnimationNodeStateMachineTransition_kii8v")]
-graph_offset = Vector2(-358, -257)
+transitions = ["Start", "idling", SubResource("AnimationNodeStateMachineTransition_i4wgy"), "idling", "walking", SubResource("AnimationNodeStateMachineTransition_egflg"), "walking", "idling", SubResource("AnimationNodeStateMachineTransition_1r4x0"), "walking", "jump", SubResource("AnimationNodeStateMachineTransition_87uy6"), "idling", "jump", SubResource("AnimationNodeStateMachineTransition_p4mgk"), "landing", "idling", SubResource("AnimationNodeStateMachineTransition_71yb5"), "jump", "falling", SubResource("AnimationNodeStateMachineTransition_dyay8"), "falling", "landing", SubResource("AnimationNodeStateMachineTransition_gvbew"), "falling", "jump", SubResource("AnimationNodeStateMachineTransition_in6c8"), "dash", "falling", SubResource("AnimationNodeStateMachineTransition_s3chn"), "got_hit", "falling", SubResource("AnimationNodeStateMachineTransition_kpurb"), "hit", "idling", SubResource("AnimationNodeStateMachineTransition_ebmfl"), "jump", "landing", SubResource("AnimationNodeStateMachineTransition_5yhxo"), "idling2", "walking", SubResource("AnimationNodeStateMachineTransition_0gbqa"), "idling3", "walking", SubResource("AnimationNodeStateMachineTransition_3olmi"), "idling4", "walking", SubResource("AnimationNodeStateMachineTransition_874ca"), "no_ability_hit", "idling", SubResource("AnimationNodeStateMachineTransition_8s21v"), "celebration", "idling", SubResource("AnimationNodeStateMachineTransition_kii8v"), "double_jump", "falling", SubResource("AnimationNodeStateMachineTransition_qomkr"), "double_jump", "landing", SubResource("AnimationNodeStateMachineTransition_3qk0m"), "dying", "idling", SubResource("AnimationNodeStateMachineTransition_cmh50")]
+graph_offset = Vector2(-192, -232)
 
 [node name="PlayerAnimatables" type="Node2D"]
 script = ExtResource("1_japyu")
@@ -717,7 +793,6 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../..")
-callback_mode_discrete = 1
 tree_root = SubResource("AnimationNodeStateMachine_h8ooh")
 advance_expression_base_node = NodePath("../..")
 anim_player = NodePath("../AnimationPlayer")
@@ -730,6 +805,8 @@ visible = false
 
 [node name="AnimatedSprite2D" parent="VfxInstance/RigidBody2D" index="1"]
 animation = &"jump"
+frame = 0
+frame_progress = 0.0
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_finished"]
 
