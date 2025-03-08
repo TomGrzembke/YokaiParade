@@ -98,22 +98,22 @@ animations = [{
 "speed": 8.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_pfqup")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_8h6ki")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_srfcp")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_bxxyq")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_hcqxc")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_jfhoo")
 }],
 "loop": false,
@@ -158,6 +158,6 @@ material = ExtResource("1_awcbs")
 sprite_frames = SubResource("SpriteFrames_3awqp")
 animation = &"dying"
 frame = 5
-frame_progress = 0.867769
+frame_progress = 1.0
 
 [connection signal="animation_finished" from="RigidBody2D/AnimatedSprite2D" to="." method="on_animation_finished"]

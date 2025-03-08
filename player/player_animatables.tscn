@@ -760,7 +760,7 @@ states/no_ability_hit/position = Vector2(60, -103)
 states/walking/node = SubResource("AnimationNodeAnimation_l41dg")
 states/walking/position = Vector2(436, -18)
 transitions = ["Start", "idling", SubResource("AnimationNodeStateMachineTransition_i4wgy"), "idling", "walking", SubResource("AnimationNodeStateMachineTransition_egflg"), "walking", "idling", SubResource("AnimationNodeStateMachineTransition_1r4x0"), "walking", "jump", SubResource("AnimationNodeStateMachineTransition_87uy6"), "idling", "jump", SubResource("AnimationNodeStateMachineTransition_p4mgk"), "landing", "idling", SubResource("AnimationNodeStateMachineTransition_71yb5"), "jump", "falling", SubResource("AnimationNodeStateMachineTransition_dyay8"), "falling", "landing", SubResource("AnimationNodeStateMachineTransition_gvbew"), "falling", "jump", SubResource("AnimationNodeStateMachineTransition_in6c8"), "dash", "falling", SubResource("AnimationNodeStateMachineTransition_s3chn"), "got_hit", "falling", SubResource("AnimationNodeStateMachineTransition_kpurb"), "hit", "idling", SubResource("AnimationNodeStateMachineTransition_ebmfl"), "jump", "landing", SubResource("AnimationNodeStateMachineTransition_5yhxo"), "idling2", "walking", SubResource("AnimationNodeStateMachineTransition_0gbqa"), "idling3", "walking", SubResource("AnimationNodeStateMachineTransition_3olmi"), "idling4", "walking", SubResource("AnimationNodeStateMachineTransition_874ca"), "no_ability_hit", "idling", SubResource("AnimationNodeStateMachineTransition_8s21v"), "celebration", "idling", SubResource("AnimationNodeStateMachineTransition_kii8v"), "double_jump", "falling", SubResource("AnimationNodeStateMachineTransition_qomkr"), "double_jump", "landing", SubResource("AnimationNodeStateMachineTransition_3qk0m"), "dying", "idling", SubResource("AnimationNodeStateMachineTransition_cmh50")]
-graph_offset = Vector2(-192, -232)
+graph_offset = Vector2(-98, -254)
 
 [node name="PlayerAnimatables" type="Node2D"]
 script = ExtResource("1_japyu")
@@ -783,7 +783,7 @@ position = Vector2(0, 6)
 texture = ExtResource("1_wuri4")
 hframes = 4
 vframes = 12
-frame = 8
+frame = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")

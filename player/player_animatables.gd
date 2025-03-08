@@ -36,7 +36,7 @@ func subscribe_events():
 	abilities.ability_changed.connect(on_pickup)
 
 	player.player_reached_goal.connect(func(): state_machine.start("celebration"))
-	player.player_despawned.connect(player_death)
+	player.on_death_zone.connect(player_death)
 	player.player_despawned.connect(default_vfx)
 	player.on_reload.connect(default_vfx)
 	player.on_jump.connect(func(): spawn_vfx("jump", true, false))
@@ -46,9 +46,9 @@ func _exit_tree():
 	abilities.used_ability.disconnect(on_ability)
 	abilities.ability_changed.disconnect(on_pickup)
 
+	player.on_death_zone.disconnect(player_death)
 	player.player_despawned.disconnect(default_vfx)
 	player.on_reload.disconnect(default_vfx)
-	player.player_despawned.disconnect(player_death)
 
 
 func _physics_process(_delta):
@@ -85,8 +85,8 @@ func land():
 
 
 func player_death():
-	state_machine.start("dying")
 	spawn_vfx("dying", true, true)
+	state_machine.start("dying")
 
 
 func on_pickup(color):

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal player_ability_changed(color)
+signal on_death_zone
 signal player_despawned
 signal player_reached_checkpoint(position)
 signal player_reached_goal
@@ -44,6 +45,9 @@ const INFINITY = 1e20
 @onready var cant_edge_detect_ray: RayCast2D = $CantEdgeCorrectRay
 @onready var has_air_target_ray: RayCast2D = $HasAirTargetRay
 @onready var can_edge_detect_ray: RayCast2D = $CanEdgeCorrectRay
+
+@export_category("Reset")
+@export var reset_time : float = .6
 
 var coyote_timer = 0.15
 var jump_buffer_timer = 0.0
@@ -427,7 +431,9 @@ func flip_outer_velocity_logic(velocity_mod):
 func on_despawn():
 	if Input.get_connected_joypads().size() > 0:
 		Input.start_joy_vibration(0, 1.0, 0.0, 2.0)
-	player_despawned.emit()
+	on_death_zone.emit()
+
+	create_timer(reset_time).timeout.connect(func(): player_despawned.emit())
 
 
 func on_goal_reached():
