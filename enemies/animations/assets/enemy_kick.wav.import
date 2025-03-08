@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://djqvbt1j40cgp"
-path="res://.godot/imported/enemy_kick.wav-49a8de6f402184cc56e9b232cd7f6ddd.sample"
+path="res://.godot/imported/enemy_kick.wav-b462631487ce2af868b9799bba306f3d.sample"
 
 [deps]
 
-source_file="res://sounds/enemy_kick.wav"
-dest_files=["res://.godot/imported/enemy_kick.wav-49a8de6f402184cc56e9b232cd7f6ddd.sample"]
+source_file="res://enemies/animations/assets/enemy_kick.wav"
+dest_files=["res://.godot/imported/enemy_kick.wav-b462631487ce2af868b9799bba306f3d.sample"]
 
 [params]
 
