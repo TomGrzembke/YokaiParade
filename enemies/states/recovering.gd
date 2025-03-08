@@ -1,13 +1,16 @@
 extends EnemyState
 
 
+@export_category("Components")
+@export var attack_melee_component: Node2D
+
 var recovery_timer
 
 
 func enter(p_previous_state):
 	super.enter(p_previous_state)
 
-	parent.set_deal_melee_damage_active(false)
+	attack_melee_component.set_deal_damage_active(false)
 	state_animations_scene.enter_state_recovering()
 
 	recovery_timer = get_tree().create_timer(parent.get_recovery_time())
@@ -15,7 +18,7 @@ func enter(p_previous_state):
 
 
 func exit():
-	parent.set_deal_melee_damage_active(true)
+	attack_melee_component.set_deal_damage_active(true)
 
 
 func physics_process(_delta):

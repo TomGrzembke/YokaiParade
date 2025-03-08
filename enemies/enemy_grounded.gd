@@ -104,17 +104,6 @@ func get_speed():
 	return speed
 
 
-func set_deal_melee_damage_active(active):
-	%DealMeleeDamageArea.set_deferred("monitoring", active)
-
-
-func on_melee_damage_area_entered(target):
-	var subject = %DealMeleeDamageArea.get_damageable_subject(target)
-
-	if subject == null: return
-	subject.on_took_damage(self)
-
-
 # TODO: Try getting rid of this and setting monitoring and state change by returning from state
 
 func get_recovery_time():

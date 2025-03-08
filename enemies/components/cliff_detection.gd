@@ -9,5 +9,6 @@ func _ready():
 func is_on_cliff_right():
 	return not $RightCliffDetectionRayCast.is_colliding()
 
+
 func is_on_cliff_left():
 	return not $LeftCliffDetectionRayCast.is_colliding()

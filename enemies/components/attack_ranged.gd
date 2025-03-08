@@ -20,10 +20,6 @@ func get_target_in_visible_range():
 	return target_in_range
 
 
-func clear_target_in_range():
-	target_in_range = null
-
-
 func update_target_position(target):
 	%ObstructionRayCast.target_position = to_local(target.global_position)
 
@@ -45,4 +41,4 @@ func on_deal_damage_area_entered(target):
 func on_deal_damage_area_exited(_target):
 	%ObstructionRayCast.enabled = false
 
-	clear_target_in_range()
+	target_in_range = null
