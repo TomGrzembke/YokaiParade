@@ -12,8 +12,6 @@ extends LevelState
 func enter(p_previous_state):
 	super.enter(p_previous_state)
 
-	state_scene.set_state_node(self)
-
 	parent.player_despawned.connect(func(): change_state(despawning_level_state))
 	parent.player_reached_goal.connect(func(): change_state(finishing_level_state))
 

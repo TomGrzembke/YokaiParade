@@ -22,8 +22,6 @@ func get_volume_audio_bus(bus_id):
 func enter(p_previous_state):
 	super.enter(p_previous_state)
 
-	state_scene.set_state_node(self)
-
 	state_scene.update_window_fullscreen(get_window_fullscreen())
 
 	state_scene.update_volume_master(get_volume_audio_bus(0))

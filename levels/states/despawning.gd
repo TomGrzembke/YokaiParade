@@ -11,8 +11,6 @@ func enter(p_previous_state):
 
 	super.enter(p_previous_state)
 
-	state_scene.set_state_node(self)
-
 
 func change_to_reset_level_state():
 	change_state(reset_level_state)

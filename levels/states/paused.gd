@@ -12,8 +12,6 @@ extends LevelState
 func enter(p_previous_state):
 	super.enter(p_previous_state)
 
-	state_scene.set_state_node(self)
-
 	parent.set_game_paused(true)
 
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

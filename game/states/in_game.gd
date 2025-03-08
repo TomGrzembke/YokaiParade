@@ -30,8 +30,6 @@ func play_game_music():
 func enter(p_previous_state):
 	super.enter(p_previous_state)
 
-	state_scene.set_state_node(self)
-
 	await parent.fade_out_audio(1.0)
 
 

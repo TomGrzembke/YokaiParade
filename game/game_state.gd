@@ -14,6 +14,7 @@ func enter(p_previous_state):
 		return
 
 	state_scene = game_state_packed_scene.instantiate()
+	state_scene.set_state_node(self)
 	parent.load_game_state_scene(state_scene)
 
 

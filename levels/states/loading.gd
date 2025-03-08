@@ -6,7 +6,6 @@ extends LevelState
 
 func enter(p_previous_state):
 	super.enter(p_previous_state)
-	state_scene.set_state_node(self)
 
 	parent.level_load_progress.connect(func(progress): state_scene.update_progress(progress))
 

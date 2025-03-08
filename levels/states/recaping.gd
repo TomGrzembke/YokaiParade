@@ -11,8 +11,6 @@ extends LevelState
 func enter(p_previous_state):
 	super.enter(p_previous_state)
 
-	state_scene.set_state_node(self)
-
 	state_scene.set_loading_level_state(loading_level_state)
 	state_scene.set_game_over_level_state(game_over_level_state)
 	state_scene.set_return_to_main_menu_level_state(return_to_main_menu_level_state)
