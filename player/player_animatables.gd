@@ -36,6 +36,7 @@ func subscribe_events():
 	abilities.ability_changed.connect(on_pickup)
 
 	player.player_reached_goal.connect(func(): state_machine.start("celebration"))
+	player.player_gets_pushed.connect(func(): state_machine.start("got_hit"))
 	player.on_death_zone.connect(player_death)
 	player.player_despawned.connect(default_vfx)
 	player.on_reload.connect(default_vfx)
