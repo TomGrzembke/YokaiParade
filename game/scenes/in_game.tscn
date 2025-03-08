@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cisf071rha1ru"]
+[gd_scene load_steps=45 format=3 uid="uid://cisf071rha1ru"]
 
 [ext_resource type="Script" path="res://game/scenes/in_game.gd" id="1_jmwmp"]
 [ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="2_7ssm8"]
@@ -43,6 +43,10 @@
 [ext_resource type="Texture2D" uid="uid://c5jcfqrvtv365" path="res://ui/ingame/ui_ingame_ability_empty.png" id="41_tsfkn"]
 [ext_resource type="Texture2D" uid="uid://c0ucro4fp5xxe" path="res://ui/ingame/ui_ingame_ability_air.png" id="42_nebps"]
 [ext_resource type="Texture2D" uid="uid://de6ebs41cg745" path="res://ui/ingame/ui_ingame_ability_fire.png" id="43_v3yth"]
+
+[sub_resource type="Curve" id="Curve_iou1a"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.870192, 0.0, 0, 0]
+point_count = 2
 
 [node name="InGame" type="Node" node_paths=PackedStringArray("initial_level_state")]
 script = ExtResource("1_jmwmp")
@@ -270,8 +274,20 @@ offset_right = 315.0
 grow_vertical = 0
 texture = ExtResource("12_yb5sd")
 
-[node name="CurrentAbility" type="TextureRect" parent="UILayer/Bottom"]
+[node name="CurrentAbility" type="Control" parent="UILayer/Bottom" node_paths=PackedStringArray("air_frame", "fire_frame")]
 unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+script = ExtResource("41_4gbec")
+blend_curve = SubResource("Curve_iou1a")
+air_frame = NodePath("AirAbility")
+fire_frame = NodePath("FireAbility")
+
+[node name="DefaultAbility" type="TextureRect" parent="UILayer/Bottom/CurrentAbility"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -280,6 +296,25 @@ offset_top = -390.0
 offset_right = 315.0
 grow_vertical = 0
 texture = ExtResource("41_tsfkn")
-script = ExtResource("41_4gbec")
-air_frame = ExtResource("42_nebps")
-fire_frame = ExtResource("43_v3yth")
+
+[node name="AirAbility" type="TextureRect" parent="UILayer/Bottom/CurrentAbility"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -390.0
+offset_right = 315.0
+grow_vertical = 0
+texture = ExtResource("42_nebps")
+
+[node name="FireAbility" type="TextureRect" parent="UILayer/Bottom/CurrentAbility"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -390.0
+offset_right = 315.0
+grow_vertical = 0
+texture = ExtResource("43_v3yth")

@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://tvyt8dx4csl5" path="res://enemies/types/enemy_element_type_air.tres" id="3_lrn1s"]
 [ext_resource type="Resource" uid="uid://be56k4m11w44j" path="res://enemies/types/enemy_element_type_fire.tres" id="4_f34p5"]
 [ext_resource type="PackedScene" uid="uid://bll3xc6lvwc5" path="res://enemies/enemy_airborne.tscn" id="5_kt7br"]
-[ext_resource type="PackedScene" uid="uid://bfo2kxh1sqjax" path="res://assets/signs/control_sign.tscn" id="6_mmdxv"]
+[ext_resource type="PackedScene" path="res://assets/signs/control_sign.tscn" id="6_mmdxv"]
 [ext_resource type="Texture2D" uid="uid://bhldpe8filivy" path="res://assets/signs/p_sign_keyboardjumpshort.png" id="7_yh7xr"]
 [ext_resource type="Texture2D" uid="uid://coi8ugqglvv5u" path="res://assets/signs/p_sign_controllerjumpshort.png" id="8_b3dpd"]
 [ext_resource type="Texture2D" uid="uid://df8gaqo3luqc1" path="res://assets/signs/p_sign_keyboardjumplong.png" id="8_gdrju"]
@@ -149,7 +149,3 @@ tile_set = ExtResource("15_4fppq")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("16_riu0e")]
 position = Vector2(301, 1070)
-
-[connection signal="body_entered" from="GameplayTileMapLayer/Goal" to="GameplayTileMapLayer/Goal" method="on_body_entered"]
-[connection signal="area_entered" from="GameplayTileMapLayer/Checkpoint" to="GameplayTileMapLayer/Checkpoint" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/Checkpoint" to="GameplayTileMapLayer/Checkpoint" method="on_checkpoint_area_entered"]
