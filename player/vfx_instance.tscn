@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://h3ruips3t7l8"]
+[gd_scene load_steps=30 format=3 uid="uid://h3ruips3t7l8"]
 
 [ext_resource type="Material" uid="uid://c68p80bnif4bc" path="res://assets/vfx/player_vfx.tres" id="1_awcbs"]
 [ext_resource type="Script" path="res://player/vfx_instance.gd" id="1_ul387"]
@@ -54,6 +54,42 @@ region = Rect2(200, 240, 200, 120)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jfhoo"]
 atlas = ExtResource("2_yam44")
 region = Rect2(400, 240, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qjlj"]
+atlas = ExtResource("2_yam44")
+region = Rect2(0, 360, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm3mq"]
+atlas = ExtResource("2_yam44")
+region = Rect2(200, 360, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jta3"]
+atlas = ExtResource("2_yam44")
+region = Rect2(400, 360, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu3dg"]
+atlas = ExtResource("2_yam44")
+region = Rect2(600, 360, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej8tt"]
+atlas = ExtResource("2_yam44")
+region = Rect2(0, 360, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpqfh"]
+atlas = ExtResource("2_yam44")
+region = Rect2(200, 360, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdbgp"]
+atlas = ExtResource("2_yam44")
+region = Rect2(400, 360, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsdc4"]
+atlas = ExtResource("2_yam44")
+region = Rect2(0, 360, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5ork"]
+atlas = ExtResource("2_yam44")
+region = Rect2(200, 360, 200, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrwa6"]
 atlas = ExtResource("2_yam44")
@@ -121,6 +157,48 @@ animations = [{
 "speed": 8.0
 }, {
 "frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_3qjlj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lm3mq")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_1jta3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eu3dg")
+}],
+"loop": false,
+"name": &"idling2",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej8tt")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_cpqfh")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_mdbgp")
+}],
+"loop": false,
+"name": &"idling3",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_rsdc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5ork")
+}],
+"loop": false,
+"name": &"idling4",
+"speed": 8.0
+}, {
+"frames": [{
 "duration": 3.0,
 "texture": SubResource("AtlasTexture_qrwa6")
 }],
@@ -156,8 +234,6 @@ shape = SubResource("RectangleShape2D_lmtn4")
 z_index = 1
 material = ExtResource("1_awcbs")
 sprite_frames = SubResource("SpriteFrames_3awqp")
-animation = &"dying"
-frame = 5
-frame_progress = 1.0
+animation = &"idling3"
 
 [connection signal="animation_finished" from="RigidBody2D/AnimatedSprite2D" to="." method="on_animation_finished"]

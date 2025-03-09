@@ -135,6 +135,7 @@ func different_idles(anim_name):
 		if random_value >= idle_animation_probability[key]: continue
 
 		state_machine.start(key)
+		spawn_vfx(key, true, true, 1)
 		return
 
 	var last_key = idle_animation_probability.keys()[idle_animation_probability.size() - 1]
