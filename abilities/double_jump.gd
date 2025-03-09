@@ -8,11 +8,6 @@ const ELEMENT_TYPE = ELEMENTS.ElementType.AIR
 @export var disable_player_movement := false
 @export var velocity_curve : Curve
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-var in_tree = false
-
-
-func _ready():
-	in_tree = true
 
 
 func use(player_manager):
@@ -27,7 +22,7 @@ func use(player_manager):
 	animation_player.play("on_ability")
 	contoller_rumble()
 
-	if !in_tree:
+	if get_parent() == null:
 		call_deferred("exit")
 		return
 
