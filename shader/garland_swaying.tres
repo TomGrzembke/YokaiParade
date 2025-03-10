@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dk3qu2wvu4cw5"]
+
+[ext_resource type="Shader" path="res://shader/swaying_foliage.gdshader" id="1_uukj4"]
+
+[resource]
+shader = ExtResource("1_uukj4")
+shader_parameter/ankered_top = true
+shader_parameter/heightOffset = 0.324
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.154
+shader_parameter/maxStrength = 1.0
+shader_parameter/strengthScale = 150.0
+shader_parameter/interval = 2.0
+shader_parameter/detail = 1.5
+shader_parameter/wind_id = 0.0
