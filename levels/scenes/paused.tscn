@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cf638huksnygw" path="res://ui/ui_panel_vertbottom.png" id="4_sd1pi"]
 [ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="5_d3x38"]
 [ext_resource type="Texture2D" uid="uid://b7bu0g5d2kfpc" path="res://ui/ui_panel_deco.png" id="5_w1drn"]
-[ext_resource type="Texture2D" uid="uid://cwvx7x2akvm35" path="res://ui/ui_controls_controller.png" id="8_p76wf"]
-[ext_resource type="Texture2D" uid="uid://ccwi7avw2apse" path="res://ui/ui_controls_keyboard.png" id="9_qpe47"]
+[ext_resource type="Texture2D" uid="uid://cwvx7x2akvm35" path="res://ui/UI_Controls_Controller.png" id="8_p76wf"]
+[ext_resource type="Texture2D" uid="uid://ccwi7avw2apse" path="res://ui/UI_Controls_keyboard.png" id="9_qpe47"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yh4t1"]
 shader = ExtResource("2_pa704")
