@@ -1,25 +1,21 @@
 extends Node
 
 
-signal music_volume_fraction_changed(fraction)
-
-
 @export var music_volume_fraction: float:
 	set(fraction):
-		music_volume_fraction_changed.emit(fraction)
+		state_node.set_music_volume_fraction(fraction)
 
 var state_node
-
-
-# Workaround for bug in Godot that happens when AudiosStreamPlayer is started from AnimationPlayer
-func play_fanfare():
-	%AudioStreamPlayer.play()
 
 
 # Level States
 
 func _ready():
+	# Workaround for audio bug in Godot that occurs in web builds on Chromium-based
+	# browsers when AudiosStreamPlayer is started from AnimationPlayer
+	%AudioStreamPlayer.play()
 	await %AnimationPlayer.animation_finished
+	await %AudioStreamPlayer.finished
 
 	change_to_next_level_state()
 
