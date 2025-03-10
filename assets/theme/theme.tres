@@ -1,8 +1,10 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bqdlc5vw8gpa5"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bqdlc5vw8gpa5"]
 
 [ext_resource type="FontFile" uid="uid://potb4jbn448t" path="res://assets/fonts/Dracutaz-gwARq.otf" id="1_hmqgt"]
 [ext_resource type="Texture2D" uid="uid://cdat26xy1wo2c" path="res://assets/theme/ui_button_yellow.png" id="2_cv1s1"]
 [ext_resource type="Texture2D" uid="uid://df3jgqsgfhkri" path="res://assets/theme/ui_button_black.png" id="2_rxv27"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v32fi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43473"]
 texture = ExtResource("2_rxv27")
@@ -11,6 +13,8 @@ texture = ExtResource("2_rxv27")
 texture = ExtResource("2_rxv27")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gljpn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xwsbs"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xgamu"]
 texture = ExtResource("2_cv1s1")
@@ -23,9 +27,11 @@ Button/colors/font_focus_color = Color(0.960784, 0.894118, 0.8, 1)
 Button/colors/font_hover_color = Color(0.960784, 0.894118, 0.8, 1)
 Button/font_sizes/font_size = 50
 Button/fonts/font = ExtResource("1_hmqgt")
+Button/styles/disabled = SubResource("StyleBoxEmpty_v32fi")
 Button/styles/focus = SubResource("StyleBoxTexture_43473")
 Button/styles/hover = SubResource("StyleBoxTexture_nsenq")
 Button/styles/normal = SubResource("StyleBoxEmpty_gljpn")
+Button/styles/pressed = SubResource("StyleBoxEmpty_xwsbs")
 CountDownLabel/base_type = &"Label"
 CountDownLabel/colors/font_color = Color(0.937255, 0.443137, 0.282353, 1)
 CountDownLabel/colors/font_outline_color = Color(1, 1, 1, 1)
