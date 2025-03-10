@@ -2,7 +2,6 @@ extends EnemyStateCatchable
 
 
 @export_category("Components")
-@export var visualisation_component: Node2D
 @export var attack_ranged_component: Node2D
 
 var is_animation_running = false

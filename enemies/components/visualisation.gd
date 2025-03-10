@@ -15,6 +15,10 @@ func _ready():
 	set_facing_direction(parent.get_initial_facing_direction())
 
 
+func set_state_node(node):
+	state_animations_scene.set_state_node(node)
+
+
 func set_facing_direction(value):
 	facing_direction = value
 	if facing_direction != null:

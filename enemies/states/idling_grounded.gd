@@ -6,7 +6,6 @@ extends EnemyStateCatchable
 @export var lunging_enemy_state: EnemyState
 
 @export_category("Components")
-@export var visualisation_component: Node2D
 @export var target_direction_component: Node2D
 @export var attack_melee_component: Node2D
 @export var attack_ranged_component: Node2D

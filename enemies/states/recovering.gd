@@ -2,7 +2,6 @@ extends EnemyState
 
 
 @export_category("Components")
-@export var visualisation_component: Node2D
 @export var attack_melee_component: Node2D
 
 var recovery_timer

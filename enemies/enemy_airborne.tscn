@@ -90,49 +90,49 @@ debug_color = Color(0.976471, 0, 0.411765, 0.419608)
 [node name="StateMachine" parent="." instance=ExtResource("6_tsxge")]
 unique_name_in_owner = true
 
-[node name="Idling" type="Node" parent="StateMachine" node_paths=PackedStringArray("attacking_melee_enemy_state", "lunging_enemy_state", "visualisation_component", "target_direction_component", "attack_melee_component", "attack_ranged_component", "recovering_state")]
+[node name="Idling" type="Node" parent="StateMachine" node_paths=PackedStringArray("attacking_melee_enemy_state", "lunging_enemy_state", "target_direction_component", "attack_melee_component", "attack_ranged_component", "recovering_state", "visualisation_component")]
 script = ExtResource("8_is8ca")
 attacking_melee_enemy_state = NodePath("../AttackingMelee")
 lunging_enemy_state = NodePath("../Lunging")
-visualisation_component = NodePath("../../Visualisation")
 target_direction_component = NodePath("../../TargetDirection")
 attack_melee_component = NodePath("../../AttackMelee")
 attack_ranged_component = NodePath("../../AttackRanged")
 recovering_state = NodePath("../Recovering")
+visualisation_component = NodePath("../../Visualisation")
 
-[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("attacking_melee_enemy_state", "lunging_enemy_state", "visualisation_component", "target_direction_component", "attack_melee_component", "attack_ranged_component", "recovering_state")]
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("attacking_melee_enemy_state", "lunging_enemy_state", "target_direction_component", "attack_melee_component", "attack_ranged_component", "recovering_state", "visualisation_component")]
 script = ExtResource("7_16tgl")
 attacking_melee_enemy_state = NodePath("../AttackingMelee")
 lunging_enemy_state = NodePath("../Lunging")
-visualisation_component = NodePath("../../Visualisation")
 target_direction_component = NodePath("../../TargetDirection")
 attack_melee_component = NodePath("../../AttackMelee")
 attack_ranged_component = NodePath("../../AttackRanged")
 recovering_state = NodePath("../Recovering")
+visualisation_component = NodePath("../../Visualisation")
 
-[node name="Lunging" type="Node" parent="StateMachine" node_paths=PackedStringArray("attacking_melee_enemy_state", "attacking_ranged_enemy_state", "visualisation_component", "target_direction_component", "attack_melee_component", "attack_ranged_component", "recovering_state")]
+[node name="Lunging" type="Node" parent="StateMachine" node_paths=PackedStringArray("attacking_melee_enemy_state", "attacking_ranged_enemy_state", "target_direction_component", "attack_melee_component", "attack_ranged_component", "recovering_state", "visualisation_component")]
 script = ExtResource("8_81glp")
 attacking_melee_enemy_state = NodePath("../AttackingMelee")
 attacking_ranged_enemy_state = NodePath("../AttackingRanged")
-visualisation_component = NodePath("../../Visualisation")
 target_direction_component = NodePath("../../TargetDirection")
 attack_melee_component = NodePath("../../AttackMelee")
 attack_ranged_component = NodePath("../../AttackRanged")
 recovering_state = NodePath("../Recovering")
-
-[node name="AttackingMelee" type="Node" parent="StateMachine" node_paths=PackedStringArray("visualisation_component", "attack_melee_component", "recovering_state")]
-script = ExtResource("13_oe0wq")
 visualisation_component = NodePath("../../Visualisation")
+
+[node name="AttackingMelee" type="Node" parent="StateMachine" node_paths=PackedStringArray("attack_melee_component", "recovering_state", "visualisation_component")]
+script = ExtResource("13_oe0wq")
 attack_melee_component = NodePath("../../AttackMelee")
 recovering_state = NodePath("../Recovering")
-
-[node name="AttackingRanged" type="Node" parent="StateMachine" node_paths=PackedStringArray("visualisation_component", "attack_ranged_component", "recovering_state")]
-script = ExtResource("8_noh7y")
 visualisation_component = NodePath("../../Visualisation")
+
+[node name="AttackingRanged" type="Node" parent="StateMachine" node_paths=PackedStringArray("attack_ranged_component", "recovering_state", "visualisation_component")]
+script = ExtResource("8_noh7y")
 attack_ranged_component = NodePath("../../AttackRanged")
 recovering_state = NodePath("../Recovering")
-
-[node name="Recovering" type="Node" parent="StateMachine" node_paths=PackedStringArray("visualisation_component", "attack_melee_component")]
-script = ExtResource("9_kcogj")
 visualisation_component = NodePath("../../Visualisation")
+
+[node name="Recovering" type="Node" parent="StateMachine" node_paths=PackedStringArray("attack_melee_component", "visualisation_component")]
+script = ExtResource("9_kcogj")
 attack_melee_component = NodePath("../../AttackMelee")
+visualisation_component = NodePath("../../Visualisation")

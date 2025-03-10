@@ -2,6 +2,7 @@ extends Node2D
 
 
 var animation_state_machine
+var direction
 var state_node
 
 
@@ -13,7 +14,9 @@ func set_state_node(node):
 	state_node = node
 
 
-func update_direction(direction):
+func update_direction(p_direction):
+	direction = p_direction
+
 	%AnimationTree.set("parameters/Idling/blend_position", direction.x)
 	%AnimationTree.set("parameters/Moving/blend_position", direction)
 	%AnimationTree.set("parameters/Lunging/blend_position", direction.x)

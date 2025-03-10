@@ -1,4 +1,9 @@
 class_name EnemyState
 extends State
 
-# TODO: Get rid of this when EnemyStateCatchable is gone
+@export var visualisation_component: Node2D
+
+func enter(p_previous_state):
+	super.enter(p_previous_state)
+
+	visualisation_component.set_state_node(self)
