@@ -160,7 +160,6 @@ func sort_dictionary_descending():
 		sorted_dict[key] = idle_animation_probability[key]
 
 	idle_animation_probability = sorted_dict
-	print(sorted_dict)
 
 
 func create_timer(time):
