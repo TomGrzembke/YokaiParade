@@ -5,6 +5,7 @@ extends Node2D
 @onready var collision_shape: CollisionShape2D = $"../CollisionShape2D"
 @onready var movement_line: Line2D = $MovementLine
 @export var debug_speed_steps = 1
+@export_range(0.0, 1.0) var instant_token_percentage = 1.0
 
 var debug_speed
 var debug_mode
@@ -25,15 +26,20 @@ func _unhandled_input(event):
 
 
 func set_debug_speed():
-	if !debug_mode: return
+
 	var speed_up_direction = sign(Input.get_axis("debug_mode_faster", "debug_mode_slower"))
 	if speed_up_direction == 0: return
 
-	debug_speed = player.debug_speed_modifier
+	debug_speed = clampf(player.debug_speed_modifier, 3, 13)
 
-	debug_speed = clampf(debug_speed, 3, 13)
+	var faster = speed_up_direction > 0
 
-	if speed_up_direction > 0:
-		player.set_debug_speed_modifier(debug_speed + debug_speed_steps)
-	else:
-		player.set_debug_speed_modifier(debug_speed - debug_speed_steps)
+	if debug_mode: modify_debug_speed(faster)
+	else: modify_tokens(faster)
+
+
+func modify_debug_speed(faster):
+	player.set_debug_speed_modifier(debug_speed + (debug_speed_steps if faster else -debug_speed_steps))
+
+func modify_tokens(faster):
+	player.add_current_speed_tokens(player.max_token_amount * instant_token_percentage if faster else -player.max_token_amount)
