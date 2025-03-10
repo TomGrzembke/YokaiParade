@@ -68,7 +68,7 @@ position = Vector2(3379, 591)
 element_type = ExtResource("9_5kbpl")
 
 [node name="AirGroundedIdling4" parent="Start-1stCheckpoint/Enemies" instance=ExtResource("8_vvroe")]
-position = Vector2(4335, 309)
+position = Vector2(4301, 309)
 element_type = ExtResource("9_5kbpl")
 initial_look_direction = 1
 
@@ -150,7 +150,7 @@ initial_state = 200
 element_type = ExtResource("10_3y1es")
 
 [node name="FireGroundedMoving4" parent="1st-2ndCheckpoint/Enemies" instance=ExtResource("8_vvroe")]
-position = Vector2(9505, -401)
+position = Vector2(9522, -412)
 initial_state = 200
 element_type = ExtResource("10_3y1es")
 
@@ -288,7 +288,7 @@ initial_state = 200
 element_type = ExtResource("9_5kbpl")
 
 [node name="AirGroundedIdling8" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_vvroe")]
-position = Vector2(11924, 844)
+position = Vector2(11924, 827)
 element_type = ExtResource("9_5kbpl")
 
 [node name="AirGroundedIdling7" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_vvroe")]
@@ -316,7 +316,7 @@ position = Vector2(14627, -929)
 element_type = ExtResource("10_3y1es")
 
 [node name="FireGroundedIdling4" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_vvroe")]
-position = Vector2(16069, -210)
+position = Vector2(16085, -210)
 element_type = ExtResource("10_3y1es")
 
 [node name="FireGroundedMoving6" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_vvroe")]
@@ -349,7 +349,7 @@ element_type = ExtResource("10_3y1es")
 initial_look_direction = 1
 
 [node name="AirFlyingIdling5" type="Path2D" parent="2nd-3rdCheckpoint/Enemies"]
-position = Vector2(5660, -693)
+position = Vector2(5673, -730)
 curve = SubResource("Curve2D_nj15r")
 
 [node name="EnemyAirborne" parent="2nd-3rdCheckpoint/Enemies/AirFlyingIdling5" instance=ExtResource("11_o4jt2")]
@@ -457,8 +457,8 @@ position = Vector2(-288, 1072)
 
 [connection signal="area_entered" from="GameplayTileMapLayer/Checkpoint" to="GameplayTileMapLayer/Checkpoint" method="on_checkpoint_area_entered"]
 [connection signal="body_entered" from="GameplayTileMapLayer/Checkpoint" to="GameplayTileMapLayer/Checkpoint" method="on_checkpoint_area_entered"]
-[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@20139" to="GameplayTileMapLayer/@Area2D@20139" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@20139" to="GameplayTileMapLayer/@Area2D@20139" method="on_checkpoint_area_entered"]
-[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@20142" to="GameplayTileMapLayer/@Area2D@20142" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@20142" to="GameplayTileMapLayer/@Area2D@20142" method="on_checkpoint_area_entered"]
+[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@25778" to="GameplayTileMapLayer/@Area2D@25778" method="on_checkpoint_area_entered"]
+[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@25778" to="GameplayTileMapLayer/@Area2D@25778" method="on_checkpoint_area_entered"]
+[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@25781" to="GameplayTileMapLayer/@Area2D@25781" method="on_checkpoint_area_entered"]
+[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@25781" to="GameplayTileMapLayer/@Area2D@25781" method="on_checkpoint_area_entered"]
 [connection signal="body_entered" from="GameplayTileMapLayer/Goal" to="GameplayTileMapLayer/Goal" method="on_body_entered"]
