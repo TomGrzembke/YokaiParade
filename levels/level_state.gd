@@ -24,7 +24,6 @@ func exit():
 	if state_scene == null:
 		return
 
-	print("Unloading level state scene %s" % state_scene)
 	parent.unload_level_state_scene(state_scene)
 
 
