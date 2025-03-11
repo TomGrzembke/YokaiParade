@@ -1,9 +1,6 @@
 extends PathFollow2D
 
 
-signal enemy_caught(enemy)
-
-
 const STATES = preload("res://enemies/enemy_initial_states.gd")
 
 @export_category("States")
@@ -111,11 +108,3 @@ func get_is_path_closed():
 
 func get_path_length():
 	return path_2d.curve.get_baked_length()
-
-
-func got_caught(_source):
-	enemy_caught.emit(self)
-
-	if element_type == null:
-		return null
-	return element_type.spawning_ability

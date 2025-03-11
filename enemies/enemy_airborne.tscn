@@ -87,7 +87,7 @@ entity = NodePath("..")
 
 [node name="TakeDamageArea" parent="TakeDamage" node_paths=PackedStringArray("subject") instance=ExtResource("4_85cx3")]
 collision_layer = 4
-subject = NodePath("../..")
+subject = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamage/TakeDamageArea"]
 shape = SubResource("CircleShape2D_jrlqx")

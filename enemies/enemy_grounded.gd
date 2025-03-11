@@ -1,9 +1,6 @@
 extends CharacterBody2D
 
 
-signal enemy_caught(enemy)
-
-
 const STATES = preload("res://enemies/enemy_initial_states.gd")
 
 @export_category("States")
@@ -66,6 +63,10 @@ func get_element_animations_scene_instance():
 	return element_type.animations_grounded.instantiate()
 
 
+func get_element_type():
+	return element_type
+
+
 func get_initial_position():
 	return %PreviewSprite.position
 
@@ -86,11 +87,3 @@ func get_initial_facing_direction():
 
 func get_speed():
 	return speed
-
-
-func got_caught(_source):
-	enemy_caught.emit(self)
-
-	if element_type == null:
-		return null
-	return element_type.spawning_ability
