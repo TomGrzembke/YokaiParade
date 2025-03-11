@@ -29,25 +29,24 @@ func get_facing_direction():
 	return facing_direction
 
 
-func get_state_animations_scene():
-	return state_animations_scene
-
-
 func enter_state_idling():
-	state_animations_scene.enter_state_idling()
+	state_animations_scene.set_animation_state(state_animations_scene.AnimationState.IDLING)
 
 
 func enter_state_moving():
-	state_animations_scene.enter_state_moving()
+	state_animations_scene.set_animation_state(state_animations_scene.AnimationState.MOVING)
 
 
 func enter_state_lunging():
-	await state_animations_scene.enter_state_lunging()
+	state_animations_scene.set_animation_state(state_animations_scene.AnimationState.LUNGING)
+	await state_animations_scene.lunging_animation_finished
 
 
 func enter_state_attacking():
-	await state_animations_scene.enter_state_attacking()
+	state_animations_scene.set_animation_state(state_animations_scene.AnimationState.ATTACKING)
+	await state_animations_scene.attacking_animation_finished
 
 
 func enter_state_recovering():
-	await state_animations_scene.enter_state_recovering()
+	state_animations_scene.set_animation_state(state_animations_scene.AnimationState.RECOVERING)
+	await state_animations_scene.recovering_animation_finished

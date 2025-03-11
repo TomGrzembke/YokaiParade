@@ -40,7 +40,7 @@ func set_state_node(node):
 
 
 func change_to_next_level_state():
-	%AnimationPlayer.queue("loading_finished")
+	await get_tree().create_timer(1.5).timeout
 	%AnimationPlayer.queue("state_transitions_long/hide_state_scene")
 	await %AnimationPlayer.animation_finished
 	state_node.change_to_next_level_state()

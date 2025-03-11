@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbew8yq4n6jan"]
+[gd_scene load_steps=13 format=3 uid="uid://bbew8yq4n6jan"]
 
 [ext_resource type="Script" path="res://levels/scenes/loading.gd" id="1_4fevy"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="2_b1mnc"]
@@ -62,14 +62,9 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_mo4sr"]
-resource_name = "loading_finished"
-step = 0.125
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_78vyi"]
 _data = {
-"RESET": SubResource("Animation_753kk"),
-"loading_finished": SubResource("Animation_mo4sr")
+"RESET": SubResource("Animation_753kk")
 }
 
 [node name="Loading" type="Node"]
