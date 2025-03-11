@@ -23,7 +23,7 @@ func set_did_take_damage(positive):
 
 
 func set_take_damage_active(active):
-	$TakeDamageArea.set_deferred("monitoring", active)
+	$TakeDamageArea.set_deferred("monitorable", active)
 
 
 func on_enemy_caught(_enemy):
