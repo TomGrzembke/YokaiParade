@@ -151,6 +151,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../../../../BackButton")
 max_value = 1.0
 step = 0.05
 script = ExtResource("5_kto3a")
@@ -209,6 +210,7 @@ horizontal_alignment = 2
 [node name="FullscreenCheckBox" type="CheckBox" parent="MainPanel/PanelContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../../../BackButton")
 script = ExtResource("6_uxoii")
 
 [node name="BackButton" type="Button" parent="."]
@@ -219,6 +221,8 @@ offset_top = 859.1
 offset_right = 1005.1
 offset_bottom = 911.1
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../MainPanel/PanelContainer/VBoxContainer/HBoxContainer/FullscreenCheckBox")
+focus_neighbor_bottom = NodePath("../MainPanel/PanelContainer/VBoxContainer/SettingsGridContainer/VolumeMasterSlider")
 text = "Back"
 script = ExtResource("7_8s0a2")
 
