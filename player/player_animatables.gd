@@ -63,9 +63,7 @@ func _physics_process(_delta):
 
 func on_ability(current_ability):
 	if current_ability == null:
-		if shrug_timer == null || shrug_timer.time_left == 0:
-			state_machine.start("no_ability_hit")
-			shrug_timer = create_timer(shrug_cooldown)
+		shrug_anim()
 		return
 
 	if current_ability.ELEMENT_TYPE == ELEMENTS.ElementType.FIRE:
@@ -74,6 +72,14 @@ func on_ability(current_ability):
 		state_machine.start("double_jump")
 		spawn_vfx("air_jump", true, true)
 
+	shrug_timer = create_timer(shrug_cooldown)
+
+
+func shrug_anim():
+	if shrug_timer != null && shrug_timer.time_left != 0: return
+
+	state_machine.start("no_ability_hit")
+	spawn_vfx("no_ability", false, true, null, player)
 	shrug_timer = create_timer(shrug_cooldown)
 
 
