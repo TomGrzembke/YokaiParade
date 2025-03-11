@@ -1,10 +1,13 @@
-[gd_scene load_steps=38 format=3 uid="uid://ddyyhxxuwsxtk"]
+[gd_scene load_steps=41 format=3 uid="uid://ddyyhxxuwsxtk"]
 
 [ext_resource type="Script" path="res://enemies/enemy_animations.gd" id="1_ladii"]
 [ext_resource type="Texture2D" uid="uid://ba1gmfx4honp5" path="res://enemies/animations/assets/enemy_fire_spritesheet.png" id="2_t1kpb"]
 [ext_resource type="Texture2D" uid="uid://dwqiklm7ujj6i" path="res://enemies/animations/assets/vfx_animation_enemy_fire.png" id="3_4dobx"]
 [ext_resource type="Shader" path="res://shader/pattern_overlay.gdshader" id="3_5ypg4"]
 [ext_resource type="Texture2D" uid="uid://ba5pi8b15xb8a" path="res://assets/patterns/t_pattern_flowers.png" id="4_hkkv2"]
+[ext_resource type="AudioStream" uid="uid://ca278jlf75eu8" path="res://enemies/animations/assets/enemy_fire_attack.ogg" id="6_oti8d"]
+[ext_resource type="AudioStream" uid="uid://cdcsdc1bf8i7v" path="res://enemies/animations/assets/enemy_fire_take_damage.ogg" id="7_60ek0"]
+[ext_resource type="AudioStream" uid="uid://c6ru1glt1uun6" path="res://enemies/animations/assets/enemy_fire_lunge.ogg" id="7_67lgg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yp3fu"]
 shader = ExtResource("3_5ypg4")
@@ -197,6 +200,21 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-80, 0), Vector2(0, 0)]
 }
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AudioStreamPlayer2D")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_oti8d")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/7/use_blend = true
 
 [sub_resource type="Animation" id="Animation_jny5y"]
 resource_name = "attacking_right"
@@ -288,6 +306,21 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(80, 0), Vector2(0, 0)]
 }
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AudioStreamPlayer2D")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_oti8d")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/7/use_blend = true
 
 [sub_resource type="Animation" id="Animation_vbn0e"]
 resource_name = "idling"
@@ -425,6 +458,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_67lgg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_al0ud"]
 resource_name = "lunging_right"
@@ -478,6 +526,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_67lgg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_i3rq7"]
 resource_name = "moving_left_down"
@@ -685,7 +748,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.375, 2.625, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.294118), Color(1, 1, 1, 0.294118), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.490196), Color(1, 1, 1, 0.490196), Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -711,6 +774,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [4, 5, 6, 7, 8]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_60ek0")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_2732v"]
 resource_name = "recovering_right"
@@ -750,7 +828,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.375, 2.625, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.294118), Color(1, 1, 1, 0.294118), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.490196), Color(1, 1, 1, 0.490196), Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -776,6 +854,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [4, 5, 6, 7, 8]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_60ek0")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vyi56"]
 _data = {
@@ -932,3 +1025,6 @@ root_node = NodePath("%RecoveringBlendSpace/..")
 tree_root = SubResource("AnimationNodeBlendSpace1D_jlvg1")
 anim_player = NodePath("../AnimationPlayer")
 parameters/blend_position = 0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"

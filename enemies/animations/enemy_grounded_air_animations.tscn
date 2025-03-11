@@ -1,11 +1,12 @@
-[gd_scene load_steps=34 format=3 uid="uid://b5x05pl1dh0ey"]
+[gd_scene load_steps=35 format=3 uid="uid://b5x05pl1dh0ey"]
 
 [ext_resource type="Texture2D" uid="uid://cxsfo7protit" path="res://enemies/animations/assets/enemy_grounded_air_spritesheet.png" id="1_ngobw"]
 [ext_resource type="Script" path="res://enemies/enemy_animations.gd" id="1_t3cf0"]
 [ext_resource type="Texture2D" uid="uid://diek5e44plaf3" path="res://enemies/animations/assets/vfx_enemy_grounded_air.png" id="3_3p7um"]
 [ext_resource type="Material" path="res://shader/air_overlay.tres" id="3_ub5ow"]
-[ext_resource type="AudioStream" uid="uid://ynagq2iy6gj2" path="res://enemies/animations/assets/air_enemy_discover.ogg" id="5_rjngv"]
-[ext_resource type="AudioStream" uid="uid://dmfyxwtxotbsh" path="res://enemies/animations/assets/air_enemy_take_damage.ogg" id="6_iab8g"]
+[ext_resource type="AudioStream" uid="uid://cy08pyap7232e" path="res://enemies/animations/assets/enemy_air_attack.ogg" id="5_lgnk5"]
+[ext_resource type="AudioStream" uid="uid://ynagq2iy6gj2" path="res://enemies/animations/assets/enemy_air_lunge.ogg" id="5_rjngv"]
+[ext_resource type="AudioStream" uid="uid://dmfyxwtxotbsh" path="res://enemies/animations/assets/enemy_air_take_damage.ogg" id="6_iab8g"]
 
 [sub_resource type="Animation" id="Animation_563iv"]
 length = 0.001
@@ -137,6 +138,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_lgnk5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_migl4"]
 resource_name = "attacking_right"
@@ -204,6 +220,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_lgnk5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_vbn0e"]
 resource_name = "idling"
@@ -861,3 +892,4 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/blend_position = 0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"

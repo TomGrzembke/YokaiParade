@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://levels/modules/wall_destructible.gd" id="1_t1bg5"]
 [ext_resource type="Texture2D" uid="uid://b0s0pt0uaeqkx" path="res://levels/modules/assets/p_wall_destructible_small.png" id="2_wjjap"]
 [ext_resource type="PackedScene" uid="uid://bpccb0pqmr7r5" path="res://components/damage/take_damage_area.tscn" id="3_axf0u"]
-[ext_resource type="AudioStream" uid="uid://bds15lwrlbf7q" path="res://sounds/breakable_wall_breaking.wav" id="4_egb4m"]
+[ext_resource type="AudioStream" uid="uid://gcyb4uxc7lu8" path="res://levels/modules/assets/destructible_wall_small.ogg" id="4_84u51"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_li05j"]
 atlas = ExtResource("2_wjjap")
@@ -159,5 +159,5 @@ shape = SubResource("RectangleShape2D_kk5bv")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("4_egb4m")
+stream = ExtResource("4_84u51")
 bus = &"SFX"
