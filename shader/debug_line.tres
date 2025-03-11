@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://byy6iohvlx7as"]
+
+[ext_resource type="Shader" path="res://shader/pattern_overlay.gdshader" id="1_5e6d7"]
+[ext_resource type="Texture2D" uid="uid://ba5pi8b15xb8a" path="res://assets/patterns/t_pattern_flowers.png" id="2_cmctq"]
+
+[resource]
+shader = ExtResource("1_5e6d7")
+shader_parameter/overlay_alpha = 1.0
+shader_parameter/pattern_scale = 1.9
+shader_parameter/tilemap_offset = Vector2(0, 0)
+shader_parameter/flip_alpha = false
+shader_parameter/use_hard_blend = false
+shader_parameter/use_local = false
+shader_parameter/world_scale = 2.0
+shader_parameter/pattern_multiplier = 1.435
+shader_parameter/texture_multiplier = 0.73
+shader_parameter/end_tint = Color(0.513726, 0.490196, 1, 1)
+shader_parameter/pattern_texture = ExtResource("2_cmctq")
