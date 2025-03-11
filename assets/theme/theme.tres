@@ -1,10 +1,15 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://bqdlc5vw8gpa5"]
+[gd_resource type="Theme" load_steps=31 format=3 uid="uid://bqdlc5vw8gpa5"]
 
 [ext_resource type="FontFile" uid="uid://potb4jbn448t" path="res://assets/fonts/Dracutaz-gwARq.otf" id="1_hmqgt"]
 [ext_resource type="Texture2D" uid="uid://cdat26xy1wo2c" path="res://assets/theme/ui_button_yellow.png" id="2_cv1s1"]
 [ext_resource type="Texture2D" uid="uid://df3jgqsgfhkri" path="res://assets/theme/ui_button_black.png" id="2_rxv27"]
+[ext_resource type="Texture2D" uid="uid://cyh7ihatqastc" path="res://assets/theme/ui_box_empty_high.png" id="3_317c2"]
+[ext_resource type="Texture2D" uid="uid://52l7bmlpwf6y" path="res://assets/theme/ui_box_cross.png" id="3_bk2cy"]
 [ext_resource type="Texture2D" uid="uid://nd78x7qspeag" path="res://assets/theme/ui_slider_icon.png" id="3_t60ek"]
 [ext_resource type="Texture2D" uid="uid://h7r3o201p62a" path="res://assets/theme/ui_slider_icon_high.png" id="4_4fiec"]
+[ext_resource type="Texture2D" uid="uid://bl41h20gfbush" path="res://assets/theme/ui_box_tick_high.png" id="4_iphqy"]
+[ext_resource type="Texture2D" uid="uid://on51lpk3kv1w" path="res://assets/theme/ui_box_empty.png" id="5_a4tp6"]
+[ext_resource type="Texture2D" uid="uid://bnagwys7jcjnf" path="res://assets/theme/ui_box_tick.png" id="6_acx7r"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v32fi"]
 
@@ -17,6 +22,27 @@ texture = ExtResource("2_rxv27")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gljpn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xwsbs"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_or3ji"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_4khxe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sg0ef"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sdb6v"]
+texture = ExtResource("3_317c2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_262yj"]
+texture = ExtResource("3_317c2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yp4u1"]
+texture = ExtResource("4_iphqy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4nox2"]
+texture = ExtResource("5_a4tp6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v32gc"]
+texture = ExtResource("6_acx7r")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjlho"]
 bg_color = Color(0.262745, 0.168627, 0.729412, 1)
@@ -114,6 +140,16 @@ Button/styles/focus = SubResource("StyleBoxTexture_43473")
 Button/styles/hover = SubResource("StyleBoxTexture_nsenq")
 Button/styles/normal = SubResource("StyleBoxEmpty_gljpn")
 Button/styles/pressed = SubResource("StyleBoxEmpty_xwsbs")
+CheckBox/icons/checked = ExtResource("3_bk2cy")
+CheckBox/icons/checked_disabled = ExtResource("3_bk2cy")
+CheckBox/icons/unchecked = SubResource("ImageTexture_or3ji")
+CheckBox/icons/unchecked_disabled = SubResource("ImageTexture_4khxe")
+CheckBox/styles/disabled = SubResource("StyleBoxEmpty_sg0ef")
+CheckBox/styles/focus = SubResource("StyleBoxTexture_sdb6v")
+CheckBox/styles/hover = SubResource("StyleBoxTexture_262yj")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxTexture_yp4u1")
+CheckBox/styles/normal = SubResource("StyleBoxTexture_4nox2")
+CheckBox/styles/pressed = SubResource("StyleBoxTexture_v32gc")
 CountDownLabel/base_type = &"Label"
 CountDownLabel/colors/font_color = Color(0.937255, 0.443137, 0.282353, 1)
 CountDownLabel/colors/font_outline_color = Color(1, 1, 1, 1)
