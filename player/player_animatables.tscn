@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://h3ruips3t7l8" path="res://player/vfx_instance.tscn" id="5_av5c8"]
 [ext_resource type="AudioStream" uid="uid://cwgybk1plghnu" path="res://sounds/player_jump.wav" id="5_irw32"]
 [ext_resource type="AudioStream" uid="uid://dgk7beqkylhis" path="res://sounds/player_landing.wav" id="6_f5xr2"]
-[ext_resource type="AudioStream" uid="uid://b63j8p43v3758" path="res://player/assets/player_ability_fire_dash.wav" id="7_4uvss"]
+[ext_resource type="AudioStream" uid="uid://dd7qevcj84tyc" path="res://player/assets/player_ability_fire_dash.ogg" id="7_fv5hb"]
 [ext_resource type="AudioStream" uid="uid://cici5vyhrd5yu" path="res://player/assets/player_ability_double_jump.ogg" id="7_rtb8x"]
 [ext_resource type="AudioStream" uid="uid://bscd7xvdgh1of" path="res://sounds/momo_mau_3.ogg" id="9_7jwf0"]
 [ext_resource type="AudioStream" uid="uid://bnvetuq8gc2tv" path="res://sounds/momo_mau_1.ogg" id="10_88u37"]
@@ -179,7 +179,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [ExtResource("7_4uvss")],
+"args": [ExtResource("7_fv5hb")],
 "method": &"emit_sound"
 }]
 }
@@ -1149,7 +1149,7 @@ position = Vector2(0, 6)
 texture = ExtResource("1_wuri4")
 hframes = 4
 vframes = 12
-frame = 8
+frame = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
