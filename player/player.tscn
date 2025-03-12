@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://player/player_visuals.gd" id="6_guley"]
 [ext_resource type="Script" path="res://player/debug.gd" id="7_3jai0"]
 [ext_resource type="PackedScene" uid="uid://b173nlre4ndsy" path="res://player/player_animatables.tscn" id="7_74yxj"]
-[ext_resource type="Material" uid="uid://byy6iohvlx7as" path="res://shader/debug_line.tres" id="9_hbaoq"]
+[ext_resource type="Material" path="res://shader/debug_line.tres" id="9_hbaoq"]
 [ext_resource type="Script" path="res://player/movement_line.gd" id="14_p1m7a"]
 
 [sub_resource type="Curve" id="Curve_8672j"]
@@ -144,9 +144,6 @@ end_cap_mode = 2
 [node name="PlayerAnimatables" parent="." instance=ExtResource("7_74yxj")]
 position = Vector2(0, -50)
 line_material = ExtResource("9_hbaoq")
-
-[node name="Player" parent="PlayerAnimatables" index="1"]
-frame = 8
 
 [node name="Debug" type="Node2D" parent="."]
 position = Vector2(0, -25)
