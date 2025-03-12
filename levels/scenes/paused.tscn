@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://v24eao35y2ad"]
+[gd_scene load_steps=18 format=3 uid="uid://v24eao35y2ad"]
 
 [ext_resource type="Script" path="res://levels/scenes/paused.gd" id="1_8c3f4"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="2_eci05"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://b7bu0g5d2kfpc" path="res://ui/ui_panel_deco.png" id="5_w1drn"]
 [ext_resource type="Texture2D" uid="uid://cwvx7x2akvm35" path="res://ui/UI_Controls_Controller.png" id="8_p76wf"]
 [ext_resource type="Texture2D" uid="uid://ccwi7avw2apse" path="res://ui/UI_Controls_keyboard.png" id="9_qpe47"]
+[ext_resource type="AudioStream" uid="uid://c475r5in65dtp" path="res://sounds/menu_button1.wav" id="12_q0udc"]
+[ext_resource type="AudioStream" uid="uid://y0n2o3rt44od" path="res://sounds/menu_button2.wav" id="13_b4rfk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yh4t1"]
 shader = ExtResource("2_pa704")
@@ -237,6 +239,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="UiAudioStreamPlayerHover" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("12_q0udc")
+bus = &"UI"
+
+[node name="UiAudioStreamPlayerClick" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_b4rfk")
+bus = &"UI"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
