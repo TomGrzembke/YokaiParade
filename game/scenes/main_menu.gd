@@ -39,13 +39,6 @@ func change_to_quit_game_state():
 	change_to_game_state(quit_game_state)
 
 
-func change_to_game_state(next_game_state):
-	%AnimationPlayer.stop()
-	%AnimationPlayer.play("state_transitions_long/hide_state_scene")
-	await %AnimationPlayer.animation_finished
-	state_node.change_state(next_game_state)
-
-
 func set_state_node(node):
 	state_node = node
 
@@ -64,3 +57,10 @@ func set_credits_game_state(state):
 
 func set_quit_game_state(state):
 	quit_game_state = state
+
+
+func change_to_game_state(next_game_state):
+	%AnimationPlayer.stop()
+	%AnimationPlayer.play("state_transitions_long/hide_state_scene")
+	await %AnimationPlayer.animation_finished
+	state_node.change_state(next_game_state)

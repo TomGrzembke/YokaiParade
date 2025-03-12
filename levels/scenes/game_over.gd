@@ -37,14 +37,14 @@ func change_to_quit_game_level_state():
 	change_to_level_state(quit_game_level_state)
 
 
+func change_to_level_state(level_state):
+	await exit_state_transition()
+
+	state_node.change_state(level_state)
+
+
 func exit_state_transition():
 	%AnimationPlayer.stop()
 	%AnimationPlayer.play("state_transitions_long/hide_state_scene")
 
 	await %AnimationPlayer.animation_finished
-
-
-func change_to_level_state(level_state):
-	await exit_state_transition()
-
-	state_node.change_state(level_state)
