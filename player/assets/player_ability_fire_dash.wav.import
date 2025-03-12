@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b63j8p43v3758"
-path="res://.godot/imported/player_ability_fire_dash.wav-8ae4e4b83050a740e4520a7f2a720a57.sample"
+path="res://.godot/imported/player_ability_fire_dash.wav-7101924b33a6343c956cf479970204da.sample"
 
 [deps]
 
-source_file="res://sounds/player_ability_fire_dash.wav"
-dest_files=["res://.godot/imported/player_ability_fire_dash.wav-8ae4e4b83050a740e4520a7f2a720a57.sample"]
+source_file="res://player/assets/player_ability_fire_dash.wav"
+dest_files=["res://.godot/imported/player_ability_fire_dash.wav-7101924b33a6343c956cf479970204da.sample"]
 
 [params]
 
