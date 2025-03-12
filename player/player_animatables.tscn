@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cwgybk1plghnu" path="res://sounds/player_jump.wav" id="5_irw32"]
 [ext_resource type="AudioStream" uid="uid://dgk7beqkylhis" path="res://sounds/player_landing.wav" id="6_f5xr2"]
 [ext_resource type="AudioStream" uid="uid://coy5ai5tktmgg" path="res://sounds/player_walking.wav" id="7_rrgwt"]
-[ext_resource type="AudioStream" uid="uid://cvdi5cwdtgjef" path="res://sounds/player_ability_double_jump.wav" id="13_8mpil"]
+[ext_resource type="AudioStream" uid="uid://cici5vyhrd5yu" path="res://player/assets/player_ability_double_jump.ogg" id="7_rtb8x"]
 [ext_resource type="Script" path="res://sounds/sound_player.gd" id="14_mxwfv"]
 
 [sub_resource type="Curve" id="Curve_uxwp6"]
@@ -171,7 +171,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_o3nxy"]
 resource_name = "double_jump"
 length = 0.38
-step = 0.0
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -227,10 +227,10 @@ tracks/4/path = NodePath("PlayerAnimatables/EnvironmentalSounds")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.01),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [ExtResource("13_8mpil")],
+"args": [ExtResource("7_rtb8x")],
 "method": &"emit_sound"
 }]
 }

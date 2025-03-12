@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://abilities/dash.gd" id="1_708yo"]
 [ext_resource type="PackedScene" uid="uid://dbvyxduyy60pr" path="res://components/damage/deal_damage_area.tscn" id="2_u0oib"]
-[ext_resource type="AudioStream" uid="uid://b63j8p43v3758" path="res://sounds/player_ability_fire_dash.wav" id="3_1xdef"]
+[ext_resource type="AudioStream" uid="uid://b63j8p43v3758" path="res://player/assets/player_ability_fire_dash.wav" id="3_1xdef"]
 
 [sub_resource type="Curve" id="Curve_6cwuf"]
 _data = [Vector2(0, 1), 0.0, 0.410989, 0, 0, Vector2(1, 0.846154), -0.57481, 0.0, 0, 0]

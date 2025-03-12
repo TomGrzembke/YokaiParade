@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cc0wce22gon55"]
 
 [ext_resource type="Script" path="res://abilities/double_jump.gd" id="1_c33vj"]
-[ext_resource type="AudioStream" uid="uid://cvdi5cwdtgjef" path="res://sounds/player_ability_double_jump.wav" id="2_3rka5"]
+[ext_resource type="AudioStream" uid="uid://cici5vyhrd5yu" path="res://player/assets/player_ability_double_jump.ogg" id="2_pxfyb"]
 
 [sub_resource type="Curve" id="Curve_rgr0d"]
 _data = [Vector2(0, 1), 0.0, -0.149137, 0, 0, Vector2(1, 0.769231), -0.0549454, 0.0, 0, 0]
@@ -9,7 +9,7 @@ point_count = 2
 
 [sub_resource type="Animation" id="Animation_sjsra"]
 resource_name = "on_ability"
-length = 0.2
+length = 0.6
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -19,8 +19,8 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
-"start_offset": 0.102931,
-"stream": ExtResource("2_3rka5")
+"start_offset": 0.0,
+"stream": ExtResource("2_pxfyb")
 }],
 "times": PackedFloat32Array(0)
 }
