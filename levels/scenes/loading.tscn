@@ -102,7 +102,7 @@ step = 0.125
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Main/Control/AnimatedSprite2D")
+tracks/0/path = NodePath("CanvasLayer/Main/AnimatedCharacter/AnimatedSprite2D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -176,7 +176,8 @@ layout_mode = 2
 step = 1.0
 show_percentage = false
 
-[node name="Control" type="Control" parent="CanvasLayer/Main"]
+[node name="AnimatedCharacter" type="Control" parent="CanvasLayer/Main"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -188,7 +189,7 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Main/Control"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Main/AnimatedCharacter"]
 material = SubResource("ShaderMaterial_0bq87")
 position = Vector2(-200, -100)
 sprite_frames = SubResource("SpriteFrames_f51r6")
