@@ -10,6 +10,9 @@ var has_loading_finished = false
 
 
 func _ready():
+	if OS.has_feature("web"):
+		%AnimatedCharacter.visible = false
+
 	await %AnimationPlayer.animation_finished
 	if state_node != null:
 		await state_node.load_level()
