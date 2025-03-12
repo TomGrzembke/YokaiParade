@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://daq0ts878ltif"]
+[gd_scene load_steps=19 format=3 uid="uid://daq0ts878ltif"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_g4chm"]
 [ext_resource type="AudioStream" uid="uid://db38udv3jlgxu" path="res://assets/music/menumusic_yokaiparade.ogg" id="2_cgdsn"]
@@ -9,7 +9,9 @@
 [ext_resource type="Script" path="res://game/states/startup.gd" id="15_nvaqt"]
 [ext_resource type="PackedScene" uid="uid://ceul82s53rfq2" path="res://game/scenes/quit_game.tscn" id="16_37cfx"]
 [ext_resource type="PackedScene" uid="uid://dce17t0phbvrv" path="res://game/scenes/startup.tscn" id="16_fuloq"]
+[ext_resource type="AudioStream" uid="uid://c475r5in65dtp" path="res://sounds/menu_button1.wav" id="17_7s1j5"]
 [ext_resource type="Script" path="res://game/states/main_menu.gd" id="17_dwi8d"]
+[ext_resource type="AudioStream" uid="uid://y0n2o3rt44od" path="res://sounds/menu_button2.wav" id="18_gpcl4"]
 [ext_resource type="PackedScene" uid="uid://dk3wuo1sfknyo" path="res://game/scenes/main_menu.tscn" id="18_ujkrk"]
 [ext_resource type="Script" path="res://game/states/in_game.gd" id="19_nmmof"]
 [ext_resource type="Script" path="res://game/states/credits.gd" id="20_40gro"]
@@ -62,3 +64,13 @@ game_state_packed_scene = ExtResource("16_37cfx")
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 bus = &"Music"
+
+[node name="UiAudioStreamPlayerHover" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("17_7s1j5")
+bus = &"UI"
+
+[node name="UiAudioStreamPlayerClick" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("18_gpcl4")
+bus = &"UI"

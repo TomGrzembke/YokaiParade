@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://ui/custom_controls/button_focus_on_hover.gd" id="7_8s0a2"]
 [ext_resource type="AudioStream" uid="uid://c475r5in65dtp" path="res://sounds/menu_button1.wav" id="7_a73mq"]
 [ext_resource type="AudioStream" uid="uid://b63j8p43v3758" path="res://sounds/player_ability_fire_dash.wav" id="12_f1o50"]
-[ext_resource type="AudioStream" uid="uid://y0n2o3rt44od" path="res://sounds/menu_button2.wav" id="13_gpyir"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6pi0t"]
 
@@ -271,16 +270,6 @@ offset_top = 72.0
 offset_right = 1547.0
 offset_bottom = 730.0
 texture = ExtResource("5_c7ss1")
-
-[node name="UiAudioStreamPlayerHover" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("7_a73mq")
-bus = &"UI"
-
-[node name="UiAudioStreamPlayerClick" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("13_gpyir")
-bus = &"UI"
 
 [node name="SfxAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

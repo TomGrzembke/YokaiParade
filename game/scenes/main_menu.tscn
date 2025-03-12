@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dk3wuo1sfknyo"]
+[gd_scene load_steps=7 format=3 uid="uid://dk3wuo1sfknyo"]
 
 [ext_resource type="Script" path="res://game/scenes/main_menu.gd" id="1_qg7wj"]
 [ext_resource type="Texture2D" uid="uid://bpqxl54lmx415" path="res://ui/misc/ui_bg_3.png" id="2_nfcyx"]
@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bjn40nw0c0byv" path="res://ui/ui_panel_mainmenu.png" id="4_12tus"]
 [ext_resource type="Script" path="res://ui/custom_controls/button_focus_on_hover.gd" id="5_a6jfj"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="5_hmdbx"]
-[ext_resource type="AudioStream" uid="uid://c475r5in65dtp" path="res://sounds/menu_button1.wav" id="6_2mit4"]
-[ext_resource type="AudioStream" uid="uid://y0n2o3rt44od" path="res://sounds/menu_button2.wav" id="7_sxdwc"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_qg7wj")
@@ -114,16 +112,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="UiAudioStreamPlayerHover" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("6_2mit4")
-bus = &"UI"
-
-[node name="UiAudioStreamPlayerClick" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("7_sxdwc")
-bus = &"UI"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
