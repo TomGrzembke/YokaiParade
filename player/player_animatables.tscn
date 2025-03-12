@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://b173nlre4ndsy"]
+[gd_scene load_steps=73 format=3 uid="uid://b173nlre4ndsy"]
 
 [ext_resource type="Script" path="res://player/player_animatables.gd" id="1_japyu"]
 [ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/assets/player_spritesheet.png" id="1_wuri4"]
@@ -11,10 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://h3ruips3t7l8" path="res://player/vfx_instance.tscn" id="5_av5c8"]
 [ext_resource type="AudioStream" uid="uid://cwgybk1plghnu" path="res://sounds/player_jump.wav" id="5_irw32"]
 [ext_resource type="AudioStream" uid="uid://dgk7beqkylhis" path="res://sounds/player_landing.wav" id="6_f5xr2"]
-[ext_resource type="AudioStream" uid="uid://b63j8p43v3758" path="res://sounds/player_ability_fire_dash.wav" id="7_4uvss"]
-[ext_resource type="AudioStream" uid="uid://coy5ai5tktmgg" path="res://sounds/player_walking.wav" id="7_rrgwt"]
+[ext_resource type="AudioStream" uid="uid://b63j8p43v3758" path="res://player/assets/player_ability_fire_dash.wav" id="7_4uvss"]
 [ext_resource type="AudioStream" uid="uid://cici5vyhrd5yu" path="res://player/assets/player_ability_double_jump.ogg" id="7_rtb8x"]
 [ext_resource type="Script" path="res://sounds/sound_player.gd" id="14_mxwfv"]
+[ext_resource type="AudioStream" uid="uid://77a3pk7xnpwu" path="res://sounds/player_footsteps_01.ogg" id="14_yo6re"]
+[ext_resource type="AudioStream" uid="uid://buxi8ehvusiow" path="res://sounds/player_footsteps_02.ogg" id="15_qxsyd"]
 
 [sub_resource type="Curve" id="Curve_uxwp6"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -923,10 +924,13 @@ tracks/4/path = NodePath("PlayerAnimatables/EnvironmentalSounds")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [ExtResource("7_rrgwt")],
+"args": [ExtResource("14_yo6re")],
+"method": &"emit_sound"
+}, {
+"args": [ExtResource("15_qxsyd")],
 "method": &"emit_sound"
 }]
 }
@@ -1145,7 +1149,7 @@ position = Vector2(0, 6)
 texture = ExtResource("1_wuri4")
 hframes = 4
 vframes = 12
-frame = 11
+frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
