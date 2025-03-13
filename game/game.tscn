@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dce17t0phbvrv" path="res://game/scenes/startup.tscn" id="16_fuloq"]
 [ext_resource type="AudioStream" uid="uid://bq1d2vmxinis4" path="res://sounds/button_hover.ogg" id="17_4dupu"]
 [ext_resource type="Script" path="res://game/states/main_menu.gd" id="17_dwi8d"]
-[ext_resource type="AudioStream" uid="uid://y0n2o3rt44od" path="res://sounds/button_press.wav" id="18_gpcl4"]
 [ext_resource type="PackedScene" uid="uid://dk3wuo1sfknyo" path="res://game/scenes/main_menu.tscn" id="18_ujkrk"]
+[ext_resource type="AudioStream" uid="uid://cp7o7nltr5bll" path="res://sounds/button_press.ogg" id="19_0x8cq"]
 [ext_resource type="Script" path="res://game/states/in_game.gd" id="19_nmmof"]
 [ext_resource type="Script" path="res://game/states/credits.gd" id="20_40gro"]
 [ext_resource type="Script" path="res://game/states/options_main.gd" id="20_e22mg"]
@@ -74,5 +74,5 @@ bus = &"UI"
 
 [node name="UiAudioStreamPlayerClick" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("18_gpcl4")
+stream = ExtResource("19_0x8cq")
 bus = &"UI"
