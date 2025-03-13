@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ci7u7m3r384d3"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b0ivge2cnumsx"]
 
 [ext_resource type="Shader" path="res://shader/pattern_overlay.gdshader" id="1_5e6d7"]
 [ext_resource type="Texture2D" uid="uid://ba5pi8b15xb8a" path="res://assets/patterns/t_pattern_flowers.png" id="2_cmctq"]
