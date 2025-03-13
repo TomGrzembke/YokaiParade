@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnxi2gyvo83ec"]
+[gd_scene load_steps=16 format=3 uid="uid://dnxi2gyvo83ec"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uybn7"]
 [ext_resource type="Script" path="res://abilities/abilities.gd" id="2_es05j"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://player/debug.gd" id="7_3jai0"]
 [ext_resource type="PackedScene" uid="uid://b173nlre4ndsy" path="res://player/player_animatables.tscn" id="7_74yxj"]
 [ext_resource type="Material" uid="uid://byy6iohvlx7as" path="res://shader/debug_line.tres" id="9_hbaoq"]
-[ext_resource type="Script" path="res://player/movement_line.gd" id="14_p1m7a"]
 
 [sub_resource type="Curve" id="Curve_8672j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.157895, 0.043956), 0.395011, 0.395011, 0, 0, Vector2(0.310526, 0.351648), 2.94764, 2.94764, 0, 0, Vector2(0.673684, 0.923077), 0.657306, 0.657306, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -34,14 +33,6 @@ height = 74.0
 [sub_resource type="Curve" id="Curve_xeqma"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="Curve" id="Curve_3tghh"]
-_data = [Vector2(0, 0.252747), 0.0, 0.824712, 0, 0, Vector2(1, 0.945055), 1.17867, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_hcowl"]
-offsets = PackedFloat32Array(0.234043, 1)
-colors = PackedColorArray(0.384314, 0.823529, 0.878431, 1, 0.952941, 0.298039, 0.490196, 1)
 
 [node name="Player" type="CharacterBody2D"]
 top_level = true
@@ -151,39 +142,6 @@ frame = 8
 [node name="Debug" type="Node2D" parent="."]
 position = Vector2(0, -25)
 script = ExtResource("7_3jai0")
-
-[node name="MovementLines" type="Node2D" parent="Debug"]
-position = Vector2(0, 22)
-
-[node name="OutlineMovementLine" type="Line2D" parent="Debug/MovementLines"]
-top_level = true
-z_index = -1
-position = Vector2(0, -13)
-points = PackedVector2Array(2, -1, -89, 13, -131, 17)
-width = 30.0
-width_curve = SubResource("Curve_3tghh")
-default_color = Color(0, 0, 0, 1)
-joint_mode = 1
-begin_cap_mode = 2
-end_cap_mode = 2
-script = ExtResource("14_p1m7a")
-trail_points_max = 16
-
-[node name="MovementLine" type="Line2D" parent="Debug/MovementLines"]
-top_level = true
-z_index = -1
-material = ExtResource("9_hbaoq")
-position = Vector2(0, -13)
-points = PackedVector2Array(2, -1, -89, 13, -131, 17)
-width = 20.0
-width_curve = SubResource("Curve_3tghh")
-default_color = Color(0.952941, 0.298039, 0.490196, 1)
-gradient = SubResource("Gradient_hcowl")
-joint_mode = 1
-begin_cap_mode = 2
-end_cap_mode = 2
-script = ExtResource("14_p1m7a")
-trail_points_max = 15
 
 [connection signal="deal_damage_area_entered" from="DealDamageArea" to="Abilities" method="on_deal_damage_area_entered"]
 [connection signal="deal_damage_area_exited" from="DealDamageArea" to="Abilities" method="on_deal_damage_area_exited"]

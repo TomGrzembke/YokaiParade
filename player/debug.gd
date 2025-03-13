@@ -3,7 +3,6 @@ extends Node2D
 
 @onready var player: CharacterBody2D = $".."
 @onready var collision_shape: CollisionShape2D = $"../CollisionShape2D"
-@onready var movement_lines = $MovementLines
 
 @export var debug_speed_steps = 1
 @export_range(0.0, 1.0) var instant_token_percentage = 1.0
@@ -21,7 +20,6 @@ func _unhandled_input(event):
 	if event.is_action_pressed("debug_mode"):
 		debug_mode = player.toggle_debug()
 		collision_shape.disabled = debug_mode
-		movement_lines.visible = true
 
 	set_debug_speed()
 

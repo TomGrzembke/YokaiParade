@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://b173nlre4ndsy"]
+[gd_scene load_steps=77 format=3 uid="uid://b173nlre4ndsy"]
 
 [ext_resource type="Script" path="res://player/player_animatables.gd" id="1_japyu"]
 [ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/assets/player_spritesheet.png" id="1_wuri4"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" path="res://sounds/sound_player.gd" id="14_mxwfv"]
 [ext_resource type="AudioStream" uid="uid://77a3pk7xnpwu" path="res://sounds/player_footsteps_01.ogg" id="14_yo6re"]
 [ext_resource type="AudioStream" uid="uid://buxi8ehvusiow" path="res://sounds/player_footsteps_02.ogg" id="15_qxsyd"]
+[ext_resource type="Script" path="res://player/movement_line.gd" id="17_tfrnd"]
+[ext_resource type="Material" uid="uid://byy6iohvlx7as" path="res://shader/debug_line.tres" id="18_y1len"]
 
 [sub_resource type="Curve" id="Curve_uxwp6"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -1122,6 +1124,14 @@ states/walking/position = Vector2(436, -18)
 transitions = ["Start", "idling", SubResource("AnimationNodeStateMachineTransition_i4wgy"), "idling", "walking", SubResource("AnimationNodeStateMachineTransition_egflg"), "walking", "idling", SubResource("AnimationNodeStateMachineTransition_1r4x0"), "walking", "jump", SubResource("AnimationNodeStateMachineTransition_87uy6"), "idling", "jump", SubResource("AnimationNodeStateMachineTransition_p4mgk"), "landing", "idling", SubResource("AnimationNodeStateMachineTransition_71yb5"), "jump", "falling", SubResource("AnimationNodeStateMachineTransition_dyay8"), "falling", "landing", SubResource("AnimationNodeStateMachineTransition_gvbew"), "falling", "jump", SubResource("AnimationNodeStateMachineTransition_in6c8"), "dash", "falling", SubResource("AnimationNodeStateMachineTransition_s3chn"), "got_hit", "falling", SubResource("AnimationNodeStateMachineTransition_kpurb"), "hit", "idling", SubResource("AnimationNodeStateMachineTransition_ebmfl"), "jump", "landing", SubResource("AnimationNodeStateMachineTransition_5yhxo"), "idling2", "walking", SubResource("AnimationNodeStateMachineTransition_0gbqa"), "idling3", "walking", SubResource("AnimationNodeStateMachineTransition_3olmi"), "idling4", "walking", SubResource("AnimationNodeStateMachineTransition_874ca"), "no_ability_hit", "idling", SubResource("AnimationNodeStateMachineTransition_8s21v"), "celebration", "idling", SubResource("AnimationNodeStateMachineTransition_kii8v"), "double_jump", "falling", SubResource("AnimationNodeStateMachineTransition_qomkr"), "double_jump", "landing", SubResource("AnimationNodeStateMachineTransition_3qk0m"), "dying", "idling", SubResource("AnimationNodeStateMachineTransition_cmh50")]
 graph_offset = Vector2(-150, -285)
 
+[sub_resource type="Curve" id="Curve_mhfsi"]
+_data = [Vector2(0, 0.252747), 0.0, 0.824712, 0, 0, Vector2(1, 0.945055), 1.17867, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_gsjai"]
+offsets = PackedFloat32Array(0.234043, 1)
+colors = PackedColorArray(0.384314, 0.823529, 0.878431, 1, 0.952941, 0.298039, 0.490196, 1)
+
 [node name="PlayerAnimatables" type="Node2D"]
 script = ExtResource("1_japyu")
 blend_curve = SubResource("Curve_uxwp6")
@@ -1149,7 +1159,7 @@ position = Vector2(0, 6)
 texture = ExtResource("1_wuri4")
 hframes = 4
 vframes = 12
-frame = 11
+frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
@@ -1180,6 +1190,39 @@ pitch_max = 1.1
 
 [node name="VfxInstance" parent="." instance=ExtResource("5_av5c8")]
 visible = false
+
+[node name="MovementLines" type="Node2D" parent="."]
+position = Vector2(0, 44)
+
+[node name="OutlineMovementLine" type="Line2D" parent="MovementLines"]
+top_level = true
+z_index = -1
+position = Vector2(0, -13)
+points = PackedVector2Array(2, -1, -89, 13, -131, 17)
+width = 30.0
+width_curve = SubResource("Curve_mhfsi")
+default_color = Color(0, 0, 0, 1)
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("17_tfrnd")
+trail_points_max = 16
+
+[node name="MovementLine" type="Line2D" parent="MovementLines"]
+top_level = true
+z_index = -1
+material = ExtResource("18_y1len")
+position = Vector2(0, -13)
+points = PackedVector2Array(2, -1, -89, 13, -131, 17)
+width = 20.0
+width_curve = SubResource("Curve_mhfsi")
+default_color = Color(0.952941, 0.298039, 0.490196, 1)
+gradient = SubResource("Gradient_gsjai")
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("17_tfrnd")
+trail_points_max = 15
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_finished"]
 
