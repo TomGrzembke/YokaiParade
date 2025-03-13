@@ -227,7 +227,6 @@ mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="UiIngameBlBack" type="TextureRect" parent="UILayer/Bottom"]
-visible = false
 material = ExtResource("27_xthkp")
 layout_mode = 1
 anchors_preset = 2
@@ -270,7 +269,6 @@ grow_vertical = 0
 texture = ExtResource("38_mtvf0")
 
 [node name="AbilityBg" type="TextureRect" parent="UILayer/Bottom"]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0

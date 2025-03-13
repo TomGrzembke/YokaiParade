@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://bbew8yq4n6jan"]
 
 [ext_resource type="Script" path="res://levels/scenes/loading.gd" id="1_4fevy"]
+[ext_resource type="Texture2D" uid="uid://igrkc1lr3axm" path="res://ui/misc/ui_bg_4.png" id="2_5h1rp"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="2_b1mnc"]
-[ext_resource type="Texture2D" uid="uid://c1h7m8cl52p6k" path="res://ui/misc/ui_bg_5.png" id="2_chnw0"]
 [ext_resource type="Shader" path="res://shader/exchange_color_on_asset.gdshader" id="2_fomcb"]
 [ext_resource type="Texture2D" uid="uid://dchjx31w1tyge" path="res://player/assets/player_spritesheet.png" id="2_vro33"]
 
@@ -138,10 +138,9 @@ color = Color(0.235294, 0.207843, 0.266667, 1)
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_chnw0")
+texture = ExtResource("2_5h1rp")
 
 [node name="Main" type="Control" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
 z_index = 100
 layout_mode = 3
 anchors_preset = 15
@@ -163,6 +162,8 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/Main/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.811765, 0.737255, 0.631373, 1)
+theme_override_constants/outline_size = 15
 text = "Loading"
 horizontal_alignment = 1
 
