@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dj8bkbrvcyudi"]
 
 [ext_resource type="Script" path="res://levels/scenes/game_over.gd" id="1_8nfyu"]
-[ext_resource type="Texture2D" uid="uid://c5mky68gcqspu" path="res://ui/ui_outline_hori.png" id="2_wafhc"]
 [ext_resource type="Texture2D" uid="uid://7s87q0ntc3rt" path="res://levels/scenes/assets/parade_illustration.png" id="3_jcb15"]
 [ext_resource type="Script" path="res://ui/custom_controls/button_focus_on_hover.gd" id="3_uje4y"]
+[ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="4_yngrb"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="7_3xw7a"]
 
 [sub_resource type="Animation" id="Animation_rx4qx"]
@@ -60,32 +60,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UiOutlineHori" type="TextureRect" parent="CanvasLayer/Main"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -585.0
-offset_top = -541.0
-offset_right = 585.0
-offset_bottom = 491.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_wafhc")
-
 [node name="MainPanel" type="TextureRect" parent="CanvasLayer/Main"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -543.0
-offset_top = -414.0
-offset_right = 537.0
-offset_bottom = 434.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_jcb15")
@@ -97,38 +76,70 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -540.0
-offset_top = 100.0
+offset_top = 80.0
 offset_right = 540.0
-offset_bottom = 175.0
+offset_bottom = 194.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.921569, 0.803922, 0.384314, 1)
+theme_override_colors/font_outline_color = Color(0.305882, 0.188235, 0.941176, 1)
+theme_override_constants/outline_size = 31
+theme_override_font_sizes/font_size = 110
 text = "Thank you for playing!"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main/MainPanel"]
+[node name="ReturnToMainMenuButton" type="Button" parent="CanvasLayer/Main/MainPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -92.5
-offset_top = -173.0
-offset_right = 92.5
-offset_bottom = -59.0
+offset_left = -165.5
+offset_top = -180.0
+offset_right = 165.5
+offset_bottom = -107.0
 grow_horizontal = 2
 grow_vertical = 0
-
-[node name="ReturnToMainMenuButton" type="Button" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
+scale = Vector2(1.1, 1.1)
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
 focus_neighbor_top = NodePath("../QuitGameButton")
+focus_neighbor_bottom = NodePath("../QuitGameButton")
+theme = ExtResource("4_yngrb")
+theme_type_variation = &"MMButton"
+theme_override_colors/font_hover_pressed_color = Color(0.305882, 0.188235, 0.941176, 1)
+theme_override_colors/font_hover_color = Color(0.305882, 0.188235, 0.941176, 1)
+theme_override_colors/font_focus_color = Color(0.305882, 0.188235, 0.941176, 1)
+theme_override_font_sizes/font_size = 70
 text = "Main Menu"
 script = ExtResource("3_uje4y")
 
-[node name="QuitGameButton" type="Button" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
+[node name="QuitGameButton" type="Button" parent="CanvasLayer/Main/MainPanel"]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -165.5
+offset_top = -100.0
+offset_right = 165.5
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.1, 1.1)
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+focus_neighbor_top = NodePath("../ReturnToMainMenuButton")
 focus_neighbor_bottom = NodePath("../ReturnToMainMenuButton")
+theme = ExtResource("4_yngrb")
+theme_type_variation = &"MMButton"
+theme_override_colors/font_hover_pressed_color = Color(0.305882, 0.188235, 0.941176, 1)
+theme_override_colors/font_hover_color = Color(0.305882, 0.188235, 0.941176, 1)
+theme_override_colors/font_focus_color = Color(0.305882, 0.188235, 0.941176, 1)
+theme_override_font_sizes/font_size = 70
 text = "Quit Game"
 script = ExtResource("3_uje4y")
 
