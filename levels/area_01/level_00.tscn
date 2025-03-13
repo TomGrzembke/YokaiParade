@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://tvyt8dx4csl5" path="res://enemies/types/enemy_element_type_air.tres" id="3_lrn1s"]
 [ext_resource type="Resource" uid="uid://be56k4m11w44j" path="res://enemies/types/enemy_element_type_fire.tres" id="4_f34p5"]
 [ext_resource type="PackedScene" uid="uid://bll3xc6lvwc5" path="res://enemies/enemy_airborne.tscn" id="5_kt7br"]
-[ext_resource type="PackedScene" uid="uid://bfo2kxh1sqjax" path="res://assets/signs/control_sign.tscn" id="6_mmdxv"]
+[ext_resource type="PackedScene" path="res://assets/signs/control_sign.tscn" id="6_mmdxv"]
 [ext_resource type="Texture2D" uid="uid://bhldpe8filivy" path="res://assets/signs/p_sign_keyboardjumpshort.png" id="7_yh7xr"]
 [ext_resource type="Texture2D" uid="uid://coi8ugqglvv5u" path="res://assets/signs/p_sign_controllerjumpshort.png" id="8_b3dpd"]
 [ext_resource type="Texture2D" uid="uid://df8gaqo3luqc1" path="res://assets/signs/p_sign_keyboardjumplong.png" id="8_gdrju"]
@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/modules/player_spawn_point.tscn" id="16_riu0e"]
 [ext_resource type="Texture2D" uid="uid://chl3v23uvjvpm" path="res://assets/signs/p_sign_controllerusefire.png" id="16_rlxis"]
 [ext_resource type="Texture2D" uid="uid://byxc1err51yh0" path="res://assets/signs/p_sign_controlleruseair.png" id="18_xc5u8"]
-[ext_resource type="PackedScene" uid="uid://dcnspl24l4dn4" path="res://levels/area_01/giant_mountains_start.tscn" id="22_a1smv"]
+[ext_resource type="PackedScene" path="res://levels/area_01/giant_mountains_start.tscn" id="22_a1smv"]
 
 [sub_resource type="Curve2D" id="Curve2D_j4ig6"]
 _data = {

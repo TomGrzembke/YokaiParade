@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://player/player_visuals.gd" id="6_guley"]
 [ext_resource type="Script" path="res://player/debug.gd" id="7_3jai0"]
 [ext_resource type="PackedScene" uid="uid://b173nlre4ndsy" path="res://player/player_animatables.tscn" id="7_74yxj"]
-[ext_resource type="Material" uid="uid://byy6iohvlx7as" path="res://shader/debug_line.tres" id="9_hbaoq"]
+[ext_resource type="Material" path="res://shader/debug_line.tres" id="9_hbaoq"]
 
 [sub_resource type="Curve" id="Curve_8672j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.157895, 0.043956), 0.395011, 0.395011, 0, 0, Vector2(0.310526, 0.351648), 2.94764, 2.94764, 0, 0, Vector2(0.673684, 0.923077), 0.657306, 0.657306, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
