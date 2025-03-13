@@ -194,7 +194,6 @@ curve = SubResource("Curve2D_5q0cv")
 [node name="EnemyFlying" parent="1st-2ndCheckpoint/Enemies/AirFlyingIdling12" instance=ExtResource("5_bw4o2")]
 position = Vector2(14163, 1125)
 element_type = ExtResource("9_mevgi")
-initial_facing_direction = 1
 
 [node name="AirFlyingIdling9" type="Path2D" parent="1st-2ndCheckpoint/Enemies"]
 position = Vector2(-10812, -990)
@@ -369,7 +368,6 @@ curve = SubResource("Curve2D_3ojuu")
 position = Vector2(12295, 620)
 initial_state = 200
 element_type = ExtResource("10_o7ka8")
-initial_facing_direction = 1
 
 [node name="AirGroundedIdling7" parent="2nd-3rdCheckpoint/Enemies" instance=ExtResource("8_d6tq4")]
 position = Vector2(10532, 1033)
@@ -481,4 +479,4 @@ tile_map_data = PackedByteArray("AAAuAB0ABQAJAAIAAAAvAB0ABQAJAAIAAAAwAB0ABQAHAAI
 tile_set = ExtResource("18_nyflo")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("19_1e57h")]
-position = Vector2(-2962, 1309)
+position = Vector2(-2962, 1267)

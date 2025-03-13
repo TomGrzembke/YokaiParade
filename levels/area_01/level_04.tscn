@@ -395,7 +395,6 @@ curve = SubResource("Curve2D_pehu7")
 [node name="EnemyAirborne" parent="3rd-4thCheckpoint/Enemies/FireFlyingIdling22" instance=ExtResource("5_saprc")]
 position = Vector2(2095, 747)
 element_type = ExtResource("4_3h1ij")
-initial_facing_direction = 1
 metadata/_edit_lock_ = true
 
 [node name="FireFlyingIdling14" type="Path2D" parent="3rd-4thCheckpoint/Enemies"]
@@ -504,7 +503,6 @@ curve = SubResource("Curve2D_pehu7")
 [node name="EnemyAirborne" parent="3rd-4thCheckpoint/Enemies/AirFlyingIdling10" instance=ExtResource("5_saprc")]
 position = Vector2(2095, 747)
 element_type = ExtResource("3_w1yfq")
-initial_facing_direction = 1
 metadata/_edit_lock_ = true
 
 [node name="AirFlyingIdling11" type="Path2D" parent="3rd-4thCheckpoint/Enemies"]
@@ -524,7 +522,6 @@ curve = SubResource("Curve2D_pehu7")
 position = Vector2(2095, 747)
 initial_state = 200
 element_type = ExtResource("3_w1yfq")
-initial_facing_direction = 1
 metadata/_edit_lock_ = true
 
 [node name="AirFlyingIdling6" type="Path2D" parent="3rd-4thCheckpoint/Enemies"]
@@ -666,7 +663,7 @@ tile_map_data = PackedByteArray("AAD8AFcAAAAxADEAABC9AGsAAAAAADEAABCqAGkAAAAbADE
 tile_set = ExtResource("8_buf1t")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("11_sedop")]
-position = Vector2(-285, 1070)
+position = Vector2(-285, 1027)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c3u4k")
@@ -759,10 +756,10 @@ shape = SubResource("RectangleShape2D_5svx8")
 
 [connection signal="area_entered" from="GameplayTileMapLayer/Checkpoint" to="GameplayTileMapLayer/Checkpoint" method="on_checkpoint_area_entered"]
 [connection signal="body_entered" from="GameplayTileMapLayer/Checkpoint" to="GameplayTileMapLayer/Checkpoint" method="on_checkpoint_area_entered"]
-[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@29945" to="GameplayTileMapLayer/@Area2D@29945" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@29945" to="GameplayTileMapLayer/@Area2D@29945" method="on_checkpoint_area_entered"]
-[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@29950" to="GameplayTileMapLayer/@Area2D@29950" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@29950" to="GameplayTileMapLayer/@Area2D@29950" method="on_checkpoint_area_entered"]
-[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@29954" to="GameplayTileMapLayer/@Area2D@29954" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@29954" to="GameplayTileMapLayer/@Area2D@29954" method="on_checkpoint_area_entered"]
+[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@61426" to="GameplayTileMapLayer/@Area2D@61426" method="on_checkpoint_area_entered"]
+[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@61426" to="GameplayTileMapLayer/@Area2D@61426" method="on_checkpoint_area_entered"]
+[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@61431" to="GameplayTileMapLayer/@Area2D@61431" method="on_checkpoint_area_entered"]
+[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@61431" to="GameplayTileMapLayer/@Area2D@61431" method="on_checkpoint_area_entered"]
+[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@61435" to="GameplayTileMapLayer/@Area2D@61435" method="on_checkpoint_area_entered"]
+[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@61435" to="GameplayTileMapLayer/@Area2D@61435" method="on_checkpoint_area_entered"]
 [connection signal="body_entered" from="GameplayTileMapLayer/Goal" to="GameplayTileMapLayer/Goal" method="on_body_entered"]

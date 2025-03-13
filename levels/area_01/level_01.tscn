@@ -112,7 +112,6 @@ curve = SubResource("Curve2D_d2jj2")
 [node name="EnemyAirborne" parent="1st-2ndCheckpoint/Enemies/AirFlyingIdling2" instance=ExtResource("11_pkx78")]
 position = Vector2(2012, 548)
 element_type = ExtResource("9_qkkl1")
-initial_facing_direction = 1
 
 [node name="2nd-3rdCheckpoint" type="Node2D" parent="."]
 
@@ -352,17 +351,7 @@ tile_map_data = PackedByteArray("AAB0AxkAAAAjAAwAABDBAiMAAAAjAAwAAABTADoAAAA1AAk
 tile_set = ExtResource("11_p05d4")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("19_stf0i")]
-position = Vector2(-232, 1069)
+position = Vector2(-232, 1027)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c3u4k")
-
-[connection signal="area_entered" from="GameplayTileMapLayer/Checkpoint" to="GameplayTileMapLayer/Checkpoint" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/Checkpoint" to="GameplayTileMapLayer/Checkpoint" method="on_checkpoint_area_entered"]
-[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@23525" to="GameplayTileMapLayer/@Area2D@23525" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@23525" to="GameplayTileMapLayer/@Area2D@23525" method="on_checkpoint_area_entered"]
-[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@23526" to="GameplayTileMapLayer/@Area2D@23526" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@23526" to="GameplayTileMapLayer/@Area2D@23526" method="on_checkpoint_area_entered"]
-[connection signal="area_entered" from="GameplayTileMapLayer/@Area2D@23527" to="GameplayTileMapLayer/@Area2D@23527" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/@Area2D@23527" to="GameplayTileMapLayer/@Area2D@23527" method="on_checkpoint_area_entered"]
-[connection signal="body_entered" from="GameplayTileMapLayer/Goal" to="GameplayTileMapLayer/Goal" method="on_body_entered"]

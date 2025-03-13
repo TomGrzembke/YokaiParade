@@ -248,8 +248,7 @@ initial_state = 200
 element_type = ExtResource("5_spnqd")
 
 [node name="AirGroundedIdling" parent="Start-1stCheckpoint/Enemies" instance=ExtResource("3_0vhd0")]
-position = Vector2(1824, 792)
-initial_state = 200
+position = Vector2(1880, 792)
 element_type = ExtResource("4_bqem7")
 initial_facing_direction = 1
 
@@ -281,7 +280,7 @@ tile_map_data = PackedByteArray("AAAyABMABQAHAAIAAAAxABMABQAJAAIAAAAwABMABQAGAAI
 tile_set = ExtResource("17_0fatb")
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("18_ywyf1")]
-position = Vector2(2168, 912)
+position = Vector2(2160, 867)
 
 [node name="TileMapForeground" type="TileMapLayer" parent="."]
 z_index = 5
