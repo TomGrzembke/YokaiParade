@@ -4,56 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://uja72e3p7hhx" path="res://levels/modules/assets/vfx_goal_spritesheet.png" id="3_kmpe4"]
 [ext_resource type="Texture2D" uid="uid://bq0wsylybrjvq" path="res://levels/modules/assets/p_goal_spritesheet.png" id="4_3daf8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1naso"]
-atlas = ExtResource("3_kmpe4")
-region = Rect2(0, 0, 320, 419)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_arajo"]
-atlas = ExtResource("3_kmpe4")
-region = Rect2(320, 0, 320, 419)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sw0yg"]
-atlas = ExtResource("3_kmpe4")
-region = Rect2(640, 0, 320, 419)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xsr11"]
-atlas = ExtResource("3_kmpe4")
-region = Rect2(960, 0, 320, 419)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_krc17"]
-atlas = ExtResource("3_kmpe4")
-region = Rect2(1280, 0, 320, 419)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nt763"]
-atlas = ExtResource("3_kmpe4")
-region = Rect2(1600, 0, 320, 419)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_uibre"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1naso")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_arajo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sw0yg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xsr11")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_krc17")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nt763")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hnoeg"]
 atlas = ExtResource("4_3daf8")
 region = Rect2(0, 0, 320, 419)
@@ -104,6 +54,56 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a5nk"]
+atlas = ExtResource("3_kmpe4")
+region = Rect2(0, 0, 213, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wiqq"]
+atlas = ExtResource("3_kmpe4")
+region = Rect2(213, 0, 213, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hokfu"]
+atlas = ExtResource("3_kmpe4")
+region = Rect2(426, 0, 213, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agm36"]
+atlas = ExtResource("3_kmpe4")
+region = Rect2(639, 0, 213, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6swcy"]
+atlas = ExtResource("3_kmpe4")
+region = Rect2(852, 0, 213, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qp4y1"]
+atlas = ExtResource("3_kmpe4")
+region = Rect2(1065, 0, 213, 280)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uibre"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7a5nk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wiqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hokfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agm36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6swcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qp4y1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkh4u"]
 size = Vector2(224, 404)
 
@@ -124,6 +124,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_wcior"]
 resource_name = "celebrate"
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -163,17 +164,17 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_jmwwo")
 
-[node name="CelebrationAnimatedSprite" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(16, -208)
-sprite_frames = SubResource("SpriteFrames_uibre")
-frame_progress = 0.490392
-
 [node name="PostAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-44, -209)
 sprite_frames = SubResource("SpriteFrames_ayieb")
 autoplay = "default"
 frame_progress = 0.716616
+
+[node name="CelebrationAnimatedSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(8, -140)
+sprite_frames = SubResource("SpriteFrames_uibre")
+frame_progress = 0.28964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -202)

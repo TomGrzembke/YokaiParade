@@ -17,7 +17,7 @@ signal attacking_animation_finished
 signal recovering_animation_finished
 
 
-var direction
+var direction = Vector2.ZERO
 var state_node
 
 var animation_state = AnimationState.IDLING

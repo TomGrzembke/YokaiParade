@@ -75,7 +75,6 @@ curve = SubResource("Curve2D_8yv0d")
 [node name="EnemyAirborne" parent="Start-1stCheckpoint/Enemies/ProblemFireEnemy" instance=ExtResource("6_tj8ky")]
 position = Vector2(5653, -77)
 element_type = ExtResource("5_spnqd")
-initial_facing_direction = 1
 
 [node name="FireGroundedMoving" parent="Start-1stCheckpoint/Enemies" instance=ExtResource("3_0vhd0")]
 position = Vector2(2472, 712)

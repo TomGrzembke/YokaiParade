@@ -12,7 +12,8 @@ func _ready():
 	add_child(state_animations_scene)
 
 	state_animations_scene.position = entity.get_initial_position()
-	set_facing_direction(entity.get_initial_facing_direction())
+	if entity.has_method("get_initial_facing_direction"):
+		set_facing_direction(entity.get_initial_facing_direction())
 
 
 func set_state_node(node):

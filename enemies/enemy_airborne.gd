@@ -10,7 +10,6 @@ const STATES = preload("res://enemies/enemy_initial_states.gd")
 @export var element_type: EnemyElementType
 
 @export_category("Movement")
-@export_enum("Right:1", "Left:-1") var initial_facing_direction = -1
 @export var max_speed = 150.0
 @export var easing_curve: Curve
 
@@ -86,12 +85,6 @@ func get_initial_state():
 			return moving_state
 		_:
 			return idling_state
-
-
-func get_initial_facing_direction():
-	match initial_facing_direction:
-		1: return Vector2.RIGHT
-		-1: return Vector2.LEFT
 
 
 func get_max_speed():
