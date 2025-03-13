@@ -1,12 +1,20 @@
 extends Node
 
 
+const MASTER_BUS_ID = 0
+const MUSIC_BUS_ID = 1
+const SFX_BUS_ID = 2
+const UI_BUS_ID = 3
+const MUTE_VOLUME = -80.0
+
+
 @export var initial_game_state: GameState
 @export var title_music_stream: AudioStream
 @export var game_music_stream: AudioStream
 @export var game_over_music_stream: AudioStream
 
 var current_game_state_scene
+var stored_ui_volume
 
 
 func _ready() -> void:
@@ -47,15 +55,14 @@ func fade_out_audio(duration):
 	if not %MusicPlayer.playing:
 		return
 
-	var current_volume_master = get_volume_audio_bus(0)
-	var mute_volume = -80.0
+	var current_volume_master = get_volume_audio_bus(MASTER_BUS_ID)
 
 	var set_volume_audio_bus_master = func(volume_db):
-		set_volume_audio_bus(0, volume_db)
+		set_volume_audio_bus(MASTER_BUS_ID, volume_db)
 
 	var tween = get_tree().create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	tween.tween_method(set_volume_audio_bus_master, current_volume_master, mute_volume, duration)
+	tween.tween_method(set_volume_audio_bus_master, current_volume_master, MUTE_VOLUME, duration)
 
 	await tween.finished
 

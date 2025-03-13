@@ -58,7 +58,6 @@ func set_state_node(node):
 
 
 func change_to_next_level_state():
-	%AnimationPlayer.stop()
 	%AnimationPlayer.play("loading_finished")
 	%AnimationPlayer.queue("state_transitions_long/hide_state_scene")
 	await %AnimationPlayer.animation_finished

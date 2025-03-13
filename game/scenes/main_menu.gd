@@ -23,6 +23,10 @@ func _ready():
 
 # Game States
 
+func set_state_node(node):
+	state_node = node
+
+
 func change_to_in_game_state():
 	change_to_game_state(in_game_state)
 
@@ -37,10 +41,6 @@ func change_to_credits_game_state():
 
 func change_to_quit_game_state():
 	change_to_game_state(quit_game_state)
-
-
-func set_state_node(node):
-	state_node = node
 
 
 func set_in_game_state(state):
