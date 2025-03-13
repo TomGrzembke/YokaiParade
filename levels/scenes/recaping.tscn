@@ -56,7 +56,6 @@ grow_vertical = 2
 color = Color(0.409603, 0.409603, 0.409603, 1)
 
 [node name="Main" type="Control" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,11 +64,18 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Main"]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 7.0
-offset_right = 1544.0
-offset_bottom = 1007.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -586.0
+offset_top = -534.0
+offset_right = 584.0
+offset_bottom = 498.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_qupa2")
 
 [node name="MainPanel" type="TextureRect" parent="CanvasLayer/Main"]
@@ -79,10 +85,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -532.0
-offset_top = -422.0
-offset_right = 548.0
-offset_bottom = 426.0
+offset_left = -543.0
+offset_top = -406.0
+offset_right = 537.0
+offset_bottom = 442.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_v8yip")
@@ -153,10 +159,10 @@ anchor_left = 0.5
 anchor_top = 0.53
 anchor_right = 0.5
 anchor_bottom = 0.53
-offset_left = -577.0
-offset_top = 365.6
-offset_right = 597.0
-offset_bottom = 449.6
+offset_left = -588.0
+offset_top = 378.6
+offset_right = 586.0
+offset_bottom = 462.6
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_gndks")
@@ -166,18 +172,19 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -591.5
-offset_right = 591.5
-offset_bottom = 148.0
+offset_left = -598.0
+offset_top = 15.0
+offset_right = 585.0
+offset_bottom = 163.0
 grow_horizontal = 2
 texture = ExtResource("4_0ksdu")
 
 [node name="Decoration" type="TextureRect" parent="CanvasLayer/Main"]
 layout_mode = 0
-offset_left = 1439.0
-offset_top = 72.0
-offset_right = 1547.0
-offset_bottom = 730.0
+offset_left = 1431.0
+offset_top = 88.0
+offset_right = 1539.0
+offset_bottom = 746.0
 texture = ExtResource("5_vgvy0")
 
 [node name="FrontCover" type="ColorRect" parent="CanvasLayer"]

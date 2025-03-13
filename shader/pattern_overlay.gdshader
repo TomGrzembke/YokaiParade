@@ -53,7 +53,7 @@ vec4 overlay_pattern(vec4 texture_color){
 
 	vec2 pattern_uv = fract(scaled_position);
 
-	vec4 pattern_color = texture(pattern_texture, pattern_uv) ;
+	vec4 pattern_color = texture(pattern_texture, pattern_uv);
 
 	float filtered_alpha = mix(texture_color, pattern_color, pattern_color.x).a;
 

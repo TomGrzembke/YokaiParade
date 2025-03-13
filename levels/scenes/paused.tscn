@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://v24eao35y2ad"]
+[gd_scene load_steps=19 format=3 uid="uid://v24eao35y2ad"]
 
 [ext_resource type="Script" path="res://levels/scenes/paused.gd" id="1_8c3f4"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="2_eci05"]
@@ -10,12 +10,19 @@
 [ext_resource type="Texture2D" uid="uid://cf638huksnygw" path="res://ui/ui_panel_vertbottom.png" id="4_sd1pi"]
 [ext_resource type="Theme" uid="uid://bqdlc5vw8gpa5" path="res://assets/theme/theme.tres" id="5_d3x38"]
 [ext_resource type="Texture2D" uid="uid://b7bu0g5d2kfpc" path="res://ui/ui_panel_deco.png" id="5_w1drn"]
+[ext_resource type="Texture2D" uid="uid://dsjoo503gpojc" path="res://assets/theme/ui_button_black_2.png" id="7_ao0wk"]
 [ext_resource type="Texture2D" uid="uid://cwvx7x2akvm35" path="res://ui/UI_Controls_Controller.png" id="8_p76wf"]
 [ext_resource type="Texture2D" uid="uid://ccwi7avw2apse" path="res://ui/UI_Controls_keyboard.png" id="9_qpe47"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yh4t1"]
 shader = ExtResource("2_pa704")
 shader_parameter/lod = 0.833
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n4vpn"]
+texture = ExtResource("7_ao0wk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_car7o"]
+texture = ExtResource("7_ao0wk")
 
 [sub_resource type="Animation" id="Animation_2pbwe"]
 length = 0.001
@@ -56,7 +63,6 @@ script = ExtResource("1_8c3f4")
 layer = 10
 
 [node name="Main" type="Control" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,20 +89,27 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.85098, 0.823529, 0.941176, 1)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Main"]
-layout_mode = 0
-offset_left = 679.0
-offset_top = 4.0
-offset_right = 1224.0
-offset_bottom = 1032.0
+[node name="UiOutlineVert" type="TextureRect" parent="CanvasLayer/Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -513.0
+offset_right = 260.0
+offset_bottom = 487.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_kcmw8")
 
 [node name="MainPanel" type="TextureRect" parent="CanvasLayer/Main"]
 layout_mode = 0
-offset_left = 742.0
-offset_top = 97.0
-offset_right = 1171.0
-offset_bottom = 1011.0
+offset_left = 750.0
+offset_top = 107.0
+offset_right = 1179.0
+offset_bottom = 1021.0
 texture = ExtResource("2_njg0m")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main/MainPanel"]
@@ -106,13 +119,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -279.5
-offset_right = 151.0
-offset_bottom = 205.5
+offset_left = -157.5
+offset_top = -337.0
+offset_right = 162.5
+offset_bottom = 293.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 29
 
 [node name="Label" type="Label" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
 layout_mode = 2
@@ -122,6 +135,11 @@ horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
 layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="Control2" type="Control" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
 
 [node name="ResumeButton" type="Button" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
 unique_name_in_owner = true
@@ -145,6 +163,8 @@ script = ExtResource("4_73kvt")
 [node name="ResetCheckpointButton" type="Button" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_n4vpn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_car7o")
 text = "Last Checkpoint"
 script = ExtResource("4_73kvt")
 
@@ -168,10 +188,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -281.0
-offset_top = -133.0
-offset_right = 250.0
-offset_bottom = -48.0
+offset_left = -260.0
+offset_top = -123.0
+offset_right = 271.0
+offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("4_sd1pi")
@@ -183,10 +203,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -280.0
-offset_top = -530.0
-offset_right = 255.0
-offset_bottom = -376.0
+offset_left = -273.0
+offset_top = -519.0
+offset_right = 262.0
+offset_bottom = -365.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -195,10 +215,10 @@ texture = ExtResource("3_6bdlb")
 
 [node name="Decoration" type="TextureRect" parent="CanvasLayer/Main"]
 layout_mode = 0
-offset_left = 1106.0
-offset_top = 81.0
-offset_right = 1214.0
-offset_bottom = 739.0
+offset_left = 1112.0
+offset_top = 91.0
+offset_right = 1220.0
+offset_bottom = 749.0
 texture = ExtResource("5_w1drn")
 
 [node name="UiControlsController" type="TextureRect" parent="CanvasLayer/Main"]

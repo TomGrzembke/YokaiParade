@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ddyyhxxuwsxtk"]
+[gd_scene load_steps=51 format=3 uid="uid://ddyyhxxuwsxtk"]
 
 [ext_resource type="Script" path="res://enemies/enemy_animations.gd" id="1_ladii"]
 [ext_resource type="Texture2D" uid="uid://ba1gmfx4honp5" path="res://enemies/animations/assets/enemy_fire_spritesheet.png" id="2_t1kpb"]
@@ -48,15 +48,35 @@ animation = &"moving_right_down"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4vo87"]
 animation = &"moving_right_up"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_42sie"]
+animation = &"moving_right_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1p817"]
+animation = &"moving_right_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sf45l"]
+animation = &"moving_left_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0bado"]
+animation = &"moving_left_up"
+
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_kgfv8"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_7240q")
-blend_point_0/pos = Vector2(-1, 1)
+blend_point_0/pos = Vector2(-0.1, 1)
 blend_point_1/node = SubResource("AnimationNodeAnimation_gf4kk")
-blend_point_1/pos = Vector2(-1, -1)
+blend_point_1/pos = Vector2(-0.1, -1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_0a5c1")
-blend_point_2/pos = Vector2(1, 1)
+blend_point_2/pos = Vector2(0.2, 1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_4vo87")
-blend_point_3/pos = Vector2(1, -1)
+blend_point_3/pos = Vector2(0.2, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_42sie")
+blend_point_4/pos = Vector2(1, -0.2)
+blend_point_5/node = SubResource("AnimationNodeAnimation_1p817")
+blend_point_5/pos = Vector2(1, 0.1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_sf45l")
+blend_point_6/pos = Vector2(-1, 0.1)
+blend_point_7/node = SubResource("AnimationNodeAnimation_0bado")
+blend_point_7/pos = Vector2(-1, -0.2)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o7vpp"]

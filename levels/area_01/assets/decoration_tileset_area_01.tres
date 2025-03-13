@@ -1,12 +1,22 @@
-[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://b4k5ayqgk5hiq"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://b4k5ayqgk5hiq"]
 
 [ext_resource type="Texture2D" uid="uid://b8j6cti8m1mib" path="res://levels/area_01/assets/decorations_spritesheet.png" id="1_3mbo6"]
-[ext_resource type="Material" path="res://shader/tree_swaying.tres" id="1_lol7o"]
-[ext_resource type="Material" path="res://shader/garland_swaying.tres" id="1_sis84"]
-[ext_resource type="Material" path="res://shader/dangle_big_swaying.tres" id="2_66c5t"]
-[ext_resource type="Material" path="res://shader/dangle_small_swaying.tres" id="3_nlxc8"]
-[ext_resource type="Material" path="res://shader/dangle_medium_swaying.tres" id="5_nh267"]
+[ext_resource type="Material" uid="uid://chh61ywjldyw6" path="res://shader/tree_swaying.tres" id="1_lol7o"]
+[ext_resource type="Material" uid="uid://dk3qu2wvu4cw5" path="res://shader/garland_swaying.tres" id="1_sis84"]
+[ext_resource type="Material" uid="uid://dg38mj2jlnh07" path="res://shader/dangle_big_swaying.tres" id="2_66c5t"]
+[ext_resource type="Material" uid="uid://bsgxon8dsp785" path="res://shader/dangle_small_swaying.tres" id="3_nlxc8"]
+[ext_resource type="Material" uid="uid://b4h6pjcy33k1e" path="res://shader/dangle_medium_swaying.tres" id="5_nh267"]
+[ext_resource type="Shader" path="res://shader/exchange_color_to_scrolling.gdshader" id="6_asdgi"]
 [ext_resource type="Shader" path="res://shader/swaying_foliage.gdshader" id="6_h253j"]
+[ext_resource type="Texture2D" uid="uid://diukd4xd7cosl" path="res://levels/area_01/assets/water_scroll.png" id="7_glknk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3cqu5"]
+shader = ExtResource("6_asdgi")
+shader_parameter/color_to_replace = Color(0.537255, 0.776471, 0.803922, 1)
+shader_parameter/feather_range = 0.162
+shader_parameter/tilemap_offset = Vector2(0, 0)
+shader_parameter/pattern_scale = 5.01
+shader_parameter/pattern_texture = ExtResource("7_glknk")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_50w3e"]
 shader = ExtResource("6_h253j")
@@ -59,6 +69,7 @@ use_texture_padding = false
 0:82/0/material = ExtResource("3_nlxc8")
 35:12/size_in_atlas = Vector2i(17, 22)
 35:12/0 = 0
+35:12/0/material = SubResource("ShaderMaterial_3cqu5")
 0:33/size_in_atlas = Vector2i(19, 16)
 0:33/0 = 0
 0:33/0/material = ExtResource("1_sis84")

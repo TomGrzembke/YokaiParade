@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://vskvfllbprmi"]
+[gd_scene load_steps=21 format=4 uid="uid://chw071c302k1s"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5yuc3"]
 [ext_resource type="PackedScene" uid="uid://dnq2l128u47ma" path="res://levels/modules/goal.tscn" id="2_12oxi"]
@@ -13,12 +13,6 @@
 [ext_resource type="Material" uid="uid://wyxyitttdya3" path="res://shader/TilemapShader.tres" id="16_ufhtr"]
 [ext_resource type="TileSet" uid="uid://4v2t32qfx3hb" path="res://levels/area_01/assets/tileset_area_01.tres" id="17_0fatb"]
 [ext_resource type="PackedScene" uid="uid://bxb7rgxfvtxf2" path="res://levels/modules/player_spawn_point.tscn" id="18_ywyf1"]
-
-[sub_resource type="Curve2D" id="Curve2D_bvtls"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 5663, -153, 0, 0, 0, 0, 5663, -95)
-}
-point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_j4ig6"]
 _data = {
@@ -40,7 +34,7 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_blg6u"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2336, 504, 0, 0, 0, 0, 2600, 288)
+"points": PackedVector2Array(0, 0, 0, 0, 2336, 504, 0, 0, 0, 0, 2336, 280)
 }
 point_count = 2
 
@@ -50,6 +44,12 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Curve2D" id="Curve2D_u8bbi"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2080, 272, 0, 0, 0, 0, 2080, 544)
+}
+point_count = 2
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6upq"]
 size = Vector2(930, 24)
 
@@ -57,15 +57,6 @@ size = Vector2(930, 24)
 script = ExtResource("1_5yuc3")
 
 [node name="Start-1stCheckpoint" type="Node2D" parent="."]
-
-[node name="ProblemFireEnemy" type="Path2D" parent="Start-1stCheckpoint"]
-curve = SubResource("Curve2D_bvtls")
-
-[node name="EnemyAirborne" parent="Start-1stCheckpoint/ProblemFireEnemy" instance=ExtResource("6_tj8ky")]
-position = Vector2(5663, -153)
-initial_state = 200
-element_type = ExtResource("5_spnqd")
-initial_facing_direction = 1
 
 [node name="Goal" parent="Start-1stCheckpoint" instance=ExtResource("2_12oxi")]
 position = Vector2(12363, 228)
@@ -248,6 +239,14 @@ position = Vector2(1824, 792)
 initial_state = 200
 element_type = ExtResource("4_bqem7")
 initial_facing_direction = 1
+
+[node name="Path2D" type="Path2D" parent="Start-1stCheckpoint/Enemies"]
+curve = SubResource("Curve2D_u8bbi")
+
+[node name="EnemyAirborne" parent="Start-1stCheckpoint/Enemies/Path2D" instance=ExtResource("6_tj8ky")]
+position = Vector2(2080, 272)
+initial_state = 200
+element_type = ExtResource("4_bqem7")
 
 [node name="Deathzones" type="Node2D" parent="."]
 

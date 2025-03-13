@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://dj8bkbrvcyudi"]
+[gd_scene load_steps=20 format=3 uid="uid://dj8bkbrvcyudi"]
 
 [ext_resource type="Script" path="res://levels/scenes/game_over.gd" id="1_8nfyu"]
 [ext_resource type="Texture2D" uid="uid://c3i6sr0g87h2b" path="res://ui/ui_panel_horimain.png" id="1_hjsj7"]
+[ext_resource type="Texture2D" uid="uid://c5mky68gcqspu" path="res://ui/ui_outline_hori.png" id="2_wafhc"]
 [ext_resource type="Texture2D" uid="uid://ck7yd2b51exe3" path="res://ui/ui_panel_horibottom.png" id="2_yq4p4"]
 [ext_resource type="Texture2D" uid="uid://de8n4chrqn73o" path="res://ui/ui_panel_horitop.png" id="3_e7tb1"]
 [ext_resource type="Texture2D" uid="uid://dyiuk4rhgol72" path="res://ui/credit_pics/Aiden.png" id="3_kvw0u"]
@@ -71,6 +72,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="UiOutlineHori" type="TextureRect" parent="CanvasLayer/Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -585.0
+offset_top = -541.0
+offset_right = 585.0
+offset_bottom = 491.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wafhc")
+
 [node name="MainPanel" type="TextureRect" parent="CanvasLayer/Main"]
 layout_mode = 1
 anchors_preset = 8
@@ -78,10 +94,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -424.0
-offset_right = 540.0
-offset_bottom = 424.0
+offset_left = -543.0
+offset_top = -414.0
+offset_right = 537.0
+offset_bottom = 434.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_hjsj7")
@@ -240,9 +256,9 @@ anchor_top = 0.53
 anchor_right = 0.5
 anchor_bottom = 0.53
 offset_left = -587.0
-offset_top = 337.6
+offset_top = 371.6
 offset_right = 587.0
-offset_bottom = 421.6
+offset_bottom = 455.6
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_yq4p4")
@@ -252,18 +268,19 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -591.5
-offset_right = 591.5
-offset_bottom = 148.0
+offset_left = -597.0
+offset_top = 9.0
+offset_right = 586.0
+offset_bottom = 157.0
 grow_horizontal = 2
 texture = ExtResource("3_e7tb1")
 
 [node name="Decoration" type="TextureRect" parent="CanvasLayer/Main"]
 layout_mode = 0
-offset_left = 1439.0
-offset_top = 72.0
-offset_right = 1547.0
-offset_bottom = 730.0
+offset_left = 1433.0
+offset_top = 82.0
+offset_right = 1541.0
+offset_bottom = 740.0
 texture = ExtResource("4_voaui")
 
 [node name="FrontCover" type="ColorRect" parent="CanvasLayer"]
