@@ -39,6 +39,23 @@ func _physics_process(_delta):
 			level_load_completed.emit(null)
 
 
+func get_level_path_count():
+	return level_paths.size()
+
+
+func get_first_level_path_index():
+	var first_level_path_index = 1
+
+	if OS.has_feature("debug"):
+		first_level_path_index += 1
+
+	return first_level_path_index
+
+
+func get_current_level_path_index():
+	return current_level_path_index
+
+
 func get_requested_level_path_index():
 	return requested_level_path_index
 

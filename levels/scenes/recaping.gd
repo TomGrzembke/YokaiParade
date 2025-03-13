@@ -28,13 +28,14 @@ func _ready():
 
 
 func set_level_info(first_level_index, current_level_index, level_index_count):
+	var current_level_number = current_level_index - first_level_index + 1
 	var levels_above_first_count = level_index_count - first_level_index
 
 	var current_level_text
 	if current_level_index < first_level_index:
 		current_level_text = "Tutorial Level"
 	else:
-		current_level_text = "Level %s of %s" % [current_level_index, levels_above_first_count]
+		current_level_text = "Level %s of %s" % [current_level_number, levels_above_first_count]
 
 	var info_text = "Completed %s!" % current_level_text
 	%LevelInfoLabel.text = info_text

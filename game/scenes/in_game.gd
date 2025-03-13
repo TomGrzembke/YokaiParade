@@ -111,6 +111,18 @@ func on_level_load_progress(progress):
 
 # Level Loading
 
+func get_level_count():
+	return %Levels.get_level_path_count()
+
+
+func  get_first_level_index():
+	return %Levels.get_first_level_path_index()
+
+
+func get_current_level_index():
+	return %Levels.get_current_level_path_index()
+
+
 func get_requested_level_path_index():
 	return %Levels.get_requested_level_path_index()
 
