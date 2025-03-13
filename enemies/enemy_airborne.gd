@@ -5,7 +5,6 @@ const STATES = preload("res://enemies/enemy_initial_states.gd")
 
 @export_category("States")
 @export var initial_state: STATES.EnemyInitialState = STATES.EnemyInitialState.IDLING
-@export var recovery_time = 3.0
 
 @export_category("Power")
 @export var element_type: EnemyElementType
