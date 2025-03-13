@@ -110,10 +110,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -543.0
-offset_top = -406.0
-offset_right = 537.0
-offset_bottom = 442.0
+offset_left = -544.0
+offset_top = -409.0
+offset_right = 536.0
+offset_bottom = 439.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_v8yip")
@@ -125,10 +125,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -105.5
-offset_top = -149.5
-offset_right = 105.5
-offset_bottom = 149.5
+offset_left = -168.5
+offset_top = -258.0
+offset_right = 168.5
+offset_bottom = 258.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -142,8 +142,16 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/Main/MainPanel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeadingLabel"
-text = "completed Level X of Y
-Total time:"
+text = "completed Level X of Y"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/Main/MainPanel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Main/MainPanel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+text = "Total time:"
 horizontal_alignment = 1
 
 [node name="PlayTimeLabel" type="Label" parent="CanvasLayer/Main/MainPanel/VBoxContainer/MarginContainer/VBoxContainer"]
