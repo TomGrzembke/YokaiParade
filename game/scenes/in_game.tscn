@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cisf071rha1ru"]
+[gd_scene load_steps=47 format=3 uid="uid://cisf071rha1ru"]
 
 [ext_resource type="Script" path="res://game/scenes/in_game.gd" id="1_jmwmp"]
 [ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="2_7ssm8"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://dw0g44fku0ne6" path="res://levels/scenes/options_in_game.tscn" id="18_nem0v"]
 [ext_resource type="Script" path="res://levels/states/quit_game.gd" id="26_71ton"]
 [ext_resource type="Material" uid="uid://vmyjhk5ja4df" path="res://shader/ui_background.tres" id="27_xthkp"]
+[ext_resource type="Texture2D" uid="uid://cwdgdu5u54mes" path="res://ui/ingame/ui_ingame_tr_shadow.png" id="28_48u42"]
 [ext_resource type="Material" uid="uid://diak12n0funuu" path="res://shader/ui_foreground.tres" id="29_157pf"]
 [ext_resource type="Texture2D" uid="uid://b1k56xq2f22ff" path="res://ui/ingame/ui_ingame_tr_backthin.png" id="29_w8n2c"]
 [ext_resource type="Texture2D" uid="uid://f8apw8d4yauy" path="res://ui/ingame/UI_ingame_tr_main.png" id="31_q8juq"]
@@ -151,6 +152,16 @@ anchor_right = 1.0
 grow_horizontal = 0
 scale = Vector2(0.75, 0.75)
 mouse_filter = 1
+
+[node name="UiIngameTrShadow" type="TextureRect" parent="UILayer/Top"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -816.0
+offset_bottom = 746.0
+grow_horizontal = 0
+texture = ExtResource("28_48u42")
 
 [node name="UiIngameTrBack" type="TextureRect" parent="UILayer/Top"]
 material = ExtResource("27_xthkp")
