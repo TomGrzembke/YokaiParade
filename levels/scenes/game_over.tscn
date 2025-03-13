@@ -1,22 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dj8bkbrvcyudi"]
+[gd_scene load_steps=8 format=3 uid="uid://dj8bkbrvcyudi"]
 
 [ext_resource type="Script" path="res://levels/scenes/game_over.gd" id="1_8nfyu"]
-[ext_resource type="Texture2D" uid="uid://c3i6sr0g87h2b" path="res://ui/ui_panel_horimain.png" id="1_hjsj7"]
 [ext_resource type="Texture2D" uid="uid://c5mky68gcqspu" path="res://ui/ui_outline_hori.png" id="2_wafhc"]
-[ext_resource type="Texture2D" uid="uid://ck7yd2b51exe3" path="res://ui/ui_panel_horibottom.png" id="2_yq4p4"]
-[ext_resource type="Texture2D" uid="uid://de8n4chrqn73o" path="res://ui/ui_panel_horitop.png" id="3_e7tb1"]
-[ext_resource type="Texture2D" uid="uid://dyiuk4rhgol72" path="res://ui/credit_pics/Aiden.png" id="3_kvw0u"]
+[ext_resource type="Texture2D" uid="uid://7s87q0ntc3rt" path="res://levels/scenes/assets/parade_illustration.png" id="3_jcb15"]
 [ext_resource type="Script" path="res://ui/custom_controls/button_focus_on_hover.gd" id="3_uje4y"]
-[ext_resource type="Texture2D" uid="uid://ct5uvmei28kqk" path="res://ui/credit_pics/Christian.png" id="4_8ji8l"]
-[ext_resource type="Texture2D" uid="uid://b7bu0g5d2kfpc" path="res://ui/ui_panel_deco.png" id="4_voaui"]
-[ext_resource type="Texture2D" uid="uid://bgg6ubjesyxv5" path="res://ui/credit_pics/Fedir.png" id="5_1sshr"]
-[ext_resource type="Texture2D" uid="uid://bctt0a2iiygat" path="res://ui/credit_pics/laziri_music.png" id="6_rj4vo"]
 [ext_resource type="AnimationLibrary" uid="uid://dk4cys2ms8tsl" path="res://assets/animations/state_transitions_long.res" id="7_3xw7a"]
-[ext_resource type="Texture2D" uid="uid://dgxxfgcvowm6u" path="res://ui/credit_pics/lucy_momo.png" id="7_cbe0d"]
-[ext_resource type="Texture2D" uid="uid://bciji618hwae" path="res://ui/credit_pics/Nadine.png" id="8_ou5iw"]
-[ext_resource type="Texture2D" uid="uid://cngqwl3x0o5is" path="res://ui/credit_pics/Sasha.png" id="9_jhs3r"]
-[ext_resource type="Texture2D" uid="uid://d4j31qxg6nrho" path="res://ui/credit_pics/Tim.png" id="10_ku3ys"]
-[ext_resource type="Texture2D" uid="uid://bhvngnwoelad2" path="res://ui/credit_pics/Tommy.png" id="11_nubsn"]
 
 [sub_resource type="Animation" id="Animation_rx4qx"]
 length = 0.001
@@ -100,7 +88,7 @@ offset_right = 537.0
 offset_bottom = 434.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_hjsj7")
+texture = ExtResource("3_jcb15")
 
 [node name="ThankYouLabel" type="Label" parent="CanvasLayer/Main/MainPanel"]
 unique_name_in_owner = true
@@ -116,123 +104,19 @@ grow_horizontal = 2
 text = "Thank you for playing!"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="CanvasLayer/Main/MainPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Aiden" type="TextureRect" parent="CanvasLayer/Main/MainPanel/Control"]
-layout_mode = 0
-offset_left = -300.0
-offset_top = 100.0
-offset_right = -173.797
-offset_bottom = 214.0
-texture = ExtResource("3_kvw0u")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Christian" type="TextureRect" parent="CanvasLayer/Main/MainPanel/Control"]
-layout_mode = 0
-offset_left = -380.0
-offset_top = -30.0
-offset_right = -253.797
-offset_bottom = 84.0
-texture = ExtResource("4_8ji8l")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Fedir" type="TextureRect" parent="CanvasLayer/Main/MainPanel/Control"]
-layout_mode = 0
-offset_left = 210.0
-offset_top = -160.0
-offset_right = 336.203
-offset_bottom = -46.0
-texture = ExtResource("5_1sshr")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Laziri" type="TextureRect" parent="CanvasLayer/Main/MainPanel/Control"]
-layout_mode = 0
-offset_left = 160.0
-offset_top = 150.0
-offset_right = 286.203
-offset_bottom = 264.0
-texture = ExtResource("6_rj4vo")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="LucyMomo" type="TextureRect" parent="CanvasLayer/Main/MainPanel/Control"]
-layout_mode = 0
-offset_left = -50.0
-offset_top = -210.0
-offset_right = 76.203
-offset_bottom = -96.0
-texture = ExtResource("7_cbe0d")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Nadine" type="TextureRect" parent="CanvasLayer/Main/MainPanel/Control"]
-layout_mode = 0
-offset_left = 250.0
-offset_top = 20.0
-offset_right = 376.203
-offset_bottom = 134.0
-texture = ExtResource("8_ou5iw")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Sasha" type="TextureRect" parent="CanvasLayer/Main/MainPanel/Control"]
-layout_mode = 0
-offset_left = -270.0
-offset_top = -180.0
-offset_right = -143.797
-offset_bottom = -66.0
-texture = ExtResource("9_jhs3r")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Tim" type="TextureRect" parent="CanvasLayer/Main/MainPanel/Control"]
-layout_mode = 0
-offset_left = -150.0
-offset_top = 200.0
-offset_right = -23.797
-offset_bottom = 314.0
-texture = ExtResource("10_ku3ys")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Tommy" type="TextureRect" parent="CanvasLayer/Main/MainPanel/Control"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 220.0
-offset_right = 136.203
-offset_bottom = 334.0
-texture = ExtResource("11_nubsn")
-expand_mode = 3
-stretch_mode = 5
-
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main/MainPanel"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -92.5
-offset_top = -57.0
+offset_top = -173.0
 offset_right = 92.5
-offset_bottom = 57.0
+offset_bottom = -59.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="ReturnToMainMenuButton" type="Button" parent="CanvasLayer/Main/MainPanel/VBoxContainer"]
 unique_name_in_owner = true
@@ -247,41 +131,6 @@ layout_mode = 2
 focus_neighbor_bottom = NodePath("../ReturnToMainMenuButton")
 text = "Quit Game"
 script = ExtResource("3_uje4y")
-
-[node name="BottomRoll" type="TextureRect" parent="CanvasLayer/Main"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.53
-anchor_right = 0.5
-anchor_bottom = 0.53
-offset_left = -587.0
-offset_top = 371.6
-offset_right = 587.0
-offset_bottom = 455.6
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_yq4p4")
-
-[node name="TopRoll" type="TextureRect" parent="CanvasLayer/Main"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -597.0
-offset_top = 9.0
-offset_right = 586.0
-offset_bottom = 157.0
-grow_horizontal = 2
-texture = ExtResource("3_e7tb1")
-
-[node name="Decoration" type="TextureRect" parent="CanvasLayer/Main"]
-layout_mode = 0
-offset_left = 1433.0
-offset_top = 82.0
-offset_right = 1541.0
-offset_bottom = 740.0
-texture = ExtResource("4_voaui")
 
 [node name="FrontCover" type="ColorRect" parent="CanvasLayer"]
 visible = false
