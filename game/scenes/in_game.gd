@@ -19,13 +19,13 @@ var current_level_state_scene
 
 
 func _ready():
-	%Levels.player_ability_changed.connect(on_player_ability_changed)
-	%Levels.player_despawned.connect(on_player_despawned)
-	%Levels.player_reached_goal.connect(on_player_reached_goal)
-	%Levels.level_load_progress.connect(on_level_load_progress)
+	%LevelCoordinator.player_ability_changed.connect(on_player_ability_changed)
+	%LevelCoordinator.player_despawned.connect(on_player_despawned)
+	%LevelCoordinator.player_reached_goal.connect(on_player_reached_goal)
+	%LevelCoordinator.level_load_progress.connect(on_level_load_progress)
 
 	if OS.has_feature("debug"):
-		%Levels.set_is_debug_level_active(is_debug_mode_active)
+		%LevelCoordinator.set_is_debug_level_active(is_debug_mode_active)
 
 	reset_play_time()
 	request_setting_next_level_path_index()
@@ -77,11 +77,11 @@ func get_play_time():
 
 
 func get_is_past_first_checkpoint():
-	return %Levels.get_is_past_first_checkpoint()
+	return %LevelCoordinator.get_is_past_first_checkpoint()
 
 
 func set_player_controls_active(active):
-	%Levels.set_player_controls_active(active)
+	%LevelCoordinator.set_player_controls_active(active)
 
 
 # UI
@@ -113,48 +113,48 @@ func on_level_load_progress(progress):
 # Level Loading
 
 func get_level_count():
-	return %Levels.get_level_path_count()
+	return %LevelCoordinator.get_level_path_count()
 
 
 func  get_first_level_index():
-	return %Levels.get_first_level_path_index()
+	return %LevelCoordinator.get_first_level_path_index()
 
 
 func get_current_level_index():
-	return %Levels.get_current_level_path_index()
+	return %LevelCoordinator.get_current_level_path_index()
 
 
 func get_requested_level_path_index():
-	return %Levels.get_requested_level_path_index()
+	return %LevelCoordinator.get_requested_level_path_index()
 
 
 func request_setting_level_path_index(index):
-	%Levels.request_setting_level_path_index(index)
+	%LevelCoordinator.request_setting_level_path_index(index)
 
 
 func request_setting_previous_level_path_index():
-	%Levels.request_setting_previous_level_path_index()
+	%LevelCoordinator.request_setting_previous_level_path_index()
 
 
 func request_setting_next_level_path_index():
-	%Levels.request_setting_next_level_path_index()
+	%LevelCoordinator.request_setting_next_level_path_index()
 
 
 func try_changing_to_requested_level():
 	reset_play_time()
-	return await %Levels.try_changing_to_requested_level()
+	return await %LevelCoordinator.try_changing_to_requested_level()
 
 
 func spawn_player():
-	await %Levels.spawn_player()
+	await %LevelCoordinator.spawn_player()
 
 
 func reset_to_checkpoint():
-	await %Levels.reset_to_checkpoint()
+	await %LevelCoordinator.reset_to_checkpoint()
 
 
 func reset_level():
-	await %Levels.reset_level()
+	await %LevelCoordinator.reset_level()
 	reset_play_time() # TODO: Move to CurrentLevel script once it exists
 
 

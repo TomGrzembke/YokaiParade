@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game/scenes/in_game.gd" id="1_jmwmp"]
 [ext_resource type="PackedScene" uid="uid://cv00eqe6lwt2h" path="res://components/state_machine/state_machine.tscn" id="2_7ssm8"]
-[ext_resource type="PackedScene" uid="uid://badws0m5drr6w" path="res://levels/levels.tscn" id="3_45cmx"]
+[ext_resource type="PackedScene" uid="uid://badws0m5drr6w" path="res://levels/level_coordinator.tscn" id="3_45cmx"]
 [ext_resource type="Script" path="res://levels/states/loading.gd" id="3_gfwu5"]
 [ext_resource type="PackedScene" uid="uid://bbew8yq4n6jan" path="res://levels/scenes/loading.tscn" id="4_sfxgs"]
 [ext_resource type="Script" path="res://levels/states/starting.gd" id="6_4ysu7"]
@@ -138,7 +138,7 @@ script = ExtResource("26_71ton")
 [node name="Main" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Levels" parent="Main" instance=ExtResource("3_45cmx")]
+[node name="LevelCoordinator" parent="Main" instance=ExtResource("3_45cmx")]
 unique_name_in_owner = true
 level_paths = Array[String](["res://levels/area_01/level_00.tscn", "res://levels/area_01/level_01.tscn", "res://levels/area_01/level_02.tscn", "res://levels/area_01/level_03.tscn", "res://levels/area_01/level_04.tscn"])
 
