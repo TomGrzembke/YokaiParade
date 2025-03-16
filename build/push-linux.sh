@@ -1,3 +1,3 @@
 #! /bin/sh
 
-butler push ./yokaiparade-linux/yokai-parade-linux.zip s4g/yokai-parade:linux
+butler push ./yokaiparade-linux s4g/yokai-parade:linux
