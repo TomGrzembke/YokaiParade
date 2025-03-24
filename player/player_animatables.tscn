@@ -77,7 +77,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_xbpvk"]
@@ -117,7 +117,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_802ph"]
@@ -169,7 +169,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [1]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -916,7 +916,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [2]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -1144,6 +1144,8 @@ idle_animation_probability = {
 }
 
 [node name="VfxAnimationCharacter" type="Sprite2D" parent="."]
+z_index = 1
+z_as_relative = false
 material = ExtResource("2_xp0es")
 texture = ExtResource("4_f7hvb")
 hframes = 4
@@ -1152,6 +1154,7 @@ frame = 4
 region_rect = Rect2(692.748, 853.145, 150.645, 210.275)
 
 [node name="Player" type="Sprite2D" parent="."]
+z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_n0aer")
 position = Vector2(0, 6)
@@ -1163,7 +1166,7 @@ frame = 8
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_x7y5v")
+&"": SubResource("AnimationLibrary_x7y5v")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -1191,11 +1194,14 @@ pitch_max = 1.1
 visible = false
 
 [node name="MovementLines" type="Node2D" parent="."]
+show_behind_parent = true
+z_as_relative = false
 position = Vector2(0, 44)
 
 [node name="OutlineMovementLine" type="Line2D" parent="MovementLines"]
+show_behind_parent = true
 top_level = true
-z_index = -1
+z_as_relative = false
 position = Vector2(0, -13)
 points = PackedVector2Array(2, -1, -89, 13, -131, 17)
 width = 30.0
@@ -1208,8 +1214,9 @@ script = ExtResource("17_tfrnd")
 trail_points_max = 16
 
 [node name="MovementLine" type="Line2D" parent="MovementLines"]
+show_behind_parent = true
 top_level = true
-z_index = -1
+z_as_relative = false
 material = ExtResource("18_y1len")
 position = Vector2(0, -13)
 points = PackedVector2Array(2, -1, -89, 13, -131, 17)
