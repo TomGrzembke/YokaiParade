@@ -136,9 +136,6 @@ end_cap_mode = 2
 position = Vector2(0, -50)
 line_material = ExtResource("9_hbaoq")
 
-[node name="VfxAnimationCharacter" parent="PlayerAnimatables" index="0"]
-z_index = 1
-
 [node name="Debug" type="Node2D" parent="."]
 position = Vector2(0, -25)
 script = ExtResource("7_3jai0")
