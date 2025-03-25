@@ -63,9 +63,9 @@ func _physics_process(_delta):
 
 func blend_vfx():
 	if shader_mat.get_shader_parameter("end_tint") == COLOR_BLACK: return
-	if color_blend_timer == null || color_blend_timer.time_left <= 0: return
+	if color_blend_timer == null || !color_blend_timer.has_time_left: return
 
-	var step = blend_curve.sample(1.0 - color_blend_timer.time_left / time_to_blend)
+	var step = blend_curve.sample(color_blend_timer.get_progress_percent())
 	shader_mat.set_shader_parameter("end_tint", lerp(shader_mat.get_shader_parameter("end_tint"), default_vfx_col, step))
 	line_material.set_shader_parameter("end_tint", lerp(shader_mat.get_shader_parameter("end_tint"), default_line_color, step))
 
@@ -85,7 +85,7 @@ func on_ability(current_ability):
 
 
 func shrug_anim():
-	if shrug_timer != null && shrug_timer.time_left != 0: return
+	if shrug_timer != null && shrug_timer.has_time_left: return
 
 	animator.start("no_ability_hit")
 	spawn_vfx("no_ability", false, true, null, player)
@@ -119,18 +119,17 @@ func on_pickup(color):
 	spawn_vfx("absorb", false, true)
 
 	if color_blend_timer != null:
-		color_blend_timer.timeout.disconnect(reset_vfx_conditionally)
+		color_blend_timer.unsubscribe(reset_vfx_conditionally)
 		color_blend_timer = null
 
 
 func blend_vfx_back():
 	color_blend_timer = create_timer(time_to_blend)
-	if color_blend_timer == null: return
-	color_blend_timer.timeout.connect(reset_vfx_conditionally)
+	color_blend_timer.subscribe(reset_vfx_conditionally)
 
 
 func reset_vfx_conditionally():
-	if color_blend_timer != null && color_blend_timer.time_left > 0: return
+	if color_blend_timer != null && color_blend_timer.has_time_left: return
 	default_vfx()
 
 
@@ -181,4 +180,4 @@ func sort_dictionary_descending():
 
 
 func create_timer(time):
-	return get_tree().create_timer(time)
+	return TimerExtension.new(get_tree(), time)

@@ -330,7 +330,7 @@ func apex_modifier(delta):
 		can_use_apex = false
 
 	if apex_timer == null: return
-	if apex_timer.time_left <= 0: return
+	if !apex_timer.has_time_left: return
 
 	apex_horizontal(delta)
 	apex_vertical()
@@ -347,7 +347,7 @@ func apex_vertical():
 		return
 
 	local_velocity.x += look_direction * \
-	lerpf(apex_strength * .5, apex_strength, apex_smooth_curve.sample(apex_timer.time_left / apex_time))
+	lerpf(apex_strength * .5, apex_strength, apex_smooth_curve.sample(apex_timer.get_inverted_progress_percent()))
 
 
 func is_rising():
@@ -370,8 +370,8 @@ func speed_token_falloff():
 	if velocity.x != 0:
 		speed_token_fall_off_timer = create_timer(speed_token_fall_off_time)
 
-	if speed_token_fall_off_timer == null || speed_token_fall_off_timer.time_left > 0: return
-	if interval_speed_token_fall_off_timer != null && interval_speed_token_fall_off_timer.time_left > 0: return
+	if speed_token_fall_off_timer == null || speed_token_fall_off_timer.has_time_left: return
+	if interval_speed_token_fall_off_timer != null && interval_speed_token_fall_off_timer.has_time_left: return
 
 	interval_speed_token_fall_off_timer = create_timer(interval_falloff_speed_token)
 	add_current_speed_tokens(-1)
@@ -391,7 +391,7 @@ func add_velocity_modifier(velocity_mod):
 
 func create_vel_duration_timer(velocity_mod):
 	var duration_timer = create_timer(velocity_mod.duration)
-	duration_timer.timeout.connect(on_vel_mod_ended.bind(velocity_mod))
+	duration_timer.subscribe(on_vel_mod_ended.bind(velocity_mod))
 	velocity_mod.set_timer(duration_timer)
 
 
@@ -468,7 +468,7 @@ func on_despawn():
 		cam_remote.queue_free()
 
 	if has_won: return
-	create_timer(reset_time).timeout.connect(func(): player_despawned.emit())
+	create_timer(reset_time).subscribe(player_despawned.emit)
 
 
 func on_goal_reached():
@@ -498,7 +498,7 @@ func controller_vibration(weak_strength, strong_strength, duration):
 
 
 func create_timer(time):
-	return get_tree().create_timer(time)
+	return TimerExtension.new(get_tree(), time)
 
 
 func set_cam_remote(remote):

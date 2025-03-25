@@ -26,7 +26,7 @@ func is_color_element(color, element):
 
 
 func _physics_process(_delta):
-	if  blend_timer == null || blend_timer.time_left <= 0: return
+	if  blend_timer == null || !blend_timer.has_time_left: return
 
 	fadeout_rect(air_frame)
 	fadeout_rect(fire_frame)
@@ -40,12 +40,12 @@ func activate_rect(rect):
 	current_blendout = rect
 
 	if blend_timer == null: return
-	blend_timer.time_left = 0.0
+	blend_timer.set_time_left(0.0)
 
 
 func fadeout_rect(rect):
 	var current_value = 0.0
-	var time_percentage =  1.0 - blend_timer.time_left / blend_time
+	var time_percentage =  blend_timer.get_progress_percent()
 	var current_color = 1.0 if rect == current_blendout else rect.modulate.a
 	var step = time_percentage if blend_curve == null else blend_curve.sample(time_percentage)
 
@@ -60,4 +60,4 @@ func get_white_set_alpha(alpha):
 
 
 func create_timer(time):
-	return get_tree().create_timer(time)
+	return TimerExtension.new(get_tree(), time)

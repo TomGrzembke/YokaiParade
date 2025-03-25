@@ -34,14 +34,14 @@ func use(player_manager):
 		call_deferred("exit")
 		return
 
-	create_timer(dash_duration).timeout.connect(exit)
+	create_timer(dash_duration).subscribe(exit)
 
 
 func exit():
 	if damage_linger_duration == 0.0:
 		queue_free()
 
-	create_timer(damage_linger_duration).timeout.connect(func(): queue_free())
+	create_timer(damage_linger_duration).subscribe(queue_free)
 
 
 func apply_dash_damage():
@@ -68,7 +68,7 @@ func on_deal_damage_area_exited(_target):
 
 
 func create_timer(time):
-	return get_tree().create_timer(time)
+	return TimerExtension.new(get_tree(), time)
 
 
 func controller_vibration(weak_strength, strong_strength, duration):

@@ -22,7 +22,7 @@ func use(player_manager):
 		call_deferred("exit")
 		return
 
-	create_timer(double_jump_duration).timeout.connect(exit)
+	create_timer(double_jump_duration).subscribe(exit)
 
 
 func exit():
@@ -39,4 +39,4 @@ func controller_vibration(weak_strength, strong_strength, duration):
 
 
 func create_timer(time):
-	return get_tree().create_timer(time)
+	return TimerExtension.new(get_tree(), time)

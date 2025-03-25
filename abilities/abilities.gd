@@ -81,16 +81,12 @@ func absorb_ability():
 
 
 func hit_cooldown():
-	if is_hit_on_cooldown(): return true
+	if hit_cooldown_timer.has_time_left: return true
 
 	hit_cooldown_timer = create_timer(hit_cooldown_time)
-	hit_cooldown_timer.timeout.connect(hit_queue)
+	hit_cooldown_timer.subscribe(hit_queue)
 
 	return false
-
-
-func is_hit_on_cooldown():
-	return hit_cooldown_timer.time_left > 0
 
 
 func hit_queue():
@@ -110,7 +106,7 @@ func catch_grace_time():
 
 
 func hit_timer_active():
-	return hit_grace_timer != null && hit_grace_timer.time_left > 0
+	return hit_grace_timer != null && hit_grace_timer.has_time_left
 
 
 func set_current_ability(ability_scene):
@@ -133,10 +129,6 @@ func clear_abilities():
 	for child in get_children():
 		child.queue_free()
 	reset_color()
-
-
-func create_timer(time):
-	return get_tree().create_timer(time)
 
 
 func reset_color():
@@ -177,3 +169,7 @@ func refresh_wallray():
 	if nearest == null: return
 
 	hit_wall_ray.lookat_position(nearest.global_position)
+
+
+func create_timer(time):
+	return TimerExtension.new(get_tree(), time)
