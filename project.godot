@@ -28,6 +28,10 @@ window/stretch/mode="viewport"
 mouse_cursor/custom_image="res://assets/theme/cursor_point.png"
 mouse_cursor/custom_image_hotspot=Vector2(17, 7)
 
+[dotnet]
+
+project/assembly_name="YokaiParade"
+
 [editor]
 
 movie_writer/movie_file="C:/Users/fuzzy/Videos/Captures/yokai-parade.avi"
