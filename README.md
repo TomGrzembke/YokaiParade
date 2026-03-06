@@ -38,4 +38,6 @@ class inheritance could not be used to have common code in a parent class. Inste
 
 The [EnemyGrounded](./enemies/enemy_grounded.gd) script and scenes show how the top `CharacterBody2D` node and its script are oblivious to the logic in the components, only the state nodes reference exactly those components whose services they need.
 
-The different elemental types got their sprites and animations through `Resources`, which was another way to avoid code-duplicaton, and would make it easier to create more elemental types that drop specific abilities on being hit.
+The different elemental types got their sprites and animations through `Resources`, which was another way to avoid code-duplicaton, and would make it easier to create more elemental types that drop specific abilities on being hit. 
+
+a
