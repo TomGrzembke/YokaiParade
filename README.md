@@ -2,7 +2,7 @@
 Take over abilities of your enemies tojump and run faster than every other yokai!
 
 - Created in `Godot Engine`.
-- Programmers: 2. Other one is [FuzzyHerbivore](https://github.com/FuzzyHerbivore) (He did the overall game framework, technical UI and menu foundations).
+- Programmers: 2. Other one is [FuzzyHerbivore](https://github.com/FuzzyHerbivore/yokai-parade) (He did the overall game framework, technical UI and menu foundations).
 - Task: Create a 2D Jump and Run in Godot.
 <div align="center">
 
